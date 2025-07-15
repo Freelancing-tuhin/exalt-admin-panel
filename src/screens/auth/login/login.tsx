@@ -12,19 +12,19 @@ export const Login = () => {
   };
 
   return (
-    <div className="flex h-screen w-full">
+    <div className="sm:flex h-screen w-full">
       {/* Left Side - Image Placeholder */}
-      <div className="w-1/2 bg-gray-900 flex items-center justify-center">
+      <div className="sm:w-1/2 bg-[#202226] flex items-center justify-center">
         <img
-          src=""
+          src="https://framerusercontent.com/images/3hAyZ00oRc483dBqSEyAZsbu7Ls.png"
           alt="Map Illustration"
-          className="max-w-full max-h-full object-contain"
+          className="w-[60%] my-10 sm:my-0 sm:max-w-xl  object-contain"
         />
       </div>
 
       {/* Right Side - Login Form */}
-      <div className="w-1/2 bg-white flex items-center justify-center">
-        <div className="w-full flex flex-col px-20">
+      <div className="sm:w-1/2 rounded-t-2xl -mt-4 sm:rounded-t sm:mt-0 pt-16 sm:pt-0 bg-white flex items-center justify-center">
+        <div className="w-full flex flex-col px-10 sm:px-20">
           {/* Logo SVG */}
           <h1 className="text-lg font-semibold text-gray-800 tracking-widest mb-1">
             <svg
@@ -84,7 +84,7 @@ export const Login = () => {
               <input
                 type="email"
                 placeholder="Enter Login Email"
-                className="w-[80%] px-4 py-2.5 rounded-lg bg-gray-200 focus:ring-2 focus:ring-black mb-4"
+                className="sm:w-[80%] px-4 py-2.5 rounded-lg bg-gray-200 focus:ring-2 focus:ring-black mb-4"
               />
               <a
                 href="#"
