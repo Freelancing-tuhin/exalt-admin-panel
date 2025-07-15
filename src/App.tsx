@@ -1,9 +1,10 @@
 import "./App.css";
+import { Login } from "./screens/auth/login/login";
 
 function App() {
   return (
     <>
-      <div className="text-center text-3xl">Vite template</div>
+      <Login />
     </>
   );
 }
