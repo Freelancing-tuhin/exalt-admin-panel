@@ -21,7 +21,7 @@ export const OtpInput = ({
   const navigate = useNavigate();
   const inputsRef = useRef<HTMLInputElement[]>([]);
   const [isInvalid, setIsInvalid] = useState(false);
-  const getHomeRedirect = ({ user }: any) => {
+  const getHomeRedirect = (user: any) => {
     if (!user) return "/login";
     return user.role === "ADMIN" ? "/admin/events" : "/client/events";
   };
@@ -30,7 +30,7 @@ export const OtpInput = ({
       const payload = { email: email };
       const response = await api.auth.userLogin(payload);
       setUser(response);
-      console.log("user data received:", response);
+      console.log("user data received:", getHomeRedirect(response));
       navigate(getHomeRedirect(response));
     } catch (error) {
       console.log("first error", error);
