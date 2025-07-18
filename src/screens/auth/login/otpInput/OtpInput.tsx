@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../../../utils";
 import AuthContext from "../../../../contexts/authContext/authContext";
@@ -21,14 +21,17 @@ export const OtpInput = ({
   const navigate = useNavigate();
   const inputsRef = useRef<HTMLInputElement[]>([]);
   const [isInvalid, setIsInvalid] = useState(false);
-
+  const getHomeRedirect = ({ user }: any) => {
+    if (!user) return "/login";
+    return user.role === "ADMIN" ? "/admin/events" : "/client/events";
+  };
   const handleLoginUser = async () => {
     try {
       const payload = { email: email };
       const response = await api.auth.userLogin(payload);
       setUser(response);
       console.log("user data received:", response);
-      navigate("/");
+      navigate(getHomeRedirect(response));
     } catch (error) {
       console.log("first error", error);
     }

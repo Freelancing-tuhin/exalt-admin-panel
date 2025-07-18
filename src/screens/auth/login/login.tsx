@@ -24,6 +24,7 @@ export const Login = () => {
       const result = await api.auth.getPasscode(payload);
       console.log("Passcode received:", decryptData(result));
       setRealotp(decryptData(result));
+      console.log(realOtp);
       setShowOTP(true);
     } catch (error) {
       console.error("Error fetching passcode:", error);

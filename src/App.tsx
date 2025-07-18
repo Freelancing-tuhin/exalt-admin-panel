@@ -6,6 +6,7 @@ import { AdminFinalBriefs } from "./screens/admin/briefs/AdminFinalBriefs";
 import { useContext } from "react";
 import AuthContext from "./contexts/authContext/authContext";
 import { ProtectedRoute } from "./utils/protectedRoutes/ProtectedRoute";
+import Unauthorized from "./screens/unauthorized/Unauthorized";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -20,6 +21,7 @@ function App() {
       {/* Dynamic public route */}
       <Route path="/" element={<Navigate to={getHomeRedirect()} replace />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/unauthorized" element={<Unauthorized />} />
 
       {/* Admin-only routes */}
       <Route
@@ -43,7 +45,7 @@ function App() {
       <Route
         path="/client/events"
         element={
-          <ProtectedRoute user={user} allowedRoles={["CLIENT"]}>
+          <ProtectedRoute user={user} allowedRoles={["USER"]}>
             <ClientEvents />
           </ProtectedRoute>
         }

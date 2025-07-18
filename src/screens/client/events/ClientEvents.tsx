@@ -1,4 +1,3 @@
-import React from "react";
 import { Layout } from "../../layout/Layout";
 import Navbar from "../../../components/main/navbar/Navbar";
 import { EventCard } from "../../../components/shared/eventCard/EventCard";
