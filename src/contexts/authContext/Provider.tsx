@@ -41,13 +41,12 @@ const AuthContextProvider = ({ children }: ContextProviderProps) => {
         ? {
             id: user._id,
             email: user.email,
-            name: user.full_name,
-            age: user.age,
-            gender: user.gender,
+            first_name: user.first_name,
+            last_name: user.last_name,
             address: user.address,
+            role: user.role,
+            profile_picture: user.profile_picture,
             createdAt: user.createdAt,
-            profile_pic: user.profile_pic,
-            about: user.description,
           }
         : null;
 

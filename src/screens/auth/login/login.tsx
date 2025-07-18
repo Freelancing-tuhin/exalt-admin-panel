@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { api } from "../../../utils";
+import { OtpInput } from "./otpInput/OtpInput";
+import { decryptData } from "../../../utils/commonFunctions/dycryptData";
 
 export const Login = () => {
   const [showOTP, setShowOTP] = useState(false);
   const [otp, setOtp] = useState(["", "", "", ""]);
+  const [realOtp, setRealotp] = useState("");
+  const [email, setEmail] = useState("");
 
   const handleOTPChange = (value: string, index: number) => {
     if (!/^\d?$/.test(value)) return;
@@ -11,6 +16,19 @@ export const Login = () => {
     setOtp(newOtp);
   };
 
+  const handlegetPasscode = async () => {
+    setOtp(["", "", "", ""]);
+
+    try {
+      const payload = { email: email };
+      const result = await api.auth.getPasscode(payload);
+      console.log("Passcode received:", decryptData(result));
+      setRealotp(decryptData(result));
+      setShowOTP(true);
+    } catch (error) {
+      console.error("Error fetching passcode:", error);
+    }
+  };
   return (
     <div className="sm:flex h-screen w-full">
       {/* Left Side - Image Placeholder */}
@@ -84,12 +102,14 @@ export const Login = () => {
               <input
                 type="email"
                 placeholder="Enter Login Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="sm:w-[80%] px-4 py-2.5 rounded-lg bg-gray-200 focus:ring-2 focus:ring-black mb-4"
               />
               <a
                 href="#"
                 className="text-md font-semibold text-purple-600 pl-2 group inline-block relative"
-                onClick={() => setShowOTP(true)}
+                onClick={handlegetPasscode}
               >
                 <span className="relative z-10">
                   Send Passcode
@@ -99,25 +119,18 @@ export const Login = () => {
             </>
           ) : (
             <>
-              <div className="flex gap-4 mb-4">
-                {otp.map((digit, index) => (
-                  <input
-                    key={index}
-                    type="text"
-                    maxLength={1}
-                    value={digit}
-                    onChange={(e) => handleOTPChange(e.target.value, index)}
-                    className="w-12 h-12 text-xl text-center border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
-                  />
-                ))}
-              </div>
+              <OtpInput
+                otp={otp}
+                realOtp={"1234"}
+                handleOTPChange={handleOTPChange}
+                email={email}
+              />
               <a
-                href="#"
                 className="text-md font-semibold text-purple-600 pl-2 group inline-block relative"
-                onClick={() => setShowOTP(true)}
+                onClick={handlegetPasscode}
               >
                 <span className="relative z-10">
-                  Verify Passcode
+                  Resend Passcode
                   <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-purple-600 rounded-full transition-all duration-300 group-hover:w-full"></span>
                 </span>
               </a>

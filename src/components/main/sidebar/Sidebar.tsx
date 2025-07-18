@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   FiSearch,
   FiFileText,
@@ -8,18 +8,29 @@ import {
   FiAlertCircle,
   FiBarChart2,
   FiTool,
-  FiUsers,
   FiSettings,
+  FiServer,
 } from "react-icons/fi";
 import {
   TbLayoutSidebarLeftCollapse,
   TbLayoutSidebarRightCollapse,
 } from "react-icons/tb";
 import { SidebarItem } from "../../shared/sidebarItem/SidebarItem";
+import AuthContext from "../../../contexts/authContext/authContext";
+import { IoFileTrayOutline } from "react-icons/io5";
+import { TiStarOutline } from "react-icons/ti";
+import { RiAccountPinBoxLine } from "react-icons/ri";
 
 export const Sidebar = () => {
+  const { user, setUser } = useContext(AuthContext);
   const [isCollapsed, setIsCollapsed] = useState(false);
 
+  const handleLogout = () => {
+    setUser({});
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    window.location.href = "/login";
+  };
   return (
     <div
       className={`${
@@ -127,22 +138,49 @@ export const Sidebar = () => {
         </div>
 
         <div className="space-y-1 mb-6">
-          <SidebarItem
-            icon={<FiFileText />}
-            label="Issues"
-            isCollapsed={isCollapsed}
-          />
-          <SidebarItem
-            icon={<FiClock />}
-            label="Events"
-            active
-            isCollapsed={isCollapsed}
-          />
-          <SidebarItem
-            icon={<FiCopy />}
-            label="Final Briefs"
-            isCollapsed={isCollapsed}
-          />
+          {user?.role === "ADMIN" ? (
+            <>
+              <SidebarItem
+                icon={<IoFileTrayOutline />}
+                label="Issues"
+                isCollapsed={isCollapsed}
+                route={"/admin/issues"}
+              />
+              <SidebarItem
+                icon={<FiClock />}
+                label="Events"
+                isCollapsed={isCollapsed}
+                route={"/admin/events"}
+              />
+              <SidebarItem
+                icon={<FiCopy />}
+                label="Final Briefs"
+                isCollapsed={isCollapsed}
+                route={"/admin/final-briefs"}
+              />
+            </>
+          ) : (
+            <>
+              <SidebarItem
+                icon={<FiFileText />}
+                label="Briefs"
+                isCollapsed={isCollapsed}
+                route={"/client/briefs"}
+              />
+              <SidebarItem
+                icon={<FiClock />}
+                label="Events"
+                isCollapsed={isCollapsed}
+                route={"/client/events"}
+              />
+              <SidebarItem
+                icon={<FiCopy />}
+                label="Holidays"
+                isCollapsed={isCollapsed}
+                route={"/client/holidays"}
+              />
+            </>
+          )}
         </div>
 
         {/* Section 2 */}
@@ -171,16 +209,19 @@ export const Sidebar = () => {
             icon={<FiBox />}
             label="Bulletins"
             isCollapsed={isCollapsed}
+            route={""}
           />
           <SidebarItem
             icon={<FiAlertCircle />}
             label="Alerts"
             isCollapsed={isCollapsed}
+            route={""}
           />
           <SidebarItem
             icon={<FiBarChart2 />}
             label="Data"
             isCollapsed={isCollapsed}
+            route={""}
           />
         </div>
       </div>
@@ -188,23 +229,45 @@ export const Sidebar = () => {
       {/* Bottom Section */}
       <div>
         <div className="space-y-1 mb-4">
-          <SidebarItem
-            icon={<FiTool />}
-            label="Client Tools"
-            isCollapsed={isCollapsed}
-          />
-          <SidebarItem
-            icon={<FiUsers />}
-            label="Backend Users"
-            isCollapsed={isCollapsed}
-          />
+          {user?.role === "ADMIN" ? (
+            <>
+              <SidebarItem
+                icon={<FiTool />}
+                label="Client Tools"
+                isCollapsed={isCollapsed}
+                route={""}
+              />
+              <SidebarItem
+                icon={<FiServer />}
+                label="Backend Users"
+                isCollapsed={isCollapsed}
+                route={""}
+              />
+            </>
+          ) : (
+            <>
+              <SidebarItem
+                icon={<RiAccountPinBoxLine />}
+                label="Constituent Profile"
+                isCollapsed={isCollapsed}
+                route={""}
+              />
+              <SidebarItem
+                icon={<TiStarOutline />}
+                label="Started"
+                isCollapsed={isCollapsed}
+                route={""}
+              />
+            </>
+          )}
         </div>
 
         <div
+          onClick={handleLogout}
           className={`flex items-center p-2 rounded-md border-2 border-gray-300 hover:shadow-sm transition cursor-pointer `}
         >
           <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGR7EwzC9jhjuYjhbT0cFZ5cjkLevNB4gTBw&s"
+            src={user?.profile_picture || "/default-profile.png"}
             alt="Profile"
             className={`rounded-md object-cover transition-all duration-200 h-10 w-10 `}
           />
@@ -212,8 +275,8 @@ export const Sidebar = () => {
           {!isCollapsed && (
             <>
               <div className="flex-1 ml-2">
-                <p className="text-sm font-semibold">Sudhanshu</p>
-                <p className="text-xs text-gray-500">Kaushik</p>
+                <p className="text-sm font-semibold">{user?.first_name}</p>
+                <p className="text-xs text-gray-500">{user?.role}</p>
               </div>
               <FiSettings size={16} className="text-gray-500" />
             </>

@@ -1,28 +1,53 @@
-import { Routes, Route } from "react-router-dom";
-// import Home from "./screens/home/Home";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { Login } from "./screens/auth/login/login";
 import { AdminEvents } from "./screens/admin/events/AdminEvents";
 import { ClientEvents } from "./screens/client/events/ClientEvents";
 import { AdminFinalBriefs } from "./screens/admin/briefs/AdminFinalBriefs";
-
-// Admin Screens
+import { useContext } from "react";
+import AuthContext from "./contexts/authContext/authContext";
+import { ProtectedRoute } from "./utils/protectedRoutes/ProtectedRoute";
 
 function App() {
+  const { user } = useContext(AuthContext);
+
+  const getHomeRedirect = () => {
+    if (!user) return "/login";
+    return user.role === "ADMIN" ? "/admin/events" : "/client/events";
+  };
+
   return (
     <Routes>
-      {/* Public routes */}
-      <Route path="/" element={<ClientEvents />} />
+      {/* Dynamic public route */}
+      <Route path="/" element={<Navigate to={getHomeRedirect()} replace />} />
       <Route path="/login" element={<Login />} />
 
-      {/* Admin routes */}
-      <Route path="/admin/events" element={<AdminEvents />} />
-      {/* <Route path="/admin/issues" element={<AdminIssues />} /> */}
-      <Route path="/admin/final-briefs" element={<AdminFinalBriefs />} />
+      {/* Admin-only routes */}
+      <Route
+        path="/admin/events"
+        element={
+          <ProtectedRoute user={user} allowedRoles={["ADMIN"]}>
+            <AdminEvents />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin/final-briefs"
+        element={
+          <ProtectedRoute user={user} allowedRoles={["ADMIN"]}>
+            <AdminFinalBriefs />
+          </ProtectedRoute>
+        }
+      />
 
-      {/* Client routes */}
-      <Route path="/client/events" element={<ClientEvents />} />
-      {/* <Route path="/client/briefs" element={<ClientBriefs />} /> */}
-      {/* <Route path="/client/holidays" element={<ClientHolidays />} /> */}
+      {/* Client-only routes */}
+      <Route
+        path="/client/events"
+        element={
+          <ProtectedRoute user={user} allowedRoles={["CLIENT"]}>
+            <ClientEvents />
+          </ProtectedRoute>
+        }
+      />
     </Routes>
   );
 }
