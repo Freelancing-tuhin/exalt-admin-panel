@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { api } from "../../../utils";
 import { OtpInput } from "./otpInput/OtpInput";
-import { decryptData } from "../../../utils/commonFunctions/dycryptData";
+import { decryptDataFrontend } from "../../../utils/commonFunctions/dycryptData";
 
 export const Login = () => {
   const [showOTP, setShowOTP] = useState(false);
@@ -22,8 +22,8 @@ export const Login = () => {
     try {
       const payload = { email: email };
       const result = await api.auth.getPasscode(payload);
-      console.log("Passcode received:", decryptData(result));
-      setRealotp(decryptData(result));
+      console.log("Passcode received:", decryptDataFrontend(result));
+      setRealotp(decryptDataFrontend(result));
       console.log(realOtp);
       setShowOTP(true);
     } catch (error) {

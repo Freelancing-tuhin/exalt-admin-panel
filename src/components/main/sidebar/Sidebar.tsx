@@ -152,6 +152,7 @@ export const Sidebar = () => {
                 isCollapsed={isCollapsed}
                 route={"/admin/events"}
               />
+
               <SidebarItem
                 icon={<FiCopy />}
                 label="Final Briefs"
@@ -173,6 +174,7 @@ export const Sidebar = () => {
                 isCollapsed={isCollapsed}
                 route={"/client/events"}
               />
+
               <SidebarItem
                 icon={<FiCopy />}
                 label="Holidays"
