@@ -131,7 +131,7 @@ const discussions = [
 export const BriefView = () => {
   return (
     <Layout>
-      <Navbar />
+      <Navbar back={true} />
       <div className="body h-[90vh] overflow-y-scroll">
         <div className="max-w-6xl mx-auto p-2">
           {/* Header */}

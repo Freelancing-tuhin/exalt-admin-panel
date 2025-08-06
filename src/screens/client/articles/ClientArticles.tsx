@@ -1,11 +1,19 @@
 import { Layout } from "../../layout/Layout";
 import Navbar from "../../../components/main/navbar/Navbar";
 import { ArticleActionsPanel } from "../../../components/shared/acordition/ArticleActionsPanel";
+import { useHeading } from "../../../contexts/headingContext";
+import { useEffect } from "react";
 
 export const ClientArticles = () => {
+  const { setHeading } = useHeading();
+
+  useEffect(() => {
+    setHeading("News");
+  }, [setHeading]);
+
   return (
     <Layout>
-      <Navbar />
+      <Navbar back={true} />
       <div className="flex ">
         <div className="px-6 w-5/7 h-[90vh] overflow-y-auto py-4  text-sm text-gray-800 space-y-6">
           {/* Header */}

@@ -85,7 +85,7 @@ const copyToClipboard = async (text: string): Promise<void> => {
 export default function EventPage() {
   return (
     <Layout>
-      <Navbar />
+      <Navbar back={true} />
       <div className="p-4   space-y-8 bg-white text-base h-[90vh] overflow-y-auto object-fit-cover">
         <div className="mb-6">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 md:gap-4 mb-2 mt-3">
@@ -110,14 +110,14 @@ export default function EventPage() {
         </div>
 
         <div className="bg-[#EDEDED] p-4 rounded-3xl space-y-2 mt-10">
-          <h2 className="text-lg font-semibold text-gray-700">
+          <h2 className="text-md font-semibold text-gray-700">
             Event Description
           </h2>
           <div className="bg-white p-4 rounded-3xl">
             <p>{event.description}</p>
           </div>
 
-          <h2 className="text-lg font-semibold text-gray-700 mt-4 ">
+          <h2 className="text-md font-semibold text-gray-700 mt-4 ">
             Cultural Sensitivities
           </h2>
           <div className="bg-white p-4 rounded-3xl">
@@ -130,7 +130,7 @@ export default function EventPage() {
         </div>
 
         <div className="bg-[#EDEDED] p-4 rounded-3xl space-y-4">
-          <h2 className="text-lg font-semibold text-gray-700">Graphics</h2>
+          <h2 className="text-md font-semibold text-gray-700">Graphics</h2>
           {/* --- Start of Beautified Image Container --- */}
           <div
             className="relative w-[50%] m-4 bg-slate-100 rounded-3xl 
@@ -184,7 +184,7 @@ export default function EventPage() {
 
         {event.source_link.length > 0 && (
           <div className="bg-[#EDEDED] p-4 rounded-[20px] space-y-4">
-            <h2 className="text-lg font-semibold text-gray-700">
+            <h2 className="text-md font-semibold text-gray-700">
               Links to External Resources
             </h2>
 
