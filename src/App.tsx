@@ -11,6 +11,7 @@ import { ProtectedRoute } from "./utils/protectedRoutes/ProtectedRoute";
 import Unauthorized from "./screens/unauthorized/Unauthorized";
 import { ViralDiscussion } from "./screens/viralDiscussion/ViralDiscussion";
 import { BriefView } from "./screens/admin/briefView/BriefView";
+import EventPage from "./screens/client/eventPage/eventPage";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -75,6 +76,14 @@ function App() {
         element={
           <ProtectedRoute user={user} allowedRoles={["USER"]}>
             <ClientEvents />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/client/events/detail/:id"
+        element={
+          <ProtectedRoute user={user} allowedRoles={["USER"]}>
+            <EventPage />
           </ProtectedRoute>
         }
       />

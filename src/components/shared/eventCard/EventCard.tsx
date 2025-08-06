@@ -6,6 +6,7 @@ interface EventCardProps {
   date: string;
   image: string;
   tags: string[];
+  onClick?: () => void;
 }
 
 const getTagStyle = (tag: string) => {
@@ -41,9 +42,10 @@ export const EventCard: React.FC<EventCardProps> = ({
   date,
   image,
   tags,
+  onClick,
 }) => {
   return (
-    <div className="border-1 border-gray-200 h-48 rounded-lg overflow-hidden bg-white shadow-sm">
+    <div className="border-1 border-gray-200 h-48 rounded-lg overflow-hidden bg-white shadow-sm" onClick={onClick}>
       <img src={image} alt={title} className="w-full h-28 object-cover" />
       <div className="p-3 space-y-1 flex">
         <div className="w-1/2">
