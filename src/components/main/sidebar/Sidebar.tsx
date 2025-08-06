@@ -223,7 +223,7 @@ export const Sidebar = () => {
             icon={<FiBarChart2 />}
             label="Data"
             isCollapsed={isCollapsed}
-            route={""}
+            route={"/client/data"}
           />
         </div>
       </div>

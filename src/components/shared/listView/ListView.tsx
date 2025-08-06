@@ -32,7 +32,7 @@ export const EventsList = ({ heading, donor }: any) => {
       <div className="space-y-2  mx-auto">
         {events.map((event, idx) => (
           <Link
-            to="/admin/articles"
+            to="/client/data/articles"
             key={idx}
             className="bg-white rounded-xl border border-gray-200 flex justify-between items-center p-4"
           >

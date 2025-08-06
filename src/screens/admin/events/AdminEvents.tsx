@@ -1,5 +1,7 @@
 import { Layout } from "../../layout/Layout";
 import Navbar from "../../../components/main/navbar/Navbar";
+import { useHeading } from "../../../contexts/headingContext";
+import { useEffect } from "react";
 
 const filterChips = [
   "Date Filter",
@@ -50,6 +52,12 @@ const eventsData = [
 ];
 
 export const AdminEvents = () => {
+  const { setHeading } = useHeading();
+
+  useEffect(() => {
+    setHeading("Events");
+  }, [setHeading]);
+
   return (
     <Layout>
       <Navbar />

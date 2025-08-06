@@ -1,14 +1,17 @@
 import { FiPlus } from "react-icons/fi";
 import AuthContext from "../../../contexts/authContext/authContext";
+import { useHeading } from "../../../contexts/headingContext";
 import { useContext } from "react";
 
 const Navbar = () => {
   const { user } = useContext(AuthContext);
+  const { heading } = useHeading();
+
   return (
     <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 bg-white">
       {/* Left Title */}
       <h1 className="text-xl font-semibold">
-        <span className="font-bold">Events</span> Dashboard
+        <span className="font-bold">{heading}</span> Dashboard
       </h1>
 
       {user?.roll === "ADMIN" && (

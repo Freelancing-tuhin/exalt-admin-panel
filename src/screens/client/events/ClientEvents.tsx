@@ -1,12 +1,14 @@
 import { Layout } from "../../layout/Layout";
 import Navbar from "../../../components/main/navbar/Navbar";
 import { EventCard } from "../../../components/shared/eventCard/EventCard";
+import { useHeading } from "../../../contexts/headingContext";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const events = {
   Cultural: [
     {
-      id:"1",
+      id: "1",
       title: "Art Showcase",
       date: "January 13, 2025",
       image:
@@ -14,7 +16,7 @@ const events = {
       tags: ["High", "Arts", "Hindu"],
     },
     {
-      id:"2",
+      id: "2",
       title: "Choir Recital",
       date: "January 14, 2025",
       image:
@@ -22,7 +24,7 @@ const events = {
       tags: ["Music", "Telugu"],
     },
     {
-      id:"3",
+      id: "3",
       title: "Choir Recital",
       date: "January 14, 2025",
       image:
@@ -30,7 +32,7 @@ const events = {
       tags: ["Music", "Telugu"],
     },
     {
-      id:"4",
+      id: "4",
       title: "Dance Performance",
       date: "January 26, 2025",
       image:
@@ -40,7 +42,7 @@ const events = {
   ],
   Political: [
     {
-      id:"5",
+      id: "5",
       title: "No Kings Protest",
       date: "January 13, 2025",
       image:
@@ -48,7 +50,7 @@ const events = {
       tags: ["Hindu"],
     },
     {
-      id:"6",
+      id: "6",
       title: "Local Club",
       date: "January 14, 2025",
       image:
@@ -56,7 +58,7 @@ const events = {
       tags: ["Dinner", "General"],
     },
     {
-      id:"7",
+      id: "7",
       title: "Hotel Owners Town Hall",
       date: "January 26, 2025",
       image:
@@ -66,7 +68,7 @@ const events = {
   ],
   Religious: [
     {
-      id:"8",
+      id: "8",
       title: "Christmas",
       date: "January 13, 2025",
       image:
@@ -74,7 +76,7 @@ const events = {
       tags: ["Charity", "Hindu"],
     },
     {
-      id:"9",
+      id: "9",
       title: "Easter",
       date: "January 14, 2025",
       image:
@@ -82,7 +84,7 @@ const events = {
       tags: ["Telugu"],
     },
     {
-      id:"10",
+      id: "10",
       title: "Quanza",
       date: "January 26, 2025",
       image:
@@ -94,13 +96,13 @@ const events = {
 
 const otherEvents = [
   {
-    id:"11",
+    id: "11",
     title: "Important Figure's Wedding",
     date: "November 15, 2024",
     tags: ["Wedding"],
   },
   {
-    id:"12",
+    id: "12",
     title: "Chinese Food Near Me Grand Opening",
     date: "November 7, 2024",
     tags: ["Grand Opening"],
@@ -108,6 +110,11 @@ const otherEvents = [
 ];
 
 export const ClientEvents = () => {
+  const { setHeading } = useHeading();
+
+  useEffect(() => {
+    setHeading("Event");
+  }, [setHeading]);
 
   const navigate = useNavigate();
 

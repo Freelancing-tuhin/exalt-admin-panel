@@ -11,7 +11,8 @@ import { ProtectedRoute } from "./utils/protectedRoutes/ProtectedRoute";
 import Unauthorized from "./screens/unauthorized/Unauthorized";
 import { ViralDiscussion } from "./screens/viralDiscussion/ViralDiscussion";
 import { BriefView } from "./screens/admin/briefView/BriefView";
-import EventPage from "./screens/client/eventPage/eventPage";
+import { ClientBriefs } from "./screens/client/briefs/ClientBriefs";
+import { ClientData } from "./screens/client/data/ClientData";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -45,14 +46,7 @@ function App() {
           </ProtectedRoute>
         }
       />
-      <Route
-        path="/admin/brief-view"
-        element={
-          <ProtectedRoute user={user} allowedRoles={["ADMIN"]}>
-            <BriefView />
-          </ProtectedRoute>
-        }
-      />
+
       <Route
         path="/admin/final-briefs"
         element={
@@ -80,15 +74,39 @@ function App() {
         }
       />
       <Route
-        path="/client/events/detail/:id"
+        path="/client/briefs"
         element={
           <ProtectedRoute user={user} allowedRoles={["USER"]}>
-            <EventPage />
+            <ClientBriefs />
           </ProtectedRoute>
         }
       />
       <Route
-        path="/client/articles"
+        path="/client/briefs/brief-view"
+        element={
+          <ProtectedRoute user={user} allowedRoles={["USER"]}>
+            <BriefView />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/client/data/viral-discussions/:title"
+        element={
+          <ProtectedRoute user={user} allowedRoles={["USER"]}>
+            <ViralDiscussion />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/client/data"
+        element={
+          <ProtectedRoute user={user} allowedRoles={["USER"]}>
+            <ClientData />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/client/data/articles"
         element={
           <ProtectedRoute user={user} allowedRoles={["USER"]}>
             <ClientArticles />
