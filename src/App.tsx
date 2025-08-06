@@ -13,6 +13,7 @@ import { ViralDiscussion } from "./screens/viralDiscussion/ViralDiscussion";
 import { BriefView } from "./screens/admin/briefView/BriefView";
 import { ClientBriefs } from "./screens/client/briefs/ClientBriefs";
 import { ClientData } from "./screens/client/data/ClientData";
+import EventPage from "./screens/client/eventPage/EventPage";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -110,6 +111,15 @@ function App() {
         element={
           <ProtectedRoute user={user} allowedRoles={["USER"]}>
             <ClientArticles />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/client/events/detail/:id"
+        element={
+          <ProtectedRoute user={user} allowedRoles={["USER"]}>
+            <EventPage />
           </ProtectedRoute>
         }
       />
