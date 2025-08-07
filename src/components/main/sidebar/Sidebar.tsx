@@ -34,7 +34,7 @@ export const Sidebar = () => {
   return (
     <div
       className={`${
-        isCollapsed ? "w-22" : "w-72"
+        isCollapsed ? "w-22" : "w-48 sm:w-44 lg:w-72"
       } h-screen bg-[#F7F7F5] p-4 transition-all duration-300 flex flex-col justify-between`}
     >
       {/* Top Section */}

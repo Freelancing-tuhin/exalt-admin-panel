@@ -45,11 +45,16 @@ export const EventCard: React.FC<EventCardProps> = ({
   onClick,
 }) => {
   return (
-    <div className="border-1 border-gray-200 h-48 rounded-lg overflow-hidden bg-white shadow-sm" onClick={onClick}>
+    <div
+      className="border-1 border-gray-200 h-48 rounded-lg overflow-hidden bg-white shadow-sm"
+      onClick={onClick}
+    >
       <img src={image} alt={title} className="w-full h-28 object-cover" />
       <div className="p-3 space-y-1 flex">
         <div className="w-1/2">
-          <h3 className="text-sm font-semibold text-gray-800">{title}</h3>
+          <h3 className="text-xs md:text-sm font-semibold text-gray-800">
+            {title}
+          </h3>
           <p className="text-xs text-gray-500">{date}</p>
         </div>
 
