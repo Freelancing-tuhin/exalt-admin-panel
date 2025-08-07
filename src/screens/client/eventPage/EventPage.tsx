@@ -96,7 +96,7 @@ export default function EventPage() {
               <span
                 className={`${getTagStyleBasedOnImportance(
                   event.tag
-                )} text-sm font-semibold px-3 py-1 rounded-full tracking-wide inline-block self-start md:self-auto`}
+                )} flex justify-center items-center text-sm font-semibold px-3 py-1 rounded-full tracking-wide inline-block self-start md:self-auto`}
               >
                 {importance_mapping[event.tag]}
               </span>
@@ -130,57 +130,60 @@ export default function EventPage() {
         </div>
 
         <div className="bg-[#EDEDED] p-4 rounded-3xl space-y-4">
+
+
+          {/* Heading */}
           <h2 className="text-md font-semibold text-gray-700">Graphics</h2>
-          {/* --- Start of Beautified Image Container --- */}
-          <div
-            className="relative w-[50%] m-4 bg-slate-100 rounded-3xl 
-          flex items-center justify-center text-gray-400 text-sm overflow-hidden min-h-[100px] md:min-h-[150px] lg:min-h-[200px] shadow-inner"
-          >
-            {event.graphics ? (
-              <>
-                {/* The Image */}
-                <img
-                  src={
-                    "https://www.iskconbangalore.org/wp-content/uploads/2025/05/janmashtami-thu.jpg"
-                  }
-                  alt="Event Graphic"
-                  className="w-full h-full object-cover max-h-[250px]"
-                  // Add an onerror fallback for broken image links
-                />
-                {/* The dark corner gradient overlay */}
-                <div
-                  className="absolute inset-0 [background:radial-gradient(ellipse_at_center,transparent_60%,rgba(0,0,0,0.5))]"
-                  aria-hidden="true"
-                />
-              </>
-            ) : (
-              // A more stylish placeholder for when there is no image
-              <div className="flex flex-col items-center justify-center p-8 text-center text-slate-500">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="48"
-                  height="48"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="mb-4 text-slate-400"
-                >
-                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-                  <circle cx="8.5" cy="8.5" r="1.5" />
-                  <polyline points="21 15 16 10 5 21" />
-                </svg>
-                <h3 className="font-semibold">No Event Graphic</h3>
-                <p className="text-xs mt-1">
-                  An image will appear here once available.
-                </p>
-              </div>
-            )}
+
+          {/* Centered Image or Placeholder */}
+          <div className="flex justify-center">
+            <div
+              className="relative w-[50%] bg-slate-100 rounded-3xl 
+        flex items-center justify-center text-gray-400 text-sm overflow-hidden 
+        min-h-[100px] md:min-h-[150px] lg:min-h-[200px] shadow-inner"
+            >
+              {event.graphics ? (
+                <>
+                  {/* The Image */}
+                  <img
+                    src="https://www.iskconbangalore.org/wp-content/uploads/2025/05/janmashtami-thu.jpg"
+                    alt="Event Graphic"
+                    className="w-full h-full object-cover max-h-[250px]"
+                  />
+
+                  {/* Gradient Overlay */}
+                  <div
+                    className="absolute inset-0 [background:radial-gradient(ellipse_at_center,transparent_60%,rgba(0,0,0,0.5))]"
+                    aria-hidden="true"
+                  />
+                </>
+              ) : (
+                // Placeholder when no image is available
+                <div className="flex flex-col items-center justify-center p-8 text-center text-slate-500">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="48"
+                    height="48"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="mb-4 text-slate-400"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                    <circle cx="8.5" cy="8.5" r="1.5" />
+                    <polyline points="21 15 16 10 5 21" />
+                  </svg>
+                  <h3 className="font-semibold">No Event Graphic</h3>
+                  <p className="text-xs mt-1">An image will appear here once available.</p>
+                </div>
+              )}
+            </div>
           </div>
-          {/* --- End of Beautified Image Container --- */}
         </div>
+
 
         {event.source_link.length > 0 && (
           <div className="bg-[#EDEDED] p-4 rounded-[20px] space-y-4">

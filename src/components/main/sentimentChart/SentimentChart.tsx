@@ -22,6 +22,7 @@ export const SentimentChart = () => {
         borderRadius: 6,
         horizontal: false,
         columnWidth: "45%",
+              distributed: true,
       },
     },
     dataLabels: {
@@ -31,7 +32,7 @@ export const SentimentChart = () => {
       categories: ["Negative", "Neutral", "Positive"],
       labels: {
         style: {
-          colors: ["#DC2626", "#FACC15", "#16A34A"],
+          colors: ["#00000080", "#00000080", "#00000080"],
           fontSize: "14px",
         },
       },

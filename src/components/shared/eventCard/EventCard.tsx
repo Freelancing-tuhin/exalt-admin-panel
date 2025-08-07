@@ -57,7 +57,7 @@ export const EventCard: React.FC<EventCardProps> = ({
           {tags.map((tag, i) => (
             <span
               key={i}
-              className={`text-xs h-6  px-2 py-0.5 rounded-full font-medium ${getTagStyle(
+              className={`text-xs h-6  px-2 py-0.5 rounded-full font-medium flex justify-center items-center ${getTagStyle(
                 tag
               )}`}
             >
