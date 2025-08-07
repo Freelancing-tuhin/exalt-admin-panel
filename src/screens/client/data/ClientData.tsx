@@ -36,12 +36,12 @@ export const ClientData = () => {
           <h2 className="text-sm font-semibold text-gray-700 mb-3">
             Viral Discussions
           </h2>
-          <div className="flex gap-4 overflow-x-auto">
+          <div className="flex flex-col sm:flex sm:flex-row gap-4 ">
             {viralDiscussions.map((item, i) => (
               <Link
                 to={`/client/data/viral-discussions/${item?.title}`}
                 key={i}
-                className="w-56 sm:min-w-[460px] mb-5 rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden"
+                className="w-96 sm:w-[360px] lg:w-[360px] mb-5 rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden"
               >
                 <img
                   src={item.image}

@@ -14,8 +14,8 @@ export const ClientArticles = () => {
   return (
     <Layout>
       <Navbar back={true} />
-      <div className="flex ">
-        <div className="px-6 w-5/7 h-[90vh] overflow-y-auto py-4  text-sm text-gray-800 space-y-6">
+      <div className="flex flex-col md:flex-row">
+        <div className="px-6 md:w-5/7 h-[90vh] overflow-y-auto py-4  text-sm text-gray-800 space-y-6">
           {/* Header */}
           <div>
             <h1 className="text-2xl mt-5 font-bold">
