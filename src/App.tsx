@@ -69,6 +69,14 @@ function App() {
 
       {/* Client-only routes */}
       <Route
+        path="/home"
+        element={
+          <ProtectedRoute user={user} allowedRoles={["USER"]}>
+            <ClientHome />
+          </ProtectedRoute>
+        }
+      />
+      <Route
         path="/client/events"
         element={
           <ProtectedRoute user={user} allowedRoles={["USER"]}>

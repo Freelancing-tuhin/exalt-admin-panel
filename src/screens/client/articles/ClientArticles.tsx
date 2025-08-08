@@ -69,7 +69,7 @@ export const ClientArticles = () => {
           </div>
 
           {/* Quote */}
-          <blockquote className="border-l-4 border-red-400 h-24 item-center pt-4 bg-gray-100 pl-4 italic  text-gray-700">
+          <blockquote className="border-l-4 border-red-400  item-center py-6 bg-gray-100 pl-4 italic  text-gray-700">
             “My mother was very proud of her Indian heritage and taught us, me
             and my sister Maya, to share in the pride about our culture. India
             is the largest democracy in the world; so that is part of my
