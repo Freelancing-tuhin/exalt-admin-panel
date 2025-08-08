@@ -14,6 +14,11 @@ const HorizontalScroller: React.FC<{ children: React.ReactNode }> = ({
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const dragState = useRef<{ startX: number; startScrollLeft: number }>({
+    startX: 0,
+    startScrollLeft: 0,
+  });
 
   const updateScrollState = useCallback(() => {
     const el = containerRef.current;
@@ -39,6 +44,51 @@ const HorizontalScroller: React.FC<{ children: React.ReactNode }> = ({
     if (!el) return;
     el.scrollBy({ left: dir * (el.clientWidth * 0.9), behavior: "smooth" });
   };
+
+  // Mouse drag / touch swipe support (scrub to scroll)
+  const onPointerDown = (e: React.PointerEvent) => {
+    const el = containerRef.current;
+    if (!el) return;
+    setIsDragging(true);
+    dragState.current.startX = e.clientX;
+    dragState.current.startScrollLeft = el.scrollLeft;
+    (e.target as HTMLElement).setPointerCapture(e.pointerId);
+  };
+
+  const onPointerMove = (e: React.PointerEvent) => {
+    if (!isDragging) return;
+    const el = containerRef.current;
+    if (!el) return;
+    const delta = e.clientX - dragState.current.startX;
+    el.scrollLeft = dragState.current.startScrollLeft - delta; // natural direction
+  };
+
+  const endDrag = (e: React.PointerEvent) => {
+    if (!isDragging) return;
+    setIsDragging(false);
+    try {
+      (e.target as HTMLElement).releasePointerCapture(e.pointerId);
+    } catch {
+      // Ignore if pointer capture already released
+    }
+  };
+
+  // Touch (fallback for older browsers – though pointer events cover most)
+  const onTouchStart = (e: React.TouchEvent) => {
+    const el = containerRef.current;
+    if (!el) return;
+    setIsDragging(true);
+    dragState.current.startX = e.touches[0].clientX;
+    dragState.current.startScrollLeft = el.scrollLeft;
+  };
+  const onTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging) return;
+    const el = containerRef.current;
+    if (!el) return;
+    const delta = e.touches[0].clientX - dragState.current.startX;
+    el.scrollLeft = dragState.current.startScrollLeft - delta;
+  };
+  const onTouchEnd = () => setIsDragging(false);
 
   return (
     <div className="relative group">
@@ -82,7 +132,17 @@ const HorizontalScroller: React.FC<{ children: React.ReactNode }> = ({
       {/* Scroll Container */}
       <div
         ref={containerRef}
-        className="flex flex-nowrap overflow-x-auto space-x-4 pb-4 hidescroll scrollbar-thin scrollbar-thumb-gray-300 scroll-smooth"
+        className={`flex flex-nowrap overflow-x-auto space-x-4 pb-4 hidescroll scrollbar-thin scrollbar-thumb-gray-300 scroll-smooth select-none ${
+          isDragging ? "cursor-grabbing" : "cursor-grab"
+        }`}
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={endDrag}
+        onPointerLeave={endDrag}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+        onTouchCancel={onTouchEnd}
       >
         {children}
       </div>
