@@ -22,15 +22,62 @@ const ConstituentProfile: React.FC = () => {
     <Layout>
       <Navbar />
 
-      <div className="px-5 rounded-lg h-[90vh] overflow-y-scroll space-y-8 mx-auto bg-white ">
+      <div className="px-5 rounded-xl h-[90vh] overflow-y-scroll space-y-8 mx-auto bg-white ">
         {/* Header band with embedded map */}
-        <div className="relative  px-8 py-10 md:py-14 bg-gradient-to-br from-purple-800 to-purple-900 overflow-hidden flex flex-col md:flex-row md:items-center gap-10">
-          {/* Decorative angled lines */}
+        <div className="relative px-8 py-5 rounded-2xl mt-5 md:py-8 bg-gradient-to-br from-purple-800 to-purple-900 overflow-hidden flex flex-col md:flex-row md:items-center gap-10">
+          {/* Decorative lines (two parallel stylized lines) */}
           <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-1/2 left-0 w-full h-px bg-purple-500/40" />
-            <div className="absolute top-1/2 left-0 w-full h-px bg-purple-400/30 translate-y-6" />
-            <div className="absolute top-1/2 left-0 w-full h-px bg-purple-400/20 -translate-y-6" />
-            <div className="absolute top-1/2 left-0 h-0 w-1/2 border-t-4 border-b-4 border-purple-600/50 rotate-12 origin-left opacity-40" />
+            <svg
+              className="absolute inset-0 w-full h-full"
+              viewBox="0 0 1200 280"
+              preserveAspectRatio="none"
+            >
+              {/* Upper line */}
+              <path
+                d="M0 90 H440 L530 210 H880"
+                stroke="url(#lineLower)"
+                strokeWidth="5"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M0 190 H440 L830 190"
+                stroke="url(#lineUpper)"
+                strokeWidth="5"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              {/* Lower line */}
+
+              <defs>
+                <linearGradient
+                  id="lineUpper"
+                  x1="0"
+                  y1="0"
+                  x2="1200"
+                  y2="0"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop offset="0%" stopColor="#b026ff" />
+                  <stop offset="55%" stopColor="#c084fc" />
+                  <stop offset="100%" stopColor="#e9d5ff" />
+                </linearGradient>
+                <linearGradient
+                  id="lineLower"
+                  x1="0"
+                  y1="0"
+                  x2="1200"
+                  y2="0"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop offset="0%" stopColor="#b026ff" />
+                  <stop offset="60%" stopColor="#c084fc" />
+                  <stop offset="100%" stopColor="#d8b4fe" />
+                </linearGradient>
+              </defs>
+            </svg>
           </div>
 
           <div className="relative flex-1 z-10">
