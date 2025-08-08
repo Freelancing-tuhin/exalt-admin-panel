@@ -14,6 +14,7 @@ import { BriefView } from "./screens/admin/briefView/BriefView";
 import { ClientBriefs } from "./screens/client/briefs/ClientBriefs";
 import { ClientData } from "./screens/client/data/ClientData";
 import EventPage from "./screens/client/eventPage/EventPage";
+import { ClientHome } from "./screens/home/ClientHome";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -66,6 +67,14 @@ function App() {
       />
 
       {/* Client-only routes */}
+      <Route
+        path="/home"
+        element={
+          <ProtectedRoute user={user} allowedRoles={["USER"]}>
+            <ClientHome />
+          </ProtectedRoute>
+        }
+      />
       <Route
         path="/client/events"
         element={
