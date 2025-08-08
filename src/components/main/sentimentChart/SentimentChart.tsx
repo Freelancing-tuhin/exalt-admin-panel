@@ -1,5 +1,6 @@
 import React from "react";
 import Chart from "react-apexcharts";
+import type { ApexOptions } from "apexcharts"; 
 
 const Card = ({ children }: { children: React.ReactNode }) => (
   <div className="rounded-2xl shadow-md border border-gray-200 bg-white">
@@ -12,9 +13,9 @@ const CardContent = ({ children }: { children: React.ReactNode }) => (
 );
 
 export const SentimentChart = () => {
-  const chartOptions = {
+  const chartOptions: ApexOptions = {
     chart: {
-      type: "bar",
+      type: 'bar', 
       toolbar: { show: false },
     },
     plotOptions: {
@@ -22,7 +23,7 @@ export const SentimentChart = () => {
         borderRadius: 6,
         horizontal: false,
         columnWidth: "45%",
-              distributed: true,
+        distributed: true,
       },
     },
     dataLabels: {
@@ -32,8 +33,30 @@ export const SentimentChart = () => {
       categories: ["Negative", "Neutral", "Positive"],
       labels: {
         style: {
-          colors: ["#00000080", "#00000080", "#00000080"],
+          colors: ["#00000080", "#00000080", "#00000080"], 
           fontSize: "14px",
+        },
+      },
+      axisBorder: {
+        show: false, 
+      },
+      axisTicks: {
+        show: false, 
+      },
+    },
+    yaxis: {
+      title: {
+        text: 'Posts',
+        style: {
+          fontSize: '14px',
+          fontWeight: 600,
+          color: '#4B5563'
+        }
+      },
+      labels: {
+        style: {
+          colors: ['#4B5563'],
+          fontSize: '12px',
         },
       },
     },
@@ -45,6 +68,7 @@ export const SentimentChart = () => {
     },
     grid: {
       strokeDashArray: 4,
+      borderColor: '#E5E7EB', 
     },
   };
 
@@ -92,7 +116,7 @@ export const SentimentChart = () => {
           <Chart
             options={chartOptions}
             series={chartSeries}
-            type="bar"
+            type="bar" 
             height={300}
           />
         </CardContent>
