@@ -1,8 +1,4 @@
 import React, { useEffect } from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
-//@ts-ignore
-import L from "leaflet";
 import { Layout } from "../../layout/Layout";
 import Navbar from "../../../components/main/navbar/Navbar";
 import { useHeading } from "../../../contexts/headingContext";
@@ -11,6 +7,7 @@ import { FaCheckCircle, FaCalendarAlt, FaHandsHelping } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 
 import CalendarGrid from "../../../components/shared/Calender/Calender";
+import ConstituentMap from "../../../components/shared/map/ConstituentMap";
 
 // Marker data now defined inside ConstituentMap (can be passed as prop if needed)
 
@@ -25,87 +22,29 @@ const ConstituentProfile: React.FC = () => {
     <Layout>
       <Navbar />
 
-      <div className="p-6 h-[90vh] overflow-y-scroll space-y-8 mx-auto bg-white ">
-        <div className="bg-white rounded-xl p-4 flex flex-col md:flex-col  shadow-sm border border-gray-200">
-          <span className="text-5xl md:text-5xl font-semibold text-gray-800 mb-2 md:mb-0  pt-15">
-            WELCOME TEAM <span className="text-indigo-700"> SMITH </span>
-          </span>
-          <span className="text-sm md:text-base text-gray-600 pb-15">
-            Wednesday, August 6 · 5:17pm CST
-          </span>
-        </div>
+      <div className="px-5 rounded-lg h-[90vh] overflow-y-scroll space-y-8 mx-auto bg-white ">
+        {/* Header band with embedded map */}
+        <div className="relative  px-8 py-10 md:py-14 bg-gradient-to-br from-purple-800 to-purple-900 overflow-hidden flex flex-col md:flex-row md:items-center gap-10">
+          {/* Decorative angled lines */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-1/2 left-0 w-full h-px bg-purple-500/40" />
+            <div className="absolute top-1/2 left-0 w-full h-px bg-purple-400/30 translate-y-6" />
+            <div className="absolute top-1/2 left-0 w-full h-px bg-purple-400/20 -translate-y-6" />
+            <div className="absolute top-1/2 left-0 h-0 w-1/2 border-t-4 border-b-4 border-purple-600/50 rotate-12 origin-left opacity-40" />
+          </div>
 
-        <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-200">
-          <h2 className="text-sm font-semibold text-gray-700 mb-3">
-            STATE XYZ
-          </h2>
-          <div className="flex flex-col gap-4">
-            <div className="w-full h-95 rounded-lg overflow-hidden shadow-md border border-gray-200">
-              <MapContainer
-                //@ts-ignore
-                center={[38.5, -95.5]}
-                zoom={7}
-                className="h-full w-full rounded-lg"
-              >
-                <TileLayer
-                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                  //@ts-ignore
-                  attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
-                />
-                {markerData.map((marker, idx) => (
-                  <Marker
-                    key={idx}
-                    position={[marker.lat, marker.lng]}
-                    //@ts-ignore
-                    icon={createIcon(marker.color)}
-                  >
-                    <Popup>
-                      <div className="font-semibold text-gray-800 text-md">
-                        {marker.label}
-                      </div>
-                      <p className="text-xs text-gray-600">
-                        Population data here...
-                      </p>
-                    </Popup>
-                  </Marker>
-                ))}
-              </MapContainer>
-            </div>
-            <div className="bg-white rounded-lg p-3 shadow-inner border border-gray-100">
-              <span className="text-sm font-semibold text-gray-700 mb-2 block">
-                LEGEND / Key
-              </span>
-              <div className="flex flex-wrap justify-around md:justify-start gap-x-6 gap-y-2 text-sm font-medium text-gray-700">
-                {markerData
-                  .filter(
-                    (item, i, arr) =>
-                      arr.findIndex(
-                        (t) =>
-                          t.label.split(" ")[0] === item.label.split(" ")[0]
-                      ) === i
-                  )
-                  .map((marker, idx) => (
-                    <span key={idx} className="flex items-center">
-                      <div
-                        style={{
-                          backgroundColor: marker.color,
-                          width: "12px",
-                          height: "16px",
-                          borderRadius: "50% 50% 50% 0",
-                          transform: "rotate(-45deg)",
-                          border: "1px solid rgba(255,255,255,0.8)",
-                        }}
-                        className="mr-1.5"
-                      ></div>
-                      {marker.label.split(" ")[0]}
-                    </span>
-                  ))}
-              </div>
-            </div>
+          <div className="relative flex-1 z-10">
+            <h1 className="text-white font-handwriting text-4xl md:text-5xl tracking-wide mb-4">
+              Hello Team <span className="text-white/90">Smith</span>
+            </h1>
+            <p className="text-purple-200 font-handwriting text-lg">
+              August 6, 4:18 CST
+            </p>
+          </div>
+          <div className="relative w-full md:w-[520px] max-w-[560px] aspect-[5/3] md:aspect-[5/3] px-6 md:px-0">
+            <ConstituentMap embedded heightClass="h-full" />
           </div>
         </div>
-
-        <ConstituentMap />
 
         <h2 className="text-lg font-bold text-gray-700 text-center my-4">
           <span className="text-gray-400 mr-2">•</span> XYZX TRACKER{" "}
