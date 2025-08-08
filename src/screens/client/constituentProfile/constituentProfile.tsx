@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+//@ts-ignore
 import L from 'leaflet';
 import { Layout } from '../../layout/Layout';
 import Navbar from '../../../components/main/navbar/Navbar';
@@ -73,18 +74,21 @@ const ConstituentProfile: React.FC = () => {
           <div className="flex flex-col gap-4"> 
             <div className="w-full h-95 rounded-lg overflow-hidden shadow-md border border-gray-200"> 
               <MapContainer
+              //@ts-ignore
                 center={[38.5, -95.5]}
                 zoom={7}
                 className="h-full w-full rounded-lg"
               >
                 <TileLayer
                   url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  //@ts-ignore
                   attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
                 />
                 {markerData.map((marker, idx) => (
                   <Marker
                     key={idx}
                     position={[marker.lat, marker.lng]}
+                    //@ts-ignore
                     icon={createIcon(marker.color)}
                   >
                     <Popup>

@@ -20,6 +20,7 @@ import AuthContext from "../../../contexts/authContext/authContext";
 import { IoFileTrayOutline } from "react-icons/io5";
 import { TiStarOutline } from "react-icons/ti";
 import { RiAccountPinBoxLine } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 export const Sidebar = () => {
   const { user, setUser } = useContext(AuthContext);
@@ -40,7 +41,7 @@ export const Sidebar = () => {
       {/* Top Section */}
       <div>
         {/* Logo + Toggle */}
-        <div className="flex items-center justify-between mb-6 pt-2 pl-2">
+        <Link to='/client/' className="flex items-center justify-between mb-6 pt-2 pl-2">
           {!isCollapsed && (
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -97,7 +98,7 @@ export const Sidebar = () => {
               />
             )}
           </div>
-        </div>
+        </Link>
 
         {/* Search */}
         <div className="relative mb-6">

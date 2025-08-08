@@ -1,5 +1,5 @@
 import { Layout } from "../layout/Layout";
-import Navbar from "../../components/main/navbar/Navbar";
+// import Navbar from "../../components/main/navbar/Navbar";
 import { useEffect } from "react";
 import { useHeading } from "../../contexts/headingContext";
 import DistrictDashboard from "../../components/main/districtDashboard/DistrictDashboard";

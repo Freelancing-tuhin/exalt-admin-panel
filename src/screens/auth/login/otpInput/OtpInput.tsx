@@ -23,7 +23,7 @@ export const OtpInput = ({
   const [isInvalid, setIsInvalid] = useState(false);
   const getHomeRedirect = (user: any) => {
     if (!user) return "/login";
-    return user.role === "ADMIN" ? "/admin/events" : "/client/events";
+    return user.role === "ADMIN" ? "/admin/events" : "/client/";
   };
   const handleLoginUser = async () => {
     try {
