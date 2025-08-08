@@ -128,7 +128,7 @@ export const ClientEvents = () => {
             <h2 className="text-sm text-gray-500 font-semibold mb-4">
               {category}
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
               {eventsList.map((event, index) => (
                 <EventCard
                   key={index}

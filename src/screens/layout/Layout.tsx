@@ -8,7 +8,8 @@ type LayoutProps = {
 export const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="min-h-screen bg-white text-black sm:flex ">
-      <div className="hidden sm:inline">
+      {/* You can add navbar/header/sidebar here if needed */}
+      <div className="hidden lg:inline">
         <Sidebar />
       </div>
       <div className="w-full overflow-y-scroll h-screen">{children}</div>
