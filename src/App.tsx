@@ -17,13 +17,14 @@ import EventPage from "./screens/client/eventPage/EventPage";
 import Home from "./screens/home/Home";
 import ConstituentProfile from "./screens/client/constituentProfile/constituentProfile";
 import { ClientHome } from "./screens/home/ClientHome";
+import { ClientHome } from "./screens/home/ClientHome";
 
 function App() {
   const { user } = useContext(AuthContext);
 
   const getHomeRedirect = () => {
     if (!user) return "/login";
-    return user.role === "ADMIN" ? "/admin/events" : "/client/";
+    return user.role === "ADMIN" ? "/admin/events" : "/client/cp";
   };
 
   return (
@@ -89,7 +90,7 @@ function App() {
         path="/client/"
         element={
           <ProtectedRoute user={user} allowedRoles={["USER"]}>
-            <ConstituentProfile/>
+            <ConstituentProfile />
           </ProtectedRoute>
         }
       />
