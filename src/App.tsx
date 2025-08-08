@@ -14,13 +14,15 @@ import { BriefView } from "./screens/admin/briefView/BriefView";
 import { ClientBriefs } from "./screens/client/briefs/ClientBriefs";
 import { ClientData } from "./screens/client/data/ClientData";
 import EventPage from "./screens/client/eventPage/EventPage";
+import Home from "./screens/home/Home";
+import ConstituentProfile from "./screens/client/constituentProfile/constituentProfile";
 
 function App() {
   const { user } = useContext(AuthContext);
 
   const getHomeRedirect = () => {
     if (!user) return "/login";
-    return user.role === "ADMIN" ? "/admin/events" : "/client/events";
+    return user.role === "ADMIN" ? "/admin/events" : "/client/cp";
   };
 
   return (
@@ -75,6 +77,14 @@ function App() {
         }
       />
       <Route
+        path="/client/cp"
+        element={
+          <ProtectedRoute user={user} allowedRoles={["USER"]}>
+            <ConstituentProfile/>
+          </ProtectedRoute>
+        }
+      />
+      <Route
         path="/client/briefs"
         element={
           <ProtectedRoute user={user} allowedRoles={["USER"]}>
@@ -103,6 +113,14 @@ function App() {
         element={
           <ProtectedRoute user={user} allowedRoles={["USER"]}>
             <ClientData />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/client/home"
+        element={
+          <ProtectedRoute user={user} allowedRoles={["USER"]}>
+            <Home />
           </ProtectedRoute>
         }
       />
