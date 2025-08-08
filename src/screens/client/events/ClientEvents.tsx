@@ -96,19 +96,38 @@ const events = {
 
 const otherEvents = [
   {
-    id: "11",
-    title: "Important Figure's Wedding",
-    date: "November 15, 2024",
-    tags: ["Wedding"],
+    id: "1",
+    title: "X Y Wedding",
+    date: "August 3rd, 2025",
+    topic: "Hindu",
+    category: "Wedding",
+    priority: "Medium"
   },
   {
-    id: "12",
-    title: "Chinese Food Near Me Grand Opening",
-    date: "November 7, 2024",
-    tags: ["Grand Opening"],
+    id: "2",
+    title: "Restaurant Grand Opening",
+    date: "August 13th, 2025",
+    topic: "Telegu",
+    category: "Grand Opening",
+    priority: "Low"
+  },
+  {
+    id: "3",
+    title: "Hotel Owner's Town Hall",
+    date: "August 14th, 2025",
+    topic: "Gujarati",
+    category: "Town Hall",
+    priority: "Low"
+  },
+  {
+    id: "4",
+    title: "Indian Cultural Festival",
+    date: "September 3rd, 2025",
+    topic: "General",
+    category: "Festival",
+    priority: "Medium"
   },
 ];
-
 export const ClientEvents = () => {
   const { setHeading } = useHeading();
 
@@ -117,6 +136,37 @@ export const ClientEvents = () => {
   }, [setHeading]);
 
   const navigate = useNavigate();
+
+  const getCultureTagColors = () => {
+    return "bg-gray-200 text-gray-700"; 
+  };
+
+  const getCategoryColors = (category: string) => {
+    switch (category) {
+      case "Wedding":
+        return "bg-green-500 text-white";
+      case "Grand Opening":
+        return "bg-amber-500 text-white";
+      case "Town Hall":
+        return "bg-blue-600 text-white";
+      case "Festival":
+        return "bg-red-500 text-white";
+      default:
+        return "bg-gray-500 text-white";
+    }
+  };
+
+  const getPriorityColors = (priority: string) => {
+    switch (priority) {
+      case "Medium":
+        return "bg-blue-600 text-white";
+      case "Low":
+        return "bg-green-500 text-white";
+      default:
+        return "bg-gray-500 text-white";
+    }
+  };
+
 
   return (
     <Layout>
@@ -128,42 +178,65 @@ export const ClientEvents = () => {
             <h2 className="text-sm text-gray-500 font-semibold mb-4">
               {category}
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
+            <div className="flex flex-nowrap overflow-x-auto space-x-4 pb-4">
               {eventsList.map((event, index) => (
-                <EventCard
-                  key={index}
-                  title={event.title}
-                  date={event.date}
-                  image={event.image}
-                  tags={event.tags}
-                  onClick={() => navigate(`/client/events/detail/${event.id}`)}
-                />
+                <div key={index} className="flex-none w-64 md:w-72 lg:w-80">
+                  <EventCard
+                    title={event.title}
+                    date={event.date}
+                    image={event.image}
+                    tags={event.tags}
+                    onClick={() => navigate(`/client/events/detail/${event.id}`)}
+                  />
+                </div>
               ))}
             </div>
           </div>
         ))}
 
-        {/* Other Events Section */}
         <div>
           <h2 className="text-sm text-gray-500 font-semibold mb-4">
-            Other Events
+            Other Upcoming Events
           </h2>
           <div className="bg-gray-100 p-4 rounded-lg space-y-3">
-            {otherEvents.map((event, index) => (
+
+            <div className="grid grid-cols-[80fr_10fr_10fr] gap-x-4 items-center text-sm font-semibold text-gray-700 mb-4">
+              <div className="flex gap-4 text-xl">
+                <span>Event</span>
+                <span>Date</span>
+                <span>Culture</span>
+              </div>
+
+              <span className="justify-self-end px-2 py-0.5 rounded-full font-medium font semi-bold text-xl">Category</span>
+
+              <span className="justify-self-end px-2 py-0.5 rounded-full font-medium semi-bold text-xl">Priority</span>
+            </div>
+
+            {otherEvents.map((event) => (
               <div
-                key={index}
-                className="flex flex-wrap items-center text-sm text-gray-800 gap-2"
+                key={event.id}
+                className="grid grid-cols-[80fr_10fr_10fr] gap-x-4 items-center text-sm text-gray-800"
               >
-                <span className="font-semibold">{event.title}</span>
-                <span className="text-gray-500">• {event.date}</span>
-                {event.tags.map((tag, i) => (
+                <div className="flex items-center flex-wrap gap-x-2 gap-y-1">
+                  <span className="font-semibold">{event.title}</span>
+                  <span className="text-gray-500">• {event.date}</span>
                   <span
-                    key={i}
-                    className={`text-xs px-2 py-0.5 rounded-full font-medium`}
+                    className={`text-xs px-2 py-0.5 rounded-full font-medium ${getCultureTagColors()}`}
                   >
-                    {tag}
+                    {event.topic}
                   </span>
-                ))}
+                </div>
+                <span
+                  className={`justify-self-end text-xs px-2 py-0.5 rounded-full font-medium ${getCategoryColors(event.category)}`}
+                >
+                  {event.category}
+                </span>
+
+                <span
+                  className={`justify-self-end text-xs px-2 py-0.5 rounded-full font-medium ${getPriorityColors(event.priority)}`}
+                >
+                  {event.priority}
+                </span>
               </div>
             ))}
           </div>
