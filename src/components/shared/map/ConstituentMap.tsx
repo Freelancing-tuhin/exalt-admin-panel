@@ -28,7 +28,7 @@ const containerStyle: React.CSSProperties = { width: "100%", height: "100%" };
 const center = { lat: 38.5, lng: -95.5 };
 
 // Optional: customizing map styles (empty for now)
-const mapOptions: google.maps.MapOptions = {
+const mapOptions = {
   disableDefaultUI: false,
   fullscreenControl: false,
   streetViewControl: false,
@@ -121,12 +121,12 @@ export const ConstituentMap: React.FC<ConstituentMapProps> = ({
               position={{ lat: marker.lat, lng: marker.lng }}
               onClick={() => setActiveMarker(marker.label)}
               icon={{
-                path: google.maps.SymbolPath.CIRCLE,
-                scale: 9,
-                fillColor: marker.color,
-                fillOpacity: 1,
-                strokeColor: "#fff",
-                strokeWeight: 2,
+                url: `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(
+                  `<svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="9" cy="9" r="7" fill="${marker.color}" stroke="#fff" stroke-width="2"/>
+                  </svg>`
+                )}`,
+                scaledSize: isLoaded ? new google.maps.Size(18, 18) : undefined,
               }}
             >
               {activeMarker === marker.label && (
@@ -182,7 +182,7 @@ export const ConstituentMap: React.FC<ConstituentMapProps> = ({
   if (embedded) {
     return (
       <div
-        className={`group relative w-full ${heightClass} rounded-3xl bg-white shadow-lg overflow-hidden border border-purple-200/40`}
+        className={"group relative w-1/2 ${heightClass} rounded-3xl bg-white shadow-lg overflow-hidden border border-purple-200/40"}
       >
         {isLoaded ? (
           <>
@@ -199,12 +199,14 @@ export const ConstituentMap: React.FC<ConstituentMapProps> = ({
                   position={{ lat: marker.lat, lng: marker.lng }}
                   onClick={() => handleMarkerClick(marker.label)}
                   icon={{
-                    path: google.maps.SymbolPath.CIRCLE,
-                    scale: 8,
-                    fillColor: marker.color,
-                    fillOpacity: 1,
-                    strokeColor: "#fff",
-                    strokeWeight: 2,
+                    url: `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(
+                      `<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="8" cy="8" r="6" fill="${marker.color}" stroke="#fff" stroke-width="2"/>
+                      </svg>`
+                    )}`,
+                    scaledSize: isLoaded
+                      ? new google.maps.Size(16, 16)
+                      : undefined,
                   }}
                 >
                   {activeMarker === marker.label && (
@@ -286,12 +288,14 @@ export const ConstituentMap: React.FC<ConstituentMapProps> = ({
                     position={{ lat: marker.lat, lng: marker.lng }}
                     onClick={() => handleMarkerClick(marker.label)}
                     icon={{
-                      path: google.maps.SymbolPath.CIRCLE,
-                      scale: 8,
-                      fillColor: marker.color,
-                      fillOpacity: 1,
-                      strokeColor: "#fff",
-                      strokeWeight: 2,
+                      url: `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(
+                        `<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                          <circle cx="8" cy="8" r="6" fill="${marker.color}" stroke="#fff" stroke-width="2"/>
+                        </svg>`
+                      )}`,
+                      scaledSize: isLoaded
+                        ? new google.maps.Size(16, 16)
+                        : undefined,
                     }}
                   >
                     {activeMarker === marker.label && (
