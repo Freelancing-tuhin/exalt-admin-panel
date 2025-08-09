@@ -182,7 +182,9 @@ export const ConstituentMap: React.FC<ConstituentMapProps> = ({
   if (embedded) {
     return (
       <div
-        className={"group relative w-1/2 ${heightClass} rounded-3xl bg-white shadow-lg overflow-hidden border border-purple-200/40"}
+        className={
+          "relative w-1/2 ${heightClass} rounded-3xl bg-white shadow-lg overflow-hidden border border-purple-200/40"
+        }
       >
         {isLoaded ? (
           <>
@@ -222,8 +224,6 @@ export const ConstituentMap: React.FC<ConstituentMapProps> = ({
                 </Marker>
               ))}
             </GoogleMap>
-            {/* Dark overlay fades out on hover */}
-            <div className="pointer-events-none absolute inset-0 bg-black/40 opacity-100 transition-opacity duration-300 ease-out group-hover:opacity-0" />
             <button
               type="button"
               aria-label="Open fullscreen map"
@@ -311,7 +311,7 @@ export const ConstituentMap: React.FC<ConstituentMapProps> = ({
                   </Marker>
                 ))}
               </GoogleMap>
-              <div className="pointer-events-none absolute inset-0 bg-black/40 opacity-100 transition-opacity duration-300 ease-out group-hover:opacity-0" />
+              {/* <div className="pointer-events-none absolute inset-0 bg-black/40 opacity-100 transition-opacity duration-300 ease-out group-hover:opacity-0" /> */}
               <button
                 type="button"
                 aria-label="Open fullscreen map"
