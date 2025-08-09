@@ -9,46 +9,20 @@ import { useHeading } from '../../../contexts/headingContext';
 import { FaCheckCircle, FaCalendarAlt, FaPlusCircle, FaTag, FaNewspaper } from 'react-icons/fa'; 
 import { MdEmail } from 'react-icons/md'; 
 import CalendarGrid from '../../../components/shared/Calender/Calender';
+import { Layout } from "../../layout/Layout";
+import Navbar from "../../../components/main/navbar/Navbar";
+import { useHeading } from "../../../contexts/headingContext";
 
-delete L.Icon.Default.prototype._getIconUrl;
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png',
-  iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
-  shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
-});
+import { FaCheckCircle, FaCalendarAlt, FaHandsHelping } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 
-const markerData = [
-  { lat: 39.0997, lng: -94.5786, color: '#EF4444', label: 'Gujarati (Kansas City)' }, 
-  { lat: 37.6872, lng: -97.3300, color: '#22C55E', label: 'Punjabi (Wichita)' },     
-  { lat: 39.0473, lng: -95.6781, color: '#3B82F6', label: 'Tamil (Topeka)' },        
-  { lat: 37.2153, lng: -93.2982, color: '#EAB308', label: 'Telugu (Springfield)' },  
-  { lat: 38.60, lng: -94.20, color: '#EF4444', label: 'Gujarati (Overland Park)' }, 
-  { lat: 38.00, lng: -96.00, color: '#22C55E', label: 'Punjabi (Emporia)' },       
-  { lat: 39.50, lng: -95.00, color: '#EF4444', label: 'Gujarati (St. Joseph)' },   
-];
+import CalendarGrid from "../../../components/shared/Calender/Calender";
+import ConstituentMap from "../../../components/shared/map/ConstituentMap";
 
-const createIcon = (color: string) => {
-  return new L.DivIcon({
-    className: 'custom-teardrop-icon-wrapper',
-    html: `
-      <div style="
-        background-color: ${color};
-        width: 20px;
-        height: 25px;
-        border-radius: 50% 50% 50% 0;
-        transform: rotate(-45deg);
-        box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-        border: 1px solid rgba(255,255,255,0.8);
-      "></div>
-    `,
-    iconSize: [20, 25],
-    iconAnchor: [10, 25],
-    popupAnchor: [0, -20]
-  });
-};
+// Marker data now defined inside ConstituentMap (can be passed as prop if needed)
 
 const ConstituentProfile: React.FC = () => {
-  const { setHeading } = useHeading(); 
+  const { setHeading } = useHeading();
 
   const [todos, setTodos] = useState([
     { id: 1, text: 'Finalize quarterly financial report', completed: false },
@@ -80,7 +54,7 @@ const ConstituentProfile: React.FC = () => {
   ];
 
   useEffect(() => {
-    setHeading("Constituent Profile"); 
+    setHeading("Constituent Profile");
   }, [setHeading]);
 
   return (

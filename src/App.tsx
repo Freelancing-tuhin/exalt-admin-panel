@@ -16,7 +16,6 @@ import { ClientData } from "./screens/client/data/ClientData";
 import EventPage from "./screens/client/eventPage/EventPage";
 import Home from "./screens/home/Home";
 import ConstituentProfile from "./screens/client/constituentProfile/constituentProfile";
-import { ClientHome } from "./screens/home/ClientHome";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -69,14 +68,7 @@ function App() {
       />
 
       {/* Client-only routes */}
-      <Route
-        path="/home"
-        element={
-          <ProtectedRoute user={user} allowedRoles={["USER"]}>
-            <ClientHome />
-          </ProtectedRoute>
-        }
-      />
+
       <Route
         path="/client/events"
         element={
@@ -89,7 +81,7 @@ function App() {
         path="/client/"
         element={
           <ProtectedRoute user={user} allowedRoles={["USER"]}>
-            <ConstituentProfile/>
+            <ConstituentProfile />
           </ProtectedRoute>
         }
       />
