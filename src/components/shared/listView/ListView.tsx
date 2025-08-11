@@ -11,57 +11,65 @@ export const EventsList = ({
   setShowAll,
 }: any) => {
   return (
-    <div className="bg-[#f7f7f5] rounded-lg p-4">
-      <h2 className="text-lg font-semibold text-gray-700 mb-4">{heading}</h2>
-      <div className="space-y-2  mx-auto">
+    <div className="bg-[#f7f7f5] rounded-lg p-3 sm:p-4">
+      <h2 className="text-base sm:text-lg font-semibold text-gray-700 mb-3 sm:mb-4">
+        {heading}
+      </h2>
+      <div className="space-y-2 mx-auto">
         {articlesToShow.map((article: any, idx: any) => (
           <Link
             to={`/client/data/articles/${article?._id}`}
             key={idx}
-            className="bg-white rounded-xl border border-gray-200 flex justify-between items-center p-4"
+            className="bg-white rounded-xl border border-gray-200 flex flex-col sm:flex-row sm:justify-between sm:items-center p-3 sm:p-4 space-y-3 sm:space-y-0"
           >
-            {/* Left Side: Date and Month */}
-            <div className="flex items-center gap-4">
-              <div className="text-center">
+            {/* Left Side: Date and Article Info */}
+            <div className="flex items-center gap-3 sm:gap-4 min-w-0 flex-1">
+              <div className="text-center flex-shrink-0">
                 <div className="text-xs font-semibold text-gray-500">
                   {article.month.split(" ")[0]}
                 </div>
-                <div className="text-xl font-bold text-indigo-700">
+                <div className="text-lg sm:text-xl font-bold text-indigo-700">
                   {article.month.split(" ")[1]}
                 </div>
               </div>
 
               {/* Divider */}
-              <div className="w-px h-10 bg-gray-300"></div>
+              <div className="w-px h-8 sm:h-10 bg-gray-300 flex-shrink-0"></div>
 
               {/* Article Info */}
-              <div>
+              <div className="min-w-0 flex-1">
                 <div className="text-xs font-semibold text-indigo-700 mb-1">
                   {article.section}
                 </div>
-                <h3 className="text-sm font-semibold text-gray-800 mb-1">
-                  {article.title}
+                <h3 className="text-sm font-semibold text-gray-800 mb-1 line-clamp-2 sm:line-clamp-1">
+                  {article.title.length > 80
+                    ? `${article.title.substring(0, 80)}...`
+                    : article.title}
                 </h3>
-                <p className="text-xs text-gray-600">
-                  {article.context.length > 100
-                    ? `${article.context.substring(0, 100)}...`
+                <p className="text-xs text-gray-600 line-clamp-2 sm:line-clamp-1">
+                  {article.context.length > 80
+                    ? `${article.context.substring(0, 80)}...`
                     : article.context}
                 </p>
               </div>
             </div>
 
-            {/* Add to Calendar Button */}
+            {/* Donor Button */}
             {donor && (
-              <button className="flex items-center gap-1 text-sm text-blue-600 hover:text-blue-800 font-medium">
-                {/* <FiPlus className="w-4 h-4" /> */}
-                {idx * 9} potential donor
-              </button>
+              <div className="flex justify-end sm:flex-shrink-0">
+                <button className="flex items-center gap-1 text-xs sm:text-sm text-blue-600 hover:text-blue-800 font-medium bg-blue-50 hover:bg-blue-100 px-2 py-1 rounded-md transition-colors">
+                  {/* <FiPlus className="w-3 h-3 sm:w-4 sm:h-4" /> */}
+                  <span className="whitespace-nowrap">
+                    {idx * 9} potential donor
+                  </span>
+                </button>
+              </div>
             )}
           </Link>
         ))}
         {articlesData.length > 3 && (
           <p
-            className="text-sm font-semibold pl-2 text-blue-600 mt-2 cursor-pointer hover:text-blue-800 transition-colors"
+            className="text-xs sm:text-sm font-semibold pl-2 text-blue-600 mt-2 cursor-pointer hover:text-blue-800 transition-colors"
             onClick={() => setShowAll(!showAll)}
           >
             {showAll ? "show less..." : "see more..."}
