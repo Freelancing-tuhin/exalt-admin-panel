@@ -16,6 +16,7 @@ import { ClientData } from "./screens/client/data/ClientData";
 import EventPage from "./screens/client/eventPage/EventPage";
 import Home from "./screens/home/Home";
 import ConstituentProfile from "./screens/client/constituentProfile/constituentProfile";
+import { Holidays } from "./screens/holidays/Holidays";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -114,6 +115,14 @@ function App() {
         element={
           <ProtectedRoute user={user} allowedRoles={["USER"]}>
             <ClientData />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/client/holidays"
+        element={
+          <ProtectedRoute user={user} allowedRoles={["USER"]}>
+            <Holidays />
           </ProtectedRoute>
         }
       />

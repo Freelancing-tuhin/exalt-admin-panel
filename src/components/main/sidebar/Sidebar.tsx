@@ -23,15 +23,15 @@ import { RiAccountPinBoxLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 
 export const Sidebar = () => {
-  const { user, setUser } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [isCollapsed, setIsCollapsed] = useState(false);
 
-  const handleLogout = () => {
-    setUser({});
-    localStorage.removeItem("user");
-    localStorage.removeItem("token");
-    window.location.href = "/login";
-  };
+  // const handleLogout = () => {
+  //   setUser({});
+  //   localStorage.removeItem("user");
+  //   localStorage.removeItem("token");
+  //   window.location.href = "/login";
+  // };
   return (
     <div
       className={`${
@@ -268,7 +268,7 @@ export const Sidebar = () => {
         </div>
 
         <div
-          onClick={handleLogout}
+          // onClick={handleLogout}
           className={`flex items-center p-2 rounded-md border-2 border-gray-300 hover:shadow-sm transition cursor-pointer `}
         >
           <img
