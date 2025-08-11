@@ -5,10 +5,11 @@ import { useHeading } from "../../../contexts/headingContext";
 import { useEffect, useState } from "react";
 import { Article } from "../../../components/shared/articleSections/Article.tsx";
 import { DonorOutreach } from "../../../components/shared/articleSections/DonorOutreach.tsx";
+import Data from "../../../components/shared/articleSections/Data.tsx";
 
 export const ClientArticles = () => {
   const { setHeading } = useHeading();
-  const [currentSection,setCurrentSection]=useState("Donor Outreach")
+  const [currentSection, setCurrentSection] = useState("Donor Outreach");
 
   useEffect(() => {
     setHeading("News");
@@ -36,23 +37,24 @@ export const ClientArticles = () => {
           </div>
 
           <div className="flex flex-wrap justify-start gap-2">
-            {[
-              "Article",
-              "Data",
-              "Donor Outreach",
-            ].map((label, i) => (
+            {["Article", "Data", "Donor Outreach"].map((label, i) => (
               <button
                 key={i}
-                onClick={()=>setCurrentSection(label)}
-                className=" px-3 py-1 flex items-center text-sm text-gray-700 bg-gray-100 border border-gray-300 rounded-full hover:bg-gray-200"
+                onClick={() => setCurrentSection(label)}
+                className={`px-4 py-2 flex items-center text-sm font-medium rounded-full transition-all duration-200 ${
+                  currentSection === label
+                    ? "bg-[#5042b7] text-white shadow-md border-2 border-[#5042b7]"
+                    : "text-gray-700 bg-gray-100 border-2 border-gray-300 hover:bg-gray-200 hover:border-gray-400"
+                }`}
               >
                 {label}
               </button>
             ))}
           </div>
 
-          {currentSection=="Article" && <Article/>}
-          {currentSection=="Donor Outreach" && <DonorOutreach/>}
+          {currentSection == "Article" && <Article />}
+          {currentSection == "Data" && <Data />}
+          {currentSection == "Donor Outreach" && <DonorOutreach />}
         </div>
         <ArticleActionsPanel />
       </div>
