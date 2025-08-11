@@ -126,7 +126,7 @@ function App() {
         }
       />
       <Route
-        path="/client/data/articles"
+        path="/client/data/articles/:id"
         element={
           <ProtectedRoute user={user} allowedRoles={["USER"]}>
             <ClientArticles />

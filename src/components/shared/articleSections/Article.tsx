@@ -1,9 +1,11 @@
-export const Article=()=>{
+import data from '../../../database/articles.json'
+
+export const Article = ({ id }: { id: number }) => {
     return(
         <div>
         <div className="prose prose-sm max-w-none">
             <h2 className="font-semibold text-lg mb-4">Context</h2>
-            <p>
+            {/* <p>
               The Democratic National Convention (DNC), held in Chicago, was a
               significant event for the Indian-American community. Vice
               President Kamala Harris took the opportunity to acknowledge her
@@ -17,7 +19,8 @@ export const Article=()=>{
               Representative Theresa Mah. Their presence highlights the growing
               representation of Indian Americans in government and the
               importance of events like these in shaping the national narrative.
-            </p>
+            </p> */}
+            {data?.[id]?.context}
           </div>
 
           <blockquote className="border-l-4 border-red-400  item-center py-6 bg-gray-100 pl-4 italic  text-gray-700">
@@ -29,7 +32,7 @@ export const Article=()=>{
 
           <div>
             <h2 className="font-semibold text-lg mb-4">Exalt’s Take</h2>
-            <p>
+            {/* <p>
               The most crucial step to take, in order to mobilize a greater
               number of Indian American Voters, is to exhibit familiarity with
               the issues they bring up as considerations when it comes to
@@ -50,7 +53,8 @@ export const Article=()=>{
               those offered by the Republican party, and most importantly,
               acting as an addressee of the community’s concerns, you can ensure
               that ties with members of the Indian diaspora are preserved.
-            </p>
+            </p> */}
+            {data?.[id]?.exalt_take}
           </div>
 
           {/* Table */}
@@ -110,6 +114,14 @@ export const Article=()=>{
               Questions from the community
             </h2>
             <ul className="list-disc list-inside text-md">
+  {data?.[id]?.questions_from_community.map((q, index) => (
+    <li key={index}>
+      {q}
+    </li>
+  ))}
+</ul>
+
+            {/* <ul className="list-disc list-inside text-md">
               <li>
                 How is identity politics affecting outreach to Indian American
                 voters, especially within the female American diaspora?
@@ -118,7 +130,7 @@ export const Article=()=>{
                 Can stories like this provide more open opportunities,
                 especially for Indian American candidates?
               </li>
-            </ul>
+            </ul> */}
           </div>
     </div>
     )

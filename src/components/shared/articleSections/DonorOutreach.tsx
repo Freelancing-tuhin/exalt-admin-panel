@@ -1,4 +1,3 @@
-import React from 'react';
 import { FiCopy } from "react-icons/fi";
 
 interface Donor {
@@ -139,7 +138,7 @@ export const DonorOutreach = () => {
                     <hr className="border-gray-400 mb-6" />
 
                     <div className="flex gap-6 overflow-x-auto pb-4 custom-scrollbar">
-                        {generalMessages.map((message, index) => (
+                        {targetedMessages.map((message, index) => (
                             <div
                                 key={index}
                                 className="relative flex-none w-60 p-4 bg-white rounded-lg shadow-md border border-gray-200"

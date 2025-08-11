@@ -97,7 +97,7 @@ const ConstituentProfile: React.FC = () => {
           // Hero section: Reduced height (h-[600px] -> h-[450px]) and padding (p-6 -> p-4)
           className="relative h-[450px] rounded-2xl p-4 flex flex-col md:flex-row items-center md:items-stretch gap-4 shadow-lg overflow-hidden" // Reduced gap
         >
-          <svg
+          {/* <svg
               className="absolute inset-0 w-full h-full pointer-events-none z-0"
               xmlns="http://www.w3.org/2000/svg"
               version="1.1"
@@ -164,7 +164,7 @@ const ConstituentProfile: React.FC = () => {
                   <path d="M112 177H162C190 177 212 199 212 227H162C134 227 112 205 112 177Z " transform="matrix(0.1666477346592473,-0.5128889894683156,0.5128889894683156,0.1666477346592473,31.399491112602192,251.4251738926992)" opacity="0.83"></path>
                   <path d="M422 455H472C500 455 522 477 522 505H472C444 505 422 483 422 455Z " transform="matrix(0.5297001036021798,-0.2936175619821576,0.2936175619821576,0.5297001036021798,81.04512134833556,364.3314395265321)" opacity="0.93"></path>
               </g>
-          </svg>
+          </svg> */}
 
 
           <div className="relative z-10 flex-1 flex flex-col justify-center text-white">

@@ -6,10 +6,16 @@ import { useEffect, useState } from "react";
 import { Article } from "../../../components/shared/articleSections/Article.tsx";
 import { DonorOutreach } from "../../../components/shared/articleSections/DonorOutreach.tsx";
 import Data from "../../../components/shared/articleSections/Data.tsx";
+import { useParams } from "react-router-dom";
+import data from '../../../database/articles.json'
 
 export const ClientArticles = () => {
+const { id } = useParams<{ id: string }>();
   const { setHeading } = useHeading();
   const [currentSection, setCurrentSection] = useState("Article");
+
+  console.log(id)
+  console.log(data?.[1])
 
   useEffect(() => {
     setHeading("News");
@@ -22,13 +28,12 @@ export const ClientArticles = () => {
         <div className="px-6 md:w-5/7 h-[90vh] overflow-y-auto py-4  text-sm text-gray-800 space-y-6">
           <div>
             <h1 className="text-2xl mt-5 font-bold">
-              US suspends scheduling of new student visas amid 
-              social media vetting
+              {data?.[id].title}
 
             </h1>
             <div className="flex justify-between items-center mt-6">
               <p className="text-sm  text-gray-500 font-semibold">
-                October 20, 2023 · Category: Issue
+                {data?.[id].month} · Category: Issue
               </p>
               <p className="text-lg text-gray-600 font-semibold">
                 21 Likely Interested Donors
@@ -52,7 +57,7 @@ export const ClientArticles = () => {
             ))}
           </div>
 
-          {currentSection == "Article" && <Article />}
+          {currentSection == "Article" && <Article id={id} />}
           {currentSection == "Data" && <Data />}
           {currentSection == "Donor Outreach" && <DonorOutreach />}
         </div>
