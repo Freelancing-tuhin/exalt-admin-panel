@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react";
 import Navbar from "../../components/main/navbar/Navbar";
 import { SentimentChart } from "../../components/main/sentimentChart/SentimentChart";
@@ -8,15 +9,15 @@ import { ItemLister } from "../../components/shared/itemLister/ItemLister";
 import { TweeterPost } from "../../components/shared/tweeterPost/TweeterPost";
 import { ReasonInput } from "../../components/shared/reasonINput/ReasonInput";
 import { DonorOutreach } from "../../components/shared/articleSections/DonorOutreach";
-import data from "../../database/articles.json"
+import data from "../../database/articles.json";
 import { useParams } from "react-router-dom";
 
 export const ViralDiscussion = () => {
-  const { title } = useParams<{ title: string }>();
+  const { title } = useParams<{ title: any }>();
   const { setHeading } = useHeading();
   const [currentSection, setCurrentSection] = useState("Data");
 
-  console.log(title)
+  console.log(title);
 
   useEffect(() => {
     setHeading("News");
@@ -32,7 +33,7 @@ export const ViralDiscussion = () => {
             <div>
               <h2 className="text-2xl pt-6 font-semibold text-gray-900">
                 {/* Jane Street Fined By SEBI */}
-                {data?.[title]?.title}
+                {data?.[title - 1]?.title}
               </h2>
               <p className="text-sm text-gray-500">July 7, 2025 • India News</p>
             </div>
