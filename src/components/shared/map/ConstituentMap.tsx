@@ -183,7 +183,7 @@ export const ConstituentMap: React.FC<ConstituentMapProps> = ({
     return (
       <div
         className={
-          "relative w-1/2 ${heightClass} rounded-3xl bg-white shadow-lg overflow-hidden border border-purple-200/40"
+          "relative w-1/2 ${heightClass} p-2 bg-gray-800 rounded-xl bg-slate-800/20 backdrop-blur-sm shadow-lg overflow-hidden border border-purple-200/40"
         }
       >
         {isLoaded ? (
