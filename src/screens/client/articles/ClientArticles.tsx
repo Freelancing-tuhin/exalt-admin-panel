@@ -9,7 +9,7 @@ import Data from "../../../components/shared/articleSections/Data.tsx";
 
 export const ClientArticles = () => {
   const { setHeading } = useHeading();
-  const [currentSection, setCurrentSection] = useState("Donor Outreach");
+  const [currentSection, setCurrentSection] = useState("Article");
 
   useEffect(() => {
     setHeading("News");
