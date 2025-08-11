@@ -41,7 +41,7 @@ interface ConstituentMapProps {
 
 export const ConstituentMap: React.FC<ConstituentMapProps> = ({
   embedded = false,
-  heightClass = "h-72",
+  // heightClass = "h-72",
 }) => {
   const { isLoaded, loadError } = useLoadScript({
     // Expect a Vite env var like VITE_GOOGLE_MAPS_API_KEY (user must provide)

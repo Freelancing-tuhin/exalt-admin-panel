@@ -86,7 +86,7 @@
   {
      "_id": "7",
     "title": "US-India Educational Partnership Expansion: 50 American Universities to Open Campuses in India",
-    "image": "https://framerusercontent.com/images/BgWdNPKo6h8sRciVOBId71J2Q.png",
+    "image": "https://www.aau.edu/sites/default/files/AAU-Images/International%20Partnerships/india-mouLO.jpg",
     "tag": "Education",
     "posts": "3,485 posts",
     "month": "FEBRUARY 2025",
@@ -99,13 +99,27 @@
       "Will degrees from American university campuses in India be treated equally to those from US campuses for employment and further education purposes?"
     ]
   },
-  {
+   {
      "_id": "8",
-    "title": "Indian pharmaceuticals sector garners $300 million in funding, marks a 191% month-on-month surge",
-     "image":
-      "https://framerusercontent.com/images/YeGE3q3PZFkrrtdNS7tuHmXYQA.png",
+    "title": "Indian-American Doctors Lead Breakthrough in Cancer Treatment, FDA Approves Revolutionary Therapy",
+    "image":
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfWf1jmuB2UuJn6e5difURLxHwi7n2Q9GXJSEHOKiTYDCDQtWdfJf5ooz-TW8RG204Suc&usqp=CAU",
     "tag": "Healthcare",
     "posts": "2,681 posts",
+    "month": "FEBRUARY 2025",
+    "section": "WHAT'S HAPPENING IN THE US",
+    "context": "A team of Indian-American oncologists and researchers at Johns Hopkins University and Memorial Sloan Kettering Cancer Center has achieved a major breakthrough in cancer treatment with the FDA approval of a revolutionary immunotherapy that shows 85% success rates in treating previously incurable pancreatic cancers. Led by Dr. Priya Sharma and Dr. Rajesh Patel, the research team spent seven years developing this treatment, which uses genetically modified immune cells to target and destroy cancer cells with unprecedented precision. The therapy, called CAR-T Plus, represents a significant advancement over existing treatments and has shown remarkable results in clinical trials involving over 2,000 patients across 15 medical centers. Indian-American physicians comprise nearly 25% of all practicing doctors in the United States and have been instrumental in advancing medical research, particularly in oncology, cardiology, and infectious diseases. This latest breakthrough adds to a growing list of medical innovations led by Indian-American researchers, including recent advances in Alzheimer's treatment, diabetes management, and COVID-19 therapies. The success has attracted significant attention from both the American medical establishment and the global pharmaceutical industry, with several major companies seeking to license and expand the technology.",
+    "exalt_take": "This medical breakthrough demonstrates the extraordinary contributions Indian-American professionals make to American healthcare and scientific advancement, providing compelling evidence for the value of high-skilled immigration. For Democrats, use this achievement to advocate for increased federal funding for medical research and support for international collaboration in healthcare. Emphasize how immigrant physicians and researchers strengthen American medical leadership globally and improve health outcomes for all Americans. For Republicans, highlight how merit-based immigration policies have enabled these talented individuals to contribute to American medical excellence and global competitiveness. Emphasize the economic benefits of medical innovation and the jobs created by breakthrough treatments. Support streamlined pathways for highly skilled medical professionals while maintaining rigorous standards.",
+    "questions_from_community": [
+      "How can the US ensure it continues to attract and retain the world's best medical researchers and physicians, including those from India?",
+      "Should there be expedited visa processes for medical professionals and researchers working on breakthrough treatments like this cancer therapy?",
+      "What role should the federal government play in supporting medical research collaborations between US institutions and international partners?"
+    ]
+  },
+  {
+     "_id": "9",
+    "title": "Indian pharmaceuticals sector garners $300 million in funding, marks a 191% month-on-month surge",
+     
     "month": "JANUARY 2025",
     "section": "INDIAN ISSUES",
     "context": "India's pharmaceutical and healthcare sector secured a staggering $300 million in January 2025, a 191.26 percent surge from December’s $103 million, driven by private equity rounds. India meets 40 percent of all generic medicine demand in the US, and 20 percent of global generic volume. India’s pharmaceutical exports to the United States reached $12.7 billion in 2024, accounting for roughly 36 percent of India’s total pharma exports, and underscoring America as the single largest market for Indian pharmaceutical products. The recent increase in funding reflects investor confidence and India’s growth trajectory in the pharmaceutical sector. This shift has created an opportunity for the US to enhance collaboration, diversify supply chains, and buffer against geopolitical shocks. India ranks among the top five countries across the world for hosting US-sponsored clinical trials. With costs associated with drug development exceeding $2.6 billion per year, a cost-effective trial is vital for sustained innovation. India also leads with 376 FDA-registered facilities as of 2024, including 200 Active Pharmaceutical Ingredient plants and 134 dosage-form sites, more than any country outside the US. Together, these assets position India as a critical partner for the United States in advancing cost-efficient drug development which ensures diversified supply chains, and building long-term pharmaceutical ties.",
@@ -116,19 +130,7 @@
       "Could greater private-sector collaboration with India help reduce drug costs and improve access to generics in the US?",
       "What is your stance on strengthening FDA cooperation with Indian pharma manufacturers to streamline approvals while ensuring quality?"
     ]
-  },
-
-  {
-     "_id": "9",
-    "title": "Indian-American Doctors Lead Breakthrough in Cancer Treatment, FDA Approves Revolutionary Therapy",
-    "month": "FEBRUARY 2025",
-    "section": "WHAT'S HAPPENING IN THE US",
-    "context": "A team of Indian-American oncologists and researchers at Johns Hopkins University and Memorial Sloan Kettering Cancer Center has achieved a major breakthrough in cancer treatment with the FDA approval of a revolutionary immunotherapy that shows 85% success rates in treating previously incurable pancreatic cancers. Led by Dr. Priya Sharma and Dr. Rajesh Patel, the research team spent seven years developing this treatment, which uses genetically modified immune cells to target and destroy cancer cells with unprecedented precision. The therapy, called CAR-T Plus, represents a significant advancement over existing treatments and has shown remarkable results in clinical trials involving over 2,000 patients across 15 medical centers. Indian-American physicians comprise nearly 25% of all practicing doctors in the United States and have been instrumental in advancing medical research, particularly in oncology, cardiology, and infectious diseases. This latest breakthrough adds to a growing list of medical innovations led by Indian-American researchers, including recent advances in Alzheimer's treatment, diabetes management, and COVID-19 therapies. The success has attracted significant attention from both the American medical establishment and the global pharmaceutical industry, with several major companies seeking to license and expand the technology.",
-    "exalt_take": "This medical breakthrough demonstrates the extraordinary contributions Indian-American professionals make to American healthcare and scientific advancement, providing compelling evidence for the value of high-skilled immigration. For Democrats, use this achievement to advocate for increased federal funding for medical research and support for international collaboration in healthcare. Emphasize how immigrant physicians and researchers strengthen American medical leadership globally and improve health outcomes for all Americans. For Republicans, highlight how merit-based immigration policies have enabled these talented individuals to contribute to American medical excellence and global competitiveness. Emphasize the economic benefits of medical innovation and the jobs created by breakthrough treatments. Support streamlined pathways for highly skilled medical professionals while maintaining rigorous standards.",
-    "questions_from_community": [
-      "How can the US ensure it continues to attract and retain the world's best medical researchers and physicians, including those from India?",
-      "Should there be expedited visa processes for medical professionals and researchers working on breakthrough treatments like this cancer therapy?",
-      "What role should the federal government play in supporting medical research collaborations between US institutions and international partners?"
-    ]
   }
+
+ 
 ]

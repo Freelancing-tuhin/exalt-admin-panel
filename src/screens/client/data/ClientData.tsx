@@ -37,7 +37,7 @@ export const ClientData = () => {
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-28 object-cover"
+                  className="w-full h-38 object-cover"
                 />
                 <div className="p-3 space-y-1">
                   <div className="flex items-center gap-2">
