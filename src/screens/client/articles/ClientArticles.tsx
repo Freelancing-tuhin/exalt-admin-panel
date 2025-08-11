@@ -5,10 +5,11 @@ import { useHeading } from "../../../contexts/headingContext";
 import { useEffect, useState } from "react";
 import { Article } from "../../../components/shared/articleSections/Article.tsx";
 import { DonorOutreach } from "../../../components/shared/articleSections/DonorOutreach.tsx";
+import Data from "../../../components/shared/articleSections/Data.tsx";
 
 export const ClientArticles = () => {
   const { setHeading } = useHeading();
-  const [currentSection,setCurrentSection]=useState("Donor Outreach")
+  const [currentSection, setCurrentSection] = useState("Donor Outreach");
 
   useEffect(() => {
     setHeading("News");
@@ -35,14 +36,10 @@ export const ClientArticles = () => {
           </div>
 
           <div className="flex flex-wrap justify-start gap-2">
-            {[
-              "Article",
-              "Data",
-              "Donor Outreach",
-            ].map((label, i) => (
+            {["Article", "Data", "Donor Outreach"].map((label, i) => (
               <button
                 key={i}
-                onClick={()=>setCurrentSection(label)}
+                onClick={() => setCurrentSection(label)}
                 className=" px-3 py-1 flex items-center text-sm text-gray-700 bg-gray-100 border border-gray-300 rounded-full hover:bg-gray-200"
               >
                 {label}
@@ -50,8 +47,9 @@ export const ClientArticles = () => {
             ))}
           </div>
 
-          {currentSection=="Article" && <Article/>}
-          {currentSection=="Donor Outreach" && <DonorOutreach/>}
+          {currentSection == "Article" && <Article />}
+          {currentSection == "Data" && <Data />}
+          {currentSection == "Donor Outreach" && <DonorOutreach />}
         </div>
         <ArticleActionsPanel />
       </div>
