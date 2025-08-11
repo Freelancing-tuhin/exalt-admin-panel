@@ -79,12 +79,16 @@ export const ClientData = () => {
           heading={"Exalt Coverage"}
           donor={true}
           articlesToShow={articlesToShow1}
+          showAll={showAll}
+          setShowAll={setShowAll}
         />
         {/* Previously Trending */}
         <EventsList
           heading={"Previously Trending"}
           donor={false}
           articlesToShow={articlesToShow2}
+          showAll={showAll}
+          setShowAll={setShowAll}
         />
       </div>
     </Layout>

@@ -1,10 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Link } from "react-router-dom";
-import { useState } from "react";
+// import { useState } from "react";
 import articlesData from "../../../database/articles.json";
 
-export const EventsList = ({ heading, donor, articlesToShow }: any) => {
-  const [showAll, setShowAll] = useState(false);
+export const EventsList = ({
+  heading,
+  donor,
+  articlesToShow,
+  showAll,
+  setShowAll,
+}: any) => {
+  // const [showAll, setShowAll] = useState(false);
 
   // Show first 3 articles by default, all articles when showAll is true
   // const articlesToShow = showAll ? articlesData : articlesData.slice(0, 3);
@@ -13,7 +19,7 @@ export const EventsList = ({ heading, donor, articlesToShow }: any) => {
     <div className="bg-[#f7f7f5] rounded-lg p-4">
       <h2 className="text-lg font-semibold text-gray-700 mb-4">{heading}</h2>
       <div className="space-y-2  mx-auto">
-        {articlesToShow.map((article, idx) => (
+        {articlesToShow.map((article: any, idx: any) => (
           <Link
             to={`/client/data/articles/${idx}`}
             key={idx}
