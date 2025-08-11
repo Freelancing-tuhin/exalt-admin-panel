@@ -27,7 +27,7 @@ export const HeaderBox = () => {
         ></div>
 
         {/* Faded EXALT Logo Background */}
-        <div className="absolute left-45 top-16 flex items-center justify-center opacity-5 scale-[3] pointer-events-none">
+        <div className="absolute left-60 top-45 flex items-center justify-center opacity-5 scale-[3.7] pointer-events-none">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="151.468"
@@ -96,7 +96,7 @@ export const HeaderBox = () => {
             <div className="space-y-4">
               <h1 className="text-5xl lg:text-6xl xl:text-7xl font-base tracking-tight text-white leading-none">
                 Hello
-                <span className="block font-bold bg-gradient-to-r from-blue-300 via-slate-100 to-blue-200 bg-clip-text text-transparent">
+                <span className="block font-semibold bg-gradient-to-r from-blue-300 via-slate-100 to-blue-200 bg-clip-text text-transparent">
                   Team Smith
                 </span>
               </h1>
