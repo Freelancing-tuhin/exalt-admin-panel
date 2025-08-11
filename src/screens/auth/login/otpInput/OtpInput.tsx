@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { api } from "../../../../utils";
+// import { api } from "../../../../utils";
 import AuthContext from "../../../../contexts/authContext/authContext";
 
 type OtpInputProps = {
@@ -27,8 +27,20 @@ export const OtpInput = ({
   };
   const handleLoginUser = async () => {
     try {
-      const payload = { email: email };
-      const response = await api.auth.userLogin(payload);
+      let role = "USER"; // default role
+
+      if (email === "admin@gmail.com") {
+        role = "ADMIN";
+      } else if (email === "user@gmail.com") {
+        role = "USER";
+      }
+
+      const response = {
+        email: email,
+        role: role,
+        name: role === "ADMIN" ? "Admin John Doe" : "John Doe",
+      };
+
       setUser(response);
       console.log("user data received:", getHomeRedirect(response));
       navigate(getHomeRedirect(response));
