@@ -1,16 +1,19 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import articlesData from "../../../database/articles.json";
 
-// Get first 3 articles
-const articles = articlesData.slice(0, 3);
+export const EventsList = ({ heading, donor, articlesToShow }: any) => {
+  const [showAll, setShowAll] = useState(false);
 
-export const EventsList = ({ heading, donor }: any) => {
+  // Show first 3 articles by default, all articles when showAll is true
+  // const articlesToShow = showAll ? articlesData : articlesData.slice(0, 3);
+
   return (
     <div className="bg-[#f7f7f5] rounded-lg p-4">
       <h2 className="text-lg font-semibold text-gray-700 mb-4">{heading}</h2>
       <div className="space-y-2  mx-auto">
-        {articles.map((article, idx) => (
+        {articlesToShow.map((article, idx) => (
           <Link
             to={`/client/data/articles/${idx}`}
             key={idx}
@@ -55,9 +58,14 @@ export const EventsList = ({ heading, donor }: any) => {
             )}
           </Link>
         ))}
-        <p className="text-sm font-semibold pl-2 text-blue-600 mt-2 cursor-pointer">
-          see more...
-        </p>
+        {articlesData.length > 3 && (
+          <p
+            className="text-sm font-semibold pl-2 text-blue-600 mt-2 cursor-pointer hover:text-blue-800 transition-colors"
+            onClick={() => setShowAll(!showAll)}
+          >
+            {showAll ? "show less..." : "see more..."}
+          </p>
+        )}
       </div>
     </div>
   );

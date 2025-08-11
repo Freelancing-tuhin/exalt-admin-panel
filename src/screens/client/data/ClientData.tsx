@@ -3,7 +3,8 @@ import Navbar from "../../../components/main/navbar/Navbar";
 import { Link } from "react-router-dom";
 import { EventsList } from "../../../components/shared/listView/ListView";
 import { useHeading } from "../../../contexts/headingContext";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import articlesData from "../../../database/articles.json";
 
 const viralDiscussions = [
   {
@@ -22,6 +23,10 @@ const viralDiscussions = [
 
 export const ClientData = () => {
   const { setHeading } = useHeading();
+  const [showAll, setShowAll] = useState(false);
+
+  const articlesToShow1 = showAll ? articlesData : articlesData.slice(0, 3);
+  const articlesToShow2 = showAll ? articlesData : articlesData.slice(3, 6);
 
   useEffect(() => {
     setHeading("Data");
@@ -70,9 +75,17 @@ export const ClientData = () => {
 
         {/* Exalt Coverage */}
 
-        <EventsList heading={"Exalt Coverage"} donor={true} />
+        <EventsList
+          heading={"Exalt Coverage"}
+          donor={true}
+          articlesToShow={articlesToShow1}
+        />
         {/* Previously Trending */}
-        <EventsList heading={"Previously Trending"} donor={false} />
+        <EventsList
+          heading={"Previously Trending"}
+          donor={false}
+          articlesToShow={articlesToShow2}
+        />
       </div>
     </Layout>
   );
