@@ -62,10 +62,12 @@ export const DataChart = () => {
   const barChartOptions = {
     chart: {
       type: "bar" as const,
-      height: 300,
+      height: 350,
       toolbar: {
         show: false,
       },
+      offsetY: 0,
+      offsetX: 0,
     },
     plotOptions: {
       bar: {
@@ -94,14 +96,27 @@ export const DataChart = () => {
         "Lack of gun control",
         "Lapse in security",
         "Political polarization",
-        "Incendiary remarks against Trump",
+        "Remarks against Trump",
         "Other",
       ],
       labels: {
         style: {
-          fontSize: "11px",
+          fontSize: "9px",
+          colors: ["#374151"],
         },
+        rotate: -30,
+        trim: false,
         maxHeight: 60,
+        // hideOverlappingLabels: false,
+        offsetY: 0,
+      },
+      axisBorder: {
+        show: true,
+        color: "#e5e7eb",
+      },
+      axisTicks: {
+        show: true,
+        color: "#e5e7eb",
       },
     },
     yaxis: {
@@ -130,6 +145,9 @@ export const DataChart = () => {
       row: {
         colors: ["#f3f3f3", "transparent"],
         opacity: 0.5,
+      },
+      padding: {
+        bottom: 20,
       },
     },
   };
