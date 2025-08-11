@@ -10,11 +10,6 @@ export const EventsList = ({
   showAll,
   setShowAll,
 }: any) => {
-  // const [showAll, setShowAll] = useState(false);
-
-  // Show first 3 articles by default, all articles when showAll is true
-  // const articlesToShow = showAll ? articlesData : articlesData.slice(0, 3);
-
   return (
     <div className="bg-[#f7f7f5] rounded-lg p-4">
       <h2 className="text-lg font-semibold text-gray-700 mb-4">{heading}</h2>

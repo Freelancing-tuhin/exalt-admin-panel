@@ -6,27 +6,13 @@ import { useHeading } from "../../../contexts/headingContext";
 import { useEffect, useState } from "react";
 import articlesData from "../../../database/articles.json";
 
-const viralDiscussions = [
-  {
-    title: "Jane Street Banned",
-    posts: "3,485 posts",
-    image:
-      "https://framerusercontent.com/images/YeGE3q3PZFkrrtdNS7tuHmXYQA.png",
-    tag: "New",
-  },
-  {
-    title: "Indian Gov Orders Accounts Blocked",
-    posts: "2,681 posts",
-    image: "https://framerusercontent.com/images/BgWdNPKo6h8sRciVOBId71J2Q.png",
-  },
-];
-
 export const ClientData = () => {
   const { setHeading } = useHeading();
   const [showAll, setShowAll] = useState(false);
 
   const articlesToShow1 = showAll ? articlesData : articlesData.slice(0, 3);
   const articlesToShow2 = showAll ? articlesData : articlesData.slice(3, 6);
+  const viralDiscussions = showAll ? articlesData : articlesData.slice(6, 8);
 
   useEffect(() => {
     setHeading("Data");
@@ -56,7 +42,9 @@ export const ClientData = () => {
                 <div className="p-3 space-y-1">
                   <div className="flex items-center gap-2">
                     <div className="text-md  font-medium text-gray-800">
-                      {item.title}
+                      {item.title.length > 50
+                        ? `${item.title.substring(0, 50)}...`
+                        : item.title}
                     </div>
                     {item.tag && (
                       <span className="text-[10px] bg-green-700 text-green-50 font-medium px-1.5 py-0.5 rounded">
