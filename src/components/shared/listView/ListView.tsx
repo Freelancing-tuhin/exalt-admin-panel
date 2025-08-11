@@ -16,7 +16,7 @@ export const EventsList = ({
       <div className="space-y-2  mx-auto">
         {articlesToShow.map((article: any, idx: any) => (
           <Link
-            to={`/client/data/articles/${idx}`}
+            to={`/client/data/articles/${article?._id}`}
             key={idx}
             className="bg-white rounded-xl border border-gray-200 flex justify-between items-center p-4"
           >

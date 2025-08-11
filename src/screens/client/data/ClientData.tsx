@@ -30,7 +30,7 @@ export const ClientData = () => {
           <div className="flex flex-nowrap overflow-x-auto space-x-4 pb-4">
             {viralDiscussions.map((item, i) => (
               <Link
-                to={`/client/data/viral-discussions/${item?.title}`}
+                to={`/client/data/viral-discussions/${item?._id}`}
                 key={i}
                 className="flex-none w-96 sm:w-[360px] lg:w-[360px] mb-5 rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden"
               >
