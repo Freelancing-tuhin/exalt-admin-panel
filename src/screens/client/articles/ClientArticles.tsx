@@ -29,7 +29,6 @@ const { id } = useParams<{ id: string }>();
           <div>
             <h1 className="text-2xl mt-5 font-bold">
               {data?.[id].title}
-
             </h1>
             <div className="flex justify-between items-center mt-6">
               <p className="text-sm  text-gray-500 font-semibold">
