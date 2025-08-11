@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'; 
+import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 //@ts-ignore
@@ -6,8 +6,8 @@ import L from 'leaflet';
 import { Layout } from '../../layout/Layout';
 import Navbar from '../../../components/main/navbar/Navbar';
 import { useHeading } from '../../../contexts/headingContext';
-import { FaCheckCircle, FaCalendarAlt, FaPlusCircle, FaTag, FaNewspaper } from 'react-icons/fa'; 
-import { MdEmail } from 'react-icons/md'; 
+import { FaCheckCircle, FaCalendarAlt, FaPlusCircle, FaTag, FaNewspaper } from 'react-icons/fa';
+import { MdEmail } from 'react-icons/md';
 import CalendarGrid from '../../../components/shared/Calender/Calender';
 import ConstituentMap from '../../../components/shared/map/ConstituentMap';
 
@@ -19,13 +19,13 @@ L.Icon.Default.mergeOptions({
 });
 
 const markerData = [
-  { lat: 39.0997, lng: -94.5786, color: '#EF4444', label: 'Gujarati (Kansas City)' }, 
-  { lat: 37.6872, lng: -97.3300, color: '#22C55E', label: 'Punjabi (Wichita)' },     
-  { lat: 39.0473, lng: -95.6781, color: '#3B82F6', label: 'Tamil (Topeka)' },        
-  { lat: 37.2153, lng: -93.2982, color: '#EAB308', label: 'Telugu (Springfield)' },  
-  { lat: 38.60, lng: -94.20, color: '#EF4444', label: 'Gujarati (Overland Park)' }, 
-  { lat: 38.00, lng: -96.00, color: '#22C55E', label: 'Punjabi (Emporia)' },       
-  { lat: 39.50, lng: -95.00, color: '#EF4444', label: 'Gujarati (St. Joseph)' },   
+  { lat: 39.0997, lng: -94.5786, color: '#EF4444', label: 'Gujarati (Kansas City)' },
+  { lat: 37.6872, lng: -97.3300, color: '#22C55E', label: 'Punjabi (Wichita)' },
+  { lat: 39.0473, lng: -95.6781, color: '#3B82F6', label: 'Tamil (Topeka)' },
+  { lat: 37.2153, lng: -93.2982, color: '#EAB308', label: 'Telugu (Springfield)' },
+  { lat: 38.60, lng: -94.20, color: '#EF4444', label: 'Gujarati (Overland Park)' },
+  { lat: 38.00, lng: -96.00, color: '#22C55E', label: 'Punjabi (Emporia)' },
+  { lat: 39.50, lng: -95.00, color: '#EF4444', label: 'Gujarati (St. Joseph)' },
 ];
 
 const createIcon = (color: string) => {
@@ -68,7 +68,7 @@ const ConstituentProfile: React.FC = () => {
   };
 
   const toggleTodo = (id: number) => {
-    setTodos(todos.map(todo => 
+    setTodos(todos.map(todo =>
       todo.id === id ? { ...todo, completed: !todo.completed } : todo
     ));
   };
@@ -86,29 +86,31 @@ const ConstituentProfile: React.FC = () => {
 
   return (
     <Layout>
-      <Navbar /> 
-      <div className="p-6 h-[90vh] overflow-y-scroll space-y-8 mx-auto bg-gray-50">
+      <Navbar />
+      {/* Main container: Reduced padding (p-6 -> p-4) and vertical spacing (space-y-8 -> space-y-6) */}
+      <div className="p-4 h-[90vh] overflow-y-scroll space-y-6 mx-auto bg-gray-50">
 
         <div
           style={{
             background: 'linear-gradient(80deg, #250035 0%, #501580 50%, #A0305C 100%)',
           }}
-          className="relative h-[600px] rounded-2xl p-6 flex flex-col md:flex-row items-center md:items-stretch gap-6 shadow-lg overflow-hidden" 
+          // Hero section: Reduced height (h-[600px] -> h-[450px]) and padding (p-6 -> p-4)
+          className="relative h-[450px] rounded-2xl p-4 flex flex-col md:flex-row items-center md:items-stretch gap-4 shadow-lg overflow-hidden" // Reduced gap
         >
-          <svg 
+          <svg
               className="absolute inset-0 w-full h-full pointer-events-none z-0"
-              xmlns="http://www.w3.org/2000/svg" 
-              version="1.1" 
-              xmlnsXlink="http://www.w3.org/1999/xlink" 
+              xmlns="http://www.w3.org/2000/svg"
+              version="1.1"
+              xmlnsXlink="http://www.w3.org/1999/xlink"
               viewBox="0 0 1422 800"
-              preserveAspectRatio="xMidYMid slice" 
+              preserveAspectRatio="xMidYMid slice"
           >
               <defs>
                   <filter id="llleaves-blur-2" x="-100%" y="-100%" width="400%" height="400%"><feGaussianBlur in="SourceGraphic" stdDeviation="2"></feGaussianBlur></filter>
                   <filter id="llleaves-blur-3" x="-100%" y="-100%" width="400%" height="400%"><feGaussianBlur in="SourceGraphic" stdDeviation="4"></feGaussianBlur></filter>
                   <filter id="llleaves-blur-4" x="-100%" y="-100%" width="400%" height="400%"><feGaussianBlur in="SourceGraphic" stdDeviation="12"></feGaussianBlur></filter>
               </defs>
-              <g fill="#FF69B4"> 
+              <g fill="#FF69B4">
                   <path d="M352 47H402C430 47 452 69 452 97H402C374 97 352 75 352 47Z " transform="matrix(0.31525421143806664,-0.467383589037341,0.467383589037341,0.31525421143806664,241.61618859120864,237.18989956947027)" opacity="0.87"></path>
                   <path d="M482 707H532C560 707 582 729 582 757H532C504 757 482 735 482 707Z " transform="matrix(0.5235171472555893,-0.3022527658933998,0.3022527658933998,0.5235171472555893,32.239853026057915,509.5839196641973)" opacity="0.93"></path>
                   <path d="M1200 590H1250C1278 590 1300 612 1300 640H1250C1222 640 1200 618 1200 590Z " transform="matrix(0.3068117651258799,-0.4724486876034518,0.4724486876034518,0.3068117651258799,575.9293507165272,1016.8716239518985)" opacity="0.87"></path>
@@ -137,7 +139,7 @@ const ConstituentProfile: React.FC = () => {
                   <path d="M1311 722H1361C1389 722 1411 744 1411 772H1361C1333 772 1311 750 1311 722Z " transform="matrix(0.3426745222999387,-0.4547444503193818,0.4547444503193818,0.3426745222999387,554.9258707612053,1109.9293287266246)" opacity="0.88"></path>
                   <path d="M247 287H297C325 287 347 309 347 337H297C269 337 247 315 247 287Z " transform="matrix(0.44381934322754407,-0.3858062690540121,0.3858062690540121,0.44381934322754407,44.814099116567604,288.11282682204785)" opacity="0.90"></path>
               </g>
-              <g fill="none" strokeWidth="3" stroke="#FF69B4"> 
+              <g fill="none" strokeWidth="3" stroke="#FF69B4">
                   <path d="M590 703H640C668 703 690 725 690 753H640C612 753 590 731 590 703Z " transform="matrix(0.473701694842589,-0.35695983068919085,0.35695983068919085,0.473701694842589,76.96415855901205,611.5994577956774)" opacity="0.91"></path>
                   <path d="M16 610H66C94 610 116 632 116 660H66C38 660 16 638 16 610Z " transform="matrix(-0.07795483953615796,-0.49218748619766667,0.49218748619766667,-0.07795483953615796,-241.39403432613193,716.9856971945063)" opacity="0.77"></path>
                   <path d="M864 229H914C942 229 964 251 964 279H914C886 279 864 257 864 229Z " transform="matrix(0.28801830384341753,-0.4793429536279972,0.4793429536279972,0.2880183038434341753,528.9981600656051,618.9628104397614)" opacity="0.86"></path>
@@ -164,11 +166,11 @@ const ConstituentProfile: React.FC = () => {
               </g>
           </svg>
 
-          
 
           <div className="relative z-10 flex-1 flex flex-col justify-center text-white">
-            <h1 
-                className="text-7xl font-bold text-white 
+            {/* Reduced text size for main heading (text-7xl -> text-5xl) */}
+            <h1
+                className="text-5xl font-bold text-white
                           drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]"
                 style={{
                   background: 'linear-gradient(to bottom, rgba(255,255,255,1), rgba(230,230,230,0.9))',
@@ -178,66 +180,40 @@ const ConstituentProfile: React.FC = () => {
                 }}
               >
                 Hello Team Smith
-          </h1>
-          {/* <svg className="absolute inset-0 w-full h-full pointer-events-none z-0 l-30" xmlns="http://www.w3.org/2000/svg" version="1.1"   viewBox="0 0 800 800" opacity="0.66"><defs><linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="vvvortex-grad"><stop stop-color="hsl(265, 55%, 30%)" stop-opacity="1" offset="0%"></stop><stop stop-color="hsl(265, 55%, 60%)" stop-opacity="1" offset="100%"></stop></linearGradient></defs><g stroke="url(#vvvortex-grad)" fill="none" stroke-linecap="round"><circle r="429" cx="400" cy="400" stroke-width="13" stroke-dasharray="53 41" stroke-dashoffset="25" transform="rotate(181, 400, 400)" opacity="0.05"></circle><circle r="412.5" cx="400" cy="400" stroke-width="13" stroke-dasharray="46 40" stroke-dashoffset="25" transform="rotate(161, 400, 400)" opacity="0.09"></circle><circle r="396" cx="400" cy="400" stroke-width="13" stroke-dasharray="28 35" stroke-dashoffset="25" transform="rotate(229, 400, 400)" opacity="0.13"></circle><circle r="379.5" cx="400" cy="400" stroke-width="12" stroke-dasharray="41 39" stroke-dashoffset="25" transform="rotate(228, 400, 400)" opacity="0.16"></circle><circle r="363" cx="400" cy="400" stroke-width="12" stroke-dasharray="26 51" stroke-dashoffset="25" transform="rotate(78, 400, 400)" opacity="0.20"></circle><circle r="346.5" cx="400" cy="400" stroke-width="12" stroke-dasharray="33 34" stroke-dashoffset="25" transform="rotate(192, 400, 400)" opacity="0.24"></circle><circle r="330" cx="400" cy="400" stroke-width="12" stroke-dasharray="20 32" stroke-dashoffset="25" transform="rotate(53, 400, 400)" opacity="0.28"></circle><circle r="313.5" cx="400" cy="400" stroke-width="11" stroke-dasharray="33 23" stroke-dashoffset="25" transform="rotate(327, 400, 400)" opacity="0.32"></circle><circle r="297" cx="400" cy="400" stroke-width="11" stroke-dasharray="14 40" stroke-dashoffset="25" transform="rotate(281, 400, 400)" opacity="0.35"></circle><circle r="280.5" cx="400" cy="400" stroke-width="11" stroke-dasharray="33 40" stroke-dashoffset="25" transform="rotate(192, 400, 400)" opacity="0.39"></circle><circle r="264" cx="400" cy="400" stroke-width="11" stroke-dasharray="39 25" stroke-dashoffset="25" transform="rotate(322, 400, 400)" opacity="0.43"></circle><circle r="247.5" cx="400" cy="400" stroke-width="10" stroke-dasharray="36 44" stroke-dashoffset="25" transform="rotate(235, 400, 400)" opacity="0.47"></circle><circle r="231" cx="400" cy="400" stroke-width="10" stroke-dasharray="32 25" stroke-dashoffset="25" transform="rotate(294, 400, 400)" opacity="0.51"></circle><circle r="214.5" cx="400" cy="400" stroke-width="10" stroke-dasharray="33 23" stroke-dashoffset="25" transform="rotate(199, 400, 400)" opacity="0.54"></circle><circle r="198" cx="400" cy="400" stroke-width="10" stroke-dasharray="51 33" stroke-dashoffset="25" transform="rotate(46, 400, 400)" opacity="0.58"></circle><circle r="181.5" cx="400" cy="400" stroke-width="9" stroke-dasharray="26 27" stroke-dashoffset="25" transform="rotate(357, 400, 400)" opacity="0.62"></circle><circle r="165" cx="400" cy="400" stroke-width="9" stroke-dasharray="41 21" stroke-dashoffset="25" transform="rotate(279, 400, 400)" opacity="0.66"></circle><circle r="148.5" cx="400" cy="400" stroke-width="9" stroke-dasharray="21 19" stroke-dashoffset="25" transform="rotate(207, 400, 400)" opacity="0.70"></circle><circle r="132" cx="400" cy="400" stroke-width="9" stroke-dasharray="36 38" stroke-dashoffset="25" transform="rotate(253, 400, 400)" opacity="0.73"></circle><circle r="115.5" cx="400" cy="400" stroke-width="8" stroke-dasharray="16 48" stroke-dashoffset="25" transform="rotate(1, 400, 400)" opacity="0.77"></circle><circle r="99" cx="400" cy="400" stroke-width="8" stroke-dasharray="27 50" stroke-dashoffset="25" transform="rotate(331, 400, 400)" opacity="0.81"></circle><circle r="82.5" cx="400" cy="400" stroke-width="8" stroke-dasharray="10 47" stroke-dashoffset="25" transform="rotate(131, 400, 400)" opacity="0.85"></circle><circle r="66" cx="400" cy="400" stroke-width="8" stroke-dasharray="23 53" stroke-dashoffset="25" transform="rotate(289, 400, 400)" opacity="0.89"></circle><circle r="49.5" cx="400" cy="400" stroke-width="7" stroke-dasharray="42 22" stroke-dashoffset="25" transform="rotate(237, 400, 400)" opacity="0.92"></circle><circle r="33" cx="400" cy="400" stroke-width="7" stroke-dasharray="29 54" stroke-dashoffset="25" transform="rotate(306, 400, 400)" opacity="0.96"></circle><circle r="16.5" cx="400" cy="400" stroke-width="7" stroke-dasharray="25 30" stroke-dashoffset="25" transform="rotate(323, 400, 400)" opacity="1.00"></circle></g></svg> */}
-            <p className="text-2xl italic mt-1 opacity-90">August 6, 4:18 CST</p>
+            </h1>
+            {/* Reduced text size for sub-text (text-2xl -> text-xl) */}
+            <p className="text-xl italic mt-1 opacity-90">August 6, 4:18 CST</p>
           </div>
 
-            <ConstituentMap embedded heightClass="h-full"  />
+          <ConstituentMap embedded heightClass="h-full"  />
 
-          {/* <div className="relative z-10 flex-[1] bg-white rounded-xl p-3 flex flex-col shadow-lg z-0"> 
-
-            
-
-            <div className="flex-1 rounded-lg overflow-hidden border border-gray-200 z-20">
-              <ConstituentMap embedded heightClass="h-full" />
-            </div>
-
-            <div className="mt-3 bg-gray-100 rounded-md px-3 py-2 flex flex-wrap gap-4 text-sm font-medium text-gray-700">
-              <span className="italic font-semibold">Legend</span>
-              {markerData
-                .filter((item, i, arr) => arr.findIndex(t => t.label.split(' ')[0] === item.label.split(' ')[0]) === i)
-                .map((marker, idx) => (
-                  <span key={idx} className="flex items-center">
-                    <div
-                      style={{
-                        backgroundColor: marker.color,
-                        width: '12px',
-                        height: '16px',
-                        borderRadius: '50% 50% 50% 0',
-                        transform: 'rotate(-45deg)',
-                        border: '1px solid rgba(255,255,255,0.8)',
-                      }}
-                      className="mr-1.5"
-                    ></div>
-                    {marker.label.split(' ')[0]}
-                  </span>
-                ))}
-            </div>
-          </div> */}
         </div>
 
 
-        <div className="bg-gray-100 rounded-xl p-6 shadow-sm border border-gray-200 mt-8">
-            <h2 className="text-3xl font-bold text-gray-800 mb-5 pb-2 border-b border-gray-300"> 
+        {/* "What's Happening" section: Reduced padding (p-6 -> p-4) and top margin (mt-8 -> mt-6) */}
+        <div className="bg-gray-100 rounded-xl p-4 shadow-sm border border-gray-200 mt-6">
+            {/* Main heading: Reduced text size (text-3xl -> text-2xl) and bottom margin (mb-5 -> mb-4) */}
+            <h2 className="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b border-gray-300">
                 What's Happening in New Jersey
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-200 flex flex-col items-center h-[550px]"> 
-                    <h3 className="text-lg font-semibold text-gray-700 mb-3 flex items-center">
-                        <FaCalendarAlt className="mr-2 text-purple-600 text-xl" /> Calendar (Upcoming)
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4"> {/* Reduced gap (gap-6 -> gap-4) */}
+                <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-200 flex flex-col items-center h-[450px]"> {/* Reduced height (h-[550px] -> h-[450px]) */}
+                    {/* Sub-heading: Reduced text size (text-lg -> text-base) and icon size (text-xl -> text-lg) */}
+                    <h3 className="text-base font-semibold text-gray-700 mb-3 flex items-center">
+                        <FaCalendarAlt className="mr-2 text-purple-600 text-lg" /> Calendar (Upcoming)
                     </h3>
                     <div className="w-full h-full bg-white rounded-lg border border-gray-200 shadow-inner overflow-hidden">
-                        <CalendarGrid /> 
+                        <CalendarGrid />
                     </div>
                 </div>
 
-                <div className="flex flex-col gap-6 h-[550px]"> 
-                    <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-200 flex-1 min-h-[250px] overflow-y-auto custom-scrollbar"> 
-                        <h3 className="text-lg font-semibold text-gray-700 mb-3 flex items-center">
-                            <FaCalendarAlt className="mr-2 text-orange-600 text-xl" /> Upcoming
+                <div className="flex flex-col gap-4 h-[450px]"> {/* Reduced gap (gap-6 -> gap-4) and height (h-[550px] -> h-[450px]) */}
+                    <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-200 flex-1 min-h-[200px] overflow-y-auto custom-scrollbar"> {/* Reduced min-height (min-h-[250px] -> min-h-[200px]) */}
+                        {/* Sub-heading: Reduced text size (text-lg -> text-base) and icon size (text-xl -> text-lg) */}
+                        <h3 className="text-base font-semibold text-gray-700 mb-3 flex items-center">
+                            <FaCalendarAlt className="mr-2 text-orange-600 text-lg" /> Upcoming
                         </h3>
-                        <div className="relative space-y-4 pt-1">
+                        <div className="relative space-y-3 pt-1"> {/* Reduced space-y (space-y-4 -> space-y-3) */}
                             <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-300"></div>
 
                             {[
@@ -253,9 +229,9 @@ const ConstituentProfile: React.FC = () => {
                                 { type: 'attended', title: 'Volunteer Orientation Session', date: 'June 10', checked: true },
                                 { type: 'attended', title: 'Fundraiser Review & Strategy', date: 'July 15', checked: true },
                             ].map((event, index) => (
-                                <div key={index} className="flex items-start relative pl-10 pr-2 py-2 bg-gray-50 rounded-lg shadow-xs border border-gray-200">
-                                <div className="absolute left-4 top-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-blue-500 border border-white flex items-center justify-center">
-                                    {event.checked ? <FaCheckCircle className="text-white text-xs" /> : <FaCalendarAlt className="text-white text-[10px]" />}
+                                <div key={index} className="flex items-start relative pl-8 pr-2 py-1.5 bg-gray-50 rounded-lg shadow-xs border border-gray-200"> {/* Reduced padding and increased left padding */}
+                                <div className="absolute left-3 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-blue-500 border border-white flex items-center justify-center"> {/* Reduced size of icon dot */}
+                                    {event.checked ? <FaCheckCircle className="text-white text-xs" /> : <FaCalendarAlt className="text-white text-[9px]" />} {/* Slightly reduced icon size */}
                                 </div>
                                 <div>
                                     <p className="font-medium text-gray-800 text-sm">{event.title}</p>
@@ -271,11 +247,12 @@ const ConstituentProfile: React.FC = () => {
                         </div>
                     </div>
 
-                    <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-200 flex-1 min-h-[250px] flex flex-col"> 
-                        <h3 className="text-lg font-semibold text-gray-700 mb-3 flex items-center">
-                            <FaCheckCircle className="mr-2 text-blue-600 text-xl" /> Orders / To Dos
+                    <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-200 flex-1 min-h-[200px] flex flex-col"> {/* Reduced min-height */}
+                        {/* Sub-heading: Reduced text size (text-lg -> text-base) and icon size (text-xl -> text-lg) */}
+                        <h3 className="text-base font-semibold text-gray-700 mb-3 flex items-center">
+                            <FaCheckCircle className="mr-2 text-blue-600 text-lg" /> Orders / To Dos
                         </h3>
-                        <div className="flex gap-2 mb-4">
+                        <div className="flex gap-2 mb-3"> {/* Reduced mb (mb-4 -> mb-3) */}
                             <input
                                 type="text"
                                 placeholder="Add new task..."
@@ -286,7 +263,7 @@ const ConstituentProfile: React.FC = () => {
                             />
                             <button
                                 onClick={addTodo}
-                                className="px-4 py-2 bg-blue-600 text-white rounded-md flex items-center justify-center hover:bg-blue-700 transition-colors text-sm"
+                                className="px-3 py-1.5 bg-blue-600 text-white rounded-md flex items-center justify-center hover:bg-blue-700 transition-colors text-sm" // Adjusted padding (px-4 py-2 -> px-3 py-1.5)
                             >
                                 <FaPlusCircle className="mr-1" /> Add
                             </button>
@@ -294,12 +271,12 @@ const ConstituentProfile: React.FC = () => {
                         <div className="flex-1 overflow-y-auto space-y-2 custom-scrollbar pr-2">
                             {todos.length > 0 ? (
                                 todos.map((todo) => (
-                                    <div key={todo.id} className="flex items-center bg-gray-50 p-3 rounded-lg border border-gray-200 shadow-xs">
+                                    <div key={todo.id} className="flex items-center bg-gray-50 p-2.5 rounded-lg border border-gray-200 shadow-xs"> {/* Reduced padding (p-3 -> p-2.5) */}
                                         <input
                                             type="checkbox"
                                             checked={todo.completed}
                                             onChange={() => toggleTodo(todo.id)}
-                                            className="form-checkbox h-4 w-4 text-blue-600 rounded mr-3"
+                                            className="form-checkbox h-3.5 w-3.5 text-blue-600 rounded mr-2.5" // Reduced checkbox size
                                         />
                                         <span className={`text-gray-800 text-sm flex-1 ${todo.completed ? 'line-through text-gray-500 italic' : ''}`}>
                                             {todo.text}
@@ -315,29 +292,33 @@ const ConstituentProfile: React.FC = () => {
             </div>
         </div>
 
-        <div className="bg-gray-100 rounded-xl p-6 shadow-sm border border-gray-200 mt-8">
-            <h2 className="text-3xl font-bold text-gray-800 mb-5 pb-2 border-b border-gray-300"> 
+        {/* Quick Links section: Reduced padding (p-6 -> p-4) and top margin (mt-8 -> mt-6) */}
+        <div className="bg-gray-100 rounded-xl p-4 shadow-sm border border-gray-200 mt-6">
+            {/* Main heading: Reduced text size (text-3xl -> text-2xl) and bottom margin (mb-5 -> mb-4) */}
+            <h2 className="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b border-gray-300">
                 Quick Links
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-200 min-h-[150px]">
-                    <h3 className="text-lg font-semibold text-gray-700 mb-4 flex items-center">
-                        <FaTag className="mr-2 text-green-600 text-xl" /> Popular Topics
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4"> {/* Reduced gap (gap-6 -> gap-4) */}
+                <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-200 min-h-[120px]"> {/* Reduced min-height (min-h-[150px] -> min-h-[120px]) */}
+                    {/* Sub-heading: Reduced text size (text-lg -> text-base) and icon size (text-xl -> text-lg) */}
+                    <h3 className="text-base font-semibold text-gray-700 mb-3 flex items-center"> {/* Reduced mb (mb-4 -> mb-3) */}
+                        <FaTag className="mr-2 text-green-600 text-lg" /> Popular Topics
                     </h3>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-1.5"> {/* Reduced gap (gap-2 -> gap-1.5) */}
                         {popularTopics.map((topic, index) => (
-                            <span key={index} className="px-3 py-1 bg-green-100 text-green-800 text-xs font-medium rounded-full cursor-pointer hover:bg-green-200 transition-colors">
+                            <span key={index} className="px-2.5 py-0.5 bg-green-100 text-green-800 text-xs font-medium rounded-full cursor-pointer hover:bg-green-200 transition-colors"> {/* Reduced padding (px-3 py-1 -> px-2.5 py-0.5) */}
                                 {topic}
                             </span>
                         ))}
                     </div>
                 </div>
 
-                <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-200 min-h-[150px]">
-                    <h3 className="text-lg font-semibold text-gray-700 mb-4 flex items-center">
-                        <FaNewspaper className="mr-2 text-indigo-600 text-xl" /> Recent Articles
+                <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-200 min-h-[120px]"> {/* Reduced min-height */}
+                    {/* Sub-heading: Reduced text size (text-lg -> text-base) and icon size (text-xl -> text-lg) */}
+                    <h3 className="text-base font-semibold text-gray-700 mb-3 flex items-center"> {/* Reduced mb */}
+                        <FaNewspaper className="mr-2 text-indigo-600 text-lg" /> Recent Articles
                     </h3>
-                    <ul className="space-y-2 text-sm">
+                    <ul className="space-y-1.5 text-sm"> {/* Reduced space-y (space-y-2 -> space-y-1.5) */}
                         {recentArticles.map((article) => (
                             <li key={article.id}>
                                 <a href={article.link} className="text-indigo-700 hover:text-indigo-900 font-medium transition-colors">

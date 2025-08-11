@@ -21,8 +21,9 @@ export const ClientArticles = () => {
         <div className="px-6 md:w-5/7 h-[90vh] overflow-y-auto py-4  text-sm text-gray-800 space-y-6">
           <div>
             <h1 className="text-2xl mt-5 font-bold">
-              Vice President Kamala Harris Illuminates her Indian Ties at the
-              Democratic National Convention
+              US suspends scheduling of new student visas amid 
+              social media vetting
+
             </h1>
             <div className="flex justify-between items-center mt-6">
               <p className="text-sm  text-gray-500 font-semibold">
