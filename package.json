@@ -12,6 +12,7 @@
   "dependencies": {
     "@react-google-maps/api": "^2.20.3",
     "@tailwindcss/vite": "^4.1.11",
+    "apexcharts": "^5.3.3",
     "axios": "^1.10.0",
     "leaflet": "^1.9.4",
     "react": "^19.1.0",

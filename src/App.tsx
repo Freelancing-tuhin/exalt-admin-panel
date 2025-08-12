@@ -18,6 +18,7 @@ import Home from "./screens/home/Home";
 import ConstituentProfile from "./screens/client/constituentProfile/constituentProfile";
 import { Holidays } from "./screens/holidays/Holidays";
 import DonorEngagement from "./screens/client/donor-engagement/donorEngagement";
+import { PreviosOutreach } from "./screens/prevOutreach/PreviosOutreach";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -124,6 +125,14 @@ function App() {
         element={
           <ProtectedRoute user={user} allowedRoles={["USER"]}>
             <Holidays />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/client/PreviousOutreach"
+        element={
+          <ProtectedRoute user={user} allowedRoles={["USER"]}>
+            <PreviosOutreach />
           </ProtectedRoute>
         }
       />
