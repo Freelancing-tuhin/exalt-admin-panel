@@ -22,7 +22,7 @@ import { TiStarOutline } from "react-icons/ti";
 import { RiAccountPinBoxLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { MdGroups } from "react-icons/md";
-import { FaHandshake, FaUsers, FaRegHeart } from "react-icons/fa";
+import { FaRegHeart } from "react-icons/fa";
 
 export const Sidebar = () => {
   const { user } = useContext(AuthContext);
