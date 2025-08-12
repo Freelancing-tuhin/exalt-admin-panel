@@ -21,6 +21,8 @@ import { IoFileTrayOutline } from "react-icons/io5";
 import { TiStarOutline } from "react-icons/ti";
 import { RiAccountPinBoxLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
+import { MdGroups } from "react-icons/md";
+import { FaHandshake, FaUsers, FaRegHeart } from "react-icons/fa";
 
 export const Sidebar = () => {
   const { user } = useContext(AuthContext);
@@ -183,6 +185,18 @@ export const Sidebar = () => {
                 label="Holidays"
                 isCollapsed={isCollapsed}
                 route={"/client/holidays"}
+              />
+              <SidebarItem
+                icon={<FaRegHeart />}
+                label="Donor Engagement"
+                isCollapsed={isCollapsed}
+                route={"/client/donor-engagement"}
+              />
+              <SidebarItem
+                icon={<MdGroups />}
+                label="Previous Outreach"
+                isCollapsed={isCollapsed}
+                route={"/client/PreviousOutreach"}
               />
             </>
           )}

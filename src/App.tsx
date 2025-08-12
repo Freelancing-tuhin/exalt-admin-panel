@@ -17,6 +17,7 @@ import EventPage from "./screens/client/eventPage/EventPage";
 import Home from "./screens/home/Home";
 import ConstituentProfile from "./screens/client/constituentProfile/constituentProfile";
 import { Holidays } from "./screens/holidays/Holidays";
+import DonorEngagement from "./screens/client/donor-engagement/donorEngagement";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -139,6 +140,14 @@ function App() {
         element={
           <ProtectedRoute user={user} allowedRoles={["USER"]}>
             <ClientArticles />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/client/donor-engagement"
+        element={
+          <ProtectedRoute user={user} allowedRoles={["USER"]}>
+            <DonorEngagement />
           </ProtectedRoute>
         }
       />
