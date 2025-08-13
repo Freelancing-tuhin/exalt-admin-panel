@@ -5,6 +5,7 @@ import { EventsList } from "../../../components/shared/listView/ListView";
 import { useHeading } from "../../../contexts/headingContext";
 import { useEffect, useState } from "react";
 import articlesData from "../../../database/articles.json";
+import { GradientHeader } from "../../../components/shared/gradientHeader/GradientHedaer";
 
 export const ClientData = () => {
   const { setHeading } = useHeading();
@@ -23,10 +24,8 @@ export const ClientData = () => {
       <Navbar />
       <div className="p-6 h-[90vh] overflow-y-scroll space-y-8 mx-auto">
         {/* Viral Discussions */}
+        <GradientHeader title="Data Dashboard" />
         <div>
-          <h2 className="text-sm font-semibold text-gray-700 mb-3">
-            Viral Discussions
-          </h2>
           <div className="flex flex-nowrap overflow-x-auto space-x-4 pb-4">
             {viralDiscussions.map((item, i) => (
               <Link
