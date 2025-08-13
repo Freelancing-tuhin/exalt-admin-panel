@@ -1,5 +1,5 @@
 import { FiCopy } from "react-icons/fi";
-
+import { HiOutlineMail } from "react-icons/hi";
 interface Donor {
     name: string;
     email: string;
@@ -172,15 +172,17 @@ export const DonorOutreach = () => {
                             <th className="px-3 py-2 text-left">Email</th>
                             <th className="px-3 py-2 text-left">Address</th>
                             <th className="px-3 py-2 text-left">Interests</ th>
+                            <th className="px-3 py-2 text-left">Send email</ th>
                         </tr>
                     </thead>
                     <tbody className="bg-white">
                         {potentialDonorsData.map((donor, idx) => (
                             <tr key={idx} className="border-t border-gray-300">
                                 <td className="px-3 py-2">{donor.name}</td>
-                                <td className="px-3 py-2">{donor.email}</td>
+                                <td className="blur-sm px-3 py-2">random@random.random</td>
                                 <td className="px-3 py-2">{donor.address}</td>
                                 <td className="px-3 py-2">{donor.interests}</td>
+                                <td className="px-3 py-2"><HiOutlineMail size={20} className="text-blue-500" /></td>
                             </tr>
                         ))}
                     </tbody>

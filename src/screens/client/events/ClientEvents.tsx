@@ -382,7 +382,7 @@ export const ClientEvents = () => {
             </h2>
             <HorizontalScroller>
               {eventsList.map((event, index) => (
-                <div key={index} className="flex-none w-64 md:w-72 lg:w-80">
+                <div key={index} className="flex-none w-64 md:w-72 lg:w-100">
                   <EventCard
                     title={event.title}
                     date={event.date}
@@ -400,56 +400,67 @@ export const ClientEvents = () => {
 
         {/* Other Events */}
         <div>
-          <h2 className="text-sm text-gray-500 font-semibold mb-4">
-            Other Upcoming Events
-          </h2>
-          <div className="bg-gray-100 p-4 rounded-lg space-y-3">
-            <div className="grid grid-cols-[80fr_10fr_10fr] gap-x-4 items-center text-sm font-semibold text-gray-700 mb-4">
-              <div className="flex gap-4 text-xl">
-                <span>Event</span>
-                <span>Date</span>
-                <span>Culture</span>
-              </div>
-              <span className="justify-self-end px-2 py-0.5 rounded-full font-medium font semi-bold text-xl">
-                Category
-              </span>
-              <span className="justify-self-end px-2 py-0.5 rounded-full font-medium semi-bold text-xl">
-                Priority
-              </span>
-            </div>
+  {/* Section Title */}
+  <h2 className="text-sm text-gray-500 font-semibold mb-4 tracking-wide">
+    Other Upcoming Events
+  </h2>
 
-            {otherEvents.map((event) => (
-              <div
-                key={event.id}
-                className="grid grid-cols-[80fr_10fr_10fr] gap-x-4 items-center text-sm text-gray-800"
-              >
-                <div className="flex items-center flex-wrap gap-x-2 gap-y-1">
-                  <span className="font-semibold">{event.title}</span>
-                  <span className="text-gray-500">• {event.date}</span>
-                  <span
-                    className={`text-xs px-2 py-0.5 rounded-full font-medium ${getCultureTagColors()}`}
-                  >
-                    {event.topic}
-                  </span>
-                </div>
-                <span
-                  className={`justify-self-end text-xs px-2 py-0.5 rounded-full font-medium ${getCategoryColors(
-                    event.category
-                  )}`}
-                >
-                  {event.category}
-                </span>
-                <span
-                  className={`justify-self-end text-xs px-2 py-0.5 rounded-full font-medium ${getPriorityColors(
-                    event.priority
-                  )}`}
-                >
-                  {event.priority}
-                </span>
-              </div>
-            ))}
+  {/* Card Container */}
+  <div className="bg-white p-5 rounded-2xl shadow-sm border border-gray-200">
+    {/* Table Header */}
+    <div className="grid grid-cols-[70fr_15fr_15fr] gap-x-4 items-center text-sm font-semibold text-gray-600 border-b border-gray-200 pb-3 mb-3">
+      <div className="flex ">
+        <span className="w-32">Event</span>
+        <span className="w-20">Date</span>
+        <span className="w-20">Culture</span>
+      </div>
+      <span className="text-center">Category</span>
+      <span className="text-center">Priority</span>
+    </div>
+
+    {/* Event Rows */}
+    <div className="space-y-2">
+      {otherEvents.map((event, index) => (
+        <div
+          key={event.id}
+          className={`grid grid-cols-[70fr_15fr_15fr] gap-x-4 items-center text-sm text-gray-800 rounded-xl p-3 transition-all duration-200 ${
+            index % 2 === 0 ? "bg-gray-50" : "bg-gray-100"
+          } hover:bg-white hover:shadow-md`}
+        >
+          {/* Event Info */}
+          <div className="flex items-center flex-wrap gap-x-3 gap-y-1">
+            <span className="font-medium">{event.title}</span>
+            <span className="text-gray-500">• {event.date}</span>
+            <span
+              className={`text-xs px-2 py-0.5 rounded-full font-medium bg-gray-200 text-gray-700 ${getCultureTagColors()}`}
+            >
+              {event.topic}
+            </span>
           </div>
+
+          {/* Category */}
+          <span
+            className={`justify-self-center text-xs px-3 py-1 rounded-full font-medium bg-gray-200 text-gray-700 ${getCategoryColors(
+              event.category
+            )}`}
+          >
+            {event.category}
+          </span>
+
+          {/* Priority */}
+          <span
+            className={`justify-self-center text-xs px-3 py-1 rounded-full font-medium bg-gray-200 text-gray-700 ${getPriorityColors(
+              event.priority
+            )}`}
+          >
+            {event.priority}
+          </span>
         </div>
+      ))}
+    </div>
+  </div>
+</div>
+
       </div>
     </Layout>
   );

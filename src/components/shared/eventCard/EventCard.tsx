@@ -13,27 +13,27 @@ const getTagStyle = (tag: string) => {
   switch (tag.toLowerCase()) {
     case "arts":
     case "wedding":
-      return "bg-blue-100 text-blue-800";
+      return "bg-blue-600/70 text-white backdrop-blur-sm";
     case "music":
-      return "bg-green-100 text-green-800";
+      return "bg-green-600/70 text-white backdrop-blur-sm";
     case "general":
-      return "bg-gray-200 text-gray-700";
+      return "bg-gray-700/70 text-white backdrop-blur-sm";
     case "charity":
-      return "bg-pink-100 text-pink-800";
+      return "bg-pink-600/70 text-white backdrop-blur-sm";
     case "hindu":
-      return "bg-gray-100 text-gray-600";
+      return "bg-gray-800/70 text-white backdrop-blur-sm";
     case "telugu":
-      return "bg-purple-100 text-purple-800";
+      return "bg-purple-600/70 text-white backdrop-blur-sm";
     case "dinner":
-      return "bg-fuchsia-100 text-fuchsia-800";
+      return "bg-fuchsia-600/70 text-white backdrop-blur-sm";
     case "high":
-      return "bg-red-100 text-red-700";
+      return "bg-red-600/70 text-white backdrop-blur-sm";
     case "service":
-      return "bg-orange-100 text-orange-800";
+      return "bg-orange-600/70 text-white backdrop-blur-sm";
     case "grand opening":
-      return "bg-green-200 text-green-900";
+      return "bg-green-700/70 text-white backdrop-blur-sm";
     default:
-      return "bg-gray-100 text-gray-600";
+      return "bg-gray-700/70 text-white backdrop-blur-sm";
   }
 };
 
@@ -46,23 +46,29 @@ export const EventCard: React.FC<EventCardProps> = ({
 }) => {
   return (
     <div
-      className="border-1 border-gray-200 h-52 rounded-xl overflow-hidden bg-white shadow-sm"
+      className="relative cursor-pointer rounded-2xl overflow-hidden h-64 w-full"
       onClick={onClick}
     >
-      <img src={image} alt={title} className="w-full h-32 object-cover" />
-      <div className="p-3 space-y-1 flex">
-        <div className="w-1/2">
-          <h3 className="text-xs md:text-sm font-semibold text-gray-800">
-            {title}
-          </h3>
-          <p className="text-xs text-gray-500">{date}</p>
-        </div>
+      {/* Full image */}
+      <img
+        src={image}
+        alt={title}
+        className="absolute inset-0 w-full h-full object-cover"
+      />
 
-        <div className="w-1/2 flex justify-end flex-wrap gap-1 mt-1">
+      {/* Dark gradient overlay at the bottom with deeper shadow */}
+      <div className="absolute bottom-0 w-full p-4 
+  bg-gradient-to-t from-black/95 via-black/80 to-transparent 
+  flex flex-col space-y-2">
+        <h3 className="text-md md:text-base font-semibold text-white drop-shadow-md truncate">
+          {title}
+        </h3>
+        <p className="text-xs md:text-sm text-gray-200 drop-shadow-sm">{date}</p>
+        <div className="flex flex-wrap gap-2 mt-1">
           {tags.map((tag, i) => (
             <span
               key={i}
-              className={`text-xs h-6  px-2 py-0.5 rounded-full font-medium flex justify-center items-center ${getTagStyle(
+              className={`px-3 py-1 rounded-full font-semibold text-xs md:text-sm ${getTagStyle(
                 tag
               )}`}
             >

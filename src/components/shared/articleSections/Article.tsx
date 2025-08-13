@@ -20,10 +20,10 @@ export const Article = ({ id }: { id: number }) => {
               representation of Indian Americans in government and the
               importance of events like these in shaping the national narrative.
             </p> */}
-            {data?.[id]?.context}
+            <p className='pb-10 text-md leading-loose tracking-wider'>{data?.[id]?.context}</p>
           </div>
 
-          <blockquote className="border-l-4 border-red-400  item-center py-6 bg-gray-100 pl-4 italic  text-gray-700">
+          <blockquote className="border-l-4 border-red-400  item-center py-6 pb-5 text-lg mb-10 bg-gray-100 pl-4 italic  text-gray-700">
             “My mother was very proud of her Indian heritage and taught us, me
             and my sister Maya, to share in the pride about our culture. India
             is the largest democracy in the world; so that is part of my
@@ -54,7 +54,7 @@ export const Article = ({ id }: { id: number }) => {
               acting as an addressee of the community’s concerns, you can ensure
               that ties with members of the Indian diaspora are preserved.
             </p> */}
-            {data?.[id]?.exalt_take}
+            <p className='pb-10 text-md leading-loose tracking-wider'>{data?.[id]?.exalt_take}</p>
           </div>
 
           {/* Table */}
@@ -82,9 +82,9 @@ export const Article = ({ id }: { id: number }) => {
             </table>
           </div>
 
-          <div>
-            <h2 className="font-semibold text-lg mb-4">Suggestions</h2>
-            <p>
+          <div className='mb-5 mt-5'>
+            <h2 className="font-semibold text-lg mb-4 ">Suggestions</h2>
+            <p className='text-md leading-loose tracking-wider'>
               Use Kamala Harris's speech, particularly targeted towards female
               Indian-American donors. As the diaspora becomes more politically
               active every year, it's important to connect emotionally with
@@ -113,7 +113,7 @@ export const Article = ({ id }: { id: number }) => {
             <h2 className="font-semibold text-lg mb-4">
               Questions from the community
             </h2>
-            <ul className="list-disc list-inside text-md">
+            <ul className="list-disc list-inside text-md leading-loose tracking-wider">
   {data?.[id]?.questions_from_community.map((q, index) => (
     <li key={index}>
       {q}

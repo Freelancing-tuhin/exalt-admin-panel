@@ -1,18 +1,21 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Layout } from "../../layout/Layout";
 import Navbar from "../../../components/main/navbar/Navbar";
+import data from "../../../database/articles.json"; // Your articles data
+import { Link } from "react-router-dom";
+import { AiOutlineArrowRight } from "react-icons/ai";
+import { Header } from "../../../components/shared/header/Header";
 
-// Mock data for articles
 const event: any = {
   title: "Krishna Janmāshtami Dinner",
   date: "October 15−28, 2024",
   address: "1234 East Carrolton Road",
   tag: "high_importance",
   description:
-    "Writer populates an event description. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "Writer populates an event description. Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
   cultural_sensitivities: [
     "Be sure not to wear a long sleeve shirt, it is considered offensive.",
-    "Idk sample cultural sensitivity number 2",
+    "Sample cultural sensitivity number 2",
   ],
   graphics:
     "https://www.gineicomarine.com.au/wp-content/uploads/2020/04/Gineico-Marine-Gianneschi-Water-Pumps-ACB-531-631-Chart.jpg",
@@ -34,195 +37,112 @@ const event: any = {
   ],
 };
 
-// Mock data for discussions
-const discussions = [
-  {
-    id: 1,
-    description:
-      "Vice President Kamala Harris Illuminates Her Indian Ties at the Democratic National Convention. This article goes on for multiple lines",
-    link: "July 25 - July 28, 2025",
-    copyLink: "12 Likely Interested Donors",
-  },
-  {
-    id: 2,
-    description:
-      "Vice President Kamala Harris Illuminates Her Indian Ties at the Democratic National Convention",
-    link: "July 25 - July 28, 2025",
-    copyLink: "12 Likely Interested Donors",
-  },
-  {
-    id: 3,
-    description:
-      "Vice President Kamala Harris Illuminates Her Indian Ties at the Democratic National Convention",
-    link: "July 25 - July 28, 2025",
-    copyLink: "12 Likely Interested Donors",
-  },
-  {
-    id: 4,
-    description:
-      "Vice President Kamala Harris Illuminates Her Indian Ties at the Democratic National Convention",
-    link: "July 25 - July 28, 2025",
-    copyLink: "12 Likely Interested Donors",
-  },
-  {
-    id: 5,
-    description:
-      "Vice President Kamala Harris Illuminates Her Indian Ties at the Democratic National Convention",
-    link: "July 25 - July 28, 2025",
-    copyLink: "12 Likely Interested Donors",
-  },
-  {
-    id: 6,
-    description:
-      "Vice President Kamala Harris Illuminates Her Indian Ties at the Democratic National Convention",
-    link: "July 25 - July 28, 2025",
-    copyLink: "12 Likely Interested Donors",
-  },
-  {
-    id: 7,
-    description:
-      "Vice President Kamala Harris Illuminates Her Indian Ties at the Democratic National Convention",
-    link: "July 25 - July 28, 2025",
-    copyLink: "12 Likely Interested Donors",
-  },
-  {
-    id: 8,
-    description:
-      "Vice President Kamala Harris Illuminates Her Indian Ties at the Democratic National Convention",
-    link: "July 25 - July 28, 2025",
-    copyLink: "12 Likely Interested Donors",
-  },
-];
-
 export const BriefView = () => {
   return (
     <Layout>
       <Navbar back={true} />
-      <div className="body h-[90vh] overflow-y-scroll">
-        <div className="max-w-6xl mx-auto p-2">
+      <div className="body min-h-screen bg-white py-10">
+        <div className="max-w-6xl mx-auto px-6 space-y-12">
+          
           {/* Header */}
-          <div className="flex justify-between items-center mb-8 bg-white p-4 ">
-            <div>
-              <h1 className="text-2xl font-bold text-gray-800">
-                Coverage July 1 - July 14
-              </h1>
-              <p className="text-sm text-gray-600">
-                New Jersey Congressional District 1
-              </p>
-            </div>
-            <div className="flex items-center space-x-4">
-              <div className="text-right">
-                <p className="font-semibold text-gray-800">
-                  9 Articles, 12 Notable Discussions
-                </p>
-              </div>
-            </div>
-          </div>
+          <Header
+            title="Coverage: July 1 - July 14"
+            author="Exalt data"
+            date="Sun April 7, 2023"
+            readTime="5 min"
+            category="New Jersey Congressional District 1"
+          />
 
           {/* Articles Section */}
-          <div className="bg-[#EDEDED] p-4 rounded-[20px] space-y-4 mb-10">
-            <h2 className="text-md font-semibold text-gray-700">Articles</h2>
-
-            {/* --- Start of Beautified UI Part --- */}
-            <div className="bg-white p-4 sm:p-6 rounded-2xl  overflow-x-auto w-full">
-              <div className="min-w-[900px]">
+          <section className="bg-gray-200 rounded-xl shadow-xl p-8 border border-gray-100">
+            <h2 className="text-2xl font-bold text-gray-800 mb-6 border-b border-gray-300 pb-4">
+              Articles
+            </h2>
+            <div className="overflow-x-auto">
+              <div className="min-w-[800px] p-5 bg-gray-100 rounded-lg">
                 {/* Table Header */}
-                <div className="grid grid-cols-[40px_4fr_1fr_1fr] gap-x-6 items-center text-xs text-slate-500 font-semibold uppercase tracking-wider border-b-2 border-slate-200 pb-4">
+                <div className="grid grid-cols-[50px_4fr_1fr_1fr] bg-gray-100 text-black text-sm font-semibold uppercase tracking-wide rounded-t-lg py-3 px-4">
                   <span>#</span>
                   <span>Description</span>
                   <span>Date</span>
                   <span>Donors</span>
                 </div>
 
-                {/* Data Rows */}
-                {event.source_link.map((source: any, index: any) => (
+                {/* Table Rows */}
+                {event.source_link.map((source: any, index: number) => (
                   <div
                     key={source.id}
-                    className="grid grid-cols-[40px_4fr_1fr_1fr] gap-x-6 items-start py-4 border-b border-slate-200 last:border-b-0 hover:bg-slate-50/70 transition-colors duration-200 ease-in-out"
+                    className="grid grid-cols-[50px_4fr_1fr_1fr] bg-white hover:bg-gray-50 transition-all duration-200 border-b border-gray-200 last:border-0 py-3 px-4 items-center rounded-md"
                   >
-                    {/* Index */}
-                    <span className="text-slate-700 font-medium tabular-nums">
-                      {index + 1}.
-                    </span>
-
-                    {/* Description */}
-                    <p className="text-slate-800 text-sm md:text-base break-words">
-                      {source.description}
-                    </p>
-
-                    {/* Date */}
-                    <span className="text-sm text-slate-700 font-medium">
-                      {source.date}
-                    </span>
-
-                    {/* Donors */}
-                    <span className="text-sm text-slate-700 font-medium">
-                      {source.donors || "N/A"}
-                    </span>
+                    <span className="font-medium text-gray-800">{index + 1}.</span>
+                    <p className="text-gray-700 leading-snug">{source.description}</p>
+                    <span className="text-gray-600 text-sm">{source.date}</span>
+                    <span className="text-gray-600 text-sm">{source.donors}</span>
                   </div>
                 ))}
               </div>
             </div>
-            {/* --- End of Beautified UI Part --- */}
-          </div>
+          </section>
 
           {/* Discussions Section */}
-          <div className="bg-[#EDEDED] p-4 rounded-[20px] space-y-4 mb-10">
-            <h2 className="text-md font-semibold text-gray-700">Discussions</h2>
+          <section className="bg-gray-200 rounded-xl shadow-xl p-8 border border-gray-100">
+            <div className="flex justify-between items-center mb-6 border-b border-gray-300 pb-4">
+              <h2 className="text-2xl font-bold text-gray-800">Discussions</h2>
+            </div>
 
-            <div className="bg-white rounded-[20px]  overflow-x-auto p-4 sm:p-6">
-              <div className="min-w-[900px] space-y-4">
-                {/* Header */}
-                <div className="grid grid-cols-[50px_3fr_2fr_1fr] gap-x-6 items-center text-xs text-slate-500 font-semibold uppercase tracking-wider border-b-2 border-slate-200 pb-4 px-2">
-                  <span>#</span>
+            <div className="overflow-x-auto p-5 bg-gray-100 rounded-lg">
+              <div className="min-w-[800px]">
+                {/* Table Header */}
+                <div className="grid grid-cols-[80px_3fr_2fr_1fr] bg-gray-100 text-black text-sm font-semibold uppercase tracking-wide rounded-t-lg py-3 px-4">
+                  <span>Image</span>
                   <span>Description</span>
-                  <span>Link</span>
-                  <span>Copy Link</span>
+                  <span>Date</span>
+                  <span className="text-center">Action</span>
                 </div>
 
                 {/* Rows */}
-                {discussions.map((discussion) => (
+                {data.map((discussion, index) => (
                   <div
-                    key={discussion.id}
-                    className="grid grid-cols-[50px_3fr_2fr_1fr] gap-x-6 items-start py-4 border-b border-slate-200 last:border-b-0 hover:bg-slate-50 transition-colors duration-200 ease-in-out px-2"
+                    key={discussion._id}
+                    className="grid grid-cols-[80px_3fr_2fr_1fr] bg-white hover:bg-gray-50 transition-all duration-200 border-b border-gray-200 last:border-0 py-4 px-4 items-center rounded-md"
                   >
-                    {/* Index */}
-                    <span className="text-sm text-slate-800 tabular-nums">
-                      {discussion.id}.
-                    </span>
+                    {/* Image */}
+                    <div className="flex items-center justify-center">
+                      <img
+                        src={
+                          discussion.image ||
+                          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRboI7W8rFvASQ8-QLO9ipjytme-5UFHLNCCQ&s"
+                        }
+                        alt={discussion.title}
+                        className="h-12 w-12 object-cover rounded-lg shadow-sm border border-gray-200"
+                      />
+                    </div>
 
-                    {/* Description */}
-                    <a
-                      href="#"
-                      className="text-blue-600 text-sm md:text-base hover:text-blue-800 hover:underline break-words font-medium"
+                    {/* Title */}
+                    <Link
+                      to={`/client/data/articles/${discussion._id}`}
+                      className="text-blue-600 hover:text-blue-800 hover:underline font-medium transition-colors duration-200"
                     >
-                      {discussion.description}
-                    </a>
+                      {discussion.title}
+                    </Link>
 
-                    {/* Link */}
-                    <a
-                      href={discussion.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm text-gray-700 break-all hover:underline"
-                    >
-                      {discussion.link}
-                    </a>
+                    {/* Date */}
+                    <span className="text-gray-600 text-sm">{discussion.month}</span>
 
-                    {/* Copy Link */}
-                    <button
-                      onClick={() =>
-                        navigator.clipboard.writeText(discussion.link)
-                      }
-                      className="text-sm text-indigo-600 hover:text-indigo-800 font-medium transition-colors"
-                    >
-                      Copy
-                    </button>
+                    {/* Action Button */}
+                    <div className="flex justify-center">
+                      <Link
+                        to={`/client/data/articles/${discussion._id}`}
+                        className="flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-full hover:bg-indigo-700 shadow-sm transition-all duration-200 text-sm"
+                      >
+                        Read the article <AiOutlineArrowRight className="w-4 h-4" />
+                      </Link>
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
-          </div>
+          </section>
         </div>
       </div>
     </Layout>

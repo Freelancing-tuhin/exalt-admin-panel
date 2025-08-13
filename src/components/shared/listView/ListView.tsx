@@ -9,6 +9,7 @@ export const EventsList = ({
   articlesToShow,
   showAll,
   setShowAll,
+  showDonor
 }: any) => {
   return (
     <div className="bg-[#f7f7f5] rounded-lg p-3 sm:p-4">
@@ -38,9 +39,9 @@ export const EventsList = ({
 
               {/* Article Info */}
               <div className="min-w-0 flex-1">
-                <div className="text-xs font-semibold text-indigo-700 mb-1">
+                {/* <div className="text-xs font-semibold text-indigo-700 mb-1">
                   {article.section}
-                </div>
+                </div> */}
                 <h3 className="text-sm font-semibold text-gray-800 mb-1 line-clamp-2 sm:line-clamp-1">
                   {article.title.length > 80
                     ? `${article.title.substring(0, 80)}...`
@@ -55,7 +56,7 @@ export const EventsList = ({
             </div>
 
             {/* Donor Button */}
-            {donor && (
+            {showDonor && donor && (
               <div className="flex justify-end sm:flex-shrink-0">
                 <button className="flex items-center gap-1 text-xs sm:text-sm text-blue-600 hover:text-blue-800 font-medium bg-blue-50 hover:bg-blue-100 px-2 py-1 rounded-md transition-colors">
                   {/* <FiPlus className="w-3 h-3 sm:w-4 sm:h-4" /> */}
