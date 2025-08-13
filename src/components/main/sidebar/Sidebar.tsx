@@ -142,7 +142,7 @@ export const Sidebar = () => {
           </div>
         </div>
 
-        <div className="space-y-1 mb-6">
+        <div className="space-y-1 mb-">
           {user?.role === "ADMIN" ? (
             <>
               <SidebarItem
@@ -204,25 +204,6 @@ export const Sidebar = () => {
 
         {/* Section 2 */}
 
-        <div className="mb-2">
-          {/* Shown when expanded */}
-          <div
-            className={`text-xs text-gray-400 uppercase font-semibold ${
-              isCollapsed ? "hidden" : "block"
-            }`}
-          >
-            Other Media
-          </div>
-
-          {/* Shown when collapsed */}
-          <div
-            className={`text-gray-400 text-center ${
-              isCollapsed ? "block" : "hidden"
-            }`}
-          >
-            •
-          </div>
-        </div>
         <div className="space-y-1 mb-6">
           <SidebarItem
             icon={<FiBox />}

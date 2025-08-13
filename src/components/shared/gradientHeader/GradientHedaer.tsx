@@ -1,4 +1,5 @@
-export const GradientHeader = () => {
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export const GradientHeader = ({ title }: any) => {
   const currentDate = new Date().toLocaleDateString("en-US", {
     weekday: "long",
     year: "numeric",
@@ -75,9 +76,9 @@ export const GradientHeader = () => {
           {/* Main heading */}
           <div className="space-y-4">
             <h1 className="text-4xl lg:text-5xl xl:text-6xl font-light tracking-tight text-white leading-none">
-              Previous
-              <span className="block font-bold bg-gradient-to-r from-purple-300 via-slate-100 to-purple-200 bg-clip-text text-transparent">
-                Outreach
+              {/* Previous */}
+              <span className="block font-normal bg-gradient-to-r from-purple-300 via-slate-100 to-purple-200 bg-clip-text text-transparent">
+                {title}
               </span>
             </h1>
             <div className="w-16 h-0.5 bg-gradient-to-r from-purple-400 to-slate-400 rounded-full"></div>

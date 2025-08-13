@@ -6,6 +6,7 @@ import { LocationTrack } from "../../components/main/coumunicationTracker/locati
 // import { BasicHeader } from "../../components/shared/basicHedaer/BasicHeader";
 import { useHeading } from "../../contexts/headingContext";
 import { GradientHeader } from "../../components/shared/gradientHeader/GradientHedaer";
+import { OutReachReport } from "../../components/main/coumunicationTracker/report/OutReachReport";
 
 export const PreviosOutreach = () => {
   const { setHeading } = useHeading();
@@ -19,12 +20,13 @@ export const PreviosOutreach = () => {
       <Navbar />
       <div className="px-6 py-4 space-y-6">
         {/* Header with gradient background */}
-        <GradientHeader />
+        <GradientHeader title="Communication Tracker" />
         {/* <BasicHeader /> */}
 
         {/* Content Sections */}
         <DonorTracker />
         <LocationTrack />
+        <OutReachReport />
       </div>
     </Layout>
   );

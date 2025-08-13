@@ -103,7 +103,7 @@ export const DonorTracker = () => {
     <div className="bg-gray-200 rounded-lg border border-gray-200 p-6 shadow-sm">
       {/* Header */}
       <div className="border-b border-gray-200 pb-4 mb-2">
-        <h2 className="text-xl font-bold text-gray-900 tracking-tight">
+        <h2 className="text-xl font-semibold text-gray-900 tracking-tight">
           Outreach Tracker
         </h2>
       </div>

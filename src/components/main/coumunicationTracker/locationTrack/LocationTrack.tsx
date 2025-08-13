@@ -87,7 +87,7 @@ export const LocationTrack = () => {
   return (
     <div className="bg-gray-200 rounded-lg border border-gray-200 p-6 shadow-sm mt-5">
       <div className="border-b border-gray-200 pb-4 mb-2">
-        <h2 className="text-xl font-bold text-gray-900 tracking-tight">
+        <h2 className="text-xl font-semibold text-gray-900 tracking-tight">
           Email Campaign Analytics
         </h2>
       </div>
