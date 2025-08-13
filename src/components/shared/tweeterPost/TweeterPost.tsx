@@ -88,7 +88,7 @@ const HorizontalScroller: React.FC<{ children: React.ReactNode }> = ({
   const onTouchEnd = () => setIsDragging(false);
 
   return (
-    <div className="relative group">
+    <div className="relative group bg-white  px-4 rounded-lg">
       {/* Left gradient */}
       {canScrollLeft && (
         <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-white/60 via-white/40 to-transparent pointer-events-none z-5"></div>
@@ -106,11 +106,11 @@ const HorizontalScroller: React.FC<{ children: React.ReactNode }> = ({
         className={`absolute left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full shadow-lg flex items-center justify-center transition 
           ${
             canScrollLeft
-              ? "bg-gradient-to-br from-purple-800 to-purple-900 hover:bg-gray-100 cursor-pointer"
+              ? "bg-gradient-to-br from-gray-100 to-gray-200 hover:bg-gray-100 cursor-pointer"
               : "bg-gray-200 opacity-0 cursor-not-allowed"
           }`}
       >
-        <FiChevronLeft className="text-2xl text-gray-100" />
+        <FiChevronLeft className="text-2xl text-gray-900" />
       </button>
 
       <button
@@ -119,11 +119,11 @@ const HorizontalScroller: React.FC<{ children: React.ReactNode }> = ({
         className={`absolute right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full shadow-lg flex items-center justify-center transition 
           ${
             canScrollRight
-              ? "bg-gradient-to-br from-purple-800 to-purple-900 hover:bg-gray-100 cursor-pointer"
+              ? "bg-gradient-to-br from-gray-100 to-gray-200 hover:bg-gray-100 cursor-pointer"
               : "bg-gray-200 opacity-0 cursor-not-allowed"
           }`}
       >
-        <FiChevronRight className="text-2xl text-gray-100" />
+        <FiChevronRight className="text-2xl text-gray-900" />
       </button>
 
       {/* Scroll Container */}
@@ -151,13 +151,13 @@ const HorizontalScroller: React.FC<{ children: React.ReactNode }> = ({
 const topTweetIds = [
   "20", // Jack Dorsey's first tweet "just setting up my twttr"
   "21", // Another early tweet
-  // "23", // Another early tweet
-  // "25", // Another early tweet
+  "23", // Another early tweet
+  "25", // Another early tweet
 ];
 
 export const TweeterPost = ({ title }: any) => {
   return (
-    <div className="bg-white pt-10 ">
+    <div className=" mt-10 ">
       <h2 className="text-xl font-bold text-gray-800 mb-2">{title}</h2>
 
       <HorizontalScroller>

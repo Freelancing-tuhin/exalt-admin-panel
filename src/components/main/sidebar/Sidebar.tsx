@@ -267,7 +267,7 @@ export const Sidebar = () => {
           className={`flex items-center p-2 rounded-md border-2 border-gray-300 hover:shadow-sm transition cursor-pointer `}
         >
           <img
-            src={user?.profile_picture || "/default-profile.png"}
+            src={"/default-profile.png"}
             alt="Profile"
             className={`rounded-md object-cover transition-all duration-200 h-10 w-10 `}
           />

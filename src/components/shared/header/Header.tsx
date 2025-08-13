@@ -69,8 +69,8 @@ export const Header: React.FC<HeaderProps> = ({
   //   const categoryStyle = categoryColors[category] || categoryColors.default;
 
   return (
-    <header className="bg-white ">
-      <div className="max-w-6xl mx-auto px-4 pt-8 pb-4">
+    <header className=" ">
+      <div className="ml mx-auto px-4 pt-8 pb-4">
         {/* Breadcrumb */}
         <nav className="flex items-center text-sm text-gray-600 mb-6 font-medium">
           {breadcrumb.map((item, i) => (

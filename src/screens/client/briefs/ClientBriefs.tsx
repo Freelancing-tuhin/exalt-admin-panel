@@ -3,6 +3,7 @@ import Navbar from "../../../components/main/navbar/Navbar";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useHeading } from "../../../contexts/headingContext";
+import { GradientHeader } from "../../../components/shared/gradientHeader/GradientHedaer";
 
 const briefsData = [
   {
@@ -90,6 +91,8 @@ export const ClientBriefs = () => {
     <Layout>
       <Navbar />
       <div className="p-6 space-y-6 h-[90vh] overflow-y-scroll px-6">
+        <GradientHeader title="Client Briefs" />
+
         {/* Date Filter */}
         <div className="flex gap-2 mb-6">
           <div

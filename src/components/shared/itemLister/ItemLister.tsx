@@ -12,7 +12,7 @@ export const ItemLister: React.FC<ItemListerProps> = ({
   className = "",
 }) => {
   return (
-    <div className={`bg-white  ${className}`}>
+    <div className={`bg-white mt-5 ${className}`}>
       <h2 className="text-xl font-bold text-gray-800 mb-4">{title}</h2>
 
       <div className="flex flex-wrap gap-3">

@@ -60,7 +60,7 @@ export const ViralDiscussion = () => {
                 items={["Shocked", "Surprised", "Annoyed"]}
               />
               <TweeterPost title="Top Shocked Posts" />
-              <ReasonInput />
+              {/* <ReasonInput /> */}
               <ItemLister
                 title="Related Topics"
                 items={[
