@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react";
 import Navbar from "../../components/main/navbar/Navbar";
-import { SentimentChart } from "../../components/main/sentimentChart/SentimentChart";
 import { ArticleActionsPanel } from "../../components/shared/acordition/ArticleActionsPanel";
 import { useHeading } from "../../contexts/headingContext";
 import { Layout } from "../layout/Layout";
@@ -11,6 +10,12 @@ import { ReasonInput } from "../../components/shared/reasonINput/ReasonInput";
 import { DonorOutreach } from "../../components/shared/articleSections/DonorOutreach";
 import data from "../../database/articles.json";
 import { useParams } from "react-router-dom";
+import { Header } from "../../components/shared/header/Header";
+import { IconTabs } from "../../components/shared/sectionTabs/SectionTabs";
+import { MdOutlineDashboard } from "react-icons/md";
+import { FiUsers } from "react-icons/fi";
+import { MultiLevelSentimentChart } from "../../components/main/sentimentChart/Graph";
+import { SentimentChart } from "../../components/main/sentimentChart/SentimentChart";
 
 export const ViralDiscussion = () => {
   const { title } = useParams<{ title: any }>();
@@ -29,34 +34,26 @@ export const ViralDiscussion = () => {
       <Navbar back={true} />
       <div className="flex flex-col md:flex-row p-2 ">
         <div className="md:w-5/7 md:h-[85vh] overflow-y-scroll px-5">
-          <div className="flex items-center justify-between mb-4">
-            <div>
-              <h2 className="text-2xl pt-6 font-semibold text-gray-900">
-                {/* Jane Street Fined By SEBI */}
-                {data?.[title - 1]?.title}
-              </h2>
-              <p className="text-sm text-gray-500">July 7, 2025 • India News</p>
-            </div>
-          </div>
+          <Header
+            title={data?.[title - 1]?.title}
+            author="Ndtv India"
+            date="Sun April 7, 2023"
+            readTime="5 min"
+            category={""}
+          />
 
-          <div className="flex flex-wrap justify-start gap-2 mb-6">
-            {["Data", "Outreach"].map((label, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrentSection(label)}
-                className={`px-4 py-2 flex items-center text-sm font-medium rounded-full transition-all duration-200 ${
-                  currentSection === label
-                    ? "bg-[#5042b7] text-white shadow-md border-2 border-[#5042b7]"
-                    : "text-gray-700 bg-gray-100 border-2 border-gray-300 hover:bg-gray-200 hover:border-gray-400"
-                }`}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
+          <IconTabs
+            tabs={[
+              { label: "Data", icon: MdOutlineDashboard },
+              { label: "Outreach", icon: FiUsers },
+            ]}
+            current={currentSection}
+            onChange={setCurrentSection}
+          />
 
           {currentSection === "Data" && (
             <div className="data">
+              {/* <MultiLevelSentimentChart /> */}
               <SentimentChart />
               <ItemLister
                 title="Top Emotions"

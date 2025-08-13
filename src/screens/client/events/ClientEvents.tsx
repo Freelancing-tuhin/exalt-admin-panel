@@ -6,6 +6,7 @@ import { useHeading } from "../../../contexts/headingContext";
 import { useEffect, useRef, useState, useCallback } from "react";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
+import { GradientHeader } from "../../../components/shared/gradientHeader/GradientHedaer";
 
 // Improved Netflix-style horizontal scroller
 const HorizontalScroller: React.FC<{ children: React.ReactNode }> = ({
@@ -109,11 +110,11 @@ const HorizontalScroller: React.FC<{ children: React.ReactNode }> = ({
         className={`absolute left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full shadow-lg flex items-center justify-center transition 
           ${
             canScrollLeft
-              ? "bg-gradient-to-br from-purple-800 to-purple-900 hover:bg-gray-100 cursor-pointer"
+              ? "bg-gradient-to-br from-gray-100 to-gray-200 hover:bg-gray-100 cursor-pointer"
               : "bg-gray-200 opacity-0 cursor-not-allowed"
           }`}
       >
-        <FiChevronLeft className="text-2xl text-gray-100" />
+        <FiChevronLeft className="text-2xl text-gray-800" />
       </button>
 
       <button
@@ -122,11 +123,11 @@ const HorizontalScroller: React.FC<{ children: React.ReactNode }> = ({
         className={`absolute right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full shadow-lg flex items-center justify-center transition 
           ${
             canScrollRight
-              ? "bg-gradient-to-br from-purple-800 to-purple-900 hover:bg-gray-100 cursor-pointer"
+              ? "bg-gradient-to-br  from-gray-100 to-gray-200 hover:bg-gray-100 cursor-pointer"
               : "bg-gray-200 opacity-0 cursor-not-allowed"
           }`}
       >
-        <FiChevronRight className="text-2xl text-gray-100" />
+        <FiChevronRight className="text-2xl text-gray-800" />
       </button>
 
       {/* Scroll Container */}
@@ -157,7 +158,7 @@ const events = {
       title: "Art Showcase",
       date: "January 13, 2025",
       image:
-        "https://framerusercontent.com/images/tbaVws3GxXcXC30ecOGxIwev6Ak.png",
+        "https://cdn.asp.events/CLIENT_Dubai_Wo_4B15F265_5056_B739_54F3125D47F0BC95/sites/integrateME2023/media/libraries/news/Panasonic_Frameless_g06asp.jpg",
       tags: ["High", "Arts", "Hindu"],
     },
     {
@@ -165,7 +166,7 @@ const events = {
       title: "Choir Recital",
       date: "January 14, 2025",
       image:
-        "https://framerusercontent.com/images/18Q56jhO4AoJjOTkDWg38hHPRM.png",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMI5LSYMKPdv8ZqXAnNPiOibwiQgQQ3OH4JQ&s",
       tags: ["Music", "Telugu"],
     },
     {
@@ -372,10 +373,11 @@ export const ClientEvents = () => {
     <Layout>
       <Navbar />
       <div className="p-6 space-y-6 h-[90vh] overflow-y-scroll px-6">
+        <GradientHeader title="Events" />
         {/* Category Cards */}
         {Object.entries(events).map(([category, eventsList], idx) => (
           <div key={idx}>
-            <h2 className="text-sm text-gray-500 font-semibold mb-4">
+            <h2 className="text-lg text-gray-800 font-semibold mb-4">
               {category}
             </h2>
             <HorizontalScroller>

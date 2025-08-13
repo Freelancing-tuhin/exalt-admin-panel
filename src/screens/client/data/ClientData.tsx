@@ -1,11 +1,12 @@
 import { Layout } from "../../layout/Layout";
 import Navbar from "../../../components/main/navbar/Navbar";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { EventsList } from "../../../components/shared/listView/ListView";
 import { useHeading } from "../../../contexts/headingContext";
 import { useEffect, useState } from "react";
 import articlesData from "../../../database/articles.json";
 import { GradientHeader } from "../../../components/shared/gradientHeader/GradientHedaer";
+import { ViralCard } from "../../../components/shared/viralCards/ViralCard";
 
 export const ClientData = () => {
   const { setHeading } = useHeading();
@@ -26,36 +27,12 @@ export const ClientData = () => {
         {/* Viral Discussions */}
         <GradientHeader title="Data Dashboard" />
         <div>
+          <h2 className="text-xl font-semibold text-gray-700 mb-3">
+            Viral Discussions
+          </h2>
           <div className="flex flex-nowrap overflow-x-auto space-x-4 pb-4">
             {viralDiscussions.map((item, i) => (
-              <Link
-                to={`/client/data/viral-discussions/${item?._id}`}
-                key={i}
-                className="flex-none w-96 sm:w-[360px] lg:w-[360px] mb-5 rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden"
-              >
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-38 object-cover"
-                />
-                <div className="p-3 space-y-1">
-                  <div className="flex items-center gap-2">
-                    <div className="text-md  font-medium text-gray-800">
-                      {item.title.length > 50
-                        ? `${item.title.substring(0, 50)}...`
-                        : item.title}
-                    </div>
-                    {item.tag && (
-                      <span className="text-[10px] bg-green-700 text-green-50 font-medium px-1.5 py-0.5 rounded">
-                        {item.tag}
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-xs sm:text-sm text-gray-500">
-                    {item.posts}
-                  </p>
-                </div>
-              </Link>
+              <ViralCard item={item} i={i} key={i} />
             ))}
           </div>
         </div>

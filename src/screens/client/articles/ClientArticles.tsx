@@ -9,6 +9,10 @@ import { DonorOutreach } from "../../../components/shared/articleSections/DonorO
 import Data from "../../../components/shared/articleSections/Data.tsx";
 import { useParams } from "react-router-dom";
 import data from "../../../database/articles.json";
+import { IconTabs } from "../../../components/shared/sectionTabs/SectionTabs.tsx";
+import { FiUsers } from "react-icons/fi";
+import { MdOutlineDashboard } from "react-icons/md";
+import { Header } from "../../../components/shared/header/Header.tsx";
 
 export const ClientArticles = () => {
   const { id } = useParams<{ id: any }>();
@@ -26,34 +30,24 @@ export const ClientArticles = () => {
     <Layout>
       <Navbar back={true} />
       <div className="flex flex-col md:flex-row">
-        <div className="px-6 md:w-5/7 h-[90vh] overflow-y-auto py-4  text-sm text-gray-800 space-y-6">
-          <div>
-            <h1 className="text-2xl mt-5 font-bold">{data?.[id].title}</h1>
-            <div className="flex justify-between items-center mt-6">
-              <p className="text-sm  text-gray-500 font-semibold">
-                {data?.[id].month} · Category: Issue
-              </p>
-              <p className="text-lg text-gray-600 font-semibold">
-                21 Likely Interested Donors
-              </p>
-            </div>
-          </div>
+        <div className="px-6 md:w-5/7 h-[90vh] overflow-y-auto   text-sm text-gray-800 space-y-6">
+          <Header
+            title={data?.[id]?.title}
+            author="Ndtv India"
+            date="Sun April 7, 2023"
+            readTime="5 min"
+            category={""}
+          />
 
-          <div className="flex flex-wrap justify-start gap-2">
-            {["Article", "Data", "Donor Outreach"].map((label, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrentSection(label)}
-                className={`px-4 py-2 flex items-center text-sm font-medium rounded-full transition-all duration-200 ${
-                  currentSection === label
-                    ? "bg-[#5042b7] text-white shadow-md border-2 border-[#5042b7]"
-                    : "text-gray-700 bg-gray-100 border-2 border-gray-300 hover:bg-gray-200 hover:border-gray-400"
-                }`}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
+          <IconTabs
+            tabs={[
+              { label: "Article", icon: FiUsers },
+              { label: "Data", icon: MdOutlineDashboard },
+              { label: "Donor Outreach", icon: FiUsers },
+            ]}
+            current={currentSection}
+            onChange={setCurrentSection}
+          />
 
           {currentSection == "Article" && <Article id={id} />}
           {currentSection == "Data" && <Data />}
