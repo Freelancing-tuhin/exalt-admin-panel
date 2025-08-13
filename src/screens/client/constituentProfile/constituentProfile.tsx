@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react"; // Import useRef
 // import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 // import L from "leaflet";
@@ -12,6 +12,8 @@ import {
   FaPlusCircle,
   FaTag,
   FaNewspaper,
+  FaFileUpload, // Added for file upload icon
+  FaTimesCircle, // Added for remove file icon
 } from "react-icons/fa";
 // import { MdEmail } from "react-icons/md";
 import CalendarGrid from "../../../components/shared/Calender/Calender";
@@ -86,6 +88,10 @@ const ConstituentProfile: React.FC = () => {
   ]);
   const [newTodo, setNewTodo] = useState("");
 
+  // State for file upload
+  const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null); // Ref to programmatically click the file input
+
   const addTodo = () => {
     if (newTodo.trim() !== "") {
       setTodos([
@@ -102,6 +108,35 @@ const ConstituentProfile: React.FC = () => {
         todo.id === id ? { ...todo, completed: !todo.completed } : todo
       )
     );
+  };
+
+  // Handler for file selection
+  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files.length > 0) {
+      setUploadedFile(event.target.files[0]);
+    }
+  };
+
+  // Handler for drag over (to prevent default behavior)
+  const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
+  };
+
+  // Handler for drop (to get the file)
+  const handleFileDrop = (event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    if (event.dataTransfer.files && event.dataTransfer.files.length > 0) {
+      setUploadedFile(event.dataTransfer.files[0]);
+      event.dataTransfer.clearData(); // Clear data after drop
+    }
+  };
+
+  // Handler to remove the selected file
+  const removeFile = () => {
+    setUploadedFile(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = ""; // Clear the file input
+    }
   };
 
   const popularTopics = [
@@ -349,7 +384,8 @@ const ConstituentProfile: React.FC = () => {
               <h3 className="text-base font-semibold text-gray-700 mb-3 flex items-center">
                 {" "}
                 {/* Reduced mb (mb-4 -> mb-3) */}
-                <FaTag className="mr-2 text-green-600 text-lg" /> Popular Topics
+                <FaTag className="mr-2 text-green-600 text-lg" /> Popular
+                Topics
               </h3>
               <div className="flex flex-wrap gap-1.5">
                 {" "}
@@ -391,6 +427,87 @@ const ConstituentProfile: React.FC = () => {
                 ))}
               </ul>
             </div>
+          </div>
+        </div>
+        {/* Upload Data Section */}
+        <div className="bg-gray-100 rounded-xl p-6 shadow-sm border border-gray-200 mt-6 ">
+          <h2 className="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b border-gray-300">
+            Upload Data for Insights and Cleaning
+          </h2>
+
+          <div
+            className="flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-lg p-8 bg-white hover:bg-gray-100 transition-colors cursor-pointer"
+            onDragOver={handleDragOver}
+            onDrop={handleFileDrop}
+            onClick={() => fileInputRef.current?.click()} // Click hidden input when box is clicked
+          >
+            {uploadedFile ? (
+              <div className="flex flex-col items-center">
+                <FaFileUpload className="w-12 h-12 text-green-500 mb-3" />
+                <p className="text-gray-700 font-medium text-center">
+                  File selected:{" "}
+                  <span className="text-blue-600 font-semibold">
+                    {uploadedFile.name}
+                  </span>
+                </p>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation(); // Prevent clicking the file input again
+                    removeFile();
+                  }}
+                  className="mt-2 text-red-500 hover:text-red-700 text-sm flex items-center"
+                >
+                  <FaTimesCircle className="mr-1" /> Remove File
+                </button>
+              </div>
+            ) : (
+              <>
+                <svg
+                  className="w-12 h-12 text-gray-400 mb-3"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M7 16a4 4 0 01-.88-7.903A5.002 5.002 0 0115.9 6H16a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                  />
+                </svg>
+                <p className="text-gray-700 font-medium">
+                  Drag & drop your file here, or{" "}
+                  <span className="text-blue-600 underline">browse</span>
+                </p>
+                <p className="text-sm text-gray-500 mt-1">
+                  Supported formats: CSV, XLSX, JSON
+                </p>
+              </>
+            )}
+
+            <input
+              type="file"
+              className="hidden"
+              id="fileUpload"
+              accept=".csv,.xlsx,.json"
+              onChange={handleFileUpload} // Add logic here
+              ref={fileInputRef} // Connect the ref to the input
+            />
+            <button
+              onClick={(e) => {
+                e.stopPropagation(); // Prevent triggering the parent div's onClick
+                // Add actual upload logic here, e.g., send uploadedFile to server
+                if (uploadedFile) {
+                  alert(`Uploading ${uploadedFile.name}... (Actual upload logic goes here!)`);
+                  // For a real application, you'd send `uploadedFile` to your backend
+                } else {
+                  alert("Please select a file first.");
+                }
+              }}
+              className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition-colors text-sm"
+            >
+              Upload
+            </button>
           </div>
         </div>
       </div>
