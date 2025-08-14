@@ -1,8 +1,6 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-import React, { useEffect, useState, useRef } from "react"; // Import useRef
-// import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+
+import React, { useEffect, useState, useRef } from "react";
 import "leaflet/dist/leaflet.css";
-// import L from "leaflet";
 import { Layout } from "../../layout/Layout";
 import Navbar from "../../../components/main/navbar/Navbar";
 import { useHeading } from "../../../contexts/headingContext";
@@ -10,72 +8,30 @@ import {
   FaCheckCircle,
   FaCalendarAlt,
   FaPlusCircle,
-  FaTag,
   FaNewspaper,
-  FaFileUpload, // Added for file upload icon
-  FaTimesCircle, // Added for remove file icon
+  FaFileUpload,
+  FaTimesCircle,
+  FaExpand,
 } from "react-icons/fa";
-// import { MdEmail } from "react-icons/md";
 import CalendarGrid from "../../../components/shared/Calender/Calender";
 import { HeaderBox } from "./headerBox/HeaderBox";
+import { EventsList } from "../../../components/shared/listView/ListView";
+import articlesData from "../../../database/articles.json";
+import TodoModal from "../../../components/shared/modal/TodoModal";
 
-// delete L.Icon.Default.prototype._getIconUrl;
-// L.Icon.Default.mergeOptions({
-//   iconRetinaUrl:
-//     "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png",
-//   iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png",
-//   shadowUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png",
-// });
-
-// const markerData = [
-//   {
-//     lat: 39.0997,
-//     lng: -94.5786,
-//     color: "#EF4444",
-//     label: "Gujarati (Kansas City)",
-//   },
-//   { lat: 37.6872, lng: -97.33, color: "#22C55E", label: "Punjabi (Wichita)" },
-//   { lat: 39.0473, lng: -95.6781, color: "#3B82F6", label: "Tamil (Topeka)" },
-//   {
-//     lat: 37.2153,
-//     lng: -93.2982,
-//     color: "#EAB308",
-//     label: "Telugu (Springfield)",
-//   },
-//   {
-//     lat: 38.6,
-//     lng: -94.2,
-//     color: "#EF4444",
-//     label: "Gujarati (Overland Park)",
-//   },
-//   { lat: 38.0, lng: -96.0, color: "#22C55E", label: "Punjabi (Emporia)" },
-//   { lat: 39.5, lng: -95.0, color: "#EF4444", label: "Gujarati (St. Joseph)" },
-// ];
-
-// const createIcon = (color: string) => {
-//   return new L.DivIcon({
-//     className: 'custom-teardrop-icon-wrapper',
-//     html: `
-//       <div style="
-//         background-color: ${color};
-//         width: 20px;
-//         height: 25px;
-//         border-radius: 50% 50% 50% 0;
-//         transform: rotate(-45deg);
-//         box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-//         border: 1px solid rgba(255,255,255,0.8);
-//       "></div>
-//     `,
-//     iconSize: [20, 25],
-//     iconAnchor: [10, 25],
-//     popupAnchor: [0, -20]
-//   });
-// };
+type Todo = {
+  id: number;
+  text: string;
+  completed: boolean;
+};
 
 const ConstituentProfile: React.FC = () => {
   const { setHeading } = useHeading();
+  const [showAll, setShowAll] = useState(false);
+  const articlesToShow1 = showAll ? articlesData : articlesData.slice(0, 3);
+  const viralDiscussions = showAll ? articlesData : articlesData.slice(6, 8);
 
-  const [todos, setTodos] = useState([
+  const [todos, setTodos] = useState<Todo[]>([
     { id: 1, text: "Finalize quarterly financial report", completed: false },
     { id: 2, text: "Schedule team meeting for Q4 planning", completed: false },
     {
@@ -88,74 +44,56 @@ const ConstituentProfile: React.FC = () => {
   ]);
   const [newTodo, setNewTodo] = useState("");
 
-  // State for file upload
+  // modal state
+  const [isTodoModalOpen, setIsTodoModalOpen] = useState(false);
+
+  // file upload state
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
-  const fileInputRef = useRef<HTMLInputElement>(null); // Ref to programmatically click the file input
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const addTodo = () => {
-    if (newTodo.trim() !== "") {
-      setTodos([
-        ...todos,
-        { id: Date.now(), text: newTodo.trim(), completed: false },
-      ]);
-      setNewTodo("");
-    }
+    const trimmed = newTodo.trim();
+    if (!trimmed) return;
+    setTodos((prev) => [
+      ...prev,
+      { id: Date.now(), text: trimmed, completed: false },
+    ]);
+    setNewTodo("");
   };
 
   const toggleTodo = (id: number) => {
-    setTodos(
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
-      )
+    setTodos((prev) =>
+      prev.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t))
     );
   };
 
-  // Handler for file selection
+  const deleteTodo = (id: number) => {
+    setTodos((prev) => prev.filter((t) => t.id !== id));
+  };
+
+  // Upload handlers
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
       setUploadedFile(event.target.files[0]);
     }
   };
 
-  // Handler for drag over (to prevent default behavior)
   const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault();
   };
 
-  // Handler for drop (to get the file)
   const handleFileDrop = (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault();
     if (event.dataTransfer.files && event.dataTransfer.files.length > 0) {
       setUploadedFile(event.dataTransfer.files[0]);
-      event.dataTransfer.clearData(); // Clear data after drop
+      event.dataTransfer.clearData();
     }
   };
 
-  // Handler to remove the selected file
   const removeFile = () => {
     setUploadedFile(null);
-    if (fileInputRef.current) {
-      fileInputRef.current.value = ""; // Clear the file input
-    }
+    if (fileInputRef.current) fileInputRef.current.value = "";
   };
-
-  const popularTopics = [
-    "Community Outreach",
-    "Fundraising Success",
-    "Volunteer Program",
-    "Youth Development",
-    "Environmental Initiatives",
-    "Partnerships",
-  ];
-  const recentArticles = [
-    { id: 1, title: "Impact Report 2023: A Year of Progress", link: "#" },
-    { id: 2, title: "Local Heroes: Volunteers Making a Difference", link: "#" },
-    {
-      id: 3,
-      title: "New Fundraising Goal for Educational Programs",
-      link: "#",
-    },
-  ];
 
   useEffect(() => {
     setHeading("Campaign");
@@ -164,23 +102,17 @@ const ConstituentProfile: React.FC = () => {
   return (
     <Layout>
       <Navbar />
-      {/* Main container: Reduced padding (p-6 -> p-4) and vertical spacing (space-y-8 -> space-y-6) */}
       <div className="p-4 h-[90vh] overflow-y-scroll space-y-6 mx-auto bg-gray-50">
         <HeaderBox />
 
-        {/* "What's Happening" section: Reduced padding (p-6 -> p-4) and top margin (mt-8 -> mt-6) */}
+        {/* What's Happening */}
         <div className="bg-gray-100 rounded-xl p-4 shadow-sm border border-gray-200 mt-6">
-          {/* Main heading: Reduced text size (text-3xl -> text-2xl) and bottom margin (mb-5 -> mb-4) */}
           <h2 className="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b border-gray-300">
             What's Happening in New Jersey
           </h2>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {" "}
-            {/* Reduced gap (gap-6 -> gap-4) */}
             <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-200 flex flex-col items-center h-[450px]">
-              {" "}
-              {/* Reduced height (h-[550px] -> h-[450px]) */}
-              {/* Sub-heading: Reduced text size (text-lg -> text-base) and icon size (text-xl -> text-lg) */}
               <h3 className="text-base font-semibold text-gray-700 mb-3 flex items-center">
                 <FaCalendarAlt className="mr-2 text-purple-600 text-lg" />{" "}
                 Calendar (Upcoming)
@@ -189,20 +121,15 @@ const ConstituentProfile: React.FC = () => {
                 <CalendarGrid />
               </div>
             </div>
+
+            {/* Right column: Upcoming & To-Dos */}
             <div className="flex flex-col gap-4 h-[450px]">
-              {" "}
-              {/* Reduced gap (gap-6 -> gap-4) and height (h-[550px] -> h-[450px]) */}
               <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-200 flex-1 min-h-[200px] overflow-y-auto custom-scrollbar">
-                {" "}
-                {/* Reduced min-height (min-h-[250px] -> min-h-[200px]) */}
-                {/* Sub-heading: Reduced text size (text-lg -> text-base) and icon size (text-xl -> text-lg) */}
                 <h3 className="text-base font-semibold text-gray-700 mb-3 flex items-center">
                   <FaCalendarAlt className="mr-2 text-orange-600 text-lg" />{" "}
                   Upcoming
                 </h3>
                 <div className="relative space-y-3 pt-1">
-                  {" "}
-                  {/* Reduced space-y (space-y-4 -> space-y-3) */}
                   <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-300"></div>
                   {[
                     {
@@ -276,17 +203,12 @@ const ConstituentProfile: React.FC = () => {
                       key={index}
                       className="flex items-start relative pl-8 pr-2 py-1.5 bg-gray-50 rounded-lg shadow-xs border border-gray-200"
                     >
-                      {" "}
-                      {/* Reduced padding and increased left padding */}
                       <div className="absolute left-3 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-blue-500 border border-white flex items-center justify-center">
-                        {" "}
-                        {/* Reduced size of icon dot */}
                         {event.checked ? (
                           <FaCheckCircle className="text-white text-xs" />
                         ) : (
                           <FaCalendarAlt className="text-white text-[9px]" />
-                        )}{" "}
-                        {/* Slightly reduced icon size */}
+                        )}
                       </div>
                       <div>
                         <p className="font-medium text-gray-800 text-sm">
@@ -303,34 +225,44 @@ const ConstituentProfile: React.FC = () => {
                   ))}
                 </div>
               </div>
+
+              {/* To-Dos Card */}
               <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-200 flex-1 min-h-[200px] flex flex-col">
-                {" "}
-                {/* Reduced min-height */}
-                {/* Sub-heading: Reduced text size (text-lg -> text-base) and icon size (text-xl -> text-lg) */}
-                <h3 className="text-base font-semibold text-gray-700 mb-3 flex items-center">
-                  <FaCheckCircle className="mr-2 text-blue-600 text-lg" />{" "}
-                  Orders / To Dos
-                </h3>
+                <div className="flex justify-between items-center mb-3">
+                  <h3 className="text-base font-semibold text-gray-700 flex items-center">
+                    <FaCheckCircle className="mr-2 text-blue-600 text-lg" />{" "}
+                    Orders / To Dos
+                  </h3>
+                  <button
+                    onClick={() => setIsTodoModalOpen(true)}
+                    className="p-2 rounded-lg hover:bg-gray-100 text-gray-600 hover:text-gray-800 transition"
+                    title="Expand To-Do List"
+                    aria-label="Expand To-Do List"
+                  >
+                    <FaExpand className="text-lg" />
+                  </button>
+                </div>
+
                 <div className="flex gap-2 mb-3">
-                  {" "}
-                  {/* Reduced mb (mb-4 -> mb-3) */}
                   <input
                     type="text"
                     placeholder="Add new task..."
                     value={newTodo}
                     onChange={(e) => setNewTodo(e.target.value)}
-                    onKeyPress={(e) => {
+                    onKeyDown={(e) => {
                       if (e.key === "Enter") addTodo();
                     }}
                     className="flex-1 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 text-sm"
+                    aria-label="New task"
                   />
                   <button
                     onClick={addTodo}
-                    className="px-3 py-1.5 bg-blue-600 text-white rounded-md flex items-center justify-center hover:bg-blue-700 transition-colors text-sm" // Adjusted padding (px-4 py-2 -> px-3 py-1.5)
+                    className="px-3 py-1.5 bg-blue-600 text-white rounded-md flex items-center justify-center hover:bg-blue-700 transition-colors text-sm"
                   >
                     <FaPlusCircle className="mr-1" /> Add
                   </button>
                 </div>
+
                 <div className="flex-1 overflow-y-auto space-y-2 custom-scrollbar pr-2">
                   {todos.length > 0 ? (
                     todos.map((todo) => (
@@ -338,13 +270,12 @@ const ConstituentProfile: React.FC = () => {
                         key={todo.id}
                         className="flex items-center bg-gray-50 p-2.5 rounded-lg border border-gray-200 shadow-xs"
                       >
-                        {" "}
-                        {/* Reduced padding (p-3 -> p-2.5) */}
                         <input
                           type="checkbox"
                           checked={todo.completed}
                           onChange={() => toggleTodo(todo.id)}
-                          className="form-checkbox h-3.5 w-3.5 text-blue-600 rounded mr-2.5" // Reduced checkbox size
+                          className="form-checkbox h-3.5 w-3.5 text-blue-600 rounded mr-2.5"
+                          aria-label={`Toggle ${todo.text}`}
                         />
                         <span
                           className={`text-gray-800 text-sm flex-1 ${
@@ -368,67 +299,37 @@ const ConstituentProfile: React.FC = () => {
           </div>
         </div>
 
-        {/* Quick Links section: Reduced padding (p-6 -> p-4) and top margin (mt-8 -> mt-6) */}
-        <div className="bg-gray-100 rounded-xl p-4 shadow-sm border border-gray-200 mt-6">
-          {/* Main heading: Reduced text size (text-3xl -> text-2xl) and bottom margin (mb-5 -> mb-4) */}
-          <h2 className="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b border-gray-300">
-            Quick Links
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {" "}
-            {/* Reduced gap (gap-6 -> gap-4) */}
-            <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-200 min-h-[120px]">
-              {" "}
-              {/* Reduced min-height (min-h-[150px] -> min-h-[120px]) */}
-              {/* Sub-heading: Reduced text size (text-lg -> text-base) and icon size (text-xl -> text-lg) */}
-              <h3 className="text-base font-semibold text-gray-700 mb-3 flex items-center">
-                {" "}
-                {/* Reduced mb (mb-4 -> mb-3) */}
-                <FaTag className="mr-2 text-green-600 text-lg" /> Popular
-                Topics
-              </h3>
-              <div className="flex flex-wrap gap-1.5">
-                {" "}
-                {/* Reduced gap (gap-2 -> gap-1.5) */}
-                {popularTopics.map((topic, index) => (
-                  <span
-                    key={index}
-                    className="px-2.5 py-0.5 bg-green-100 text-green-800 text-xs font-medium rounded-full cursor-pointer hover:bg-green-200 transition-colors"
-                  >
-                    {" "}
-                    {/* Reduced padding (px-3 py-1 -> px-2.5 py-0.5) */}
-                    {topic}
-                  </span>
-                ))}
-              </div>
+        {/* Exalt Coverage */}
+        <div className="rounded-2xl bg-gray-100 p-4 space-y-4 shadow-sm">
+          <p className="text-2xl sm:text-3xl font-bold text-gray-800 px-4 py-2 rounded-lg">
+            Exalt Coverage
+          </p>
+
+          <div className="flex flex-col md:flex-row gap-4">
+            <div className="flex-1">
+              <EventsList
+                heading={"What's happening in US"}
+                donor={true}
+                articlesToShow={articlesToShow1}
+                showAll={showAll}
+                setShowAll={setShowAll}
+                showDonor={true}
+              />
             </div>
-            <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-200 min-h-[120px]">
-              {" "}
-              {/* Reduced min-height */}
-              {/* Sub-heading: Reduced text size (text-lg -> text-base) and icon size (text-xl -> text-lg) */}
-              <h3 className="text-base font-semibold text-gray-700 mb-3 flex items-center">
-                {" "}
-                {/* Reduced mb */}
-                <FaNewspaper className="mr-2 text-indigo-600 text-lg" /> Recent
-                Articles
-              </h3>
-              <ul className="space-y-1.5 text-sm">
-                {" "}
-                {/* Reduced space-y (space-y-2 -> space-y-1.5) */}
-                {recentArticles.map((article) => (
-                  <li key={article.id}>
-                    <a
-                      href={article.link}
-                      className="text-indigo-700 hover:text-indigo-900 font-medium transition-colors"
-                    >
-                      • {article.title}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+
+            <div className="flex-1">
+              <EventsList
+                heading={"What's happening in India"}
+                donor={true}
+                articlesToShow={articlesToShow1}
+                showAll={showAll}
+                setShowAll={setShowAll}
+                showDonor={true}
+              />
             </div>
           </div>
         </div>
+
         {/* Upload Data Section */}
         <div className="bg-gray-100 rounded-xl p-6 shadow-sm border border-gray-200 mt-6 ">
           <h2 className="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b border-gray-300">
@@ -439,7 +340,7 @@ const ConstituentProfile: React.FC = () => {
             className="flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-lg p-8 bg-white hover:bg-blue-50 transition-colors cursor-pointer"
             onDragOver={handleDragOver}
             onDrop={handleFileDrop}
-            onClick={() => fileInputRef.current?.click()} // Click hidden input when box is clicked
+            onClick={() => fileInputRef.current?.click()}
           >
             {uploadedFile ? (
               <div className="flex flex-col items-center">
@@ -452,7 +353,7 @@ const ConstituentProfile: React.FC = () => {
                 </p>
                 <button
                   onClick={(e) => {
-                    e.stopPropagation(); // Prevent clicking the file input again
+                    e.stopPropagation();
                     removeFile();
                   }}
                   className="mt-2 text-red-500 hover:text-red-700 text-sm flex items-center"
@@ -490,16 +391,16 @@ const ConstituentProfile: React.FC = () => {
               className="hidden"
               id="fileUpload"
               accept=".csv,.xlsx,.json"
-              onChange={handleFileUpload} // Add logic here
-              ref={fileInputRef} // Connect the ref to the input
+              onChange={handleFileUpload}
+              ref={fileInputRef}
             />
             <button
               onClick={(e) => {
-                e.stopPropagation(); // Prevent triggering the parent div's onClick
-                // Add actual upload logic here, e.g., send uploadedFile to server
+                e.stopPropagation();
                 if (uploadedFile) {
-                  alert(`Uploading ${uploadedFile.name}... (Actual upload logic goes here!)`);
-                  // For a real application, you'd send `uploadedFile` to your backend
+                  alert(
+                    `Uploading ${uploadedFile.name}... (Actual upload logic goes here!)`
+                  );
                 } else {
                   alert("Please select a file first.");
                 }
@@ -511,6 +412,14 @@ const ConstituentProfile: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Todo Modal */}
+      <TodoModal
+        open={isTodoModalOpen}
+        onClose={() => setIsTodoModalOpen(false)}
+        todos={todos}
+        setTodos={setTodos}
+      />
     </Layout>
   );
 };
