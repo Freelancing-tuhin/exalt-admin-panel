@@ -137,7 +137,9 @@ export const DonorTracker = () => {
                     className="hover:bg-gray-100 transition-colors"
                   >
                     <td className="px-4 py-3 text-sm text-gray-900 font-medium">
-                      {campaign.email}
+                      <span className="blur-xs  transition-all duration-200 cursor-pointer">
+                        {/* {campaign.email} */}test@gmail.com
+                      </span>
                     </td>
                     <td className="px-4 py-3 text-sm text-gray-600">
                       {campaign.date}

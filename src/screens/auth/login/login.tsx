@@ -35,9 +35,9 @@ export const Login = () => {
       {/* Left Side - Image Placeholder */}
       <div className="sm:w-1/2 bg-[#202226] flex items-center justify-center">
         <img
-          src="https://framerusercontent.com/images/3hAyZ00oRc483dBqSEyAZsbu7Ls.png"
+          src="https://res.cloudinary.com/diecfwnp9/image/upload/v1755147909/Screenshot_2025-08-14_103206_tjdmep.png"
           alt="Map Illustration"
-          className="w-[60%] my-10 sm:my-0 sm:max-w-xl  object-contain"
+          className="w-[80%] my-10 sm:my-0 sm:max-w-xl  object-contain"
         />
       </div>
 

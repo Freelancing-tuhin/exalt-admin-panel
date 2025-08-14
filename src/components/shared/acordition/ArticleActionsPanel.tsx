@@ -24,7 +24,7 @@ export const ArticleActionsPanel = () => {
   };
 
   return (
-    <div className="flex flex-col w-full mt-8 md:mt-0 md:w-80 mx-auto gap-2 p-5  md:p-2 ">
+    <div className="flex flex-col w-full mt-8 md:mt-0 md:w-96 mx-auto gap-2 p-3  md:p-2 ">
       {actionItems.map((item, i) => {
         const isOpen = openIndex === i;
 

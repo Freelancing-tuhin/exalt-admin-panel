@@ -40,7 +40,7 @@ export const Sidebar = () => {
         isCollapsed ? "w-22" : "w-48 sm:w-44 md:w-44 lg:w-56 xl:w-66"
       } h-screen bg-[#F7F7F5] p-4 transition-all duration-300 flex flex-col justify-between`}
     >
-        {/* <div
+      {/* <div
     className={`${
       isCollapsed ? "w-22" : "w-48 sm:w-44 md:w-44 lg:w-56 xl:w-66"
     } h-screen p-4 transition-all duration-300 flex flex-col justify-between
@@ -274,7 +274,9 @@ export const Sidebar = () => {
           className={`flex items-center p-2 rounded-md border-2 border-gray-300 hover:shadow-sm transition cursor-pointer `}
         >
           <img
-            src={"https://media.licdn.com/dms/image/sync/v2/D4E27AQEvbuass5EBeA/articleshare-shrink_800/articleshare-shrink_800/0/1712246208786?e=1755723600&v=beta&t=d_utJKTXC5RYwEChLlp7tTKFebsxJ_1aalK1t1PvmDk"}
+            src={
+              "https://media.licdn.com/dms/image/sync/v2/D4E27AQEvbuass5EBeA/articleshare-shrink_800/articleshare-shrink_800/0/1712246208786?e=1755723600&v=beta&t=d_utJKTXC5RYwEChLlp7tTKFebsxJ_1aalK1t1PvmDk"
+            }
             alt="Profile"
             className={`rounded-md object-cover transition-all duration-200 h-10 w-10 `}
           />
