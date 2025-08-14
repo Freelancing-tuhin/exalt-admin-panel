@@ -6,7 +6,7 @@ import { useHeading } from "../../contexts/headingContext";
 import { Layout } from "../layout/Layout";
 import { ItemLister } from "../../components/shared/itemLister/ItemLister";
 import { TweeterPost } from "../../components/shared/tweeterPost/TweeterPost";
-import { ReasonInput } from "../../components/shared/reasonINput/ReasonInput";
+// import { ReasonInput } from "../../components/shared/reasonINput/ReasonInput";
 import { DonorOutreach } from "../../components/shared/articleSections/DonorOutreach";
 import data from "../../database/articles.json";
 import { useParams } from "react-router-dom";
@@ -14,7 +14,7 @@ import { Header } from "../../components/shared/header/Header";
 import { IconTabs } from "../../components/shared/sectionTabs/SectionTabs";
 import { MdOutlineDashboard } from "react-icons/md";
 import { FiUsers } from "react-icons/fi";
-import { MultiLevelSentimentChart } from "../../components/main/sentimentChart/Graph";
+// import { MultiLevelSentimentChart } from "../../components/main/sentimentChart/Graph";
 import { SentimentChart } from "../../components/main/sentimentChart/SentimentChart";
 
 export const ViralDiscussion = () => {

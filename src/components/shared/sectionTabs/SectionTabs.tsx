@@ -1,4 +1,5 @@
 // src/components/shared/IconTabs.tsx
+//@ts-ignore
 import React, { useRef, useEffect, useState, ElementType } from "react";
 
 interface TabItem {
@@ -144,6 +145,7 @@ export const IconTabs: React.FC<IconTabsProps> = ({
           return (
             <button
               key={i}
+              //@ts-ignore
               ref={(el) => (tabsRef.current[i] = el)}
               onClick={() => !disabled && onChange(label)}
               disabled={disabled}

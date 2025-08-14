@@ -158,7 +158,7 @@ const ConstituentProfile: React.FC = () => {
   ];
 
   useEffect(() => {
-    setHeading("Constituent Profile");
+    setHeading("Campaign");
   }, [setHeading]);
 
   return (
@@ -436,7 +436,7 @@ const ConstituentProfile: React.FC = () => {
           </h2>
 
           <div
-            className="flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-lg p-8 bg-white hover:bg-gray-100 transition-colors cursor-pointer"
+            className="flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-lg p-8 bg-white hover:bg-blue-50 transition-colors cursor-pointer"
             onDragOver={handleDragOver}
             onDrop={handleFileDrop}
             onClick={() => fileInputRef.current?.click()} // Click hidden input when box is clicked

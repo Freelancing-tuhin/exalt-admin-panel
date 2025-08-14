@@ -255,9 +255,9 @@ export const Sidebar = () => {
             <>
               <SidebarItem
                 icon={<RiAccountPinBoxLine />}
-                label="Constituent Profile"
+                label="Campaign Dashboard"
                 isCollapsed={isCollapsed}
-                route={""}
+                route={"/client/"}
               />
               <SidebarItem
                 icon={<TiStarOutline />}

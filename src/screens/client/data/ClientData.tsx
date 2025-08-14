@@ -13,7 +13,7 @@ export const ClientData = () => {
   const [showAll, setShowAll] = useState(false);
 
   const articlesToShow1 = showAll ? articlesData : articlesData.slice(0, 3);
-  const articlesToShow2 = showAll ? articlesData : articlesData.slice(3, 6);
+  // const articlesToShow2 = showAll ? articlesData : articlesData.slice(3, 6);
   const viralDiscussions = showAll ? articlesData : articlesData.slice(6, 8);
 
   useEffect(() => {

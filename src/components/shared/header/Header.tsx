@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { FaUserCircle } from "react-icons/fa";
 import { FiChevronRight } from "react-icons/fi";
 import { AiFillHome } from "react-icons/ai";
 import { MdPublic } from "react-icons/md";

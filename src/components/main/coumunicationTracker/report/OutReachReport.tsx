@@ -35,7 +35,7 @@ export const OutReachReport: React.FC = () => {
     labels: ["One-Time", "Recurring"],
     colors: ["#3b82f6", "#10b981"],
     legend: { position: "bottom" },
-    dataLabels: { formatter: (val) => `${val.toFixed(1)}%` },
+    dataLabels: { formatter: (val) => `${val}%` },
   };
   const oneTimeRecurringSeries = [75000.05, 45000.0];
 

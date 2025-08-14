@@ -340,7 +340,7 @@ export const ClientEvents = () => {
   }, [setHeading]);
 
   const getCultureTagColors = () => {
-    return "bg-gray-200 text-gray-700";
+    return "bg-violet-200 text-gray-700";
   };
 
   const getCategoryColors = (category: string) => {
@@ -354,7 +354,7 @@ export const ClientEvents = () => {
       case "Festival":
         return "bg-red-500 text-white";
       default:
-        return "bg-gray-500 text-white";
+        return "bg-violet-200 text-white";
     }
   };
 
@@ -365,7 +365,7 @@ export const ClientEvents = () => {
       case "Low":
         return "bg-green-500 text-white";
       default:
-        return "bg-gray-500 text-white";
+        return "bg-red-500 text-white";
     }
   };
 
@@ -419,47 +419,46 @@ export const ClientEvents = () => {
     </div>
 
     {/* Event Rows */}
-    <div className="space-y-2">
-      {otherEvents.map((event, index) => (
-        <div
-          key={event.id}
-          className={`grid grid-cols-[70fr_15fr_15fr] gap-x-4 items-center text-sm text-gray-800 rounded-xl p-3 transition-all duration-200 ${
-            index % 2 === 0 ? "bg-gray-50" : "bg-gray-100"
-          } hover:bg-white hover:shadow-md`}
-        >
-          {/* Event Info */}
-          <div className="flex items-center flex-wrap gap-x-3 gap-y-1">
-            <span className="font-medium">{event.title}</span>
-            <span className="text-gray-500">• {event.date}</span>
-            <span
-              className={`text-xs px-2 py-0.5 rounded-full font-medium bg-gray-200 text-gray-700 ${getCultureTagColors()}`}
-            >
-              {event.topic}
-            </span>
+            <div className="space-y-2">
+              {otherEvents.map((event, index) => (
+                <div
+                  key={event.id}
+                  className={`grid grid-cols-[70fr_15fr_15fr] gap-x-4 items-center text-sm text-gray-800 rounded-xl p-3 transition-all duration-200 ${index % 2 === 0 ? "bg-gray-50" : "bg-gray-100"
+                    } hover:bg-white hover:shadow-md`}
+                >
+                  {/* Event Info */}
+                  <div className="flex items-center flex-wrap gap-x-3 gap-y-1">
+                    <span className="font-medium">{event.title}</span>
+                    <span className="text-gray-500">• {event.date}</span>
+                    <span
+                      className={`text-xs px-2 py-0.5 rounded-full font-medium text-gray-700 ${getCultureTagColors()}`}
+                    >
+                      {event.topic}
+                    </span>
+                  </div>
+
+                  {/* Category */}
+                  <span
+                    className={`justify-self-center text-xs px-3 py-1 rounded-full font-medium text-gray-700 ${getCategoryColors(
+                      event.category
+                    )}`}
+                  >
+                    {event.category}
+                  </span>
+
+                  {/* Priority */}
+                  <span
+                    className={`justify-self-center text-xs px-3 py-1 rounded-full font-medium text-gray-700 ${getPriorityColors(
+                      event.priority
+                    )}`}
+                  >
+                    {event.priority}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
-
-          {/* Category */}
-          <span
-            className={`justify-self-center text-xs px-3 py-1 rounded-full font-medium bg-gray-200 text-gray-700 ${getCategoryColors(
-              event.category
-            )}`}
-          >
-            {event.category}
-          </span>
-
-          {/* Priority */}
-          <span
-            className={`justify-self-center text-xs px-3 py-1 rounded-full font-medium bg-gray-200 text-gray-700 ${getPriorityColors(
-              event.priority
-            )}`}
-          >
-            {event.priority}
-          </span>
         </div>
-      ))}
-    </div>
-  </div>
-</div>
 
       </div>
     </Layout>
