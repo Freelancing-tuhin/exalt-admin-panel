@@ -1,6 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useContext, useState } from "react";
 import {
-  FiSearch,
   FiFileText,
   FiClock,
   FiCopy,
@@ -15,41 +15,34 @@ import {
   TbLayoutSidebarLeftCollapse,
   TbLayoutSidebarRightCollapse,
 } from "react-icons/tb";
-import { SidebarItem } from "../../shared/sidebarItem/SidebarItem";
 import AuthContext from "../../../contexts/authContext/authContext";
 import { IoFileTrayOutline } from "react-icons/io5";
 import { TiStarOutline } from "react-icons/ti";
 import { RiAccountPinBoxLine } from "react-icons/ri";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { MdGroups } from "react-icons/md";
 import { FaRegHeart } from "react-icons/fa";
+import { SearchBar } from "../../shared/searchbar/SearchBar";
 
+// Sidebar Component
 export const Sidebar = () => {
   const { user } = useContext(AuthContext);
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const location = useLocation();
 
-  // const handleLogout = () => {
-  //   setUser({});
-  //   localStorage.removeItem("user");
-  //   localStorage.removeItem("token");
-  //   window.location.href = "/login";
-  // };
   return (
     <div
       className={`${
-        isCollapsed ? "w-22" : "w-48 sm:w-44 md:w-44 lg:w-56 xl:w-66"
-      } h-screen bg-[#F7F7F5] p-4 transition-all duration-300 flex flex-col justify-between`}
+        isCollapsed ? "w-20" : "w-72"
+      } h-screen bg-gradient-to-b from-gray-50 via-white to-gray-100 p-4 transition-all duration-300 flex flex-col justify-between relative overflow-hidden border-r border-gray-200`}
     >
-      {/* <div
-    className={`${
-      isCollapsed ? "w-22" : "w-48 sm:w-44 md:w-44 lg:w-56 xl:w-66"
-    } h-screen p-4 transition-all duration-300 flex flex-col justify-between
-    bg-gradient-to-br from-pink-200/60 via-yellow-100/50 via-purple-200/50 to-pink-300/60
-    backdrop-blur-lg border border-white/25 shadow-xl rounded-xl`}
-  ></div> */}
+      {/* Background decorations */}
+      <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-pink-500/5 to-purple-500/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 right-0 w-24 h-24 bg-gradient-to-br from-blue-500/5 to-cyan-500/5 rounded-full blur-2xl"></div>
+
       {/* Top Section */}
-      <div>
-        {/* Logo + Toggle */}
+      <div className="relative z-10">
+        {/* Logo + Collapse toggle */}
         <div className="flex items-center justify-between mb-6 pt-2 pl-2">
           {!isCollapsed && (
             <Link to="/client/">
@@ -112,188 +105,245 @@ export const Sidebar = () => {
         </div>
 
         {/* Search */}
-        <div className="relative mb-6">
-          {isCollapsed ? (
-            <div className="flex justify-center mt-4">
-              <FiSearch className="text-gray-400 mt-3" />
-            </div>
-          ) : (
-            <>
-              <FiSearch className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-400" />
-              <input
-                type="text"
-                placeholder="Search"
-                className="w-full pl-10 pr-3 py-2 rounded-md bg-gray-100 text-sm placeholder-gray-500 focus:outline-none"
-              />
-            </>
-          )}
-        </div>
+        <SearchBar isCollapsed={isCollapsed} />
 
-        <div className="mb-2">
-          {/* Shown when expanded */}
-          <div
-            className={`text-xs text-gray-400 uppercase font-semibold ${
-              isCollapsed ? "hidden" : "block"
-            }`}
-          >
-            Briefs
-          </div>
-
-          {/* Shown when collapsed */}
-          <div
-            className={`text-gray-400 text-center ${
-              isCollapsed ? "block" : "hidden"
-            }`}
-          >
-            •
-          </div>
-        </div>
-
-        <div className="space-y-1 mb-">
+        {/* Navigation */}
+        <div className="">
           {user?.role === "ADMIN" ? (
             <>
-              <SidebarItem
-                icon={<IoFileTrayOutline />}
+              <ModernSidebarItem
+                icon={<IoFileTrayOutline size={20} />}
                 label="Issues"
                 isCollapsed={isCollapsed}
                 route={"/admin/issues"}
+                isActive={location.pathname === "/admin/issues"}
               />
-              <SidebarItem
-                icon={<FiClock />}
+              <ModernSidebarItem
+                icon={<FiClock size={20} />}
                 label="Events"
                 isCollapsed={isCollapsed}
                 route={"/admin/events"}
+                isActive={location.pathname === "/admin/events"}
               />
-
-              <SidebarItem
-                icon={<FiCopy />}
+              <ModernSidebarItem
+                icon={<FiCopy size={20} />}
                 label="Final Briefs"
                 isCollapsed={isCollapsed}
                 route={"/admin/final-briefs"}
+                isActive={location.pathname === "/admin/final-briefs"}
               />
             </>
           ) : (
             <>
-              <SidebarItem
-                icon={<FiFileText />}
+              <ModernSidebarItem
+                icon={<FiFileText size={20} />}
                 label="Briefs"
                 isCollapsed={isCollapsed}
                 route={"/client/briefs"}
+                isActive={location.pathname === "/client/briefs"}
               />
-              <SidebarItem
-                icon={<FiClock />}
+              <ModernSidebarItem
+                icon={<FiClock size={20} />}
                 label="Events"
                 isCollapsed={isCollapsed}
                 route={"/client/events"}
+                isActive={location.pathname === "/client/events"}
               />
-
-              <SidebarItem
-                icon={<FiCopy />}
+              <ModernSidebarItem
+                icon={<FiCopy size={20} />}
                 label="Holidays"
                 isCollapsed={isCollapsed}
                 route={"/client/holidays"}
+                isActive={location.pathname === "/client/holidays"}
               />
-              <SidebarItem
-                icon={<FaRegHeart />}
+              <ModernSidebarItem
+                icon={<FaRegHeart size={20} />}
                 label="Donor Engagement"
                 isCollapsed={isCollapsed}
                 route={"/client/donor-engagement"}
+                isActive={location.pathname === "/client/donor-engagement"}
               />
-              <SidebarItem
-                icon={<MdGroups />}
+              <ModernSidebarItem
+                icon={<MdGroups size={20} />}
                 label="Previous Outreach"
                 isCollapsed={isCollapsed}
                 route={"/client/PreviousOutreach"}
+                isActive={location.pathname === "/client/PreviousOutreach"}
               />
             </>
           )}
         </div>
 
-        {/* Section 2 */}
-
-        <div className="space-y-1 mb-6">
-          <SidebarItem
-            icon={<FiBox />}
+        <div className="">
+          <ModernSidebarItem
+            icon={<FiBox size={20} />}
             label="Bulletins"
             isCollapsed={isCollapsed}
-            route={""}
+            route={"/bulletins"}
+            isActive={location.pathname === "/bulletins"}
           />
-          <SidebarItem
-            icon={<FiAlertCircle />}
+          <ModernSidebarItem
+            icon={<FiAlertCircle size={20} />}
             label="Alerts"
             isCollapsed={isCollapsed}
-            route={""}
+            route={"/alerts"}
+            isActive={location.pathname === "/alerts"}
+            badgeColor="bg-red-500"
           />
-          <SidebarItem
-            icon={<FiBarChart2 />}
+          <ModernSidebarItem
+            icon={<FiBarChart2 size={20} />}
             label="Data"
             isCollapsed={isCollapsed}
             route={"/client/data"}
+            isActive={location.pathname === "/client/data"}
           />
         </div>
       </div>
 
       {/* Bottom Section */}
-      <div>
-        <div className="space-y-1 mb-4">
+      <div className="relative z-10">
+        <div className="">
           {user?.role === "ADMIN" ? (
             <>
-              <SidebarItem
-                icon={<FiTool />}
+              <ModernSidebarItem
+                icon={<FiTool size={20} />}
                 label="Client Tools"
                 isCollapsed={isCollapsed}
-                route={""}
+                route={"/admin/client-tools"}
+                isActive={location.pathname === "/admin/client-tools"}
               />
-              <SidebarItem
-                icon={<FiServer />}
+              <ModernSidebarItem
+                icon={<FiServer size={20} />}
                 label="Backend Users"
                 isCollapsed={isCollapsed}
-                route={""}
+                route={"/admin/backend-users"}
+                isActive={location.pathname === "/admin/backend-users"}
               />
             </>
           ) : (
             <>
-              <SidebarItem
-                icon={<RiAccountPinBoxLine />}
+              <ModernSidebarItem
+                icon={<RiAccountPinBoxLine size={20} />}
                 label="Campaign Dashboard"
                 isCollapsed={isCollapsed}
                 route={"/client/"}
+                isActive={
+                  location.pathname === "/client/" ||
+                  location.pathname === "/client"
+                }
               />
-              <SidebarItem
-                icon={<TiStarOutline />}
+              <ModernSidebarItem
+                icon={<TiStarOutline size={20} />}
                 label="Started"
                 isCollapsed={isCollapsed}
-                route={""}
+                route={"/client/started"}
+                isActive={location.pathname === "/client/started"}
               />
             </>
           )}
         </div>
 
-        <div
-          // onClick={handleLogout}
-          className={`flex items-center p-2 rounded-md border-2 border-gray-300 hover:shadow-sm transition cursor-pointer `}
-        >
-          <img
-            src={
-              "https://media.licdn.com/dms/image/sync/v2/D4E27AQEvbuass5EBeA/articleshare-shrink_800/articleshare-shrink_800/0/1712246208786?e=1755723600&v=beta&t=d_utJKTXC5RYwEChLlp7tTKFebsxJ_1aalK1t1PvmDk"
-            }
-            alt="Profile"
-            className={`rounded-md object-cover transition-all duration-200 h-10 w-10 `}
-          />
+        {/* Profile */}
+        <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 border border-gray-200 hover:bg-white hover:shadow-md transition-all duration-200 cursor-pointer group">
+          <div className="flex items-center space-x-3">
+            <div className="relative">
+              <img
+                src="https://media.licdn.com/dms/image/sync/v2/D4E27AQEvbuass5EBeA/articleshare-shrink_800/articleshare-shrink_800/0/1712246208786?e=1755723600&v=beta&t=d_utJKTXC5RYwEChLlp7tTKFebsxJ_1aalK1t1PvmDk"
+                alt="Profile"
+                className="w-10 h-10 rounded-xl object-cover ring-2 ring-gray-200 group-hover:ring-pink-500/50 transition-all duration-200"
+              />
+              <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white"></div>
+            </div>
 
-          {!isCollapsed && (
-            <>
-              <div className="flex-1 ml-2">
-                <p className="text-sm font-semibold">Sudhanshu Kaushik</p>
-                <p className="text-xs text-gray-500">{user?.role}</p>
+            {!isCollapsed && (
+              <div className="flex-1">
+                <p className="text-sm font-semibold text-gray-800">
+                  Sudhanshu Kaushik
+                </p>
+                <p className="text-xs text-gray-500">
+                  {user?.role || "Client"}
+                </p>
               </div>
-              <FiSettings size={16} className="text-gray-500" />
-            </>
-          )}
+            )}
+
+            {!isCollapsed && (
+              <FiSettings
+                size={16}
+                className="text-gray-400 group-hover:text-gray-600 transition-colors duration-200"
+              />
+            )}
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-// Sidebar Item
+// Modern Sidebar Item Component
+const ModernSidebarItem = ({
+  icon,
+  label,
+  isCollapsed,
+  route,
+  isActive = false,
+  badge = null,
+  badgeColor = "bg-pink-500",
+}: any) => {
+  return (
+    <Link to={route || "#"}>
+      <div
+        className={`
+          group flex items-center p-2.5 mb-0.5 rounded-2xl transition-all duration-300 cursor-pointer relative
+          ${
+            isActive
+              ? "bg-gradient-to-r from-gray-500/10 to-indigo-500/10 text-gray-800 translate-x-1"
+              : "hover:bg-gray-100 text-gray-600 hover:text-gray-800   translate-x-1"
+          }
+        
+        `}
+      >
+        <div
+          className={`
+            flex items-center justify-center w-8 h-8 rounded-xl transition-all duration-300 transform
+            ${
+              isActive
+                ? "bg-gradient-to-br from-blue-500 to-purple-500 text-white shadow-lg scale-110"
+                : "text-gray-500 group-hover:text-gray-700 group-hover:bg-gray-100 scale-100"
+            }
+          `}
+        >
+          {icon}
+        </div>
+
+        {!isCollapsed && (
+          <>
+            <span className="ml-3 font-medium text-sm tracking-wide transition-all duration-300">
+              {label}
+            </span>
+            {badge && (
+              <div
+                className={`
+                  ml-auto px-2 py-1 rounded-full text-xs font-bold text-white shadow-lg
+                  ${badgeColor}
+                  ${badge === "!" ? "animate-pulse" : ""}
+                `}
+              >
+                {badge}
+              </div>
+            )}
+          </>
+        )}
+
+        {badge && isCollapsed && (
+          <div
+            className={`
+              absolute -top-1 -right-1 w-3 h-3 rounded-full
+              ${badgeColor}
+              ${badge === "!" ? "animate-pulse" : ""}
+            `}
+          ></div>
+        )}
+      </div>
+    </Link>
+  );
+};

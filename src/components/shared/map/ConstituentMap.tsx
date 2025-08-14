@@ -93,7 +93,7 @@ export const ConstituentMap: React.FC<ConstituentMapProps> = ({
 
   const fullscreenMap = (
     <div
-      className="fixed inset-0 z-[999] flex flex-col bg-black/70 backdrop-blur-sm"
+      className="fixed inset-0 flex flex-col bg-black/70 backdrop-blur-sm"
       role="dialog"
       aria-modal="true"
     >
@@ -228,7 +228,7 @@ export const ConstituentMap: React.FC<ConstituentMapProps> = ({
               type="button"
               aria-label="Open fullscreen map"
               onClick={() => setShowFullscreen(true)}
-              className="absolute top-3 right-3 z-10 inline-flex items-center justify-center w-9 h-9 rounded-full bg-white/85 hover:bg-white shadow-md border border-purple-200 text-purple-700 transition"
+              className="absolute top-3 right-3  inline-flex items-center justify-center w-9 h-9 rounded-full bg-white/85 hover:bg-white shadow-md border border-purple-200 text-purple-700 transition"
             >
               <FiMaximize2 />
             </button>
@@ -316,7 +316,7 @@ export const ConstituentMap: React.FC<ConstituentMapProps> = ({
                 type="button"
                 aria-label="Open fullscreen map"
                 onClick={() => setShowFullscreen(true)}
-                className="absolute top-3 right-3 z-10 inline-flex items-center justify-center w-9 h-9 rounded-full bg-white/85 hover:bg-white shadow-md border border-purple-200 text-purple-700 transition"
+                className="absolute top-3 right-3  inline-flex items-center justify-center w-9 h-9 rounded-full bg-white/85 hover:bg-white shadow-md border border-purple-200 text-purple-700 transition"
               >
                 <FiMaximize2 />
               </button>

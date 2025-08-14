@@ -52,7 +52,7 @@ export const DonorOutreach = ({ articlesData }: any) => {
         />
 
         {/* Month buttons */}
-        <div className="flex items-center gap-2 relative z-10">
+        <div className="flex items-center gap-2 relative ">
           {months.map((month) => (
             <button
               key={month}

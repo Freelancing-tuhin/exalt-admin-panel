@@ -95,19 +95,19 @@ const HorizontalScroller: React.FC<{ children: React.ReactNode }> = ({
     <div className="relative group">
       {/* Left gradient */}
       {canScrollLeft && (
-        <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-white/60 via-white/40 to-transparent pointer-events-none z-5"></div>
+        <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-white/60 via-white/40 to-transparent pointer-events-none "></div>
       )}
 
       {/* Right gradient */}
       {canScrollRight && (
-        <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-white/60 via-white/40 to-transparent pointer-events-none z-5"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-white/60 via-white/40 to-transparent pointer-events-none "></div>
       )}
 
       {/* Scroll Buttons */}
       <button
         aria-label="Scroll left"
         onClick={() => scrollByAmount(-1)}
-        className={`absolute left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full shadow-lg flex items-center justify-center transition 
+        className={`absolute left-2 top-1/2 -translate-y-1/2  w-10 h-10 rounded-full shadow-lg flex items-center justify-center transition 
           ${
             canScrollLeft
               ? "bg-gradient-to-br from-gray-100 to-gray-200 hover:bg-gray-100 cursor-pointer"
@@ -120,7 +120,7 @@ const HorizontalScroller: React.FC<{ children: React.ReactNode }> = ({
       <button
         aria-label="Scroll right"
         onClick={() => scrollByAmount(1)}
-        className={`absolute right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full shadow-lg flex items-center justify-center transition 
+        className={`absolute right-2 top-1/2 -translate-y-1/2  w-10 h-10 rounded-full shadow-lg flex items-center justify-center transition 
           ${
             canScrollRight
               ? "bg-gradient-to-br  from-gray-100 to-gray-200 hover:bg-gray-100 cursor-pointer"
@@ -400,31 +400,32 @@ export const ClientEvents = () => {
 
         {/* Other Events */}
         <div>
-  {/* Section Title */}
-  <h2 className="text-sm text-gray-500 font-semibold mb-4 tracking-wide">
-    Other Upcoming Events
-  </h2>
+          {/* Section Title */}
+          <h2 className="text-sm text-gray-500 font-semibold mb-4 tracking-wide">
+            Other Upcoming Events
+          </h2>
 
-  {/* Card Container */}
-  <div className="bg-white p-5 rounded-2xl shadow-sm border border-gray-200">
-    {/* Table Header */}
-    <div className="grid grid-cols-[70fr_15fr_15fr] gap-x-4 items-center text-sm font-semibold text-gray-600 border-b border-gray-200 pb-3 mb-3">
-      <div className="flex ">
-        <span className="w-32">Event</span>
-        <span className="w-20">Date</span>
-        <span className="w-20">Culture</span>
-      </div>
-      <span className="text-center">Category</span>
-      <span className="text-center">Priority</span>
-    </div>
+          {/* Card Container */}
+          <div className="bg-white p-5 rounded-2xl shadow-sm border border-gray-200">
+            {/* Table Header */}
+            <div className="grid grid-cols-[70fr_15fr_15fr] gap-x-4 items-center text-sm font-semibold text-gray-600 border-b border-gray-200 pb-3 mb-3">
+              <div className="flex ">
+                <span className="w-32">Event</span>
+                <span className="w-20">Date</span>
+                <span className="w-20">Culture</span>
+              </div>
+              <span className="text-center">Category</span>
+              <span className="text-center">Priority</span>
+            </div>
 
-    {/* Event Rows */}
+            {/* Event Rows */}
             <div className="space-y-2">
               {otherEvents.map((event, index) => (
                 <div
                   key={event.id}
-                  className={`grid grid-cols-[70fr_15fr_15fr] gap-x-4 items-center text-sm text-gray-800 rounded-xl p-3 transition-all duration-200 ${index % 2 === 0 ? "bg-gray-50" : "bg-gray-100"
-                    } hover:bg-white hover:shadow-md`}
+                  className={`grid grid-cols-[70fr_15fr_15fr] gap-x-4 items-center text-sm text-gray-800 rounded-xl p-3 transition-all duration-200 ${
+                    index % 2 === 0 ? "bg-gray-50" : "bg-gray-100"
+                  } hover:bg-white hover:shadow-md`}
                 >
                   {/* Event Info */}
                   <div className="flex items-center flex-wrap gap-x-3 gap-y-1">
@@ -459,7 +460,6 @@ export const ClientEvents = () => {
             </div>
           </div>
         </div>
-
       </div>
     </Layout>
   );

@@ -52,7 +52,7 @@ export const ViralCard = ({ item, i }: any) => {
       )} */}
 
       {/* Card content */}
-      <div className="absolute bottom-0 px-5 pb-4 text-white space-y-3 w-full z-10">
+      <div className="absolute bottom-0 px-5 pb-4 text-white space-y-3 w-full">
         {item.tag && (
           <span
             className={`bg-white/70 text-black  backdrop-blur-sm text-xs px-3 py-1 rounded-full`}

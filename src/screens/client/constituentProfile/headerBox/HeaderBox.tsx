@@ -81,7 +81,7 @@ export const HeaderBox = () => {
           </svg>
         </div>
 
-        <div className="relative z-10 h-[480px] p-10 flex flex-col lg:flex-row items-center lg:items-stretch gap-10">
+        <div className="relative h-[480px] p-10 flex flex-col lg:flex-row items-center lg:items-stretch gap-10">
           {/* Left Content Section */}
           <div className="flex-1 flex flex-col justify-center text-white space-y-8">
             {/* Header Badge */}

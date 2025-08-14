@@ -64,9 +64,12 @@ export const GradientHeader = ({ title }: any) => {
           </svg>
         </div>
 
-        <div className="relative z-10 h-[300px] p-10 flex flex-col justify-center text-white">
+        <div className="relative  h-[300px] p-10 flex flex-col justify-center text-white">
           {/* Header Badge */}
-          <div className="inline-flex items-center gap-3 bg-slate-600/30 backdrop-blur-md rounded-full px-4 py-2 border border-slate-400/20 w-fit mb-6">
+          <div
+            className="inline-flex items-center gap-3 bg-slate-600/30 backdrop-blur-md
+           rounded-full px-4 py-2 border border-slate-400/20 w-fit mb-6"
+          >
             <div className="w-2 h-2 bg-purple-400 rounded-full shadow-sm shadow-purple-400/50"></div>
             <span className="text-sm font-medium text-slate-200 tracking-wider uppercase">
               Analytics Dashboard
