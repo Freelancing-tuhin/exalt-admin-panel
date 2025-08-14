@@ -20,7 +20,7 @@ export const ClientArticles = () => {
   const [currentSection, setCurrentSection] = useState("Article");
 
   console.log(id);
-  console.log(data?.[1]);
+  console.log(data?.[0]);
 
   useEffect(() => {
     setHeading("News");
@@ -32,7 +32,7 @@ export const ClientArticles = () => {
       <div className="flex flex-col md:flex-row">
         <div className="px-6 md:w-5/7 h-[90vh] overflow-y-auto   text-sm text-gray-800 space-y-6">
           <Header
-            title={data?.[id]?.title}
+            title={data?.[id - 1]?.title}
             author="Ndtv India"
             date="Sun April 7, 2023"
             readTime="5 min"

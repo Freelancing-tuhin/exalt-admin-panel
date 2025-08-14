@@ -9,7 +9,7 @@ export const EventsList = ({
   articlesToShow,
   showAll,
   setShowAll,
-  showDonor
+  showDonor,
 }: any) => {
   return (
     <div className="bg-[#f7f7f5] rounded-lg p-3 sm:p-4">

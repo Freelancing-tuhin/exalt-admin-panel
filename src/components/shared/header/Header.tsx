@@ -54,7 +54,7 @@ export const Header: React.FC<HeaderProps> = ({
 
   // Build breadcrumb items dynamically
   const breadcrumb = pathSegments.map((segment, index) => {
-    const path = "/" + pathSegments.slice(0, index + 1).join("/");
+    const path = "/" + pathSegments.slice(0, index).join("/");
     const mapped = segmentMap[segment] || {
       label: decodeURIComponent(segment).replace(/-/g, " "),
       icon: <BsFillFolderFill size={16} />,

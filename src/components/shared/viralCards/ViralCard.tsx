@@ -24,7 +24,7 @@ export const ViralCard = ({ item, i }: any) => {
     <Link
       to={`/client/data/viral-discussions/${item?._id}`}
       key={i}
-      className="flex-none w-96 h-72 rounded-2xl overflow-hidden shadow-lg relative group"
+      className="flex-none w-96 h-64 rounded-2xl overflow-hidden shadow-lg relative group"
     >
       {/* Background Image */}
       <img
