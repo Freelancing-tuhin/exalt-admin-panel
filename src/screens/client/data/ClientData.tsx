@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import articlesData from "../../../database/articles.json";
 import { GradientHeader } from "../../../components/shared/gradientHeader/GradientHedaer";
 import { ViralCard } from "../../../components/shared/viralCards/ViralCard";
+import { DetailedListView } from "../../../components/shared/listView/DetailedListView";
 
 export const ClientData = () => {
   const { setHeading } = useHeading();
@@ -23,10 +24,10 @@ export const ClientData = () => {
   return (
     <Layout>
       <Navbar />
-      <div className="p-6 h-[90vh] overflow-y-scroll space-y-8 mx-auto">
+      <div className="p-6 h-[90vh] overflow-y-scroll space-y-5 mx-auto">
         {/* Viral Discussions */}
         <GradientHeader title="Data Dashboard" />
-        <div>
+        <div className="">
           <h2 className="text-xl font-semibold text-gray-700 mb-3">
             Viral Discussions
           </h2>
@@ -38,70 +39,58 @@ export const ClientData = () => {
         </div>
 
         {/* Exalt Coverage */}
-        <div className="rounded-2xl bg-gray-100 p-4 space-y-4 shadow-sm">
-  {/* Header */}
-  <p className="text-2xl sm:text-3xl font-bold text-gray-800 px-4 py-2 rounded-lg bg-white shadow-inner">
-    Exalt Coverage
-  </p>
+        <div className="rounded-2xl  ">
+          {/* Header */}
+          <h2 className="text-xl font-semibold text-gray-700 mb-3">
+            Exalt Coverage
+          </h2>
 
-  {/* Content */}
-  <div className="flex flex-col md:flex-row gap-4">
-    <div className="flex-1">
-      <EventsList
-        heading={"What's happening in US"}
-        donor={true}
-        articlesToShow={articlesToShow1}
-        showAll={showAll}
-        setShowAll={setShowAll}
-        showDonor={true}
-      />
-    </div>
+          {/* Content */}
+          <div className="flex flex-col md:flex-row gap-4">
+            <div className="flex-1">
+              <DetailedListView
+                heading={"What's happening in US"}
+                donor={true}
+                articlesToShow={articlesToShow1}
+                showAll={showAll}
+                setShowAll={setShowAll}
+                showDonor={true}
+              />
+            </div>
+          </div>
+        </div>
 
-    <div className="flex-1">
-      <EventsList
-        heading={"What's happening in India"}
-        donor={true}
-        articlesToShow={articlesToShow1}
-        showAll={showAll}
-        setShowAll={setShowAll}
-        showDonor={true}
-      />
-    </div>
-  </div>
-</div>
+        <div className="mt-8">
+          {/* Header */}
+          <h2 className="text-xl font-semibold text-gray-700 mb-3">
+            Previously Trending
+          </h2>
 
+          {/* Content */}
+          <div className="flex flex-col md:flex-row gap-4">
+            <div className="flex-1">
+              <EventsList
+                heading={"What's happening in US"}
+                donor={true}
+                articlesToShow={articlesToShow1}
+                showAll={showAll}
+                setShowAll={setShowAll}
+                showDonor={false}
+              />
+            </div>
 
-                <div className="rounded-2xl bg-gray-100 p-4 space-y-4 shadow-sm">
-  {/* Header */}
-  <p className="text-2xl sm:text-3xl font-bold text-gray-800 px-4 py-2 rounded-lg bg-white shadow-inner">
-    Previously Trending
-  </p>
-
-  {/* Content */}
-  <div className="flex flex-col md:flex-row gap-4">
-    <div className="flex-1">
-      <EventsList
-        heading={"What's happening in US"}
-        donor={true}
-        articlesToShow={articlesToShow1}
-        showAll={showAll}
-        setShowAll={setShowAll}
-        showDonor={false}
-      />
-    </div>
-
-    <div className="flex-1">
-      <EventsList
-        heading={"What's happening in India"}
-        donor={true}
-        articlesToShow={articlesToShow1}
-        showAll={showAll}
-        setShowAll={setShowAll}
-        showDonor={false}
-      />
-    </div>
-  </div>
-</div>
+            <div className="flex-1">
+              <EventsList
+                heading={"What's happening in India"}
+                donor={true}
+                articlesToShow={articlesToShow1}
+                showAll={showAll}
+                setShowAll={setShowAll}
+                showDonor={false}
+              />
+            </div>
+          </div>
+        </div>
 
         {/* <EventsList
           heading={"Exalt Coverage"}
