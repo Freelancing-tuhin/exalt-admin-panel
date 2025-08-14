@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FiSearch, FiX } from "react-icons/fi";
 
 export const DonorSearch = () => {
