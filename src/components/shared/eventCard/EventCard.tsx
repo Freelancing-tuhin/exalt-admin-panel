@@ -21,7 +21,7 @@ const getTagStyle = (tag: string) => {
     case "charity":
       return "bg-pink-600/70 text-white backdrop-blur-sm";
     case "hindu":
-      return "bg-gray-800/70 text-white backdrop-blur-sm";
+      return "bg-amber-400/70 text-white backdrop-blur-sm";
     case "telugu":
       return "bg-purple-600/70 text-white backdrop-blur-sm";
     case "dinner":
@@ -33,7 +33,7 @@ const getTagStyle = (tag: string) => {
     case "grand opening":
       return "bg-green-700/70 text-white backdrop-blur-sm";
     default:
-      return "bg-gray-700/70 text-white backdrop-blur-sm";
+      return "bg-yellow-700/70 text-white backdrop-blur-sm";
   }
 };
 

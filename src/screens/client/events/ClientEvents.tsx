@@ -218,82 +218,82 @@ const events = {
       tags: ["Music", "Gujarati"],
     },
   ],
-  Political: [
-    {
-      id: "5",
-      title: "No Kings Protest",
-      date: "January 13, 2025",
-      image:
-        "https://framerusercontent.com/images/tbaVws3GxXcXC30ecOGxIwev6Ak.png",
-      tags: ["Hindu"],
-    },
-    {
-      id: "6",
-      title: "Local Club",
-      date: "January 14, 2025",
-      image:
-        "https://framerusercontent.com/images/18Q56jhO4AoJjOTkDWg38hHPRM.png",
-      tags: ["Dinner", "General"],
-    },
-    {
-      id: "7",
-      title: "Hotel Owners Town Hall",
-      date: "January 26, 2025",
-      image:
-        "https://framerusercontent.com/images/7iQtoM4DohgBigX8dSWtZew6qc.png",
-      tags: ["General"],
-    },
-    {
-      id: "5",
-      title: "No Kings Protest",
-      date: "January 13, 2025",
-      image:
-        "https://framerusercontent.com/images/tbaVws3GxXcXC30ecOGxIwev6Ak.png",
-      tags: ["Hindu"],
-    },
-    {
-      id: "6",
-      title: "Local Club",
-      date: "January 14, 2025",
-      image:
-        "https://framerusercontent.com/images/18Q56jhO4AoJjOTkDWg38hHPRM.png",
-      tags: ["Dinner", "General"],
-    },
-    {
-      id: "7",
-      title: "Hotel Owners Town Hall",
-      date: "January 26, 2025",
-      image:
-        "https://framerusercontent.com/images/7iQtoM4DohgBigX8dSWtZew6qc.png",
-      tags: ["General"],
-    },
-  ],
-  Religious: [
-    {
-      id: "8",
-      title: "Christmas",
-      date: "January 13, 2025",
-      image:
-        "https://framerusercontent.com/images/tbaVws3GxXcXC30ecOGxIwev6Ak.png",
-      tags: ["Charity", "Hindu"],
-    },
-    {
-      id: "9",
-      title: "Easter",
-      date: "January 14, 2025",
-      image:
-        "https://framerusercontent.com/images/18Q56jhO4AoJjOTkDWg38hHPRM.png",
-      tags: ["Telugu"],
-    },
-    {
-      id: "10",
-      title: "Quanza",
-      date: "January 26, 2025",
-      image:
-        "https://framerusercontent.com/images/7iQtoM4DohgBigX8dSWtZew6qc.png",
-      tags: ["Service"],
-    },
-  ],
+  // Political: [
+  //   {
+  //     id: "5",
+  //     title: "No Kings Protest",
+  //     date: "January 13, 2025",
+  //     image:
+  //       "https://framerusercontent.com/images/tbaVws3GxXcXC30ecOGxIwev6Ak.png",
+  //     tags: ["Hindu"],
+  //   },
+  //   {
+  //     id: "6",
+  //     title: "Local Club",
+  //     date: "January 14, 2025",
+  //     image:
+  //       "https://framerusercontent.com/images/18Q56jhO4AoJjOTkDWg38hHPRM.png",
+  //     tags: ["Dinner", "General"],
+  //   },
+  //   {
+  //     id: "7",
+  //     title: "Hotel Owners Town Hall",
+  //     date: "January 26, 2025",
+  //     image:
+  //       "https://framerusercontent.com/images/7iQtoM4DohgBigX8dSWtZew6qc.png",
+  //     tags: ["General"],
+  //   },
+  //   {
+  //     id: "5",
+  //     title: "No Kings Protest",
+  //     date: "January 13, 2025",
+  //     image:
+  //       "https://framerusercontent.com/images/tbaVws3GxXcXC30ecOGxIwev6Ak.png",
+  //     tags: ["Hindu"],
+  //   },
+  //   {
+  //     id: "6",
+  //     title: "Local Club",
+  //     date: "January 14, 2025",
+  //     image:
+  //       "https://framerusercontent.com/images/18Q56jhO4AoJjOTkDWg38hHPRM.png",
+  //     tags: ["Dinner", "General"],
+  //   },
+  //   {
+  //     id: "7",
+  //     title: "Hotel Owners Town Hall",
+  //     date: "January 26, 2025",
+  //     image:
+  //       "https://framerusercontent.com/images/7iQtoM4DohgBigX8dSWtZew6qc.png",
+  //     tags: ["General"],
+  //   },
+  // ],
+  // Religious: [
+  //   {
+  //     id: "8",
+  //     title: "Christmas",
+  //     date: "January 13, 2025",
+  //     image:
+  //       "https://framerusercontent.com/images/tbaVws3GxXcXC30ecOGxIwev6Ak.png",
+  //     tags: ["Charity", "Hindu"],
+  //   },
+  //   {
+  //     id: "9",
+  //     title: "Easter",
+  //     date: "January 14, 2025",
+  //     image:
+  //       "https://framerusercontent.com/images/18Q56jhO4AoJjOTkDWg38hHPRM.png",
+  //     tags: ["Telugu"],
+  //   },
+  //   {
+  //     id: "10",
+  //     title: "Quanza",
+  //     date: "January 26, 2025",
+  //     image:
+  //       "https://framerusercontent.com/images/7iQtoM4DohgBigX8dSWtZew6qc.png",
+  //     tags: ["Service"],
+  //   },
+  // ],
 };
 
 const otherEvents = [
@@ -400,66 +400,72 @@ export const ClientEvents = () => {
 
         {/* Other Events */}
         <div>
-          {/* Section Title */}
-          <h2 className="text-sm text-gray-500 font-semibold mb-4 tracking-wide">
-            Other Upcoming Events
-          </h2>
+  {/* Section Title */}
+  <h2 className="text-xl text-gray-700 font-semibold mb-4 tracking-wide">
+    Other Upcoming Events
+  </h2>
 
-          {/* Card Container */}
-          <div className="bg-white p-5 rounded-2xl shadow-sm border border-gray-200">
-            {/* Table Header */}
-            <div className="grid grid-cols-[70fr_15fr_15fr] gap-x-4 items-center text-sm font-semibold text-gray-600 border-b border-gray-200 pb-3 mb-3">
-              <div className="flex ">
-                <span className="w-32">Event</span>
-                <span className="w-20">Date</span>
-                <span className="w-20">Culture</span>
-              </div>
-              <span className="text-center">Category</span>
-              <span className="text-center">Priority</span>
-            </div>
+  {/* Card Container */}
+  <div className="bg-gradient-to-r  from-gray-100 to-white p-5 rounded-2xl shadow-sm border border-gray-200">
+    {/* Table Header */}
+    <div className="grid grid-cols-[70fr_15fr_15fr_15fr] gap-x-4 items-center text-sm font-semibold text-gray-600 border-b border-gray-200 pb-3 mb-3">
+      <div className="flex">
+        <span className="font-bold text-xl w-32">Event <span className="text-gray-500">Date</span></span>
+        
+        
+      </div>
+      <span className="text-end font-bold text-xl w-32">Category</span>
+      <span className="text-end font-bold text-xl w-32">Priority</span>
+      <span className="text-end font-bold text-xl w-32">Culture</span>
+    </div>
 
-            {/* Event Rows */}
-            <div className="space-y-2">
-              {otherEvents.map((event, index) => (
-                <div
-                  key={event.id}
-                  className={`grid grid-cols-[70fr_15fr_15fr] gap-x-4 items-center text-sm text-gray-800 rounded-xl p-3 transition-all duration-200 ${
-                    index % 2 === 0 ? "bg-gray-50" : "bg-gray-100"
-                  } hover:bg-white hover:shadow-md`}
-                >
-                  {/* Event Info */}
-                  <div className="flex items-center flex-wrap gap-x-3 gap-y-1">
-                    <span className="font-medium">{event.title}</span>
-                    <span className="text-gray-500">• {event.date}</span>
-                    <span
-                      className={`text-xs px-2 py-0.5 rounded-full font-medium text-gray-700 ${getCultureTagColors()}`}
-                    >
-                      {event.topic}
-                    </span>
-                  </div>
-
-                  {/* Category */}
-                  <span
-                    className={`justify-self-center text-xs px-3 py-1 rounded-full font-medium text-gray-700 ${getCategoryColors(
-                      event.category
-                    )}`}
-                  >
-                    {event.category}
-                  </span>
-
-                  {/* Priority */}
-                  <span
-                    className={`justify-self-center text-xs px-3 py-1 rounded-full font-medium text-gray-700 ${getPriorityColors(
-                      event.priority
-                    )}`}
-                  >
-                    {event.priority}
-                  </span>
-                </div>
-              ))}
-            </div>
+    {/* Event Rows */}
+    <div className="space-y-2">
+      {otherEvents.map((event, index) => (
+        <div
+          key={event.id}
+          className={`grid grid-cols-[70fr_15fr_15fr_15fr] gap-x-4 items-center text-sm text-gray-800 rounded-2xl p-3 transition-all duration-200 ${
+            index % 2 === 0 ? "bg-white" : "bg-gray-50"
+          } hover:bg-purple-50 hover:shadow-md bg-gradient-to-r  from-white to-gray-100`}
+        >
+          {/* Event Info */}
+          <div className="flex items-center flex-wrap gap-x-3 gap-y-1">
+            <span className="font-medium">{event.title}</span>
+            <span className="text-gray-400 text-xs">• {event.date}</span>
           </div>
+
+          {/* Category */}
+          <span
+            className={`justify-self-center text-xs px-3 py-1 rounded-full font-medium text-gray-700 ${getCategoryColors(
+              event.category
+            )}`}
+          >
+            {event.category}
+          </span>
+
+          {/* Priority */}
+          <span
+            className={`justify-self-center text-xs px-3 py-1 rounded-full font-medium text-gray-700 ${getPriorityColors(
+              event.priority
+            )}`}
+          >
+            {event.priority}
+          </span>
+
+          {/* Culture Tag */}
+          <span
+            className={`justify-self-center text-xs px-3 py-1 rounded-full font-medium bg-gradient-to-r from-purple-400 to-indigo-500 text-white shadow-sm`}
+          >
+            {event.topic}
+          </span>
         </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+
+
       </div>
     </Layout>
   );

@@ -10,12 +10,14 @@ import {
   FaFileUpload,
   FaTimesCircle,
   FaExpand,
+  FaNewspaper,
 } from "react-icons/fa";
 import CalendarGrid from "../../../components/shared/Calender/Calender";
 import { HeaderBox } from "./headerBox/HeaderBox";
 import { EventsList } from "../../../components/shared/listView/ListView";
 import articlesData from "../../../database/articles.json";
 import TodoModal from "../../../components/shared/modal/TodoModal";
+import { ViralCard } from "../../../components/shared/viralCards/ViralCard";
 
 type Todo = {
   id: number;
@@ -27,6 +29,7 @@ const ConstituentProfile: React.FC = () => {
   const { setHeading } = useHeading();
   const [showAll, setShowAll] = useState(false);
   const articlesToShow1 = showAll ? articlesData : articlesData.slice(0, 3);
+  const viralDiscussions = showAll ? articlesData : articlesData.slice(3, 8);
 
   const [todos, setTodos] = useState<Todo[]>([
     { id: 1, text: "Finalize quarterly financial report", completed: false },
@@ -105,7 +108,7 @@ const ConstituentProfile: React.FC = () => {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-200 flex flex-col items-center h-[450px]">
+            <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-200 flex flex-col items-center h-[750px]">
               <h3 className="text-base font-semibold text-gray-700 mb-3 flex items-center">
                 <FaCalendarAlt className="mr-2 text-purple-600 text-lg" />{" "}
                 Calendar (Upcoming)
@@ -116,7 +119,7 @@ const ConstituentProfile: React.FC = () => {
             </div>
 
             {/* Right column: Upcoming & To-Dos */}
-            <div className="flex flex-col gap-4 h-[450px]">
+            <div className="flex flex-col gap-4 h-[750px]">
               <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-200 flex-1 min-h-[200px] overflow-y-auto custom-scrollbar">
                 <h3 className="text-base font-semibold text-gray-700 mb-3 flex items-center">
                   <FaCalendarAlt className="mr-2 text-orange-600 text-lg" />{" "}
@@ -219,8 +222,57 @@ const ConstituentProfile: React.FC = () => {
                 </div>
               </div>
 
-              {/* To-Dos Card */}
               <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-200 flex-1 min-h-[200px] flex flex-col">
+  <div className="flex justify-between items-center mb-3">
+    <h3 className="text-base font-semibold text-gray-700 flex items-center">
+      <FaNewspaper className="mr-2 text-purple-600 text-lg" /> Email Campaigns
+    </h3>
+    {/* <button
+      onClick={() => alert("Expand to full view functionality can be implemented")}
+      className="p-2 rounded-lg hover:bg-gray-100 text-gray-600 hover:text-gray-800 transition"
+      title="Expand Email List"
+      aria-label="Expand Email List"
+    >
+      <FaExpand className="text-lg" />
+    </button> */}
+  </div>
+
+  <div className="overflow-x-auto">
+    <table className="min-w-full divide-y divide-gray-200 text-sm">
+      <thead className="bg-gray-50">
+        <tr>
+          <th className="px-4 py-2 text-left text-gray-600 uppercase font-semibold tracking-wider">
+            Campaign Name
+          </th>
+          <th className="px-4 py-2 text-left text-gray-600 uppercase font-semibold tracking-wider">
+            Date
+          </th>
+          <th className="px-4 py-2 text-left text-gray-600 uppercase font-semibold tracking-wider">
+            Emails Sent
+          </th>
+        </tr>
+      </thead>
+      <tbody className="bg-white divide-y divide-gray-200">
+        {[
+          { name: "Quarterly Newsletter", date: "Aug 1, 2025", sent: 1200 },
+          { name: "Community Engagement Drive", date: "Aug 10, 2025", sent: 850 },
+          { name: "Fundraiser Launch", date: "Aug 15, 2025", sent: 1430 },
+          { name: "Volunteer Recruitment", date: "Aug 20, 2025", sent: 670 },
+          { name: "Holiday Campaign", date: "Aug 25, 2025", sent: 980 },
+        ].map((campaign, index) => (
+          <tr key={index} className="hover:bg-blue-50 transition-colors">
+            <td className="px-4 py-3 font-medium text-gray-800">{campaign.name}</td>
+            <td className="px-4 py-3 text-gray-600">{campaign.date}</td>
+            <td className="px-4 py-3 text-gray-700 font-semibold">{campaign.sent.toLocaleString()}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+              {/* To-Dos Card */}
+              {/* <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-200 flex-1 min-h-[200px] flex flex-col">
                 <div className="flex justify-between items-center mb-3">
                   <h3 className="text-base font-semibold text-gray-700 flex items-center">
                     <FaCheckCircle className="mr-2 text-blue-600 text-lg" />{" "}
@@ -287,10 +339,30 @@ const ConstituentProfile: React.FC = () => {
                     </p>
                   )}
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
+
+        
+
+                <div className="rounded-2xl bg-gray-100 p-4 space-y-4 shadow-sm">
+          <p className="text-2xl sm:text-3xl font-bold text-gray-800 px-4 py-2 rounded-lg">
+            Viral Discussions
+          </p>
+
+          <div>
+                  {/* <h2 className="text-xl font-semibold text-gray-700 mb-3">
+                    Viral Discussions
+                  </h2> */}
+                  <div className="flex flex-nowrap overflow-x-auto space-x-4 pb-4">
+                    {viralDiscussions.map((item, i) => (
+                      <ViralCard item={item} i={i} key={i} />
+                    ))}
+                  </div>
+                </div>
+          </div>
+
 
         {/* Exalt Coverage */}
         <div className="rounded-2xl bg-gray-100 p-4 space-y-4 shadow-sm">
@@ -307,6 +379,7 @@ const ConstituentProfile: React.FC = () => {
                 showAll={showAll}
                 setShowAll={setShowAll}
                 showDonor={true}
+                seeMore={false}
               />
             </div>
 
@@ -318,6 +391,7 @@ const ConstituentProfile: React.FC = () => {
                 showAll={showAll}
                 setShowAll={setShowAll}
                 showDonor={true}
+                seeMore={false}
               />
             </div>
           </div>
