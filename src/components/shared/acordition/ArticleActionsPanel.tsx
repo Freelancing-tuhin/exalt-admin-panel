@@ -23,6 +23,7 @@ import {
   Loader2,
   ExternalLink,
 } from "lucide-react";
+import { ActionCard } from "./actionCard/ActionCard";
 
 const sidebarSections = [
   {
@@ -38,30 +39,6 @@ const sidebarSections = [
         platform: "email",
         endpoint: "https://gmail.googleapis.com/gmail/v1",
         description: "Automated donor email campaigns",
-      },
-      {
-        name: "Mailchimp",
-        icon: Send,
-        action: "Create Campaign",
-        platform: "email",
-        endpoint: "https://us1.api.mailchimp.com/3.0",
-        description: "Bulk email marketing campaigns",
-      },
-      {
-        name: "NationBuilder CRM",
-        icon: Database,
-        action: "Export Targets",
-        platform: "crm",
-        endpoint: "https://[nation].nationbuilder.com/api/v1",
-        description: "Voter and donor database",
-      },
-      {
-        name: "Analytics Dashboard",
-        icon: BarChart3,
-        action: "Track Engagement",
-        platform: "analytics",
-        endpoint: "/api/analytics",
-        description: "Campaign performance metrics",
       },
     ],
   },
@@ -148,11 +125,13 @@ const sidebarSections = [
 ];
 
 export const ArticleActionsPanel = () => {
-  const [activeSection, setActiveSection] = useState(null);
-  const [hoveredTool, setHoveredTool] = useState(null);
-  const [executingTool, setExecutingTool] = useState(null);
-  const [connectionStatus, setConnectionStatus] = useState({});
-  const [notifications, setNotifications] = useState([]);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
+  const [hoveredTool, setHoveredTool] = useState<string | null>(null);
+  const [executingTool, setExecutingTool] = useState<string | null>(null);
+  const [connectionStatus, setConnectionStatus] = useState<
+    Record<string, string>
+  >({});
+  const [notifications, setNotifications] = useState<any[]>([]);
 
   useEffect(() => {
     // Simulate API connection checks
@@ -298,9 +277,9 @@ export const ArticleActionsPanel = () => {
   };
 
   return (
-    <div className="flex">
+    <div className="flex w-2/7 h-[92vh]">
       <motion.div
-        className="w-96 h-screen bg-white border-r border-gray-200 shadow-lg flex flex-col relative"
+        className=" w-full bg-white border-l border-gray-200 shadow-lg flex flex-col relative"
         variants={sidebarVariants}
         initial="hidden"
         animate="visible"
@@ -358,7 +337,7 @@ export const ArticleActionsPanel = () => {
         </AnimatePresence>
 
         {/* Sections */}
-        <div className="flex-1 overflow-y-auto">
+        <div className="flex-1 overflow-y-auto hidescroll">
           {sidebarSections.map((section, index) => {
             const IconComponent = section.icon;
             return (
@@ -418,9 +397,17 @@ export const ArticleActionsPanel = () => {
                       {/* Tools Grid */}
                       <div className="px-4 py-4 space-y-2">
                         {section.tools.map((tool, toolIndex) => {
+                          // Conditional rendering for EXALT Actions Menu as grid
+                          if (section.id === "exalt-actions") {
+                            return (
+                              <>
+                                <ActionCard />
+                              </>
+                            );
+                          }
+                          // Default rendering for other sections
                           const ToolIcon = tool.icon;
                           const isExecuting = executingTool === tool.name;
-
                           return (
                             <motion.button
                               key={tool.name}

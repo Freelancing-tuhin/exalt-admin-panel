@@ -32,8 +32,8 @@ export const ViralDiscussion = () => {
   return (
     <Layout>
       <Navbar back={true} />
-      <div className="flex flex-col md:flex-row p-2 ">
-        <div className="md:w-5/7 md:h-[85vh] overflow-y-scroll px-5">
+      <div className="flex flex-col md:flex-row">
+        <div className="md:w-5/7 md:h-[92vh] overflow-y-scroll px-5">
           <Header
             title={data?.[title - 1]?.title}
             author="By Exalt Data"
