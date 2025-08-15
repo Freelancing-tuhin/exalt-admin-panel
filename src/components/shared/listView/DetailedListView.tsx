@@ -22,7 +22,7 @@ export const DetailedListView = ({
     <div className=" ">
       <IconTabs
         tabs={[
-          { label: "What's Happening in Us", icon: RxListBullet },
+          { label: "What's Happening in the US", icon: RxListBullet },
           { label: "What's Happening in India", icon: RxListBullet },
         ]}
         current={activeTab}
@@ -102,9 +102,9 @@ export const DetailedListView = ({
               </div>
             </div>
             <div className="flex-shrink-0 flex items-center gap-2">
-              <button className="p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition-all">
+              {/* <button className="p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition-all">
                 <FiShare2 className="w-4 h-4" />
-              </button>
+              </button> */}
               <button className="p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition-all">
                 <FiExternalLink className="w-4 h-4" />
               </button>
@@ -113,10 +113,10 @@ export const DetailedListView = ({
               <div className="text-center bg-gray-50 rounded-lg p-2 min-w-[60px]">
                 <div className="flex items-center justify-center gap-1 text-xs text-gray-500 mb-1">
                   <div className="flex items-center gap-3">
-                    <span>Donors</span>
                     <span className="ml-1font-bold text-gray-900 text-lg">
                       24
                     </span>
+                    <span>Donors</span>
                     {/* Stacked avatars */}
                     <div className="flex -space-x-2">
                       {[

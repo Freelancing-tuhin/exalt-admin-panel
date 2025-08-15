@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState, useRef } from "react";
 import "leaflet/dist/leaflet.css";
 import { Layout } from "../../layout/Layout";
@@ -8,7 +7,6 @@ import {
   FaCheckCircle,
   FaCalendarAlt,
   FaPlusCircle,
-  FaNewspaper,
   FaFileUpload,
   FaTimesCircle,
   FaExpand,
@@ -29,7 +27,6 @@ const ConstituentProfile: React.FC = () => {
   const { setHeading } = useHeading();
   const [showAll, setShowAll] = useState(false);
   const articlesToShow1 = showAll ? articlesData : articlesData.slice(0, 3);
-  const viralDiscussions = showAll ? articlesData : articlesData.slice(6, 8);
 
   const [todos, setTodos] = useState<Todo[]>([
     { id: 1, text: "Finalize quarterly financial report", completed: false },
@@ -65,10 +62,6 @@ const ConstituentProfile: React.FC = () => {
     setTodos((prev) =>
       prev.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t))
     );
-  };
-
-  const deleteTodo = (id: number) => {
-    setTodos((prev) => prev.filter((t) => t.id !== id));
   };
 
   // Upload handlers

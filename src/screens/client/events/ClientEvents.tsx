@@ -107,7 +107,7 @@ const HorizontalScroller: React.FC<{ children: React.ReactNode }> = ({
       <button
         aria-label="Scroll left"
         onClick={() => scrollByAmount(-1)}
-        className={`absolute left-2 top-1/2 -translate-y-1/2  w-10 h-10 rounded-full shadow-lg flex items-center justify-center transition 
+        className={`absolute left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full shadow-lg flex items-center justify-center transition 
           ${
             canScrollLeft
               ? "bg-gradient-to-br from-gray-100 to-gray-200 hover:bg-gray-100 cursor-pointer"
@@ -120,7 +120,7 @@ const HorizontalScroller: React.FC<{ children: React.ReactNode }> = ({
       <button
         aria-label="Scroll right"
         onClick={() => scrollByAmount(1)}
-        className={`absolute right-2 top-1/2 -translate-y-1/2  w-10 h-10 rounded-full shadow-lg flex items-center justify-center transition 
+        className={`absolute right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full shadow-lg flex items-center justify-center transition 
           ${
             canScrollRight
               ? "bg-gradient-to-br  from-gray-100 to-gray-200 hover:bg-gray-100 cursor-pointer"

@@ -61,7 +61,7 @@ export const EventsList = ({
                 <button className="flex items-center gap-1 text-xs sm:text-sm text-blue-600 hover:text-blue-800 font-medium bg-blue-50 hover:bg-blue-100 px-2 py-1 rounded-md transition-colors">
                   {/* <FiPlus className="w-3 h-3 sm:w-4 sm:h-4" /> */}
                   <span className="whitespace-nowrap">
-                    {idx * 9} potential donor
+                    {idx * 9} potential donors
                   </span>
                 </button>
               </div>

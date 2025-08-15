@@ -136,6 +136,13 @@ export const Sidebar = () => {
           ) : (
             <>
               <ModernSidebarItem
+                icon={<FiBarChart2 size={20} />}
+                label="Data"
+                isCollapsed={isCollapsed}
+                route={"/client/data"}
+                isActive={location.pathname === "/client/data"}
+              />
+              <ModernSidebarItem
                 icon={<FiFileText size={20} />}
                 label="Briefs"
                 isCollapsed={isCollapsed}
@@ -173,31 +180,6 @@ export const Sidebar = () => {
             </>
           )}
         </div>
-
-        <div className="">
-          <ModernSidebarItem
-            icon={<FiBox size={20} />}
-            label="Bulletins"
-            isCollapsed={isCollapsed}
-            route={"/bulletins"}
-            isActive={location.pathname === "/bulletins"}
-          />
-          <ModernSidebarItem
-            icon={<FiAlertCircle size={20} />}
-            label="Alerts"
-            isCollapsed={isCollapsed}
-            route={"/alerts"}
-            isActive={location.pathname === "/alerts"}
-            badgeColor="bg-red-500"
-          />
-          <ModernSidebarItem
-            icon={<FiBarChart2 size={20} />}
-            label="Data"
-            isCollapsed={isCollapsed}
-            route={"/client/data"}
-            isActive={location.pathname === "/client/data"}
-          />
-        </div>
       </div>
 
       {/* Bottom Section */}
@@ -231,13 +213,6 @@ export const Sidebar = () => {
                   location.pathname === "/client/" ||
                   location.pathname === "/client"
                 }
-              />
-              <ModernSidebarItem
-                icon={<TiStarOutline size={20} />}
-                label="Started"
-                isCollapsed={isCollapsed}
-                route={"/client/started"}
-                isActive={location.pathname === "/client/started"}
               />
             </>
           )}

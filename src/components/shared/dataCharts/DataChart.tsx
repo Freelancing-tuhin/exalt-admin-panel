@@ -162,7 +162,7 @@ export const DataChart = () => {
   return (
     <div className="bg-gray-200 p-6 rounded-lg border border-gray-200">
       <h2 className="text-xl font-semibold text-gray-800 mb-6">
-        Exalt Visualizations
+        Exalt Polling
       </h2>
 
       <div className="grid grid-cols-2 gap-8">

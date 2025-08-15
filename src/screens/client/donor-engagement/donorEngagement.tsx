@@ -48,8 +48,8 @@ function DonorEngagement() {
           <GradientHeader title="Donor Engagement" />
           <IconTabs
             tabs={[
+              { label: "Donor Outreach", icon: FiSend },
               { label: "Donor Search", icon: FiSearch },
-              { label: "Outreach", icon: FiSend },
             ]}
             current={activeTab}
             onChange={(label: string) => setActiveTab(label)}
@@ -58,7 +58,7 @@ function DonorEngagement() {
           {/* Tab Content */}
           {activeTab === "Donor Search" && <DonorSearch />}
 
-          {activeTab === "Outreach" && (
+          {activeTab === "Donor Outreach" && (
             <DonorOutreach articlesData={articlesData} />
           )}
         </div>

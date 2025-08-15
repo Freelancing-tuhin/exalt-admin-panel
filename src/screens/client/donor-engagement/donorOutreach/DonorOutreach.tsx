@@ -42,7 +42,7 @@ export const DonorOutreach = ({ articlesData }: any) => {
     <div className="p- bg-white w-[88%]">
       {/* <DonorSearch /> */}
       {/* Header */}
-      <div className="text-xl mb-2 font-semibold">Donor By Article</div>
+      {/* <div className="text-xl mb-2 font-semibold">Donor By Article</div> */}
       {/* Month Tabs with sliding indicator */}
       <div className="relative bg-gray-100 rounded-xl p-3 overflow-x-auto">
         {/* Sliding indicator */}

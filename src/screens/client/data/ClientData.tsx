@@ -13,7 +13,7 @@ export const ClientData = () => {
   const { setHeading } = useHeading();
   const [showAll, setShowAll] = useState(false);
 
-  const articlesToShow1 = showAll ? articlesData : articlesData.slice(0, 3);
+  const articlesToShow1 = showAll ? articlesData : articlesData.slice(0, 5);
   // const articlesToShow2 = showAll ? articlesData : articlesData.slice(3, 6);
   const viralDiscussions = showAll ? articlesData : articlesData.slice(6, 8);
 
@@ -70,18 +70,7 @@ export const ClientData = () => {
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1">
               <EventsList
-                heading={"What's happening in US"}
-                donor={true}
-                articlesToShow={articlesToShow1}
-                showAll={showAll}
-                setShowAll={setShowAll}
-                showDonor={false}
-              />
-            </div>
-
-            <div className="flex-1">
-              <EventsList
-                heading={"What's happening in India"}
+                heading={""}
                 donor={true}
                 articlesToShow={articlesToShow1}
                 showAll={showAll}

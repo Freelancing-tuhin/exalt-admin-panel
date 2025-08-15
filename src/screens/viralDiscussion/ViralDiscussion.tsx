@@ -36,7 +36,7 @@ export const ViralDiscussion = () => {
         <div className="md:w-5/7 md:h-[85vh] overflow-y-scroll px-5">
           <Header
             title={data?.[title - 1]?.title}
-            author="Ndtv India"
+            author="By Exalt Data"
             date="Sun April 7, 2023"
             readTime="5 min"
             category={""}

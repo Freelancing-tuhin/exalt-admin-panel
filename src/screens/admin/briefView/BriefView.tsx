@@ -80,7 +80,6 @@ export const BriefView = () => {
               >
                 Discussions
               </button>
-              
             </div>
 
             {/* Content */}
@@ -141,7 +140,8 @@ export const BriefView = () => {
                         <div className="flex items-center justify-start">
                           <img
                             src={
-                              discussion?.image && discussion.image.trim().length !== 0
+                              discussion?.image &&
+                              discussion.image.trim().length !== 0
                                 ? discussion.image
                                 : "https://images.moneycontrol.com/static-mcnews/2022/11/Immersive-exhibits-like-Van-Gogh-360%C2%B0-introduce-art-and-artists-in-a-fun-and-exciting-way.jpg?impolicy=website&width=1600&height=900"
                             }
@@ -149,7 +149,6 @@ export const BriefView = () => {
                             className="h-12 w-12 object-cover rounded-lg border border-gray-200"
                           />
                         </div>
-
 
                         {/* Title */}
                         <Link
@@ -170,8 +169,7 @@ export const BriefView = () => {
                             to={`/client/data/articles/${discussion._id}`}
                             className="flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-full hover:bg-indigo-700 shadow-sm transition-all duration-200 text-sm"
                           >
-                            Read the article{" "}
-                            <AiOutlineArrowRight className="w-4 h-4" />
+                            Read <AiOutlineArrowRight className="w-4 h-4" />
                           </Link>
                         </div>
                       </div>
