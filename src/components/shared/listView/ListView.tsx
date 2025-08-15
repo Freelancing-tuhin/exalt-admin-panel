@@ -10,6 +10,7 @@ export const EventsList = ({
   showAll,
   setShowAll,
   showDonor,
+  seeMore=true
 }: any) => {
   return (
     <div className="bg-[#f7f7f5] rounded-lg p-3 sm:p-4">
@@ -68,7 +69,7 @@ export const EventsList = ({
             )}
           </Link>
         ))}
-        {articlesData.length > 3 && (
+        { seeMore && articlesData.length > 3 && (
           <p
             className="text-xs sm:text-sm font-semibold pl-2 text-blue-600 mt-2 cursor-pointer hover:text-blue-800 transition-colors"
             onClick={() => setShowAll(!showAll)}

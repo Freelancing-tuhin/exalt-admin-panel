@@ -28,7 +28,7 @@ export const ViralCard = ({ item, i }: any) => {
     >
       {/* Background Image */}
       <img
-        src={item.image}
+        src={item?.image || "https://wwd.com/wp-content/uploads/2020/10/political-story-main.jpg"}
         alt={item.title}
         className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
       />
