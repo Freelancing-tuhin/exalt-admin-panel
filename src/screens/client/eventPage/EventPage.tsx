@@ -69,11 +69,11 @@ export default function EventPage() {
   return (
     <Layout>
       <Navbar back={true} />
-      <div className="flex flex-col md:flex-row h-[90vh]">
+      <div className="flex flex-col md:flex-row h-[92vh]">
         {/* Left: Full-height Image */}
 
         {/* Right: Scrollable Content */}
-        <div className="md:w-5/7 md:h-[85vh] overflow-y-scroll  p-6 flex flex-col space-y-6">
+        <div className="md:w-5/7 md:h-[92vh] overflow-y-scroll  p-6 flex flex-col space-y-6 hidescroll">
           <Header
             title={event.title}
             author="Ndtv India"
