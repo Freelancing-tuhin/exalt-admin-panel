@@ -146,13 +146,13 @@ export const LocationTrack = () => {
                           data-tooltip-content={stateName}
                           onClick={() => {
                             if (isTarget) {
-                              setSelectedState(stateName);
-                              setScope("local");
-                              setCurrentPage(1); // reset page
+                              setSelectedState(stateName); // update map
+                              setScope("local"); // switch to local scope
+                              setCurrentPage(1);
                               const camp = campaigns.find(
                                 (c) => c.state === stateName
                               );
-                              if (camp) setSelectedCampaign(camp);
+                              if (camp) setSelectedCampaign(camp); // optionally select first campaign in that state
                             }
                           }}
                           style={{
@@ -259,8 +259,6 @@ export const LocationTrack = () => {
           <div className="flex-1 space-y-3">
             {paginatedCampaigns.map((c) => {
               const isSelected = selectedCampaign?.id === c.id;
-              // eslint-disable-next-line react-hooks/rules-of-hooks
-              const [openId, setOpenId] = useState<string | null>(null);
 
               return (
                 <div
@@ -280,8 +278,8 @@ export const LocationTrack = () => {
                       className="flex items-center gap-3 flex-1"
                       onClick={() => {
                         setSelectedCampaign(c);
-                        setSelectedState(c.state);
-                        setScope("local");
+                        // setSelectedState(c.state);
+                        // setScope("local");
                       }}
                     >
                       <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-600">
