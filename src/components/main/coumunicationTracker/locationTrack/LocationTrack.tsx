@@ -6,6 +6,9 @@ import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
+import { HiCalendarDateRange, HiMegaphone } from "react-icons/hi2"; // for campaign icon
+import { FiPlus } from "react-icons/fi";
+import { TbSpeakerphone } from "react-icons/tb";
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
@@ -69,12 +72,20 @@ export const LocationTrack = () => {
   };
 
   // --- Filtered Campaigns ---
+  // --- Filtered Campaigns ---
   const filteredCampaigns = useMemo(() => {
     return campaigns.filter((c) => {
-      if (monthFilter === "all") return true;
-      return c.date.startsWith(`2025-${monthFilter}`);
+      // If month filter is applied
+      const matchesMonth =
+        monthFilter === "all" || c.date.startsWith(`2025-${monthFilter}`);
+
+      // If local scope, filter campaigns of only that state
+      const matchesState =
+        scope === "local" && selectedState ? c.state === selectedState : true;
+
+      return matchesMonth && matchesState;
     });
-  }, [campaigns, monthFilter]);
+  }, [campaigns, monthFilter, scope, selectedState]);
 
   // --- Paginated Campaigns ---
   const totalPages = Math.ceil(filteredCampaigns.length / itemsPerPage);
@@ -88,7 +99,7 @@ export const LocationTrack = () => {
     colors: [color],
     plotOptions: {
       radialBar: {
-        hollow: { size: "55%" },
+        hollow: { size: "50%" },
         dataLabels: {
           name: { show: false },
           value: {
@@ -137,6 +148,7 @@ export const LocationTrack = () => {
                             if (isTarget) {
                               setSelectedState(stateName);
                               setScope("local");
+                              setCurrentPage(1); // reset page
                               const camp = campaigns.find(
                                 (c) => c.state === stateName
                               );
@@ -245,29 +257,63 @@ export const LocationTrack = () => {
 
           {/* Campaign List */}
           <div className="flex-1 space-y-3">
-            {paginatedCampaigns.map((c) => (
-              <div
-                key={c.id}
-                onClick={() => {
-                  setSelectedCampaign(c);
-                  setSelectedState(c.state);
-                  setScope("local");
-                }}
-                className={`p-4 rounded-lg border cursor-pointer transition ${
-                  selectedCampaign.id === c.id
-                    ? "bg-blue-50 border-gray-300"
-                    : "bg-white border-gray-200 hover:bg-gray-50"
-                }`}
-              >
-                <h4 className="text-sm font-semibold text-gray-800">
-                  {c.title}
-                </h4>
-                <p className="text-xs text-gray-500">{c.date}</p>
-                <p className="text-xs text-gray-600 mt-1">
-                  State: <span className="font-medium">{c.state}</span>
-                </p>
-              </div>
-            ))}
+            {paginatedCampaigns.map((c) => {
+              const isSelected = selectedCampaign?.id === c.id;
+              // eslint-disable-next-line react-hooks/rules-of-hooks
+              const [openId, setOpenId] = useState<string | null>(null);
+
+              return (
+                <div
+                  key={c.id}
+                  className={`p-4 rounded-xl border cursor-pointer transition  mb-2
+        ${
+          isSelected
+            ? "bg-blue-50 border-gray-300"
+            : "bg-white border-gray-200 hover:bg-gray-50"
+        }
+      `}
+                >
+                  {/* Top Row */}
+                  <div className="flex items-center justify-between">
+                    {/* Left Icon + Info */}
+                    <div
+                      className="flex items-center gap-3 flex-1"
+                      onClick={() => {
+                        setSelectedCampaign(c);
+                        setSelectedState(c.state);
+                        setScope("local");
+                      }}
+                    >
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-600">
+                        <TbSpeakerphone size={20} />
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-semibold text-gray-800">
+                          {c.title}
+                        </h4>
+                        <div className="text-xs text-gray-600 w-[100%]">
+                          Lorem ipsum dolor sit amet consectetur ...
+                        </div>
+                        <p className="text-xs text-gray-600">
+                          State: <span className="font-medium">{c.state}</span>
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Right: Date + Plus Icon */}
+                    <div className="flex items-center gap-3">
+                      <span className="text-xs text-gray-500">{c.date}</span>
+                      <button className="p-1 rounded-full hover:bg-gray-100">
+                        <HiCalendarDateRange
+                          size={18}
+                          className="text-gray-600"
+                        />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
 
           {/* Pagination */}
@@ -312,26 +358,26 @@ export const LocationTrack = () => {
             Performance
           </h3>
           <div className="grid grid-cols-1 gap-4">
-            <div className="bg-white border border-gray-200 rounded-lg p-4 text-center shadow-sm">
+            <div className="bg-gray-50 border border-gray-200 rounded-lg p-2 text-center ">
               <h4 className="text-sm font-medium text-gray-700 mb-2">
                 Open Rate
               </h4>
               <Chart
-                options={radialChartOptions("#3b82f6")}
+                options={radialChartOptions("#818cf8")}
                 series={[selectedCampaign.openRate]}
                 type="radialBar"
-                height={140}
+                height={160}
               />
             </div>
-            <div className="bg-white border border-gray-200 rounded-lg p-4 text-center shadow-sm">
+            <div className="bg-gray-50 border border-gray-200 rounded-lg p-2 text-center shadow-sm">
               <h4 className="text-sm font-medium text-gray-700 mb-2">
                 Response Rate
               </h4>
               <Chart
-                options={radialChartOptions("#10b981")}
+                options={radialChartOptions("#a78bfa")}
                 series={[selectedCampaign.responseRate]}
                 type="radialBar"
-                height={140}
+                height={160}
               />
             </div>
           </div>
