@@ -2,12 +2,16 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ChevronRight,
+  ChevronDown,
   Target,
+  Users,
   Mail,
+  Database,
   BarChart3,
   MessageSquare,
   Twitter,
   Linkedin,
+  FileText,
   Send,
   BookOpen,
   Search,
@@ -19,7 +23,6 @@ import {
   Loader2,
   ExternalLink,
 } from "lucide-react";
-import { BiLogoGmail } from "react-icons/bi";
 
 const sidebarSections = [
   {
@@ -44,7 +47,14 @@ const sidebarSections = [
         endpoint: "https://us1.api.mailchimp.com/3.0",
         description: "Bulk email marketing campaigns",
       },
-
+      {
+        name: "NationBuilder CRM",
+        icon: Database,
+        action: "Export Targets",
+        platform: "crm",
+        endpoint: "https://[nation].nationbuilder.com/api/v1",
+        description: "Voter and donor database",
+      },
       {
         name: "Analytics Dashboard",
         icon: BarChart3,
@@ -79,7 +89,7 @@ const sidebarSections = [
       },
       {
         name: "Email Templates",
-        icon: BiLogoGmail,
+        icon: FileText,
         action: "Message Draft",
         platform: "templates",
         endpoint: "/api/templates",
@@ -290,13 +300,13 @@ export const ArticleActionsPanel = () => {
   return (
     <div className="flex">
       <motion.div
-        className="w-96 ml-4 h-full bg-white px-2 border-l border-gray-100 flex flex-col relative"
+        className="w-96 h-screen bg-white border-r border-gray-200 shadow-lg flex flex-col relative"
         variants={sidebarVariants}
         initial="hidden"
         animate="visible"
       >
         {/* Header */}
-        <div className="px-6 py-5 ">
+        <div className="px-6 py-5 border-b border-gray-100">
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-xl font-semibold text-gray-800">
@@ -348,14 +358,14 @@ export const ArticleActionsPanel = () => {
         </AnimatePresence>
 
         {/* Sections */}
-        <div className="flex-1 overflow-y-auto hidescroll">
+        <div className="flex-1 overflow-y-auto">
           {sidebarSections.map((section, index) => {
             const IconComponent = section.icon;
             return (
               <motion.div
                 key={section.id}
                 variants={sectionVariants}
-                className="bg-gray-50 border border-gray-100 mb-2 rounded-lg"
+                className="border-b border-gray-100 last:border-b-0"
               >
                 {/* Section Header */}
                 <motion.button
@@ -364,7 +374,7 @@ export const ArticleActionsPanel = () => {
                   whileHover={{ backgroundColor: "rgba(249, 250, 251, 1)" }}
                   whileTap={{ scale: 0.99 }}
                 >
-                  <div className="flex  space-x-3">
+                  <div className="flex items-center space-x-3">
                     <IconComponent className="w-5 h-5 text-blue-600" />
                     <div className="text-left">
                       <h3 className="font-medium text-gray-800 text-sm">
@@ -391,7 +401,15 @@ export const ArticleActionsPanel = () => {
                       className="overflow-hidden"
                     >
                       {/* Description */}
-                      <div className="px-6 py-3 bg-gray-50">
+                      <div
+                        className={`px-6 py-3 ${
+                          section.id === "exalt-actions"
+                            ? "bg-gradient-to-r from-red-50 to-orange-50"
+                            : section.id === "further-readings"
+                            ? "bg-gradient-to-r from-green-50 to-emerald-50"
+                            : "bg-gray-50"
+                        }`}
+                      >
                         <p className="text-xs text-gray-600 leading-relaxed">
                           {section.content}
                         </p>
@@ -418,22 +436,44 @@ export const ArticleActionsPanel = () => {
                               onMouseEnter={() => setHoveredTool(tool.name)}
                               onMouseLeave={() => setHoveredTool(null)}
                               disabled={isExecuting}
-                              className="w-full p-3 rounded-lg border  bg-white
-                              border-gray-200 hover:border-blue-200 transition-all duration-200 text
-                              -left group disabled:opacity-50 disabled:cursor-not-allowed"
+                              className="w-full p-3 rounded-lg border border-gray-200 hover:border-blue-200 transition-all duration-200 text-left group disabled:opacity-50 disabled:cursor-not-allowed"
                             >
                               <div className="flex items-start justify-between">
                                 <div className="flex items-start space-x-3">
                                   <div className="relative">
                                     {isExecuting ? (
-                                      <Loader2 className="w-5 h-5 text-blue-600 animate-spin" />
+                                      <Loader2
+                                        className={`w-5 h-5 animate-spin ${
+                                          section.id === "exalt-actions"
+                                            ? "text-red-600"
+                                            : section.id === "further-readings"
+                                            ? "text-green-600"
+                                            : "text-blue-600"
+                                        }`}
+                                      />
                                     ) : (
-                                      <ToolIcon className="w-5 h-5 text-gray-600 group-hover:text-blue-600 transition-colors" />
+                                      <ToolIcon
+                                        className={`w-5 h-5 text-gray-600 transition-colors ${
+                                          section.id === "exalt-actions"
+                                            ? "group-hover:text-red-600"
+                                            : section.id === "further-readings"
+                                            ? "group-hover:text-green-600"
+                                            : "group-hover:text-blue-600"
+                                        }`}
+                                      />
                                     )}
                                   </div>
                                   <div className="flex-1">
-                                    <div className="flex i space-x-2">
-                                      <h4 className="font-medium text-gray-800 text-sm group-hover:text-blue-600 transition-colors">
+                                    <div className="flex items-center space-x-2">
+                                      <h4
+                                        className={`font-medium text-gray-800 text-sm transition-colors ${
+                                          section.id === "exalt-actions"
+                                            ? "group-hover:text-red-600"
+                                            : section.id === "further-readings"
+                                            ? "group-hover:text-green-600"
+                                            : "group-hover:text-blue-600"
+                                        }`}
+                                      >
                                         {tool.name}
                                       </h4>
                                       {getStatusIcon(tool.name)}
@@ -456,13 +496,29 @@ export const ArticleActionsPanel = () => {
                                   }}
                                   transition={{ duration: 0.2 }}
                                 >
-                                  <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-blue-500" />
+                                  <ExternalLink
+                                    className={`w-4 h-4 text-gray-400 transition-colors ${
+                                      section.id === "exalt-actions"
+                                        ? "group-hover:text-red-500"
+                                        : section.id === "further-readings"
+                                        ? "group-hover:text-green-500"
+                                        : "group-hover:text-blue-500"
+                                    }`}
+                                  />
                                 </motion.div>
                               </div>
 
                               {/* Platform indicator */}
                               <div className="mt-3 flex items-center justify-between">
-                                <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-600 group-hover:bg-blue-100 group-hover:text-blue-700 transition-colors">
+                                <span
+                                  className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium transition-colors ${
+                                    section.id === "exalt-actions"
+                                      ? "bg-red-100 text-red-600 group-hover:bg-red-200 group-hover:text-red-700"
+                                      : section.id === "further-readings"
+                                      ? "bg-green-100 text-green-600 group-hover:bg-green-200 group-hover:text-green-700"
+                                      : "bg-gray-100 text-gray-600 group-hover:bg-blue-100 group-hover:text-blue-700"
+                                  }`}
+                                >
                                   {tool.platform}
                                 </span>
                                 <span className="text-xs text-gray-400 font-mono">
