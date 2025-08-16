@@ -6,8 +6,7 @@ import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
-import { HiCalendarDateRange, HiMegaphone } from "react-icons/hi2"; // for campaign icon
-import { FiPlus } from "react-icons/fi";
+import { HiCalendarDateRange } from "react-icons/hi2"; // for campaign icon
 import { TbSpeakerphone } from "react-icons/tb";
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
@@ -116,10 +115,10 @@ export const LocationTrack = () => {
   return (
     <div className="bg-gray-200 rounded-lg border border-gray-200 p-6 shadow-sm mt-6">
       {/* Header */}
-      <div className="border-b border-gray-200 pb-4 mb-4 flex justify-between items-center">
-        <h2 className="text-2xl font-bold text-gray-900 tracking-tight">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6 border-b border-gray-200 ">
+        <div className="text-2xl font-medium  text-gray-800 tracking-tight">
           Campaign Location Tracking
-        </h2>
+        </div>
         {/* Scope toggle */}
       </div>
 
@@ -367,7 +366,7 @@ export const LocationTrack = () => {
                 height={160}
               />
             </div>
-            <div className="bg-gray-50 border border-gray-200 rounded-lg p-2 text-center shadow-sm">
+            <div className="bg-gray-50 border border-gray-200 rounded-lg p-2 text-center ">
               <h4 className="text-sm font-medium text-gray-700 mb-2">
                 Response Rate
               </h4>

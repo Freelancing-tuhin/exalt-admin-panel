@@ -5,12 +5,7 @@ import articlesData from "../../../database/articles.json";
 import { IconTabs } from "../sectionTabs/SectionTabs";
 import { RxListBullet } from "react-icons/rx";
 import { useState } from "react";
-import {
-  FiExternalLink,
-  FiShare2,
-  FiTrendingDown,
-  FiTrendingUp,
-} from "react-icons/fi";
+import { FiExternalLink, FiTrendingDown, FiTrendingUp } from "react-icons/fi";
 
 export const DetailedListView = ({
   articlesToShow,

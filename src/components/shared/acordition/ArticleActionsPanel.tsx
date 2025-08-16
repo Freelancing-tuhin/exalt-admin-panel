@@ -1,23 +1,17 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ChevronRight,
-  ChevronDown,
   Target,
-  Users,
   Mail,
-  Database,
-  BarChart3,
   MessageSquare,
   Twitter,
   Linkedin,
   FileText,
   Send,
   BookOpen,
-  Search,
-  Download,
-  Bookmark,
-  Share2,
   CheckCircle,
   AlertCircle,
   Loader2,
@@ -89,36 +83,24 @@ const sidebarSections = [
     icon: BookOpen,
     tools: [
       {
-        name: "Research Hub",
-        icon: Search,
-        action: "Access Articles",
-        platform: "research",
-        endpoint: "/api/research",
-        description: "Curated political research",
+        name: "Understanding Indian-American Voter Trends",
+        description: "Insights into voting patterns and community engagement.",
+        url: "#",
       },
       {
-        name: "PDF Generator",
-        icon: Download,
-        action: "Download Resources",
-        platform: "documents",
-        endpoint: "/api/documents/generate",
-        description: "Generate campaign materials",
+        name: "Effective Outreach Campaigns",
+        description: "Strategies for targeted political communication.",
+        url: "#",
       },
       {
-        name: "Bookmark Manager",
-        icon: Bookmark,
-        action: "Save for Later",
-        platform: "storage",
-        endpoint: "/api/bookmarks",
-        description: "Save important resources",
+        name: "Community Leadership Articles",
+        description: "Profiles of influential Indian-American leaders.",
+        url: "#",
       },
       {
-        name: "Team Collaboration",
-        icon: Share2,
-        action: "Send to Team",
-        platform: "collaboration",
-        endpoint: "/api/collaboration/share",
-        description: "Share with team members",
+        name: "Policy Impact Summaries",
+        description: "Summaries of key policies affecting the community.",
+        url: "#",
       },
     ],
   },
@@ -134,12 +116,10 @@ export const ArticleActionsPanel = () => {
   const [notifications, setNotifications] = useState<any[]>([]);
 
   useEffect(() => {
-    // Simulate API connection checks
     const checkConnections = async () => {
-      const statuses = {};
+      const statuses: any = {};
       for (const section of sidebarSections) {
         for (const tool of section.tools) {
-          // Simulate connection check
           statuses[tool.name] =
             Math.random() > 0.3 ? "connected" : "disconnected";
         }
@@ -164,14 +144,10 @@ export const ArticleActionsPanel = () => {
 
   const sectionVariants = {
     hidden: { opacity: 0, y: 10 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.3 },
-    },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
   };
 
-  const contentVariants = {
+  const contentVariants: any = {
     hidden: { opacity: 0, height: 0 },
     visible: {
       opacity: 1,
@@ -185,19 +161,17 @@ export const ArticleActionsPanel = () => {
     },
   };
 
-  const handleSectionToggle = (sectionId) => {
+  const handleSectionToggle = (sectionId: any) => {
     setActiveSection(activeSection === sectionId ? null : sectionId);
   };
 
-  const handleToolAction = async (tool) => {
+  const handleToolAction = async (tool: any) => {
     setExecutingTool(tool.name);
 
     try {
-      // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
-      // Simulate different responses based on tool
-      const responses = {
+      const responses: any = {
         "Gmail API": {
           success: true,
           message: "5 donor emails queued for sending",
@@ -232,7 +206,7 @@ export const ArticleActionsPanel = () => {
         },
       };
 
-      const response = responses[tool.name] || {
+      const response: any = responses[tool.name] || {
         success: true,
         message: `${tool.action} completed successfully`,
       };
@@ -247,39 +221,27 @@ export const ArticleActionsPanel = () => {
         },
       ]);
 
-      // Remove notification after 5 seconds
       setTimeout(() => {
         setNotifications((prev) => prev.filter((n) => n.id !== Date.now()));
       }, 5000);
-    } catch (error) {
-      setNotifications((prev) => [
-        ...prev,
-        {
-          id: Date.now(),
-          type: "error",
-          message: `Failed to execute ${tool.action}`,
-          tool: tool.name,
-        },
-      ]);
     } finally {
       setExecutingTool(null);
     }
   };
 
-  const getStatusIcon = (toolName) => {
+  const getStatusIcon = (toolName: any) => {
     const status = connectionStatus[toolName];
-    if (status === "connected") {
+    if (status === "connected")
       return <CheckCircle className="w-3 h-3 text-green-500" />;
-    } else if (status === "disconnected") {
+    if (status === "disconnected")
       return <AlertCircle className="w-3 h-3 text-red-500" />;
-    }
     return <Loader2 className="w-3 h-3 text-gray-400 animate-spin" />;
   };
 
   return (
     <div className="flex w-2/7 h-[92vh]">
       <motion.div
-        className=" w-full bg-white border-l border-gray-200 shadow-lg flex flex-col relative"
+        className="w-full bg-white border-l border-gray-200 shadow-lg flex flex-col relative"
         variants={sidebarVariants}
         initial="hidden"
         animate="visible"
@@ -338,8 +300,9 @@ export const ArticleActionsPanel = () => {
 
         {/* Sections */}
         <div className="flex-1 overflow-y-auto hidescroll">
-          {sidebarSections.map((section, index) => {
+          {sidebarSections.map((section) => {
             const IconComponent = section.icon;
+
             return (
               <motion.div
                 key={section.id}
@@ -394,131 +357,149 @@ export const ArticleActionsPanel = () => {
                         </p>
                       </div>
 
-                      {/* Tools Grid */}
+                      {/* Tools / Articles */}
                       <div className="px-4 py-4 space-y-2">
-                        {section.tools.map((tool, toolIndex) => {
-                          // Conditional rendering for EXALT Actions Menu as grid
-                          if (section.id === "exalt-actions") {
-                            return (
-                              <>
-                                <ActionCard />
-                              </>
-                            );
-                          }
-                          // Default rendering for other sections
-                          const ToolIcon = tool.icon;
-                          const isExecuting = executingTool === tool.name;
-                          return (
-                            <motion.button
-                              key={tool.name}
-                              initial={{ opacity: 0, x: -10 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              transition={{ delay: toolIndex * 0.05 }}
-                              whileHover={{
-                                scale: 1.02,
-                                backgroundColor: "rgba(59, 130, 246, 0.05)",
-                              }}
-                              whileTap={{ scale: 0.98 }}
-                              onClick={() => handleToolAction(tool)}
-                              onMouseEnter={() => setHoveredTool(tool.name)}
-                              onMouseLeave={() => setHoveredTool(null)}
-                              disabled={isExecuting}
-                              className="w-full p-3 rounded-lg border border-gray-200 hover:border-blue-200 transition-all duration-200 text-left group disabled:opacity-50 disabled:cursor-not-allowed"
-                            >
-                              <div className="flex items-start justify-between">
-                                <div className="flex items-start space-x-3">
-                                  <div className="relative">
-                                    {isExecuting ? (
-                                      <Loader2
-                                        className={`w-5 h-5 animate-spin ${
-                                          section.id === "exalt-actions"
-                                            ? "text-red-600"
-                                            : section.id === "further-readings"
-                                            ? "text-green-600"
-                                            : "text-blue-600"
-                                        }`}
-                                      />
-                                    ) : (
-                                      <ToolIcon
-                                        className={`w-5 h-5 text-gray-600 transition-colors ${
-                                          section.id === "exalt-actions"
-                                            ? "group-hover:text-red-600"
-                                            : section.id === "further-readings"
-                                            ? "group-hover:text-green-600"
-                                            : "group-hover:text-blue-600"
-                                        }`}
-                                      />
-                                    )}
-                                  </div>
-                                  <div className="flex-1">
-                                    <div className="flex items-center space-x-2">
-                                      <h4
-                                        className={`font-medium text-gray-800 text-sm transition-colors ${
-                                          section.id === "exalt-actions"
-                                            ? "group-hover:text-red-600"
-                                            : section.id === "further-readings"
-                                            ? "group-hover:text-green-600"
-                                            : "group-hover:text-blue-600"
-                                        }`}
-                                      >
-                                        {tool.name}
-                                      </h4>
-                                      {getStatusIcon(tool.name)}
-                                    </div>
-                                    <p className="text-xs text-gray-500 mt-1">
-                                      {tool.description}
-                                    </p>
-                                    <p className="text-xs text-blue-600 mt-1 group-hover:text-blue-700">
-                                      {isExecuting
-                                        ? "Executing..."
-                                        : tool.action}
-                                    </p>
-                                  </div>
+                        {section.id === "exalt-actions" ? (
+                          <ActionCard />
+                        ) : section.id === "further-readings" ? (
+                          <div className="space-y-2">
+                            {section.tools.map((article) => (
+                              <motion.div
+                                key={article.name}
+                                initial={{ opacity: 0, x: -10 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                className="p-3 rounded-lg border border-gray-200 hover:border-green-300 bg-green-50 transition-all flex justify-between items-center"
+                              >
+                                <div>
+                                  <h4 className="font-medium text-sm text-gray-800">
+                                    {article.name}
+                                  </h4>
+                                  <p className="text-xs text-gray-600 mt-1">
+                                    {article.description}
+                                  </p>
                                 </div>
-                                <motion.div
-                                  animate={{
-                                    x: hoveredTool === tool.name ? 2 : 0,
-                                    opacity:
-                                      hoveredTool === tool.name ? 1 : 0.5,
-                                  }}
-                                  transition={{ duration: 0.2 }}
-                                >
-                                  <ExternalLink
-                                    className={`w-4 h-4 text-gray-400 transition-colors ${
-                                      section.id === "exalt-actions"
-                                        ? "group-hover:text-red-500"
-                                        : section.id === "further-readings"
-                                        ? "group-hover:text-green-500"
-                                        : "group-hover:text-blue-500"
-                                    }`}
-                                  />
-                                </motion.div>
-                              </div>
+                                <ExternalLink className="w-4 h-4 text-gray-400 hover:text-green-600" />
+                              </motion.div>
+                            ))}
+                          </div>
+                        ) : (
+                          section.tools.map((tool: any, toolIndex: any) => {
+                            const ToolIcon = tool.icon;
+                            const isExecuting = executingTool === tool.name;
+                            return (
+                              <motion.button
+                                key={tool.name}
+                                initial={{ opacity: 0, x: -10 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: toolIndex * 0.05 }}
+                                whileHover={{
+                                  scale: 1.02,
+                                  backgroundColor: "rgba(59, 130, 246, 0.05)",
+                                }}
+                                whileTap={{ scale: 0.98 }}
+                                onClick={() => handleToolAction(tool)}
+                                onMouseEnter={() => setHoveredTool(tool.name)}
+                                onMouseLeave={() => setHoveredTool(null)}
+                                disabled={isExecuting}
+                                className="w-full p-3 rounded-lg border border-gray-200 hover:border-blue-200 transition-all duration-200 text-left group disabled:opacity-50 disabled:cursor-not-allowed"
+                              >
+                                <div className="flex items-start justify-between">
+                                  <div className="flex items-start space-x-3">
+                                    <div className="relative">
+                                      {isExecuting ? (
+                                        <Loader2
+                                          className={`w-5 h-5 animate-spin ${
+                                            section.id === "exalt-actions"
+                                              ? "text-red-600"
+                                              : section.id ===
+                                                "further-readings"
+                                              ? "text-green-600"
+                                              : "text-blue-600"
+                                          }`}
+                                        />
+                                      ) : (
+                                        <ToolIcon
+                                          className={`w-5 h-5 text-gray-600 transition-colors ${
+                                            section.id === "exalt-actions"
+                                              ? "group-hover:text-red-600"
+                                              : section.id ===
+                                                "further-readings"
+                                              ? "group-hover:text-green-600"
+                                              : "group-hover:text-blue-600"
+                                          }`}
+                                        />
+                                      )}
+                                    </div>
+                                    <div className="flex-1">
+                                      <div className="flex items-center space-x-2">
+                                        <h4
+                                          className={`font-medium text-gray-800 text-sm transition-colors ${
+                                            section.id === "exalt-actions"
+                                              ? "group-hover:text-red-600"
+                                              : section.id ===
+                                                "further-readings"
+                                              ? "group-hover:text-green-600"
+                                              : "group-hover:text-blue-600"
+                                          }`}
+                                        >
+                                          {tool.name}
+                                        </h4>
+                                        {getStatusIcon(tool.name)}
+                                      </div>
+                                      <p className="text-xs text-gray-500 mt-1">
+                                        {tool.description}
+                                      </p>
+                                      <p className="text-xs text-blue-600 mt-1 group-hover:text-blue-700">
+                                        {isExecuting
+                                          ? "Executing..."
+                                          : tool.action}
+                                      </p>
+                                    </div>
+                                  </div>
+                                  <motion.div
+                                    animate={{
+                                      x: hoveredTool === tool.name ? 2 : 0,
+                                      opacity:
+                                        hoveredTool === tool.name ? 1 : 0.5,
+                                    }}
+                                    transition={{ duration: 0.2 }}
+                                  >
+                                    <ExternalLink
+                                      className={`w-4 h-4 text-gray-400 transition-colors ${
+                                        section.id === "exalt-actions"
+                                          ? "group-hover:text-red-500"
+                                          : section.id === "further-readings"
+                                          ? "group-hover:text-green-500"
+                                          : "group-hover:text-blue-500"
+                                      }`}
+                                    />
+                                  </motion.div>
+                                </div>
 
-                              {/* Platform indicator */}
-                              <div className="mt-3 flex items-center justify-between">
-                                <span
-                                  className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium transition-colors ${
-                                    section.id === "exalt-actions"
-                                      ? "bg-red-100 text-red-600 group-hover:bg-red-200 group-hover:text-red-700"
-                                      : section.id === "further-readings"
-                                      ? "bg-green-100 text-green-600 group-hover:bg-green-200 group-hover:text-green-700"
-                                      : "bg-gray-100 text-gray-600 group-hover:bg-blue-100 group-hover:text-blue-700"
-                                  }`}
-                                >
-                                  {tool.platform}
-                                </span>
-                                <span className="text-xs text-gray-400 font-mono">
-                                  {
-                                    tool.endpoint
-                                      .replace("https://", "")
-                                      .split("/")[0]
-                                  }
-                                </span>
-                              </div>
-                            </motion.button>
-                          );
-                        })}
+                                <div className="mt-3 flex items-center justify-between">
+                                  <span
+                                    className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium transition-colors ${
+                                      section.id === "exalt-actions"
+                                        ? "bg-red-100 text-red-600 group-hover:bg-red-200 group-hover:text-red-700"
+                                        : section.id === "further-readings"
+                                        ? "bg-green-100 text-green-600 group-hover:bg-green-200 group-hover:text-green-700"
+                                        : "bg-gray-100 text-gray-600 group-hover:bg-blue-100 group-hover:text-blue-700"
+                                    }`}
+                                  >
+                                    {tool.platform}
+                                  </span>
+                                  <span className="text-xs text-gray-400 font-mono">
+                                    {
+                                      tool.endpoint
+                                        .replace("https://", "")
+                                        .split("/")[0]
+                                    }
+                                  </span>
+                                </div>
+                              </motion.button>
+                            );
+                          })
+                        )}
                       </div>
                     </motion.div>
                   )}

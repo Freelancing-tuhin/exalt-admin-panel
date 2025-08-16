@@ -4,8 +4,6 @@ import {
   FiFileText,
   FiClock,
   FiCopy,
-  FiBox,
-  FiAlertCircle,
   FiBarChart2,
   FiTool,
   FiSettings,
@@ -17,7 +15,6 @@ import {
 } from "react-icons/tb";
 import AuthContext from "../../../contexts/authContext/authContext";
 import { IoFileTrayOutline } from "react-icons/io5";
-import { TiStarOutline } from "react-icons/ti";
 import { RiAccountPinBoxLine } from "react-icons/ri";
 import { Link, useLocation } from "react-router-dom";
 import { MdGroups } from "react-icons/md";
@@ -143,7 +140,7 @@ export const Sidebar = () => {
                 isActive={location.pathname === "/client/data"}
               />
               <ModernSidebarItem
-                icon={<FiFileText size={20} />}
+                icon={<FiFileText size={22} />}
                 label="Briefs"
                 isCollapsed={isCollapsed}
                 route={"/client/briefs"}
@@ -282,7 +279,7 @@ const ModernSidebarItem = ({
             flex items-center justify-center w-8 h-8 rounded-xl transition-all duration-300 transform
             ${
               isActive
-                ? "bg-gradient-to-br from-blue-500 to-purple-500 text-white shadow-lg scale-110"
+                ? "bg-gradient-to-br from-gray-300 to-gray-400 text-white s scale-110"
                 : "text-gray-500 group-hover:text-gray-700 group-hover:bg-gray-100 scale-100"
             }
           `}

@@ -39,7 +39,6 @@ export const ActionCard = () => {
   return (
     <div className="grid grid-cols-2 gap-2">
       {cards.map((card, i) => {
-        const Icon = card.icon;
         return (
           <div
             key={i}

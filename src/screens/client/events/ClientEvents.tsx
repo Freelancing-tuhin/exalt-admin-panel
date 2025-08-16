@@ -339,10 +339,6 @@ export const ClientEvents = () => {
     setHeading("Event");
   }, [setHeading]);
 
-  const getCultureTagColors = () => {
-    return "bg-violet-200 text-gray-700";
-  };
-
   const getCategoryColors = (category: string) => {
     switch (category) {
       case "Wedding":
@@ -400,72 +396,71 @@ export const ClientEvents = () => {
 
         {/* Other Events */}
         <div>
-  {/* Section Title */}
-  <h2 className="text-xl text-gray-700 font-semibold mb-4 tracking-wide">
-    Other Upcoming Events
-  </h2>
+          {/* Section Title */}
+          <h2 className="text-xl text-gray-700 font-semibold mb-4 tracking-wide">
+            Other Upcoming Events
+          </h2>
 
-  {/* Card Container */}
-  <div className="bg-gradient-to-r  from-gray-100 to-white p-5 rounded-2xl shadow-sm border border-gray-200">
-    {/* Table Header */}
-    <div className="grid grid-cols-[70fr_15fr_15fr_15fr] gap-x-4 items-center text-sm font-semibold text-gray-600 border-b border-gray-200 pb-3 mb-3">
-      <div className="flex">
-        <span className="font-bold text-xl w-32">Event <span className="text-gray-500">Date</span></span>
-        
-        
-      </div>
-      <span className="text-end font-bold text-xl w-32">Category</span>
-      <span className="text-end font-bold text-xl w-32">Priority</span>
-      <span className="text-end font-bold text-xl w-32">Culture</span>
-    </div>
+          {/* Card Container */}
+          <div className="bg-gradient-to-r  from-gray-100 to-white p-5 rounded-2xl shadow-sm border border-gray-200">
+            {/* Table Header */}
+            <div className="grid grid-cols-[70fr_15fr_15fr_15fr] gap-x-4 items-center text-sm font-semibold text-gray-600 border-b border-gray-200 pb-3 mb-3">
+              <div className="flex">
+                <span className="font-bold text-xl w-32">
+                  Event <span className="text-gray-500">Date</span>
+                </span>
+              </div>
+              <span className="text-end font-bold text-xl w-32">Category</span>
+              <span className="text-end font-bold text-xl w-32">Priority</span>
+              <span className="text-end font-bold text-xl w-32">Culture</span>
+            </div>
 
-    {/* Event Rows */}
-    <div className="space-y-2">
-      {otherEvents.map((event, index) => (
-        <div
-          key={event.id}
-          className={`grid grid-cols-[70fr_15fr_15fr_15fr] gap-x-4 items-center text-sm text-gray-800 rounded-2xl p-3 transition-all duration-200 ${
-            index % 2 === 0 ? "bg-white" : "bg-gray-50"
-          } hover:bg-purple-50 hover:shadow-md bg-gradient-to-r  from-white to-gray-100`}
-        >
-          {/* Event Info */}
-          <div className="flex items-center flex-wrap gap-x-3 gap-y-1">
-            <span className="font-medium">{event.title}</span>
-            <span className="text-gray-400 text-xs">• {event.date}</span>
+            {/* Event Rows */}
+            <div className="space-y-2">
+              {otherEvents.map((event, index) => (
+                <div
+                  key={event.id}
+                  className={`grid grid-cols-[70fr_15fr_15fr_15fr] gap-x-4 items-center text-sm text-gray-800 rounded-2xl p-3 transition-all duration-200 ${
+                    index % 2 === 0 ? "bg-white" : "bg-gray-50"
+                  } hover:bg-purple-50 hover:shadow-md bg-gradient-to-r  from-white to-gray-100`}
+                >
+                  {/* Event Info */}
+                  <div className="flex items-center flex-wrap gap-x-3 gap-y-1">
+                    <span className="font-medium">{event.title}</span>
+                    <span className="text-gray-400 text-xs">
+                      • {event.date}
+                    </span>
+                  </div>
+
+                  {/* Category */}
+                  <span
+                    className={`justify-self-center text-xs px-3 py-1 rounded-full font-medium text-gray-700 ${getCategoryColors(
+                      event.category
+                    )}`}
+                  >
+                    {event.category}
+                  </span>
+
+                  {/* Priority */}
+                  <span
+                    className={`justify-self-center text-xs px-3 py-1 rounded-full font-medium text-gray-700 ${getPriorityColors(
+                      event.priority
+                    )}`}
+                  >
+                    {event.priority}
+                  </span>
+
+                  {/* Culture Tag */}
+                  <span
+                    className={`justify-self-center text-xs px-3 py-1 rounded-full font-medium bg-gradient-to-r from-purple-400 to-indigo-500 text-white shadow-sm`}
+                  >
+                    {event.topic}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
-
-          {/* Category */}
-          <span
-            className={`justify-self-center text-xs px-3 py-1 rounded-full font-medium text-gray-700 ${getCategoryColors(
-              event.category
-            )}`}
-          >
-            {event.category}
-          </span>
-
-          {/* Priority */}
-          <span
-            className={`justify-self-center text-xs px-3 py-1 rounded-full font-medium text-gray-700 ${getPriorityColors(
-              event.priority
-            )}`}
-          >
-            {event.priority}
-          </span>
-
-          {/* Culture Tag */}
-          <span
-            className={`justify-self-center text-xs px-3 py-1 rounded-full font-medium bg-gradient-to-r from-purple-400 to-indigo-500 text-white shadow-sm`}
-          >
-            {event.topic}
-          </span>
         </div>
-      ))}
-    </div>
-  </div>
-</div>
-
-
-
       </div>
     </Layout>
   );

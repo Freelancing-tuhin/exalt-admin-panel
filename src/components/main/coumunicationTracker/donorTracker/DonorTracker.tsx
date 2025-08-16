@@ -131,24 +131,24 @@ export const DonorTracker = () => {
   return (
     <div className="bg-gray-200 rounded-xl border border-gray-200 shadow-md p-6 space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-gray-200 pb-3">
-        <h2 className="text-2xl font-semibold text-gray-900 tracking-tight">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4 border-b border-gray-200 ">
+        <div className="text-2xl font-medium  text-gray-800 tracking-tight">
           Outreach Tracker
-        </h2>
+        </div>
         <div className="flex items-center gap-2">
           <div className="relative">
-            <Search className="absolute left-2 top-2.5 w-4 h-4 text-gray-400" />
+            <Search className="absolute left-2 top-3 w-5 h-5 text-gray-400" />
             <input
               type="text"
-              placeholder="Search email..."
-              className="pl-8 pr-3 py-2 w-72 text-sm rounded-lg bg-white shadow focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+              placeholder="Search Campaign..."
+              className="pl-10 pr-3 py-3 w-72 text-sm rounded-xl bg-white shadow focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
           </div>
           <button
             onClick={() => setSortBy(sortBy === "date" ? "sentCount" : "date")}
-            className="flex bg-white items-center gap-1 px-3 py-2 text-sm shadow rounded-lg hover:bg-gray-100 transition"
+            className="flex bg-white items-center gap-1 px-3 py-3 text-gray-500 text-sm shadow rounded-xl hover:bg-gray-100 transition"
           >
             <ArrowUpDown size={14} />
             Sort by {sortBy === "date" ? "Date" : "Sent"}
@@ -161,15 +161,15 @@ export const DonorTracker = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg ">
             <p className="text-xs text-gray-700">Total Emails Sent</p>
-            <p className="text-xl font-semibold">{totalSent}</p>
+            <p className="text-xl mt-2 font-semibold">{totalSent}</p>
           </div>
           <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg ">
             <p className="text-xs text-gray-700">Average per Campaign</p>
-            <p className="text-xl font-semibold">{avgSent}</p>
+            <p className="text-xl mt-2 font-semibold">{avgSent}</p>
           </div>
           <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg ">
             <p className="text-xs text-gray-700">Top Campaign</p>
-            <p className="text-sm font-semibold">
+            <p className="text-md mt-2 font-semibold">
               {
                 emailCampaigns
                   .reduce((a, b) => (a.sentCount > b.sentCount ? a : b))
@@ -179,7 +179,9 @@ export const DonorTracker = () => {
           </div>
           <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg ">
             <p className="text-xs text-gray-700">Campaigns Tracked</p>
-            <p className="text-xl font-semibold">{emailCampaigns.length}</p>
+            <p className="text-xl mt-2 font-semibold">
+              {emailCampaigns.length}
+            </p>
           </div>
         </div>
 

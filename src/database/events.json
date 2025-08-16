@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "title": "California Art Festival: 2023 Dana Point 29-30",
+    "date": "29",
+    "month": "Mar",
+    "location": "California",
+    "time": "10:00 PM",
+    "tag": "Festival",
+    "posts": "2,681 posts",
+    "image": "https://saratogaflag.com/assets/images/custom%20banners%20%20flags/macysparadeflag_2.jpg"
+  },
+
+  {
+    "id": 3,
+    "title": "Christmas Eve Gala",
+    "date": "24",
+    "month": "Dec",
+    "location": "New York",
+    "time": "6:00 PM",
+    "tag": "Religious",
+    "posts": "1,845 posts",
+    "image": "https://images.unsplash.com/photo-1543589077-47d81606c1bf"
+  },
+  {
+    "id": 4,
+    "title": "Independence Day Fireworks",
+    "date": "15",
+    "month": "Aug",
+    "location": "Mumbai",
+    "time": "8:00 PM",
+    "tag": "Public Holiday",
+    "posts": "3,220 posts",
+    "image": "https://louderworks.imgix.net/media/genuinesmithfieldva/event_image/2419/event_af765faa56.jpg?crop=faces&fit=crop&h=600&w=auto&lossless=1&q=65"
+  },
+  {
+    "id": 5,
+    "title": "Thanksgiving Parade",
+    "date": "28",
+    "month": "Nov",
+    "location": "Chicago",
+    "time": "9:00 AM",
+    "tag": "Parade",
+    "posts": "6,012 posts",
+    "image": "https://images.unsplash.com/photo-1513623954575-263b06149897"
+  },
+  {
+    "id": 6,
+    "title": "Holi Festival of Colors",
+    "date": "25",
+    "month": "Mar",
+    "location": "Jaipur",
+    "time": "11:00 AM",
+    "tag": "Festival",
+    "posts": "5,144 posts",
+    "image": "https://images.unsplash.com/photo-1501594907352-04cda38ebc29"
+  },
+  {
+    "id": 7,
+    "title": "Eid al-Fitr Gathering",
+    "date": "10",
+    "month": "Apr",
+    "location": "Dubai",
+    "time": "5:00 PM",
+    "tag": "Religious",
+    "posts": "7,932 posts",
+    "image": "https://images.unsplash.com/photo-1599850846008-8a02c88e62bb"
+  },
+  {
+    "id": 8,
+    "title": "Chinese New Year Parade",
+    "date": "22",
+    "month": "Jan",
+    "location": "Beijing",
+    "time": "2:00 PM",
+    "tag": "Parade",
+    "posts": "8,101 posts",
+    "image": "https://images.unsplash.com/photo-1544986581-efac024faf62"
+  },
+  {
+    "id": 9,
+    "title": "Oktoberfest Opening",
+    "date": "17",
+    "month": "Sep",
+    "location": "Munich",
+    "time": "12:00 PM",
+    "tag": "Festival",
+    "posts": "9,504 posts",
+    "image": "https://images.unsplash.com/photo-1502727135886-df285cc8378f"
+  },
+  {
+    "id": 10,
+    "title": "Hanukkah Candle Lighting",
+    "date": "7",
+    "month": "Dec",
+    "location": "Jerusalem",
+    "time": "6:30 PM",
+    "tag": "Religious",
+    "posts": "1,274 posts",
+    "image": "https://images.unsplash.com/photo-1607968575195-6b3f3b2d8e4c"
+  }
+]

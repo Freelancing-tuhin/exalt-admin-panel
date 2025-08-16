@@ -6,10 +6,8 @@ import { useHeading } from "../../../contexts/headingContext";
 import {
   FaCheckCircle,
   FaCalendarAlt,
-  FaPlusCircle,
   FaFileUpload,
   FaTimesCircle,
-  FaExpand,
   FaNewspaper,
 } from "react-icons/fa";
 import CalendarGrid from "../../../components/shared/Calender/Calender";
@@ -42,7 +40,6 @@ const ConstituentProfile: React.FC = () => {
     { id: 4, text: "Draft newsletter for August campaign", completed: false },
     { id: 5, text: "Update volunteer database records", completed: false },
   ]);
-  const [newTodo, setNewTodo] = useState("");
 
   // modal state
   const [isTodoModalOpen, setIsTodoModalOpen] = useState(false);
@@ -50,22 +47,6 @@ const ConstituentProfile: React.FC = () => {
   // file upload state
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
-
-  const addTodo = () => {
-    const trimmed = newTodo.trim();
-    if (!trimmed) return;
-    setTodos((prev) => [
-      ...prev,
-      { id: Date.now(), text: trimmed, completed: false },
-    ]);
-    setNewTodo("");
-  };
-
-  const toggleTodo = (id: number) => {
-    setTodos((prev) =>
-      prev.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t))
-    );
-  };
 
   // Upload handlers
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -223,11 +204,12 @@ const ConstituentProfile: React.FC = () => {
               </div>
 
               <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-200 flex-1 min-h-[200px] flex flex-col">
-  <div className="flex justify-between items-center mb-3">
-    <h3 className="text-base font-semibold text-gray-700 flex items-center">
-      <FaNewspaper className="mr-2 text-purple-600 text-lg" /> Email Campaigns
-    </h3>
-    {/* <button
+                <div className="flex justify-between items-center mb-3">
+                  <h3 className="text-base font-semibold text-gray-700 flex items-center">
+                    <FaNewspaper className="mr-2 text-purple-600 text-lg" />{" "}
+                    Email Campaigns
+                  </h3>
+                  {/* <button
       onClick={() => alert("Expand to full view functionality can be implemented")}
       className="p-2 rounded-lg hover:bg-gray-100 text-gray-600 hover:text-gray-800 transition"
       title="Expand Email List"
@@ -235,41 +217,70 @@ const ConstituentProfile: React.FC = () => {
     >
       <FaExpand className="text-lg" />
     </button> */}
-  </div>
+                </div>
 
-  <div className="overflow-x-auto">
-    <table className="min-w-full divide-y divide-gray-200 text-sm">
-      <thead className="bg-gray-50">
-        <tr>
-          <th className="px-4 py-2 text-left text-gray-600 uppercase font-semibold tracking-wider">
-            Campaign Name
-          </th>
-          <th className="px-4 py-2 text-left text-gray-600 uppercase font-semibold tracking-wider">
-            Date
-          </th>
-          <th className="px-4 py-2 text-left text-gray-600 uppercase font-semibold tracking-wider">
-            Emails Sent
-          </th>
-        </tr>
-      </thead>
-      <tbody className="bg-white divide-y divide-gray-200">
-        {[
-          { name: "Quarterly Newsletter", date: "Aug 1, 2025", sent: 1200 },
-          { name: "Community Engagement Drive", date: "Aug 10, 2025", sent: 850 },
-          { name: "Fundraiser Launch", date: "Aug 15, 2025", sent: 1430 },
-          { name: "Volunteer Recruitment", date: "Aug 20, 2025", sent: 670 },
-          { name: "Holiday Campaign", date: "Aug 25, 2025", sent: 980 },
-        ].map((campaign, index) => (
-          <tr key={index} className="hover:bg-blue-50 transition-colors">
-            <td className="px-4 py-3 font-medium text-gray-800">{campaign.name}</td>
-            <td className="px-4 py-3 text-gray-600">{campaign.date}</td>
-            <td className="px-4 py-3 text-gray-700 font-semibold">{campaign.sent.toLocaleString()}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-</div>
+                <div className="overflow-x-auto">
+                  <table className="min-w-full divide-y divide-gray-200 text-sm">
+                    <thead className="bg-gray-50">
+                      <tr>
+                        <th className="px-4 py-2 text-left text-gray-600 uppercase font-semibold tracking-wider">
+                          Campaign Name
+                        </th>
+                        <th className="px-4 py-2 text-left text-gray-600 uppercase font-semibold tracking-wider">
+                          Date
+                        </th>
+                        <th className="px-4 py-2 text-left text-gray-600 uppercase font-semibold tracking-wider">
+                          Emails Sent
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="bg-white divide-y divide-gray-200">
+                      {[
+                        {
+                          name: "Quarterly Newsletter",
+                          date: "Aug 1, 2025",
+                          sent: 1200,
+                        },
+                        {
+                          name: "Community Engagement Drive",
+                          date: "Aug 10, 2025",
+                          sent: 850,
+                        },
+                        {
+                          name: "Fundraiser Launch",
+                          date: "Aug 15, 2025",
+                          sent: 1430,
+                        },
+                        {
+                          name: "Volunteer Recruitment",
+                          date: "Aug 20, 2025",
+                          sent: 670,
+                        },
+                        {
+                          name: "Holiday Campaign",
+                          date: "Aug 25, 2025",
+                          sent: 980,
+                        },
+                      ].map((campaign, index) => (
+                        <tr
+                          key={index}
+                          className="hover:bg-blue-50 transition-colors"
+                        >
+                          <td className="px-4 py-3 font-medium text-gray-800">
+                            {campaign.name}
+                          </td>
+                          <td className="px-4 py-3 text-gray-600">
+                            {campaign.date}
+                          </td>
+                          <td className="px-4 py-3 text-gray-700 font-semibold">
+                            {campaign.sent.toLocaleString()}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
 
               {/* To-Dos Card */}
               {/* <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-200 flex-1 min-h-[200px] flex flex-col">
@@ -344,25 +355,22 @@ const ConstituentProfile: React.FC = () => {
           </div>
         </div>
 
-        
-
-                <div className="rounded-2xl bg-gray-100 p-4 space-y-4 shadow-sm">
+        <div className="rounded-2xl bg-gray-100 p-4 space-y-4 shadow-sm">
           <p className="text-2xl sm:text-3xl font-bold text-gray-800 px-4 py-2 rounded-lg">
             Viral Discussions
           </p>
 
           <div>
-                  {/* <h2 className="text-xl font-semibold text-gray-700 mb-3">
+            {/* <h2 className="text-xl font-semibold text-gray-700 mb-3">
                     Viral Discussions
                   </h2> */}
-                  <div className="flex flex-nowrap overflow-x-auto space-x-4 pb-4">
-                    {viralDiscussions.map((item, i) => (
-                      <ViralCard item={item} i={i} key={i} />
-                    ))}
-                  </div>
-                </div>
+            <div className="flex flex-nowrap overflow-x-auto space-x-4 pb-4">
+              {viralDiscussions.map((item, i) => (
+                <ViralCard item={item} i={i} key={i} />
+              ))}
+            </div>
           </div>
-
+        </div>
 
         {/* Exalt Coverage */}
         <div className="rounded-2xl bg-gray-100 p-4 space-y-4 shadow-sm">
