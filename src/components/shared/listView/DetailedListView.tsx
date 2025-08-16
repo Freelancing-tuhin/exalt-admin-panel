@@ -113,7 +113,7 @@ export const DetailedListView = ({
                     </span>
                     <span>Donors</span>
                     {/* Stacked avatars */}
-                    <div className="flex -space-x-2">
+                    {/* <div className="flex -space-x-2">
                       {[
                         "https://images.unsplash.com/photo-1639149888905-fb39731f2e6c?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bWFuJTIwYXZhdGFyfGVufDB8fDB8fHww",
                         "https://images.unsplash.com/photo-1633332755192-727a05c4013d?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YXZhdGFyfGVufDB8fDB8fHww",
@@ -126,7 +126,7 @@ export const DetailedListView = ({
                           alt=""
                         />
                       ))}
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>

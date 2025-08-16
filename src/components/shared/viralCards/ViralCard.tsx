@@ -1,24 +1,54 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Link } from "react-router-dom";
-// import { Flame } from "lucide-react";
 
 export const ViralCard = ({ item, i }: any) => {
-  //   const createdAt = new Date(item.createdAt).getTime();
-  //   const now = new Date().getTime();
-  //   const hoursAgo = Math.floor((now - createdAt) / (1000 * 60 * 60));
-  //   const isRecent = hoursAgo <= 12;
+  const createdAt = new Date(item?.createdAt || new Date()).getTime();
+  const now = new Date().getTime();
+  const diffMs = now - createdAt;
 
-  // Random color classes for tags
-  //   const tagColors: Record<string, string> = {
-  //     Education: "bg-blue-500/80",
-  //     Healthcare: "bg-green-500/80",
-  //     Technology: "bg-purple-500/80",
-  //     Politics: "bg-red-500/80",
-  //     Sports: "bg-orange-500/80",
-  //     default: "bg-gray-500/80",
-  //   };
-  //   const tagColorClass =
-  //     tagColors[item.tag as keyof typeof tagColors] || tagColors.default;
+  // Time difference calculation
+  const diffMinutes = Math.floor(diffMs / (1000 * 60));
+  const diffHours = Math.floor(diffMinutes / 60);
+  const diffDays = Math.floor(diffHours / 24);
+  const diffWeeks = Math.floor(diffDays / 7);
+
+  let timeAgo = "";
+  if (diffMinutes < 60) {
+    timeAgo = `${diffMinutes} min${diffMinutes !== 1 ? "s" : ""} ago`;
+  } else if (diffHours < 24) {
+    timeAgo = `${diffHours} hour${diffHours !== 1 ? "s" : ""} ago`;
+  } else if (diffDays < 7) {
+    timeAgo = `${diffDays} day${diffDays !== 1 ? "s" : ""} ago`;
+  } else {
+    timeAgo = `${diffWeeks} week${diffWeeks !== 1 ? "s" : ""} ago`;
+  }
+
+  // --- Weighted Random Tag Generator ---
+  const generateRandomTag = () => {
+    const rand = Math.random();
+    let value, label, color;
+
+    if (rand < 0.6) {
+      // 60% chance → Hours
+      value = Math.floor(Math.random() * 24) + 1;
+      label = `${value} hour${value > 1 ? "s" : ""}`;
+      color = "bg-green-500";
+    } else if (rand < 0.85) {
+      // 25% chance → Days
+      value = Math.floor(Math.random() * 6) + 1;
+      label = `${value} day${value > 1 ? "s" : ""}`;
+      color = "bg-blue-500";
+    } else {
+      // 15% chance → Weeks
+      value = Math.floor(Math.random() * 3) + 1;
+      label = `${value} week${value > 1 ? "s" : ""}`;
+      color = "bg-purple-500";
+    }
+
+    return { label, color };
+  };
+
+  const randomTag = generateRandomTag();
 
   return (
     <Link
@@ -42,24 +72,26 @@ export const ViralCard = ({ item, i }: any) => {
         <div className="absolute inset-0 backdrop-blur-3xl [mask-image:linear-gradient(to_top,black,transparent_60%)]" />
       </div>
 
-      {/* Trending badge - top right */}
-      {/* {true && (
-        <div className="absolute top-3 right-3 z-20 animate-fadeIn">
-          <span className="flex items-center gap-1 bg-red-600/90 text-white text-[11px] px-2.5 py-1 rounded-md shadow-md">
-            <Flame size={14} className="text-yellow-300" />
-            <span className="font-medium">
-              Trending {hoursAgo === 0 ? "Now" : `${hoursAgo}h`}
-            </span>
-          </span>
-        </div>
-      )} */}
+      {/* Time Ago Badge - top left */}
+      {/* <div className="absolute top-3 left-3 z-20 animate-fadeIn">
+        <span className="bg-white/80 text-gray-900 text-[11px] font-medium px-2.5 py-1 rounded-md shadow-md">
+          {timeAgo}
+        </span>
+      </div> */}
+
+      {/* Randomized Tag Badge - bottom right */}
+      <div className="absolute bottom-3 right-3 z-20">
+        <span
+          className={`${randomTag.color} text-white text-xs font-medium px-3 py-1 rounded-full shadow-md`}
+        >
+          {randomTag.label}
+        </span>
+      </div>
 
       {/* Card content */}
       <div className="absolute bottom-0 px-5 pb-4 text-white space-y-3 w-full">
         {item.tag && (
-          <span
-            className={`bg-white/70 text-black  backdrop-blur-sm text-xs px-3 py-1 rounded-full`}
-          >
+          <span className="bg-white/70 text-black backdrop-blur-sm text-xs px-3 py-1 rounded-full">
             {item.tag}
           </span>
         )}

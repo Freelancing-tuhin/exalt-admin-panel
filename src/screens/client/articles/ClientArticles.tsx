@@ -33,7 +33,7 @@ export const ClientArticles = () => {
         <div className="px-6 md:w-5/7 h-[90vh] overflow-y-auto   text-sm text-gray-800 space-y-6">
           <Header
             title={data?.[id - 1]?.title}
-            author="Ndtv India"
+            author="Exalt"
             date="Sun April 7, 2023"
             readTime="5 min"
             category={""}
