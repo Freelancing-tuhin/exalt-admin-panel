@@ -12,7 +12,7 @@ export const DetailedListView = ({
   showAll,
   setShowAll,
 }: any) => {
-  const [activeTab, setActiveTab] = useState("What's Happening in Us");
+  const [activeTab, setActiveTab] = useState("What's Happening in the US");
   return (
     <div className=" ">
       <IconTabs

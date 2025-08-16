@@ -9,7 +9,7 @@ import { DonorOutreach } from "./donorOutreach/DonorOutreach";
 
 // ---- Component ----
 function DonorEngagement() {
-  const [activeTab, setActiveTab] = useState("Donor Search");
+  const [activeTab, setActiveTab] = useState("Donor Outreach");
   const [showDonorsPopup, setShowDonorsPopup] = useState<string | null>(null);
 
   const articlesData = [

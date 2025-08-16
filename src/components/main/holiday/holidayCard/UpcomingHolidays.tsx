@@ -4,7 +4,7 @@ export const UpcomingHolidays = () => {
   const holidays = [
     {
       id: 1,
-      title: "California Art Festival: 2023 Dana Point 29-30",
+      title: "Krishna Janmashtami in 2025",
       date: "29",
       month: "Mar",
       location: "California",
