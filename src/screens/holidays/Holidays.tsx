@@ -94,15 +94,15 @@ export const Holidays = () => {
       <Navbar />
       <div className="p-6">
         <GradientHeader title="Holidays" />
-        <div className="flex mt-8 gap-6">
+        <div className="2xl:flex mt-8 gap-6">
           {/* Stats Section */}
-          <div className="w-5/7">
+          <div className="2xl:w-5/7">
             <HolidayStats />
             <UpcomingHolidays />
           </div>
 
           {/* Chart Section */}
-          <div className="w-2/7">
+          <div className="2xl:w-2/7">
             <div className="bg-gray-50 rounded-xl border border-gray-200 p-4">
               <div className="flex justify-between mb-3">
                 <h3 className="font-semibold">Events Posted (6-Month View)</h3>
