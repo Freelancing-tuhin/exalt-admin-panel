@@ -4,7 +4,7 @@ export const HolidayStats = () => {
   return (
     <div className="grid grid-cols-4 gap-6 mb-6 pr-4">
       {/* Total Holidays */}
-      <div className="flex items-center gap-4 bg-purple-100 rounded-2xl p-5 shadow-sm">
+      <div className="flex items-center gap-4 bg-purple-100 rounded-2xl pl-5 py-5 shadow-sm">
         <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-purple-200 text-purple-700">
           <FaUmbrellaBeach size={20} />
         </div>
@@ -15,7 +15,7 @@ export const HolidayStats = () => {
       </div>
 
       {/* Cultural Festivals */}
-      <div className="flex items-center gap-4 bg-violet-100 rounded-2xl p-5 shadow-sm">
+      <div className="flex items-center gap-4 bg-violet-100 rounded-2xl pl-5 py-5 shadow-sm">
         <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-violet-200 text-violet-700">
           <FaGlobeAsia size={20} />
         </div>
@@ -26,7 +26,7 @@ export const HolidayStats = () => {
       </div>
 
       {/* Public Participation */}
-      <div className="flex items-center gap-4 bg-indigo-100 rounded-2xl p-5 shadow-sm">
+      <div className="flex items-center gap-4 bg-indigo-100 rounded-2xl pl-5 py-5 shadow-sm">
         <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-indigo-200 text-indigo-700">
           <FaUsers size={20} />
         </div>
@@ -37,7 +37,7 @@ export const HolidayStats = () => {
       </div>
 
       {/* Add New Holiday/Event */}
-      <div className="flex items-center gap-4 bg-indigo-100 rounded-2xl p-5 shadow-sm">
+      <div className="flex items-center gap-4 bg-indigo-100 rounded-2xl pl-5 py-5 shadow-sm">
         <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-indigo-200 text-indigo-700">
           <FaUsers size={20} />
         </div>
