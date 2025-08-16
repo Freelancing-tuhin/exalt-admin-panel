@@ -19,13 +19,13 @@ const sentimentDetails: Record<
     ],
     values: [25, 15, 12, 8, 6, 5, 4],
     colors: [
-      "#2ECC71",
-      "#27AE60",
-      "#1ABC9C",
-      "#16A085",
-      "#58D68D",
-      "#45B39D",
-      "#28B463",
+      "#c084fc",
+      "#a78bfa",
+      "#818cf8",
+      "#f87171",
+      "#c084fc",
+      "#a78bfa",
+      "#818cf8",
     ],
   },
   Negative: {
@@ -40,27 +40,27 @@ const sentimentDetails: Record<
     ],
     values: [20, 18, 12, 10, 9, 7, 5],
     colors: [
-      "#E74C3C",
-      "#C0392B",
-      "#A93226",
-      "#922B21",
-      "#CD6155",
-      "#884EA0",
-      "#7B241C",
+      "#f87171",
+      "#818cf8",
+      "#a78bfa",
+      "#c084fc",
+      "#f87171",
+      "#818cf8",
+      "#a78bfa",
     ],
   },
   Neutral: {
     labels: ["Okay", "Uncertain", "Calm", "Unmoved", "Bored", "Neutral"],
     values: [14, 12, 10, 8, 7, 5],
-    colors: ["#F1C40F", "#D4AC0D", "#B7950B", "#F4D03F", "#B9770E", "#F7DC6F"],
+    colors: ["#818cf8", "#f87171", "#c084fc", "#a78bfa", "#818cf8", "#f87171"],
   },
 };
 
 // Overview mapping
 const sentimentMap = [
-  { label: "Positive", color: "#3cc6ab" },
-  { label: "Negative", color: "#eb6759" },
-  { label: "Neutral", color: "#F1C40F" },
+  { label: "Positive", color: "#c084fc" },
+  { label: "Negative", color: "#f87171" },
+  { label: "Neutral", color: "#818cf8" },
 ];
 
 // Overview totals

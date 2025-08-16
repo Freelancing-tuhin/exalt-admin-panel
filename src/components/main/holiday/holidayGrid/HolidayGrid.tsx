@@ -42,7 +42,7 @@ export const HolidayGrid = () => {
       {/* Ongoing Events */}
       <div className="bg-gray-50 border border-gray-200 rounded-2xl p-4 ">
         <div className="flex justify-between items-center mb-3">
-          <h3 className="font-semibold text-xl">Ongoing Events</h3>
+          <h3 className="font-semibold text-xl">Ongoing Holidays</h3>
           <a href="#" className="text-sm text-teal-600 font-medium">
             View all
           </a>
@@ -73,7 +73,7 @@ export const HolidayGrid = () => {
       {/* Upcoming Events */}
       <div className="bg-gray-50 border border-gray-200 rounded-2xl p-4 ">
         <div className="flex justify-between items-center mb-3">
-          <h3 className="font-semibold text-xl">Upcoming Events</h3>
+          <h3 className="font-semibold text-xl">Upcoming Holidays</h3>
           <a href="#" className="text-sm text-teal-600 font-medium">
             View all
           </a>
