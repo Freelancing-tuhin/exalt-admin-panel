@@ -1,5 +1,3 @@
-import React from "react";
-
 export const HolidayGrid = () => {
   const ongoingEvents = [
     {
