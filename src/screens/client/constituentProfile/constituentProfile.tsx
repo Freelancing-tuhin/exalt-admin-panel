@@ -239,27 +239,27 @@ const ConstituentProfile: React.FC = () => {
                         {
                           name: "Quarterly Newsletter",
                           date: "Aug 1, 2025",
-                          sent: 1200,
+                          sent: 1256,
                         },
                         {
                           name: "Community Engagement Drive",
                           date: "Aug 10, 2025",
-                          sent: 850,
+                          sent: 855,
                         },
                         {
                           name: "Fundraiser Launch",
                           date: "Aug 15, 2025",
-                          sent: 1430,
+                          sent: 1437,
                         },
                         {
                           name: "Volunteer Recruitment",
                           date: "Aug 20, 2025",
-                          sent: 670,
+                          sent: 671,
                         },
                         {
                           name: "Holiday Campaign",
                           date: "Aug 25, 2025",
-                          sent: 980,
+                          sent: 986,
                         },
                       ].map((campaign, index) => (
                         <tr
