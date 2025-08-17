@@ -52,7 +52,7 @@ export const ClientArticles = () => {
           />
 
           {currentSection == "Article" && <Article id={id} />}
-          {currentSection == "Data" && <Data />}
+          {currentSection == "Data" && <Data id={id} />}
           {currentSection == "Donor Outreach" && <DonorOutreach />}
         </div>
         <ArticleActionsPanel />

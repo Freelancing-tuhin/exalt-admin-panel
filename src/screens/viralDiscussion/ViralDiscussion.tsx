@@ -59,7 +59,10 @@ export const ViralDiscussion = () => {
                 title="Top Emotions"
                 items={["Shocked", "Surprised", "Annoyed"]}
               />
-              <TweeterPost title="Top Shocked Posts" />
+              <TweeterPost
+                title="Top Shocked Posts"
+                tweetIds={data?.[title - 1]?.tweet_id}
+              />
               {/* <ReasonInput /> */}
               <ItemLister
                 title="Related Topics"
@@ -69,7 +72,10 @@ export const ViralDiscussion = () => {
                   "Trade • 2 potential donors",
                 ]}
               />
-              <TweeterPost title="Top Trade Posts" />
+              <TweeterPost
+                title="Top Trade Posts"
+                tweetIds={data?.[title - 1]?.tweet_id}
+              />
               <SentimentChart />
             </div>
           )}

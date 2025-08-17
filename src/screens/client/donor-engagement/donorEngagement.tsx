@@ -13,18 +13,29 @@ function DonorEngagement() {
   const [showDonorsPopup, setShowDonorsPopup] = useState<string | null>(null);
 
   const articlesData = [
-    { title: "Healthcare Drive", date: "12 Jan 2023", donors: 45, trend: +12 },
+    {
+      title: "Healthcare Drive",
+      date: "12 Jan 2023",
+      donors: 45,
+      trend: +12,
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbp8udvBr0iQJYY2wQN3DnGFbicLND07yMGg&s",
+    },
     {
       title: "Education Fundraiser",
       date: "05 Feb 2023",
       donors: 30,
       trend: -8,
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5k4w1b2yOrh9IrACuVuAWRdoebJV0o7U9DQ&s",
     },
     {
       title: "Environment Campaign",
       date: "22 Mar 2023",
       donors: 72,
       trend: +20,
+      image:
+        "https://png.pngtree.com/design-canvas/en/promoting-sustainable-development-and-environmental-protection-for-earth_17358.jpg",
     },
   ];
   useEffect(() => {

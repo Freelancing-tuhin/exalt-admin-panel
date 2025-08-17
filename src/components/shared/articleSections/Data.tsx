@@ -1,15 +1,18 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // import React from "react";
 import { DataChart } from "../dataCharts/DataChart";
 import { TweeterPost } from "../tweeterPost/TweeterPost";
 import { SentimentChart } from "../../main/sentimentChart/SentimentChart";
 import { ItemLister } from "../itemLister/ItemLister";
 import { ReasonInput } from "../reasonINput/ReasonInput";
+import data from "../../../database/articles.json";
 
-const Data = () => {
+const Data = ({ id }: { id: number }) => {
+  const article: any = (data as any[])?.[id - 1];
   return (
     <div>
       <DataChart />
-      <TweeterPost title="Top Tweets" />
+      <TweeterPost title="Top Tweets" tweetIds={article?.tweet_id} />
       <SentimentChart />
       <ItemLister
         title="Top Emotions"

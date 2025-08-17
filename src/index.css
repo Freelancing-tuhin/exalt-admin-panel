@@ -30,3 +30,12 @@
 .drop-shadow-glow {
   filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.8));
 }
+
+.react-tweet-theme {
+  --tweet-bg: #fff;
+  --tweet-color: #000;
+}
+.react-tweet {
+  font-size: 0.8rem !important;
+  line-height: 1.2 !important;
+}

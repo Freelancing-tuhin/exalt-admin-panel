@@ -147,28 +147,93 @@ const HorizontalScroller: React.FC<{ children: React.ReactNode }> = ({
   );
 };
 
-// Sample tweet IDs - replace with actual tweet IDs you want to display
-const topTweetIds = [
-  "20", // Jack Dorsey's first tweet "just setting up my twttr"
-  "21", // Another early tweet
-  "23", // Another early tweet
-  "25", // Another early tweet
-];
+export const TweeterPost = ({ title, tweetIds }: any) => {
+  console.log("====> tweetIds:", tweetIds);
 
-export const TweeterPost = ({ title }: any) => {
   return (
-    <div className=" mt-10 ">
+    <div className="mt-10 p-4 bg-gray-200 rounded-xl">
       <h2 className="text-xl font-bold text-gray-800 mb-2">{title}</h2>
 
-      <HorizontalScroller>
-        {topTweetIds.map((tweetId) => (
-          <div key={tweetId} className="flex-none w-80 md:w-96">
-            <Tweet id={tweetId} />
-          </div>
-        ))}
-      </HorizontalScroller>
+      {/* Global CSS for tweet customization */}
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+          .tweet-small-light [data-theme] {
+            --tweet-font-size: 12px !important;
+            --tweet-line-height: 1.3 !important;
+            --tweet-body-font-size: 11px !important;
+          }
+          
+          .tweet-small-light [data-theme="light"] {
+            --tweet-bg-color: # !important;
+            --tweet-border-color: #e5e7eb !important;
+            --tweet-text-color: #374151 !important;
+            --tweet-secondary-text-color: #6b7280 !important;
+            
+          }
+          
+          .tweet-small-light .react-tweet-theme {
+            font-size: 14px !important;
+            transform: scale(0.9);
+            transform-origin: top left;
+            max-width: 450px !important;
+            // height: 650px !important;
 
-      {/* Alternative: Custom tweet cards if react-tweet doesn't work */}
+          }
+          
+          .tweet-small-light .react-tweet-theme * {
+            font-size: 18px !important;
+            line-height: 1.3 !important;
+          }
+          
+          .tweet-small-light [data-testid="tweet"] {
+            background-color: #d4d4d4ff !important;
+            border: 1px solid #e5e7eb !important;
+            border-radius: 12px !important;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+            padding: 12px !important;
+            max-width: 300px !important;
+
+          }
+          
+          .tweet-small-light [data-testid="tweetText"] {
+            font-size: 11px !important;
+            color: #1f2937 !important;
+            line-height: 1.4 !important;
+            
+          }
+          
+          .tweet-small-light [data-testid="tweetAuthor"] {
+            font-size: 12px !important;
+            color: #374151 !important;
+          }
+          
+          .tweet-small-light time {
+            font-size: 10px !important;
+            color: #6b7280 !important;
+          }
+            .tweet-small-light{
+              // max-width: 400px !important;
+              margin: 0 2px !important;
+              
+            }
+        `,
+        }}
+      />
+
+      <HorizontalScroller>
+        {tweetIds &&
+          tweetIds.map((tweetId: any) => (
+            <div
+              key={tweetId}
+              className="bg-white p-4 flex-none tweet-small-light"
+            >
+              <div data-theme="light">
+                <Tweet id={tweetId} />
+              </div>
+            </div>
+          ))}
+      </HorizontalScroller>
     </div>
   );
 };
