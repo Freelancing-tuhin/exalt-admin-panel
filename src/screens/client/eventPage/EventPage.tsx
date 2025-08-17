@@ -73,7 +73,7 @@ export default function EventPage() {
         {/* Left: Full-height Image */}
 
         {/* Right: Scrollable Content */}
-        <div className="md:w-5/7 md:h-[92vh] overflow-y-scroll  p-6 flex flex-col space-y-6 hidescroll">
+        <div className="md:w-5/7  overflow-y-scroll  px-6 flex flex-col space-y-6 hidescroll">
           <Header
             title={event.title}
             author="Exalt Data"

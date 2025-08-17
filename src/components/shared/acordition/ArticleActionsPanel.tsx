@@ -106,7 +106,7 @@ const sidebarSections = [
   },
 ];
 
-export const ArticleActionsPanel = () => {
+export const ArticleActionsPanel = ({ data }: any) => {
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const [hoveredTool, setHoveredTool] = useState<string | null>(null);
   const [executingTool, setExecutingTool] = useState<string | null>(null);
@@ -114,7 +114,7 @@ export const ArticleActionsPanel = () => {
     Record<string, string>
   >({});
   const [notifications, setNotifications] = useState<any[]>([]);
-
+  console.log("======>page data", data);
   useEffect(() => {
     const checkConnections = async () => {
       const statuses: any = {};
