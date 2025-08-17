@@ -76,7 +76,7 @@ export default function EventPage() {
         <div className="md:w-5/7 md:h-[92vh] overflow-y-scroll  p-6 flex flex-col space-y-6 hidescroll">
           <Header
             title={event.title}
-            author="Ndtv India"
+            author="Exalt Data"
             date={event.date}
             readTime="5 min"
             category=""

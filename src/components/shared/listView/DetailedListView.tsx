@@ -34,7 +34,7 @@ export const DetailedListView = ({
             <div className="flex items-center gap-3 sm:gap-4 min-w-0 flex-1">
               <div className="relative w-44 h-28 rounded-xl overflow-hidden">
                 <img
-                  src="https://ichef.bbci.co.uk/news/1024/cpsprodpb/79c2/live/10c2b570-782e-11f0-a20f-3b86f375586a.jpg.webp"
+                  src={article?.image}
                   alt=""
                   className="w-full h-full object-cover"
                 />

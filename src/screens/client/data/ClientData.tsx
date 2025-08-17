@@ -147,9 +147,9 @@ export const ClientData = () => {
   const { setHeading } = useHeading();
   const [showAll, setShowAll] = useState(false);
 
-  const articlesToShow1 = showAll ? articlesData : articlesData.slice(0, 5);
+  const articlesToShow1 = showAll ? articlesData : articlesData.slice(0, 10);
   // const articlesToShow2 = showAll ? articlesData : articlesData.slice(3, 6);
-  const viralDiscussions = showAll ? articlesData : articlesData.slice(3, 8);
+  const viralDiscussions = showAll ? articlesData : articlesData.slice(10, 20);
 
   useEffect(() => {
     setHeading("Data");

@@ -1,6 +1,6 @@
 import React, { useRef, useState, useCallback, useEffect } from "react";
 import articlesData from "../../../../database/events.json";
-import { ViralCard } from "../../../shared/viralCards/ViralCard";
+import { ViralCard2 } from "../../../shared/viralCards/ViralCard2";
 
 // Netflix-style horizontal scroller from ClientEvents
 const HorizontalScroller: React.FC<{ children: React.ReactNode }> = ({
@@ -146,7 +146,7 @@ export const HolidayList = () => {
         </h2>
         <HorizontalScroller>
           {viralDiscussions.map((item, i) => (
-            <ViralCard item={item} i={i} key={i} />
+            <ViralCard2 item={item} i={i} key={i} viralp={false} />
           ))}
         </HorizontalScroller>
       </div>
