@@ -87,7 +87,7 @@ export const ViralDiscussion = () => {
             </div>
           )}
         </div>
-        <ArticleActionsPanel />
+        <ArticleActionsPanel data={data?.[title - 1]} />
       </div>
     </Layout>
   );
