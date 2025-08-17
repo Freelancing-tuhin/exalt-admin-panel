@@ -129,9 +129,10 @@ const HorizontalScroller: React.FC<{ children: React.ReactNode }> = ({
       {/* Scroll Container */}
       <div
         ref={containerRef}
-        className={`flex flex-nowrap overflow-x-auto space-x-4 pb-4 hidescroll scrollbar-thin scrollbar-thumb-gray-300 scroll-smooth select-none ${
-          isDragging ? "cursor-grabbing" : "cursor-grab"
-        }`}
+        className={`flex pl-8 flex-nowrap overflow-x-auto space-x-4 pb-4 hidescroll 
+          scrollbar-thin scrollbar-thumb-gray-300 scroll-smooth select-none ${
+            isDragging ? "cursor-grabbing" : "cursor-grab"
+          }`}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={endDrag}
@@ -177,7 +178,6 @@ export const TweeterPost = ({ title, tweetIds }: any) => {
             transform: scale(0.9);
             transform-origin: top left;
             max-width: 450px !important;
-            // height: 650px !important;
 
           }
           
@@ -228,7 +228,7 @@ export const TweeterPost = ({ title, tweetIds }: any) => {
               key={tweetId}
               className="bg-white p-4 flex-none tweet-small-light"
             >
-              <div data-theme="light">
+              <div data-theme="light" className="w-96 -ml-12">
                 <Tweet id={tweetId} />
               </div>
             </div>
