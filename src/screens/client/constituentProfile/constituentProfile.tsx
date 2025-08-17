@@ -16,6 +16,7 @@ import { EventsList } from "../../../components/shared/listView/ListView";
 import articlesData from "../../../database/articles.json";
 import TodoModal from "../../../components/shared/modal/TodoModal";
 import { ViralCard } from "../../../components/shared/viralCards/ViralCard";
+import { HiOutlineMail } from "react-icons/hi";
 
 // Netflix-style horizontal scroller (copied from ClientEvents/HolidayList)
 const HorizontalScroller: React.FC<{ children: React.ReactNode }> = ({
@@ -234,186 +235,111 @@ const ConstituentProfile: React.FC = () => {
 
             {/* Right column: Upcoming & To-Dos */}
             <div className="flex flex-col gap-4 h-[750px]">
-              <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-200 flex-1 min-h-[200px] overflow-y-auto custom-scrollbar">
-                <h3 className="text-base font-semibold text-gray-700 mb-3 flex items-center">
-                  <FaCalendarAlt className="mr-2 text-orange-600 text-lg" />{" "}
-                  Upcoming
-                </h3>
-                <div className="relative space-y-3 pt-1">
-                  <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-300"></div>
-                  {[
-                    {
-                      type: "upcoming",
-                      title: "Cultural Show XYZ",
-                      date: "August 15",
-                      checked: false,
-                    },
-                    {
-                      type: "upcoming",
-                      title: "Annual Gala Prep Meeting",
-                      date: "August 20",
-                      checked: false,
-                    },
-                    {
-                      type: "upcoming",
-                      title: "Board Meeting",
-                      date: "September 5",
-                      checked: false,
-                    },
-                    {
-                      type: "upcoming",
-                      title: "Community Outreach Program",
-                      date: "Sept 10",
-                      checked: false,
-                    },
-                    {
-                      type: "upcoming",
-                      title: "Holiday Event Planning Session",
-                      date: "Sept 25",
-                      checked: false,
-                    },
-                    {
-                      type: "attended",
-                      title: "Attended Donor Meetup (July)",
-                      date: "July 28",
-                      checked: true,
-                    },
-                    {
-                      type: "attended",
-                      title: "Email follow-up campaign completed",
-                      date: "July 10",
-                      checked: true,
-                    },
-                    {
-                      type: "attended",
-                      title: "Independence Day Campaign launch",
-                      date: "August 5",
-                      checked: true,
-                    },
-                    {
-                      type: "attended",
-                      title: "Temple Visit for Community Engagement",
-                      date: "July 30",
-                      checked: true,
-                    },
-                    {
-                      type: "attended",
-                      title: "Volunteer Orientation Session",
-                      date: "June 10",
-                      checked: true,
-                    },
-                    {
-                      type: "attended",
-                      title: "Fundraiser Review & Strategy",
-                      date: "July 15",
-                      checked: true,
-                    },
-                  ].map((event, index) => (
-                    <div
-                      key={index}
-                      className="flex items-start relative pl-8 pr-2 py-1.5 bg-gray-50 rounded-lg shadow-xs border border-gray-200"
-                    >
-                      <div className="absolute left-3 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-blue-500 border border-white flex items-center justify-center">
-                        {event.checked ? (
-                          <FaCheckCircle className="text-white text-xs" />
-                        ) : (
-                          <FaCalendarAlt className="text-white text-[9px]" />
-                        )}
-                      </div>
-                      <div>
-                        <p className="font-medium text-gray-800 text-sm">
-                          {event.title}
-                        </p>
-                        <p className="text-xs text-gray-600">{event.date}</p>
-                        {event.checked && (
-                          <p className="text-[10px] text-green-600 mt-0.5">
-                            <FaCheckCircle className="inline mr-1" /> Attended
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
               <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-200 flex-1 min-h-[200px] flex flex-col">
-                <div className="flex justify-between items-center mb-3">
-                  <h3 className="text-base font-semibold text-gray-700 flex items-center">
-                    <FaNewspaper className="mr-2 text-purple-600 text-lg" />{" "}
-                    Email Campaigns
-                  </h3>
-                  {/* <button
-      onClick={() => alert("Expand to full view functionality can be implemented")}
-      className="p-2 rounded-lg hover:bg-gray-100 text-gray-600 hover:text-gray-800 transition"
-      title="Expand Email List"
-      aria-label="Expand Email List"
-    >
-      <FaExpand className="text-lg" />
-    </button> */}
-                </div>
+  {/* Fixed Header */}
+  <h3 className="text-base font-semibold text-gray-700 mb-3 flex items-center border-b pb-2 sticky top-0 bg-white z-10">
+    <FaCalendarAlt className="mr-2 text-orange-600 text-lg" />
+    Upcoming
+  </h3>
 
-                <div className="overflow-x-auto">
-                  <table className="min-w-full divide-y divide-gray-200 text-sm">
-                    <thead className="bg-gray-50">
-                      <tr>
-                        <th className="px-4 py-2 text-left text-gray-600 uppercase font-semibold tracking-wider">
-                          Campaign Name
-                        </th>
-                        <th className="px-4 py-2 text-left text-gray-600 uppercase font-semibold tracking-wider">
-                          Date
-                        </th>
-                        <th className="px-4 py-2 text-left text-gray-600 uppercase font-semibold tracking-wider">
-                          Emails Sent
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody className="bg-white divide-y divide-gray-200">
-                      {[
-                        {
-                          name: "Quarterly Newsletter",
-                          date: "Aug 1, 2025",
-                          sent: 1256,
-                        },
-                        {
-                          name: "Community Engagement Drive",
-                          date: "Aug 10, 2025",
-                          sent: 855,
-                        },
-                        {
-                          name: "Fundraiser Launch",
-                          date: "Aug 15, 2025",
-                          sent: 1437,
-                        },
-                        {
-                          name: "Volunteer Recruitment",
-                          date: "Aug 20, 2025",
-                          sent: 671,
-                        },
-                        {
-                          name: "Holiday Campaign",
-                          date: "Aug 25, 2025",
-                          sent: 986,
-                        },
-                      ].map((campaign, index) => (
-                        <tr
-                          key={index}
-                          className="hover:bg-blue-50 transition-colors"
-                        >
-                          <td className="px-4 py-3 font-medium text-gray-800">
-                            {campaign.name}
-                          </td>
-                          <td className="px-4 py-3 text-gray-600">
-                            {campaign.date}
-                          </td>
-                          <td className="px-4 py-3 text-gray-700 font-semibold">
-                            {campaign.sent.toLocaleString()}
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
+  {/* Scrollable Events Box */}
+  <div className="relative flex-1 overflow-y-auto max-h-[300px] pr-2 custom-scrollbar">
+    <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-300"></div>
+
+    {[
+      { type: "upcoming", title: "Cultural Show XYZ", date: "August 15", checked: false },
+      { type: "upcoming", title: "Annual Gala Prep Meeting", date: "August 20", checked: false },
+      { type: "upcoming", title: "Board Meeting", date: "September 5", checked: false },
+      { type: "upcoming", title: "Community Outreach Program", date: "Sept 10", checked: false },
+      { type: "upcoming", title: "Holiday Event Planning Session", date: "Sept 25", checked: false },
+      { type: "upcoming", title: "Attended Donor Meetup (July)", date: "August 28", checked: true },
+      { type: "upcoming", title: "Email follow-up campaign completed", date: "July 10", checked: true },
+      { type: "attended", title: "Independence Day Campaign launch", date: "August 5", checked: true },
+      { type: "attended", title: "Temple Visit for Community Engagement", date: "July 30", checked: true },
+      { type: "attended", title: "Volunteer Orientation Session", date: "June 10", checked: true },
+      { type: "attended", title: "Fundraiser Review & Strategy", date: "July 15", checked: true },
+    ].map((event, index) => (
+      <div
+        key={index}
+        className="flex items-start relative pl-8 pr-3 py-2 mb-2 bg-gray-50 rounded-lg shadow-sm border border-gray-200"
+      >
+        {/* Dot/Check Icon */}
+        <div className="absolute left-3 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-blue-500 border border-white flex items-center justify-center">
+          {event.checked ? (
+            <FaCheckCircle className="text-white text-xs" />
+          ) : (
+            <FaCalendarAlt className="text-white text-[9px]" />
+          )}
+        </div>
+
+        {/* Event Details */}
+        <div>
+          <p className="font-medium text-gray-800 text-sm">{event.title}</p>
+          <p className="text-xs text-gray-600">{event.date}</p>
+          {event.checked && (
+            <p className="text-[10px] text-green-600 mt-0.5">
+              <FaCheckCircle className="inline mr-1" /> Attended
+            </p>
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+
+              <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-200 flex-1 min-h-[250px] flex flex-col">
+  {/* Header */}
+  <div className="flex justify-between items-center mb-5">
+    <h3 className="text-lg font-semibold text-gray-800 flex items-center">
+      <FaNewspaper className="mr-2 text-purple-600 text-xl" /> Email Campaigns
+    </h3>
+  </div>
+
+  {/* Table */}
+  <div className="overflow-x-auto rounded-lg border border-gray-100">
+    <table className="min-w-full divide-y divide-gray-200 text-sm">
+      <thead className="bg-gray-50">
+        <tr>
+          <th className="px-5 py-3 text-left text-gray-600 uppercase font-semibold tracking-wider">
+            Campaign Name
+          </th>
+          <th className="px-5 py-3 text-left text-gray-600 uppercase font-semibold tracking-wider">
+            Date
+          </th>
+          <th className="px-5 py-3 text-left text-gray-600 uppercase font-semibold tracking-wider flex items-center">
+            <HiOutlineMail className="mr-2 text-blue-500 text-lg" /> Emails Sent
+          </th>
+        </tr>
+      </thead>
+      <tbody className="bg-white divide-y divide-gray-200">
+        {[
+          { name: "Quarterly Newsletter", date: "Aug 1, 2025", sent: 1256 },
+          { name: "Community Engagement Drive", date: "Aug 10, 2025", sent: 855 },
+          { name: "Fundraiser Launch", date: "Aug 15, 2025", sent: 1437 },
+          { name: "Volunteer Recruitment", date: "Aug 20, 2025", sent: 671 },
+          { name: "Holiday Campaign", date: "Aug 25, 2025", sent: 986 },
+        ].map((campaign, index) => (
+          <tr
+            key={index}
+            className="hover:bg-blue-50/60 transition-colors even:bg-gray-50"
+          >
+            <td className="px-5 py-3 font-medium text-gray-800 whitespace-nowrap">
+              {campaign.name}
+            </td>
+            <td className="px-5 py-3 text-gray-600 whitespace-nowrap">
+              {campaign.date}
+            </td>
+            <td className="px-5 py-3 text-gray-700 font-semibold whitespace-nowrap">
+              {campaign.sent.toLocaleString()}
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</div>
+
 
               {/* To-Dos Card */}
               {/* <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-200 flex-1 min-h-[200px] flex flex-col">

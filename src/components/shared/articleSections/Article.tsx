@@ -2,10 +2,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-// Ensure this path is correct for your project
 import data from "../../../database/articles.json";
 
-// Define types for articles for better type safety and clarity
 interface ArticleData {
   _id: string;
   context: string;
@@ -19,30 +17,25 @@ interface ArticleData {
 }
 
 export const Article = ({ id }: { id: number }) => {
-  // Use type assertion for the data structure
   const article: ArticleData | undefined = (data as ArticleData[])?.[id - 1];
   const [openQuestionIndex, setOpenQuestionIndex] = useState<number | null>(
     null
   );
-  //@ts-ignore
   const [, setScrollY] = useState(0);
 
-  // Keeping this gradient for icons as per your instruction
-  const heading_gradient: string = "bg-gradient-to-br from-blue-400 to-red-400";
+  const heading_gradient: string = "bg-gradient-to-br bg-blue-300 to-red-300";
+  const icons:boolean=false
 
-  // Function to toggle accordion open/close
   const toggleQuestion = (index: number) => {
     setOpenQuestionIndex(openQuestionIndex === index ? null : index);
   };
 
-  // Effect to track scroll position (if needed for animations or dynamic elements)
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Display a fallback message if the article data is not found
   if (!article) {
     return (
       <div className="flex items-center justify-center   font-sans ">
@@ -54,11 +47,8 @@ export const Article = ({ id }: { id: number }) => {
   }
 
   return (
-    // Main container with a professional, light gray background and Inter as default sans font
     <div className="p-2 rounded-xl font-sans relative bg-gray-100">
-      {/* Main content area */}
       <div className="max-w-5xl mx-auto space-y-4">
-        {/* Context Section */}
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -66,10 +56,9 @@ export const Article = ({ id }: { id: number }) => {
           viewport={{ once: true, amount: 0.4 }}
           className="group relative bg-white p-8 rounded-xl shadow-sm border border-gray-100"
         >
-          {/* Side gradient indicator for hover - kept as accent */}
 
           <div className="flex items-center gap-3 mb-6">
-            {/* <div
+            {icons && <div
               className={`w-10 h-10 rounded-xl ${heading_gradient} flex items-center justify-center shadow-lg`}
             >
               <svg
@@ -85,19 +74,17 @@ export const Article = ({ id }: { id: number }) => {
                   d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                 />
               </svg>
-            </div> */}
-            <h2 className="text-2xl font-heading font-bold text-gray-900 border-b-4 border-blue-800 inline-block pb-2">
+            </div>}
+            <h2 className="text-xl font-heading font-semibold text-gray-900 border-b-4 border-blue-800 inline-block pb-2">
               Context
             </h2>
           </div>
           <p className="text-lg leading-relaxed tracking-wide text-gray-800 font-normal">
             {" "}
-            {/* Adjusted to font-normal */}
             {article.context}
           </p>
         </motion.section>
 
-        {/* Quote Section */}
         <motion.section
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -106,7 +93,7 @@ export const Article = ({ id }: { id: number }) => {
           className="relative bg-white p-8 rounded-xl border-l-8 border-[#212122]/70 shadow-sm"
         >
           <div className="flex items-start gap-4">
-            <div
+            {icons && <div
               className={`w-12 h-12 rounded-xl  flex items-center justify-center flex-shrink-0 `}
             >
               <svg
@@ -116,11 +103,10 @@ export const Article = ({ id }: { id: number }) => {
               >
                 <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
               </svg>
-            </div>
+            </div>}
             <div className="flex-1">
               <blockquote className="text-xl font-normal leading-relaxed text-gray-800 mb-3">
                 {" "}
-                {/* Changed to font-normal */}
                 “My mother was very proud of her Indian heritage and taught us,
                 me and my sister Maya, to share in the pride about our culture.
                 India is the largest democracy in the world; so that is part of
@@ -129,8 +115,6 @@ export const Article = ({ id }: { id: number }) => {
             </div>
           </div>
         </motion.section>
-
-        {/* Exalt’s Take Section */}
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -138,11 +122,10 @@ export const Article = ({ id }: { id: number }) => {
           viewport={{ once: true, amount: 0.4 }}
           className="group relative bg-white p-8 rounded-3xl shadow-sm border border-gray-100"
         >
-          {/* Side gradient indicator for hover - kept as accent */}
           <div className="absolute -right-4 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 to-blue-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
           <div className="flex items-center gap-3 mb-6">
-            {/* <div
+            {icons && <div
               className={`w-10 h-10 rounded-xl ${heading_gradient} flex items-center justify-center shadow-lg`}
             >
               <svg
@@ -158,19 +141,17 @@ export const Article = ({ id }: { id: number }) => {
                   d="M13 10V3L4 14h7v7l9-11h-7z"
                 />
               </svg>
-            </div> */}
-            <h2 className="text-2xl font-heading font-bold text-gray-900 mb-0 border-b-4 border-blue-800 inline-block pb-2">
+            </div>}
+            <h2 className="text-xl font-heading font-semibold text-gray-900 mb-0 border-b-4 border-blue-800 inline-block pb-2">
               Exalt’s Take
             </h2>
           </div>
           <p className="text-lg leading-relaxed tracking-wide text-gray-800 font-normal">
             {" "}
-            {/* Adjusted to font-normal */}
             {article.exalt_take}
           </p>
         </motion.section>
 
-        {/* Suggestions Section */}
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -179,7 +160,7 @@ export const Article = ({ id }: { id: number }) => {
           className="p-8 rounded-3xl bg-white shadow-sm border border-gray-100"
         >
           <div className="flex items-center gap-4 mb-8 ">
-            {/* <div
+            {icons &&<div
               className={`w-12 h-12 rounded-2xl ${heading_gradient} flex items-center justify-center shadow-lg`}
             >
               <svg
@@ -195,14 +176,13 @@ export const Article = ({ id }: { id: number }) => {
                   d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
                 />
               </svg>
-            </div> */}
-            <h2 className="text-3xl font-heading font-bold text-gray-900 border-b-4 border-blue-800 inline-block pb-2">
+            </div>}
+            <h2 className="text-xl font-heading font-semibold text-gray-900 border-b-4 border-blue-800 inline-block pb-2">
               Suggestions
             </h2>
           </div>
           <p className="text-lg leading-relaxed text-gray-800 font-normal">
             {" "}
-            {/* Adjusted to font-normal */}
             Use Kamala Harris's speech, particularly targeted towards female
             Indian-American donors. As the diaspora becomes more politically
             active every year, it's important to connect emotionally with
@@ -212,7 +192,6 @@ export const Article = ({ id }: { id: number }) => {
           </p>
         </motion.section>
 
-        {/* Chart Section */}
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -221,7 +200,7 @@ export const Article = ({ id }: { id: number }) => {
           className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100"
         >
           <div className="flex items-center gap-4 mb-8">
-            {/* <div
+            {icons &&<div
               className={`w-12 h-12 rounded-2xl ${heading_gradient} flex items-center justify-center shadow-lg`}
             >
               <svg
@@ -237,9 +216,9 @@ export const Article = ({ id }: { id: number }) => {
                   d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
                 />
               </svg>
-            </div> */}
+            </div>}
             <div>
-              <h2 className="text-3xl font-heading font-bold text-gray-900 border-b-4 border-blue-800 inline-block pb-2">
+              <h2 className="text-xl font-heading font-semibold text-gray-900 border-b-4 border-blue-800 inline-block pb-2">
                 Global Remittance Data
               </h2>
               <p className="text-gray-600 text-lg mt-2 font-medium">
@@ -248,30 +227,24 @@ export const Article = ({ id }: { id: number }) => {
             </div>
           </div>
 
-          {/* --- START: Image Section Changes --- */}
           <div className="flex justify-center">
             {" "}
-            {/* Centers the image container */}
             <div className="w-full max-w-xl rounded-2xl overflow-hidden border border-gray-200 shadow-sm">
               {" "}
-              {/* Limits image width */}
               <img
                 src="https://pub.mdpi-res.com/socsci/socsci-13-00239/article_deploy/html/images/socsci-13-00239-g001.png?1714126803"
                 alt="Remittance Chart"
-                className="w-full h-auto" // Ensures image scales within its max-width parent
+                className="w-full h-auto" 
               />
             </div>
           </div>
-          {/* --- END: Image Section Changes --- */}
 
           <p className="text-sm text-gray-500 mt-4 text-center bg-gray-50 px-4 py-2 rounded-lg font-normal">
             {" "}
-            {/* Adjusted to font-normal */}
             Source: World Bank KNOMAD, remittance inflows (current US$)
           </p>
         </motion.section>
 
-        {/* Questions from the Community Section (Accordion) */}
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -280,7 +253,7 @@ export const Article = ({ id }: { id: number }) => {
           className="p-8 rounded-3xl bg-white shadow-sm border border-gray-100"
         >
           <div className="flex items-center gap-4 mb-10">
-            {/* <div
+           {icons && <div
               className={`w-12 h-12 rounded-2xl ${heading_gradient} flex items-center justify-center shadow-lg`}
             >
               <svg
@@ -296,9 +269,9 @@ export const Article = ({ id }: { id: number }) => {
                   d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-            </div> */}
+            </div>}
             <div>
-              <h2 className="text-3xl font-heading font-bold text-gray-900 border-b-4 border-blue-800 inline-block pb-2">
+              <h2 className="text-xl font-heading font-semibold text-gray-900 border-b-4 border-blue-800 inline-block pb-2">
                 Questions from the Community
               </h2>
               <p className="text-gray-600 text-lg mt-2 font-medium">
@@ -330,14 +303,14 @@ export const Article = ({ id }: { id: number }) => {
                   >
                     <button
                       onClick={() => toggleQuestion(index)}
-                      className="w-full text-left p-6 sm:p-8 bg-gray-50 hover:bg-gray-100 rounded-2xl border border-gray-200 hover:border-blue-300 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-800 focus:ring-offset-2"
+                      className="w-full text-left p-3 sm:p-8 bg-gray-50 hover:bg-gray-100 rounded-2xl border border-gray-200 hover:border-blue-300 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-800 focus:ring-offset-2"
                     >
                       <div className="flex items-center justify-between">
-                        <span className="text-xl font-medium text-gray-900 group-hover:text-blue-800 transition-colors pr-6">
+                        <span className="text-lg font-medium text-gray-900 group-hover:text-blue-800 transition-colors pr-6">
                           {questionText}
                         </span>
                         <div
-                          className={`flex-shrink-0 w-12 h-12 rounded-xl bg-white shadow-md border-2 border-gray-200 flex items-center justify-center transition-all duration-300 ${
+                          className={`flex-shrink-0 w-10 h-10 rounded-xl bg-white shadow-md border-2 border-gray-200 flex items-center justify-center transition-all duration-300 ${
                             openQuestionIndex === index
                               ? "border-blue-800 bg-blue-100 rotate-45 scale-110"
                               : "group-hover:border-blue-300 group-hover:bg-gray-50"
@@ -391,7 +364,7 @@ export const Article = ({ id }: { id: number }) => {
                               </div>
                               <div className="flex-1">
                                 <div className="flex items-center gap-3 mb-4">
-                                  <h3 className="text-2xl font-bold text-gray-900">
+                                  <h3 className="text-xl font-bold text-gray-900">
                                     Expert Analysis
                                   </h3>
                                   <div className="px-3 py-1 bg-gray-200 text-gray-800 text-sm font-medium rounded-full">
@@ -427,7 +400,6 @@ export const Article = ({ id }: { id: number }) => {
                 );
               })
             ) : (
-              // Display if no questions are available
               <div className="bg-white rounded-lg p-5 border border-gray-100 shadow-sm text-center">
                 <p className="text-lg text-gray-600 py-4 font-normal">
                   No questions from the community available for this article.

@@ -9,7 +9,6 @@ import {
   FaPlusCircle 
 } from "react-icons/fa";
 
-// Define a more robust type for events
 interface CalendarEvent {
   date: Date;
   type: keyof typeof EVENT_TYPES;
@@ -17,46 +16,44 @@ interface CalendarEvent {
   title?: string;
 }
 
-// Professional event types
 const EVENT_TYPES = {
   meeting: { 
     color: "bg-blue-600", 
     text: "text-blue-600", 
     label: "Meeting", 
     icon: <FaBriefcase size={18} />, 
-    chipIcon: <FaBriefcase size={9} /> 
+    chipIcon: <FaBriefcase size={14} /> // Increased chip icon size
   },
   campaign: { 
     color: "bg-teal-600", 
     text: "text-teal-600", 
     label: "Campaign", 
     icon: <FaBullhorn size={18} />, 
-    chipIcon: <FaBullhorn size={9} /> 
+    chipIcon: <FaBullhorn size={14} /> // Increased chip icon size
   },
   conference: { 
     color: "bg-indigo-600", 
     text: "text-indigo-600", 
     label: "Conference", 
     icon: <FaUsers size={18} />, 
-    chipIcon: <FaUsers size={9} /> 
+    chipIcon: <FaUsers size={14} /> // Increased chip icon size
   },
   workshop: { 
     color: "bg-purple-600", 
     text: "text-purple-600", 
     label: "Workshop", 
     icon: <FaChalkboardTeacher size={18} />, 
-    chipIcon: <FaChalkboardTeacher size={9} /> 
+    chipIcon: <FaChalkboardTeacher size={14} /> // Increased chip icon size
   },
   deadline: { 
     color: "bg-red-600", 
     text: "text-red-600", 
     label: "Deadline", 
     icon: <FaCalendarCheck size={18} />, 
-    chipIcon: <FaCalendarCheck size={9} /> 
+    chipIcon: <FaCalendarCheck size={14} /> // Increased chip icon size
   },
 };
 
-// Light background for full boxes
 const EVENT_LIGHT_BG: { [key in keyof typeof EVENT_TYPES]: string } = {
   meeting: "bg-blue-100",
   campaign: "bg-teal-100",
@@ -65,7 +62,6 @@ const EVENT_LIGHT_BG: { [key in keyof typeof EVENT_TYPES]: string } = {
   deadline: "bg-red-100",
 };
 
-// Initial professional calendar events
 const initialCalendarEvents: CalendarEvent[] = [
   { date: new Date(2023, 6, 15), type: "meeting", title: "Team Standup", desc: "Daily sync meeting with the project team." },
   { date: new Date(2023, 7, 17), type: "campaign", title: "Product Launch Campaign", desc: "Kick-off meeting for marketing campaign." },
@@ -94,26 +90,20 @@ const CalendarGrid: React.FC = () => {
     d1.getDate() === d2.getDate();
 
   const { days, eventsByDate } = useMemo(() => {
-    const getDaysInMonth = (date: Date) => new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
-    const getFirstDayOfMonth = (date: Date) => (new Date(date.getFullYear(), date.getMonth(), 1).getDay() + 6) % 7;
-
-    const daysInMonth = getDaysInMonth(currentMonth);
-    const firstDayOfWeek = getFirstDayOfMonth(currentMonth);
+    // getDay() returns 0 for Sunday, 1 for Monday, etc. We want Monday to be 0 for our grid.
+    const getFirstDayOfWeekIndex = (date: Date) => (new Date(date.getFullYear(), date.getMonth(), 1).getDay() + 6) % 7; 
 
     const allDays: { date: Date; isCurrentMonth: boolean }[] = [];
-    const prevMonthDaysCount = getDaysInMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1));
+    const firstDayIndexInGrid = getFirstDayOfWeekIndex(currentMonth); // 0-6 index for 1st day of month
 
-    for (let i = 0; i < firstDayOfWeek; i++) {
-      allDays.push({ date: new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, prevMonthDaysCount - firstDayOfWeek + i + 1), isCurrentMonth: false });
-    }
+    const startDate = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), 1);
+    startDate.setDate(startDate.getDate() - firstDayIndexInGrid); // Set to the start day of the first week displayed
 
-    for (let i = 1; i <= daysInMonth; i++) {
-      allDays.push({ date: new Date(currentMonth.getFullYear(), currentMonth.getMonth(), i), isCurrentMonth: true });
-    }
-
-    const remainingCells = 42 - allDays.length;
-    for (let i = 1; i <= remainingCells; i++) {
-      allDays.push({ date: new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, i), isCurrentMonth: false });
+    // Generate exactly 5 weeks (35 days) for the grid
+    for (let i = 0; i < 35; i++) { 
+        const date = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate() + i);
+        const isCurrentMonth = date.getMonth() === currentMonth.getMonth() && date.getFullYear() === currentMonth.getFullYear();
+        allDays.push({ date, isCurrentMonth });
     }
 
     const eventsGroupedByDate: { [key: string]: CalendarEvent[] } = {};
@@ -174,7 +164,6 @@ const CalendarGrid: React.FC = () => {
 
   return (
     <div className="relative w-full h-full flex flex-col text-xs bg-gray-50 rounded-lg shadow-xl overflow-hidden">
-      {/* Event Details Modal */}
       {selectedDayEvents && selectedDayDate && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-xl shadow-2xl max-w-3xl w-full p-6 relative max-h-[90vh] overflow-y-auto">
@@ -295,21 +284,18 @@ const CalendarGrid: React.FC = () => {
         </div>
       )}
 
-      {/* Calendar Header */}
       <div className="flex justify-between items-center px-3 py-2 bg-white border-b border-gray-200 shadow-sm">
         <button onClick={() => navigateMonth("prev")} className="p-1 text-gray-700 font-bold text-lg">&lt;</button>
         <span className="text-lg font-bold text-gray-800">{getMonthName(currentMonth)}</span>
         <button onClick={() => navigateMonth("next")} className="p-1 text-gray-700 font-bold text-lg">&gt;</button>
       </div>
 
-      {/* Weekday Labels */}
       <div className="grid grid-cols-7 text-center font-semibold text-gray-600 border-b border-gray-200 bg-gray-50">
         {["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"].map((day) => (
           <div key={day} className="py-1.5 text-[11px] uppercase tracking-wide">{day}</div>
         ))}
       </div>
 
-      {/* Calendar Grid Days */}
       <div className="grid grid-cols-7 flex-grow border-r border-b border-gray-200">
         {days.map((day, index) => {
           const dateKey = day.date.toDateString();
@@ -342,7 +328,7 @@ const CalendarGrid: React.FC = () => {
                   {dayEvents.slice(0, 2).map((event, eventIndex) => (
                     <div
                       key={eventIndex}
-                      className={`flex items-center gap-0.5 px-1.5 py-0.5 rounded-full ${EVENT_TYPES[event.type].color} text-white text-[9px] font-medium`}
+                      className={`flex items-center gap-1 px-1 py-1 rounded-full ${EVENT_TYPES[event.type].color} text-white text-xs font-medium`} // Larger tag styling
                       title={event.title}
                     >
                       {EVENT_TYPES[event.type].chipIcon}
@@ -350,7 +336,7 @@ const CalendarGrid: React.FC = () => {
                     </div>
                   ))}
                   {dayEvents.length > 2 && (
-                    <div className="px-1.5 py-0.5 rounded-full bg-gray-300 text-gray-800 text-[9px] font-medium">
+                    <div className="px-2 py-1 rounded-full bg-gray-300 text-gray-800 text-xs font-medium"> {/* Larger tag styling */}
                       +{dayEvents.length - 2}
                     </div>
                   )}

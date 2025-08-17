@@ -19,6 +19,8 @@ export const ClientArticles = () => {
   const { setHeading } = useHeading();
   const [currentSection, setCurrentSection] = useState("Article");
 
+  const image=data?.[id - 1].image
+
   console.log(id);
   console.log(data?.[0]);
 

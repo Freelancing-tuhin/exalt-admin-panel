@@ -23,10 +23,10 @@ const briefsData = [
   { id: 2, month: "February 2025", articles: 16, viralDiscussions: 20 },
   { id: 1, month: "January 2025", articles: 14, viralDiscussions: 22 },
   { id: 12, month: "December 2024", articles: 22, viralDiscussions: 32 },
-  { id: 11, month: "November 2025", articles: 11, viralDiscussions: 14 },
-  { id: 10, month: "October 2025", articles: 13, viralDiscussions: 16 },
-  { id: 9, month: "September 2025", articles: 17, viralDiscussions: 23 },
-  { id: 8, month: "August 2025", articles: 21, viralDiscussions: 28 },
+  { id: 11, month: "November 2024", articles: 11, viralDiscussions: 14 },
+  { id: 10, month: "October 2024", articles: 13, viralDiscussions: 16 },
+  { id: 9, month: "September 2024", articles: 17, viralDiscussions: 23 },
+  { id: 8, month: "August 2024", articles: 21, viralDiscussions: 28 },
 ];
 
 export const ClientBriefs = () => {
