@@ -1,11 +1,9 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ChevronRight,
   Target,
-  Mail,
   MessageSquare,
   Twitter,
   Linkedin,
@@ -31,16 +29,7 @@ const generateSidebarSections = (articleData: any) => {
       label: "EXALT Actions Menu",
       content: `Strategic actions for "${articleData.title}" - ${articleData.tag} focused outreach.`,
       icon: Target,
-      tools: [
-        {
-          name: "Gmail API",
-          icon: Mail,
-          action: "Send Donor Outreach",
-          platform: "email",
-          endpoint: "https://gmail.googleapis.com/gmail/v1",
-          description: `Email campaign about ${articleData.tag} issues`,
-        },
-      ],
+      tools: [],
     },
     {
       id: "recommended-messages",
@@ -413,7 +402,7 @@ export const ArticleActionsPanel = ({ data }: any) => {
                         {/* Tools / Articles */}
                         <div className="px-4 py-4 space-y-2">
                           {section.id === "exalt-actions" ? (
-                            <ActionCard />
+                            <ActionCard data={data} />
                           ) : section.id === "further-readings" ? (
                             <div className="space-y-2">
                               {section.tools.map((article: any) => (

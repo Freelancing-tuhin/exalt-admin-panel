@@ -1,59 +1,41 @@
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 import Navbar from "../../../components/main/navbar/Navbar";
 import { ArticleActionsPanel } from "../../../components/shared/acordition/ArticleActionsPanel";
 import { Header } from "../../../components/shared/header/Header";
 import { Layout } from "../../layout/Layout";
-import { FiCopy } from "react-icons/fi";
+import { FiCalendar, FiCopy, FiMapPin, FiTag } from "react-icons/fi";
+import { FaInstagram, FaFacebook } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import eventData from "../../../database/event.json";
 
-interface SourceLink {
-  id: string;
-  description: string;
-  link: string;
+interface Location {
+  venue: string;
+  address?: string;
+  city: string;
+  state: string;
+  zip?: string;
 }
 
-type ImportanceLevel =
-  | "high_importance"
-  | "medium_importance"
-  | "low_importance";
+interface TargetedMessaging {
+  instagram_facebook: string;
+  twitter_x: string;
+}
 
 interface EventData {
+  id: string;
   title: string;
   date: string;
-  address: string;
-  tag: ImportanceLevel;
+  time: string;
+  location: Location;
   description: string;
+  image: string;
+  tags: string[];
   cultural_sensitivities: string[];
-  graphics: string;
-  source_link: SourceLink[];
+  action_items: string[];
+  targeted_messaging: TargetedMessaging;
+  further_reading: string[];
 }
-
-const event: EventData = {
-  title: "Krishna Janmāshtami Dinner",
-  date: "October 15−28, 2024",
-  address: "1234 East Carrolton Road",
-  tag: "high_importance",
-  description:
-    "Writer populates an event description. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  cultural_sensitivities: [
-    "Be sure not to wear a long sleeve shirt, it is considered offensive.",
-    "Avoid taking photos of certain rituals without permission.",
-  ],
-  graphics:
-    "https://www.iskconbangalore.org/wp-content/uploads/2025/05/janmashtami-thu.jpg",
-  source_link: [
-    {
-      id: "1",
-      description:
-        "This article describes what the holiday means to people. Can go on for multiple lines and that's fine too.",
-      link: "nytimes.com",
-    },
-    {
-      id: "2",
-      description:
-        "This article describes what the holiday means to people. Can go on for multiple lines and that's fine too.",
-      link: "nytimes.com",
-    },
-  ],
-};
 
 const copyToClipboard = async (text: string) => {
   try {
@@ -65,7 +47,84 @@ const copyToClipboard = async (text: string) => {
   }
 };
 
+// Smart image mapping function
+const getEventImage = (event: EventData): string => {
+  if (event.image) return event.image;
+
+  const title = event.title.toLowerCase();
+
+  if (title.includes("janmashtami") || title.includes("krishna")) {
+    return "https://www.iskconbangalore.org/wp-content/uploads/2025/05/janmashtami-thu.jpg";
+  }
+  if (title.includes("diwali")) {
+    return "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
+  }
+  if (
+    title.includes("garba") ||
+    title.includes("dandiya") ||
+    title.includes("navratri")
+  ) {
+    return "https://images.unsplash.com/photo-1571115764595-644a1f56a55c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
+  }
+  if (title.includes("independence") || title.includes("republic")) {
+    return "https://images.unsplash.com/photo-1597149915990-4845dc23ed4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
+  }
+  if (
+    title.includes("badshah") ||
+    title.includes("concert") ||
+    title.includes("music")
+  ) {
+    return "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
+  }
+  if (title.includes("fair") || title.includes("mela")) {
+    return "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
+  }
+
+  // Default fallback
+  return "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
+};
+
 export default function EventPage() {
+  const { id } = useParams<{ id: string }>();
+  const [event, setEvent] = useState<EventData | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadEventData = () => {
+      try {
+        const foundEvent = eventData.find((e) => e.id === id);
+        setEvent(foundEvent || null);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error loading event data:", error);
+        setLoading(false);
+      }
+    };
+
+    loadEventData();
+  }, [id]);
+
+  if (loading) {
+    return (
+      <Layout>
+        <Navbar back={true} />
+        <div className="flex items-center justify-center h-[92vh]">
+          <div className="text-lg text-gray-600">Loading event...</div>
+        </div>
+      </Layout>
+    );
+  }
+
+  if (!event) {
+    return (
+      <Layout>
+        <Navbar back={true} />
+        <div className="flex items-center justify-center h-[92vh]">
+          <div className="text-lg text-gray-600">Event not found</div>
+        </div>
+      </Layout>
+    );
+  }
   return (
     <Layout>
       <Navbar back={true} />
@@ -79,11 +138,11 @@ export default function EventPage() {
             author="Exalt Data"
             date={event.date}
             readTime="5 min"
-            category=""
+            category={event.tags.join(", ")}
           />
           <div className="h-96  relative flex-shrink-0">
             <img
-              src={event.graphics}
+              src={getEventImage(event)}
               alt="Event Graphic"
               className="w-full h-full object-cover object-center rounded-3xl shadow-lg"
             />
@@ -102,6 +161,69 @@ export default function EventPage() {
             </p>
           </div>
 
+          {/* Event Details */}
+          <div className="bg-gray-100 p-4 rounded-2xl space-y-4">
+            <h2 className="text-lg font-semibold text-gray-800">
+              Event Details
+            </h2>
+
+            <div className="bg-white p-4 rounded-lg space-y-4">
+              {/* Date & Time */}
+              <div className="flex items-start space-x-3">
+                <FiCalendar className="text-gray-600 mt-1" size={18} />
+                <div className="flex flex-col space-y-1">
+                  <span className="text-sm font-medium text-gray-500">
+                    Date & Time
+                  </span>
+                  <span className="text-gray-700">{event.date}</span>
+                  <span className="text-gray-700">{event.time}</span>
+                </div>
+              </div>
+
+              {/* Location */}
+              <div className="flex items-start space-x-3">
+                <FiMapPin className="text-gray-600 mt-1" size={18} />
+                <div className="flex flex-col space-y-1">
+                  <span className="text-sm font-medium text-gray-500">
+                    Location
+                  </span>
+                  <span className="text-gray-700 font-medium">
+                    {event.location.venue}
+                  </span>
+                  {event.location.address && (
+                    <span className="text-gray-600">
+                      {event.location.address}
+                    </span>
+                  )}
+                  <span className="text-gray-600">
+                    {event.location.city}, {event.location.state}{" "}
+                    {event.location.zip}
+                  </span>
+                </div>
+              </div>
+
+              {/* Tags */}
+              <div className="flex items-start space-x-3">
+                <FiTag className="text-gray-600 mt-1" size={18} />
+                <div className="flex flex-col space-y-1">
+                  <span className="text-sm font-medium text-gray-500">
+                    Tags
+                  </span>
+                  <div className="flex flex-wrap gap-2">
+                    {event.tags.map((tag, index) => (
+                      <span
+                        key={index}
+                        className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Cultural Sensitivities */}
           <div className="bg-gray-100 p-4 rounded-2xl space-y-4">
             <h2 className="text-lg font-semibold text-gray-800">
@@ -114,8 +236,90 @@ export default function EventPage() {
             </ul>
           </div>
 
+          {/* Social Media Content */}
+          {event.targeted_messaging && (
+            <div className="bg-gray-100 p-4 rounded-2xl space-y-4">
+              <h2 className="text-lg font-semibold text-gray-800">
+                Social Media Content
+              </h2>
+              <div className="space-y-4">
+                {/* Instagram/Facebook Card */}
+                {event.targeted_messaging.instagram_facebook && (
+                  <div className="bg-white p-4 rounded-lg border border-gray-200 hover:border-purple-300 transition-all duration-200">
+                    <div className="flex items-start space-x-3">
+                      <div className="flex space-x-2">
+                        <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                          <FaInstagram className="w-5 h-5 text-white" />
+                        </div>
+                        <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                          <FaFacebook className="w-5 h-5 text-white" />
+                        </div>
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex items-center justify-between mb-2">
+                          <h3 className="font-medium text-gray-800">
+                            Instagram / Facebook
+                          </h3>
+                          <button
+                            onClick={() =>
+                              copyToClipboard(
+                                event.targeted_messaging.instagram_facebook
+                              )
+                            }
+                            className="p-2 rounded-lg text-gray-500 hover:bg-gray-100 hover:text-gray-700 transition-all"
+                            title="Copy content"
+                          >
+                            <FiCopy size={16} />
+                          </button>
+                        </div>
+                        <p className="text-sm text-gray-600 leading-relaxed">
+                          {event.targeted_messaging.instagram_facebook}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Twitter/X Card */}
+                {event.targeted_messaging.twitter_x && (
+                  <div className="bg-white p-4 rounded-lg border border-gray-200 hover:border-blue-300 transition-all duration-200">
+                    <div className="flex items-start space-x-3">
+                      <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
+                        <FaXTwitter className="w-5 h-5 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex items-center justify-between mb-2">
+                          <h3 className="font-medium text-gray-800">
+                            X (Twitter)
+                          </h3>
+                          <button
+                            onClick={() =>
+                              copyToClipboard(
+                                event.targeted_messaging.twitter_x
+                              )
+                            }
+                            className="p-2 rounded-lg text-gray-500 hover:bg-gray-100 hover:text-gray-700 transition-all"
+                            title="Copy content"
+                          >
+                            <FiCopy size={16} />
+                          </button>
+                        </div>
+                        <p className="text-sm text-gray-600 leading-relaxed">
+                          {event.targeted_messaging.twitter_x}
+                        </p>
+                        <div className="mt-2 text-xs text-gray-500">
+                          {event.targeted_messaging.twitter_x.length} characters
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
           {/* External Resources */}
-          {event.source_link.length > 0 && (
+          {event.further_reading.length > 0 && (
             <div className="bg-gray-100 rounded-2xl p-4 space-y-4">
               <h2 className="text-lg font-semibold text-gray-800">
                 External Resources
@@ -131,16 +335,14 @@ export default function EventPage() {
                     </tr>
                   </thead>
                   <tbody>
-                    {event.source_link.map((source, idx) => (
+                    {event.further_reading.map((resource, idx) => (
                       <tr
-                        key={source.id}
+                        key={idx}
                         className="bg-gray-50 hover:bg-gray-100 transition-all"
                       >
                         <td className="p-3 text-center">
                           <button
-                            onClick={() =>
-                              copyToClipboard(`https://${source.link}`)
-                            }
+                            onClick={() => copyToClipboard(`${resource}`)}
                             className="p-2 rounded-lg text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-all"
                           >
                             <FiCopy size={18} />
@@ -149,16 +351,14 @@ export default function EventPage() {
                         <td className="p-3 text-center font-medium">
                           {idx + 1}
                         </td>
-                        <td className="p-3 text-gray-700">
-                          {source.description}
-                        </td>
+                        <td className="p-3 text-gray-700">{resource}</td>
                         <td className="p-3 text-blue-600 hover:underline">
                           <a
-                            href={`https://${source.link}`}
+                            href={`#`}
                             target="_blank"
                             rel="noopener noreferrer"
                           >
-                            {source.link}
+                            Learn More
                           </a>
                         </td>
                       </tr>
@@ -171,7 +371,7 @@ export default function EventPage() {
         </div>
 
         {/* Actions Panel */}
-        <ArticleActionsPanel />
+        <ArticleActionsPanel data={event} />
       </div>
     </Layout>
   );

@@ -9,31 +9,19 @@ interface EventCardProps {
   onClick?: () => void;
 }
 
-const getTagStyle = (tag: string) => {
-  switch (tag.toLowerCase()) {
-    case "arts":
-    case "wedding":
-      return "bg-blue-600/70 text-white backdrop-blur-sm";
-    case "music":
-      return "bg-green-600/70 text-white backdrop-blur-sm";
-    case "general":
-      return "bg-gray-700/70 text-white backdrop-blur-sm";
-    case "charity":
-      return "bg-pink-600/70 text-white backdrop-blur-sm";
-    case "hindu":
-      return "bg-amber-400/70 text-white backdrop-blur-sm";
-    case "telugu":
-      return "bg-purple-600/70 text-white backdrop-blur-sm";
-    case "dinner":
-      return "bg-fuchsia-600/70 text-white backdrop-blur-sm";
-    case "high":
-      return "bg-red-600/70 text-white backdrop-blur-sm";
-    case "service":
-      return "bg-orange-600/70 text-white backdrop-blur-sm";
-    case "grand opening":
-      return "bg-green-700/70 text-white backdrop-blur-sm";
+const getTagStyle = (index: number = 0) => {
+  // Cycle through the three purple shades based on index
+  const colorIndex = index % 3;
+
+  switch (colorIndex) {
+    case 0:
+      return `text-white backdrop-blur-sm bg-[#c084fc]/70`;
+    case 1:
+      return `text-white backdrop-blur-sm bg-[#a78bfa]/70`;
+    case 2:
+      return `text-white backdrop-blur-sm bg-[#818cf8]/70`;
     default:
-      return "bg-yellow-700/70 text-white backdrop-blur-sm";
+      return `text-white backdrop-blur-sm bg-[#c084fc]/70`;
   }
 };
 
@@ -49,27 +37,38 @@ export const EventCard: React.FC<EventCardProps> = ({
       className="relative cursor-pointer rounded-2xl overflow-hidden h-64 w-full"
       onClick={onClick}
     >
-      {/* Full image */}
+      {/* Background image */}
       <img
         src={image}
         alt={title}
         className="absolute inset-0 w-full h-full object-cover"
       />
 
-      {/* Dark gradient overlay at the bottom with deeper shadow */}
-      <div className="absolute bottom-0 w-full p-4 
-  bg-gradient-to-t from-black/95 via-black/80 to-transparent 
-  flex flex-col space-y-2">
+      {/* Blur overlay with taller gradient fade */}
+      <div className="absolute inset-x-0 bottom-0 h-4/7 overflow-hidden">
+        <div
+          className="absolute inset-0 backdrop-blur-xl bg-black/40"
+          style={{
+            maskImage: "linear-gradient(to top, black 85%, transparent)",
+            WebkitMaskImage: "linear-gradient(to top, black 75%, transparent)",
+          }}
+        ></div>
+      </div>
+
+      {/* Text content */}
+      <div className="absolute bottom-0 w-full p-4 flex flex-col space-y-2">
         <h3 className="text-md md:text-base font-semibold text-white drop-shadow-md truncate">
           {title}
         </h3>
-        <p className="text-xs md:text-sm text-gray-200 drop-shadow-sm">{date}</p>
+        <p className="text-xs md:text-sm text-gray-200 drop-shadow-sm">
+          {date}
+        </p>
         <div className="flex flex-wrap gap-2 mt-1">
           {tags.map((tag, i) => (
             <span
               key={i}
               className={`px-3 py-1 rounded-full font-semibold text-xs md:text-sm ${getTagStyle(
-                tag
+                i
               )}`}
             >
               {tag}

@@ -7,6 +7,7 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import { GradientHeader } from "../../../components/shared/gradientHeader/GradientHedaer";
+import eventData from "../../../database/event.json";
 
 // Improved Netflix-style horizontal scroller
 const HorizontalScroller: React.FC<{ children: React.ReactNode }> = ({
@@ -151,149 +152,15 @@ const HorizontalScroller: React.FC<{ children: React.ReactNode }> = ({
   );
 };
 
+// Create dynamic events object from JSON data
 const events = {
-  Cultural: [
-    {
-      id: "1",
-      title: "Art Showcase",
-      date: "January 13, 2025",
-      image:
-        "https://cdn.asp.events/CLIENT_Dubai_Wo_4B15F265_5056_B739_54F3125D47F0BC95/sites/integrateME2023/media/libraries/news/Panasonic_Frameless_g06asp.jpg",
-      tags: ["High", "Arts", "Hindu"],
-    },
-    {
-      id: "2",
-      title: "Choir Recital",
-      date: "January 14, 2025",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMI5LSYMKPdv8ZqXAnNPiOibwiQgQQ3OH4JQ&s",
-      tags: ["Music", "Telugu"],
-    },
-    {
-      id: "3",
-      title: "Choir Recital",
-      date: "January 14, 2025",
-      image:
-        "https://framerusercontent.com/images/7iQtoM4DohgBigX8dSWtZew6qc.png",
-      tags: ["Music", "Telugu"],
-    },
-    {
-      id: "4",
-      title: "Dance Performance",
-      date: "January 26, 2025",
-      image:
-        "https://docs.londonstockexchange.com/sites/default/files/2022-05/lseg_terrace.jpg",
-      tags: ["Music", "Gujarati"],
-    },
-    {
-      id: "1",
-      title: "Art Showcase",
-      date: "January 13, 2025",
-      image:
-        "https://framerusercontent.com/images/tbaVws3GxXcXC30ecOGxIwev6Ak.png",
-      tags: ["High", "Arts", "Hindu"],
-    },
-    {
-      id: "2",
-      title: "Choir Recital",
-      date: "January 14, 2025",
-      image:
-        "https://framerusercontent.com/images/18Q56jhO4AoJjOTkDWg38hHPRM.png",
-      tags: ["Music", "Telugu"],
-    },
-    {
-      id: "3",
-      title: "Choir Recital",
-      date: "January 14, 2025",
-      image:
-        "https://framerusercontent.com/images/7iQtoM4DohgBigX8dSWtZew6qc.png",
-      tags: ["Music", "Telugu"],
-    },
-    {
-      id: "4",
-      title: "Dance Performance",
-      date: "January 26, 2025",
-      image:
-        "https://docs.londonstockexchange.com/sites/default/files/2022-05/lseg_terrace.jpg",
-      tags: ["Music", "Gujarati"],
-    },
-  ],
-  // Political: [
-  //   {
-  //     id: "5",
-  //     title: "No Kings Protest",
-  //     date: "January 13, 2025",
-  //     image:
-  //       "https://framerusercontent.com/images/tbaVws3GxXcXC30ecOGxIwev6Ak.png",
-  //     tags: ["Hindu"],
-  //   },
-  //   {
-  //     id: "6",
-  //     title: "Local Club",
-  //     date: "January 14, 2025",
-  //     image:
-  //       "https://framerusercontent.com/images/18Q56jhO4AoJjOTkDWg38hHPRM.png",
-  //     tags: ["Dinner", "General"],
-  //   },
-  //   {
-  //     id: "7",
-  //     title: "Hotel Owners Town Hall",
-  //     date: "January 26, 2025",
-  //     image:
-  //       "https://framerusercontent.com/images/7iQtoM4DohgBigX8dSWtZew6qc.png",
-  //     tags: ["General"],
-  //   },
-  //   {
-  //     id: "5",
-  //     title: "No Kings Protest",
-  //     date: "January 13, 2025",
-  //     image:
-  //       "https://framerusercontent.com/images/tbaVws3GxXcXC30ecOGxIwev6Ak.png",
-  //     tags: ["Hindu"],
-  //   },
-  //   {
-  //     id: "6",
-  //     title: "Local Club",
-  //     date: "January 14, 2025",
-  //     image:
-  //       "https://framerusercontent.com/images/18Q56jhO4AoJjOTkDWg38hHPRM.png",
-  //     tags: ["Dinner", "General"],
-  //   },
-  //   {
-  //     id: "7",
-  //     title: "Hotel Owners Town Hall",
-  //     date: "January 26, 2025",
-  //     image:
-  //       "https://framerusercontent.com/images/7iQtoM4DohgBigX8dSWtZew6qc.png",
-  //     tags: ["General"],
-  //   },
-  // ],
-  // Religious: [
-  //   {
-  //     id: "8",
-  //     title: "Christmas",
-  //     date: "January 13, 2025",
-  //     image:
-  //       "https://framerusercontent.com/images/tbaVws3GxXcXC30ecOGxIwev6Ak.png",
-  //     tags: ["Charity", "Hindu"],
-  //   },
-  //   {
-  //     id: "9",
-  //     title: "Easter",
-  //     date: "January 14, 2025",
-  //     image:
-  //       "https://framerusercontent.com/images/18Q56jhO4AoJjOTkDWg38hHPRM.png",
-  //     tags: ["Telugu"],
-  //   },
-  //   {
-  //     id: "10",
-  //     title: "Quanza",
-  //     date: "January 26, 2025",
-  //     image:
-  //       "https://framerusercontent.com/images/7iQtoM4DohgBigX8dSWtZew6qc.png",
-  //     tags: ["Service"],
-  //   },
-  // ],
+  "Trending Events": eventData.map((event) => ({
+    id: event.id,
+    title: event.title,
+    date: event.date,
+    image: event.image,
+    tags: event.tags || [],
+  })),
 };
 
 const otherEvents = [
