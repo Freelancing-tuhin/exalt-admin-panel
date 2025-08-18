@@ -45,19 +45,19 @@ export const EventCard: React.FC<EventCardProps> = ({
       />
 
       {/* Blur overlay with taller gradient fade */}
-      <div className="absolute inset-x-0 bottom-0 h-4/7 overflow-hidden">
+      <div className="absolute inset-x-0 bottom-0 h-5/7 overflow-hidden">
         <div
-          className="absolute inset-0 backdrop-blur-xl bg-black/40"
+          className="absolute inset-0 backdrop-blur-xl bg-gradient-to-t from-black/80 via-black/50 to-black/20"
           style={{
-            maskImage: "linear-gradient(to top, black 85%, transparent)",
-            WebkitMaskImage: "linear-gradient(to top, black 75%, transparent)",
+            maskImage: "linear-gradient(to top, black 65%, transparent)",
+            WebkitMaskImage: "linear-gradient(to top, black 55%, transparent)",
           }}
         ></div>
       </div>
 
       {/* Text content */}
       <div className="absolute bottom-0 w-full p-4 flex flex-col space-y-2">
-        <h3 className="text-md md:text-base font-semibold text-white drop-shadow-md truncate">
+        <h3 className="text-md md:text-base font-semibold text-white drop-shadow-md w-[80%] truncate">
           {title}
         </h3>
         <p className="text-xs md:text-sm text-gray-200 drop-shadow-sm">
