@@ -189,13 +189,13 @@ export const BriefView = () => {
                         {/* Image */}
                         <div className="flex items-center justify-start">
                           <img
-                            // src={
-                            //   article?.image &&
-                            //   article.image.trim().length !== 0
-                            //     ? article.image
-                            //     : "https://images.moneycontrol.com/static-mcnews/2022/11/Immersive-exhibits-like-Van-Gogh-360%C2%B0-introduce-art-and-artists-in-a-fun-and-exciting-way.jpg?impolicy=website&width=1600&height=900"
-                            // }
-                            src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYPIxrzQl0b6--bQVgstINh7XQeJlqGBVehA&s"}
+                            src={
+                              article?.image &&
+                              article.image.trim().length !== 0
+                                ? article.image
+                                : "https://images.moneycontrol.com/static-mcnews/2022/11/Immersive-exhibits-like-Van-Gogh-360%C2%B0-introduce-art-and-artists-in-a-fun-and-exciting-way.jpg?impolicy=website&width=1600&height=900"
+                            }
+                            // src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYPIxrzQl0b6--bQVgstINh7XQeJlqGBVehA&s"}
                             alt={article?.title || "No image available"}
                             className="h-12 w-12 object-cover rounded-lg border border-gray-200"
                           />

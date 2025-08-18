@@ -14,6 +14,7 @@ interface ArticleData {
   tag?: string;
   posts?: string;
   section?: string;
+  graph_img?: string[];
 }
 
 export const Article = ({ id }: { id: number }) => {
@@ -115,6 +116,60 @@ export const Article = ({ id }: { id: number }) => {
             </div>
           </div>
         </motion.section> */}
+        {article.graph_img && article.graph_img.length > 0 && (
+          <motion.section
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true, amount: 0.4 }}
+            className="p-8 rounded-3xl bg-white shadow-sm border border-gray-100"
+          >
+            <div className="flex items-center gap-4 mb-8">
+              {icons && (
+                <div
+                  className={`w-12 h-12 rounded-2xl ${heading_gradient} flex items-center justify-center shadow-lg`}
+                >
+                  <svg
+                    className="w-6 h-6 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M7 12l3-3 3 3 4-4M18 10H6" // Example icon for charts/graphs
+                    />
+                  </svg>
+                </div>
+              )}
+              <div>
+                <h2 className="text-xl font-heading font-semibold text-gray-900 border-b-4 border-blue-800 inline-block pb-2">
+                  Graphical Representation
+                </h2>
+                <p className="text-gray-600 text-lg mt-2 font-medium">
+                  Visual data and insights related to the article.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {article.graph_img.map((imgSrc, idx) => (
+                <div
+                  key={idx}
+                  className="flex justify-center items-center w-full rounded-2xl overflow-hidden border border-gray-200 shadow-md"
+                >
+                  <img
+                    src={imgSrc}
+                    alt={`Graphical representation ${idx + 1}`}
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+          </motion.section>
+        )}
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
