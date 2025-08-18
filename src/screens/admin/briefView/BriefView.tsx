@@ -1,12 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Layout } from "../../layout/Layout";
 import Navbar from "../../../components/main/navbar/Navbar";
-import data from "../../../database/articles.json";
-import { Link } from "react-router-dom";
+import briefDataAll from "../../../database/brief.json"; // Import the brief data
+import { Link, useSearchParams, useNavigate } from "react-router-dom"; // Changed from useParams to useSearchParams
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { Header } from "../../../components/shared/header/Header";
 
+// This 'event' object is kept for the "Discussions" tab as per your instruction.
+// If discussions also need to come from brief.json, its structure would need to match.
 const event: any = {
   title: "Krishna Janmāshtami Dinner",
   date: "October 15−28, 2024",
@@ -39,9 +41,57 @@ const event: any = {
 };
 
 export const BriefView = () => {
+  const [searchParams] = useSearchParams(); // Use useSearchParams to get query parameters
+  const year = searchParams.get('year'); // Get 'year' from query string
+  const month = searchParams.get('month'); // Get 'month' from query string
+  const navigate = useNavigate(); 
+  
   const [activeTab, setActiveTab] = useState<"discussions" | "articles">(
     "articles"
   );
+  const [briefData, setBriefData] = useState<any>(null); // State to hold the fetched brief data
+
+  useEffect(() => {
+    // Ensure year and month are available before attempting to fetch
+    if (year && month) {
+      // Access the specific brief data for the given year and month
+      // Use type assertion to safely access properties from the JSON import
+      const briefForMonth = (briefDataAll as any)?.[year]?.[month];
+
+      if (briefForMonth) {
+        setBriefData(briefForMonth);
+      } else {
+        // If data is not found, log a warning and potentially redirect
+        console.warn(`No brief data found for ${month}, ${year}. Redirecting...`);
+        // Example: navigate back to the briefs list or a 404 page
+        // navigate('/client/briefs'); 
+      }
+    } else {
+        // If year or month parameters are missing, redirect or show error
+        console.warn("Missing year or month query parameters. Redirecting...");
+        navigate('/client/briefs'); // Redirect back to the brief list
+    }
+  }, [year, month, navigate]); // Re-run effect if year or month changes
+
+  // Format month name for display in header and table
+  const formattedMonth = month ? month.charAt(0).toUpperCase() + month.slice(1) : "";
+  const headerTitle = briefData ? `Coverage: ${formattedMonth} ${year}` : "Loading Brief...";
+
+  if (!briefData) {
+    // Show a loading state or a message while data is being fetched
+    return (
+      <Layout>
+        <Navbar back={true} />
+        <div className="body min-h-screen bg-white py-10 flex justify-center items-center">
+          <p className="text-gray-600 text-lg">Loading brief details...</p>
+        </div>
+      </Layout>
+    );
+  }
+
+  // Articles data comes from briefData.details
+  const articles = briefData.details || []; // Ensure it's an array, even if empty
+
 
   return (
     <Layout>
@@ -50,11 +100,11 @@ export const BriefView = () => {
         <div className="max-w-6xl mx-auto px-6 space-y-12">
           {/* Header */}
           <Header
-            title="Coverage: July 1 - July 14"
-            author="Exalt data"
-            date="Sun April 7, 2023"
-            readTime="5 min"
-            category="New Jersey Congressional District 1"
+            title={headerTitle}
+            author="Exalt data" // Static: not available in brief.json for a month
+            date="Sun April 7, 2023" // Static: not available in brief.json for a month
+            readTime="5 min" // Static: not available in brief.json for a month
+            category="New Jersey Congressional District 1" // Static: not available in brief.json for a month
           />
 
           {/* Tabs */}
@@ -68,7 +118,7 @@ export const BriefView = () => {
                     : "text-gray-600 hover:text-indigo-500"
                 }`}
               >
-                Articles
+                Articles ({articles.length})
               </button>
               <button
                 onClick={() => setActiveTab("discussions")}
@@ -78,7 +128,7 @@ export const BriefView = () => {
                     : "text-gray-600 hover:text-indigo-500"
                 }`}
               >
-                Discussions
+                Discussions ({event.source_link.length}) {/* Still using event data */}
               </button>
             </div>
 
@@ -131,42 +181,46 @@ export const BriefView = () => {
                     </div>
 
                     {/* Rows */}
-                    {data.map((discussion) => (
+                    {articles.map((article: any) => ( // Use 'article' for iteration
                       <div
-                        key={discussion._id}
+                        key={article._id}
                         className="grid grid-cols-[85px_3fr_1fr_1fr] bg-white gap-5 hover:bg-gray-50 transition-all duration-200 border-b border-gray-200 last:border-0 py-4 px-4 items-center"
                       >
                         {/* Image */}
                         <div className="flex items-center justify-start">
                           <img
-                            src={
-                              discussion?.image &&
-                              discussion.image.trim().length !== 0
-                                ? discussion.image
-                                : "https://images.moneycontrol.com/static-mcnews/2022/11/Immersive-exhibits-like-Van-Gogh-360%C2%B0-introduce-art-and-artists-in-a-fun-and-exciting-way.jpg?impolicy=website&width=1600&height=900"
-                            }
-                            alt={discussion?.title || "No image available"}
+                            // src={
+                            //   article?.image &&
+                            //   article.image.trim().length !== 0
+                            //     ? article.image
+                            //     : "https://images.moneycontrol.com/static-mcnews/2022/11/Immersive-exhibits-like-Van-Gogh-360%C2%B0-introduce-art-and-artists-in-a-fun-and-exciting-way.jpg?impolicy=website&width=1600&height=900"
+                            // }
+                            src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYPIxrzQl0b6--bQVgstINh7XQeJlqGBVehA&s"}
+                            alt={article?.title || "No image available"}
                             className="h-12 w-12 object-cover rounded-lg border border-gray-200"
                           />
                         </div>
 
                         {/* Title */}
                         <Link
-                          to={`/client/data/articles/${discussion._id}`}
+                          // Route to the article details page using the article's _id
+                          // Make sure your router has a route like /client/data/articles/:id
+                          to={`/client/data/articles/${article._id}`} 
                           className="text-blue-600 hover:text-blue-800 hover:underline font-medium transition-colors duration-200"
                         >
-                          {discussion.title}
+                          {article.title}
                         </Link>
 
-                        {/* Date */}
+                        {/* Date - Using the month from the URL as individual articles don't have dates in 'details' array */}
                         <span className="text-gray-600 text-sm">
-                          {discussion.month}
+                          {formattedMonth} {year}
                         </span>
 
                         {/* Action Button */}
                         <div className="flex justify-center">
                           <Link
-                            to={`/client/data/articles/${discussion._id}`}
+                            // Route to the article details page using the article's _id
+                            to={`/client/data/articles/${article._id}`}
                             className="flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-full hover:bg-indigo-700 shadow-sm transition-all duration-200 text-sm"
                           >
                             Read <AiOutlineArrowRight className="w-4 h-4" />

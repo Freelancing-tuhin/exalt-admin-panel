@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Chart from "react-apexcharts";
 import type { ApexOptions } from "apexcharts";
 
-// Detail colors remain varied for the granular view
 const sentimentDetails: Record<
   string,
   { labels: string[]; values: number[]; colors: string[] }
@@ -47,21 +46,18 @@ const sentimentDetails: Record<
   },
 };
 
-// --- UPDATED: Professional, modern, shaded colors for the OVERVIEW chart ---
 const sentimentMap = [
   { label: "Positive", color: "#0D9488" }, // Deep Teal
   { label: "Negative", color: "#A31F34" }, // Rich Burgundy
   { label: "Neutral", color: "#5B21B6" }, // Deep Violet
 ];
-// --- END UPDATED ---
 
 const overviewSeries = [2800, 400, 1600]; // Total 4800 posts
 
 export const SentimentChart: React.FC = () => {
   const [activeTab, setActiveTab] = useState<"overview" | "details">("overview");
 
-  // Calculate total posts for the central doughnut label (should be 4800)
-  const totalPostsOverall = overviewSeries.reduce((a, b) => a + b, 0); // This will be 4800
+  const totalPostsOverall = overviewSeries.reduce((a, b) => a + b, 0); 
 
   const overviewOptions: ApexOptions = {
     chart: {

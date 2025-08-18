@@ -1,9 +1,11 @@
 import { Layout } from "../../layout/Layout";
 import Navbar from "../../../components/main/navbar/Navbar";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 import { useHeading } from "../../../contexts/headingContext";
 import { GradientHeader } from "../../../components/shared/gradientHeader/GradientHedaer";
+import data from "../../../database/brief.json"
+
 import {
   FiBookOpen,
   FiMessageSquare,
@@ -14,30 +16,72 @@ import {
   FiChevronUp,
 } from "react-icons/fi";
 
-const briefsData = [
-  { id: 7, month: "July 2025", articles: 18, viralDiscussions: 24 },
-  { id: 6, month: "June 2025", articles: 15, viralDiscussions: 19 },
-  { id: 5, month: "May 2025", articles: 20, viralDiscussions: 30 },
-  { id: 4, month: "April 2025", articles: 12, viralDiscussions: 15 },
-  { id: 3, month: "March 2025", articles: 19, viralDiscussions: 27 },
-  { id: 2, month: "February 2025", articles: 16, viralDiscussions: 20 },
-  { id: 1, month: "January 2025", articles: 14, viralDiscussions: 22 },
-  { id: 12, month: "December 2024", articles: 22, viralDiscussions: 32 },
-  { id: 11, month: "November 2024", articles: 11, viralDiscussions: 14 },
-  { id: 10, month: "October 2024", articles: 13, viralDiscussions: 16 },
-  { id: 9, month: "September 2024", articles: 17, viralDiscussions: 23 },
-  { id: 8, month: "August 2024", articles: 21, viralDiscussions: 28 },
-];
-
 export const ClientBriefs = () => {
-  const [openSummaries, setOpenSummaries] = useState<{ [key: number]: boolean }>({});
+  const [openSummaries, setOpenSummaries] = useState<{ [key: string]: boolean }>({});
   const { setHeading } = useHeading();
+
+  const yearToDisplay = 2025;
+  
+  // --- Start of MODIFIED LOGIC for data collection ---
+  let combinedMonthData: { [key: string]: any } = {};
+
+  // Get months nested under the year key (e.g., "2025": { "january": {...}, ... })
+  const yearSpecificData = data[String(yearToDisplay)];
+  if (yearSpecificData) {
+    Object.assign(combinedMonthData, yearSpecificData);
+  }
+
+  // Check for month-year keys directly at the top level (e.g., "June 2025": {...})
+  Object.entries(data).forEach(([key, value]) => {
+    // We expect keys like "June 2025" for the current year
+    if (key.endsWith(` ${yearToDisplay}`)) {
+      const monthKey = key.split(' ')[0].toLowerCase(); // Converts "June 2025" to "june"
+      combinedMonthData[monthKey] = value;
+    }
+  });
+  // --- End of MODIFIED LOGIC for data collection ---
+
+  const monthOrder = [
+    "january", "february", "march", "april", "may", "june",
+    "july", "august", "september", "october", "november", "december"
+  ];
+
+  const briefsData = Object.entries(combinedMonthData) // Use the combined data
+    .map(([monthKey, monthData]: [string, any]) => {
+      const monthName = monthKey.charAt(0).toUpperCase() + monthKey.slice(1);
+      
+      const articlesCount = monthData.details ? monthData.details.length : 0;
+      // Placeholder for viralDiscussions, as it's not in the JSON structure
+      const viralDiscussionsCount = articlesCount > 0 ? articlesCount + Math.floor(articlesCount / 2) : 0; 
+
+      return {
+        id: monthKey, 
+        // For 'June 2025', the raw key is 'June 2025', but we want 'June' as monthName.
+        // The data structure for "June 2025" has its own 'summary' and 'details' directly under it.
+        // We'll normalize month to be just 'June' for display purposes.
+        month: `${monthName.replace(` ${yearToDisplay}`, '')} ${yearToDisplay}`,
+        rawMonth: monthKey, 
+        articles: articlesCount,
+        viralDiscussions: viralDiscussionsCount,
+        // Use 'summary' for top-level month data like 'June 2025', otherwise 'exalt_summary'
+        exalt_summary: monthData.exalt_summary || monthData.summary, 
+      };
+    })
+    .sort((a, b) => {
+      // Prioritize "june" to be at the very top
+      if (a.rawMonth === "june") return -1; // 'a' (june) comes before 'b'
+      if (b.rawMonth === "june") return 1;  // 'b' (june) comes before 'a'
+
+      // For all other months, sort in reverse chronological order based on monthOrder
+      // This will put 'april' before 'march', 'march' before 'february', etc.
+      return monthOrder.indexOf(b.rawMonth) - monthOrder.indexOf(a.rawMonth);
+    });
 
   useEffect(() => {
     setHeading("Brief");
   }, [setHeading]);
 
-  const toggleSummary = (id: number) => {
+  const toggleSummary = (id: string) => {
     setOpenSummaries((prev) => ({ ...prev, [id]: !prev[id] }));
   };
 
@@ -64,12 +108,11 @@ export const ClientBriefs = () => {
                 <tbody>
                   {briefsData.map((brief) => {
                     const isOpen = openSummaries[brief.id];
-
+                    
                     return (
-                      <>
+                      <Fragment key={brief.id}> 
                         <tr
-                          key={brief.id}
-                          className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all mb-3"
+                          className="bg-white shadow-md hover:shadow-lg transition-all" 
                         >
                           <td className="px-5 py-5 font-semibold text-gray-900 flex items-center gap-2 rounded-l-xl">
                             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-indigo-600 flex items-center justify-center shadow-md">
@@ -108,7 +151,8 @@ export const ClientBriefs = () => {
 
                           <td className="px-5 py-5 text-center rounded-r-xl align-middle">
                             <Link
-                              to="/client/briefs/brief-view"
+                              // Updated to use query parameters
+                              to={`/client/briefs/brief-view?year=${yearToDisplay}&month=${brief.rawMonth}`} 
                               className="px-4 py-2 bg-gradient-to-br from-indigo-500 to-indigo-600 text-white text-sm font-medium rounded-xl shadow-md hover:shadow-lg transition-all duration-200 flex items-center justify-center gap-2 w-full focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:ring-offset-2"
                             >
                               <FiArrowRightCircle /> Details
@@ -128,22 +172,13 @@ export const ClientBriefs = () => {
                                   Exalt's Monthly Summary
                                 </h3>
                                 <p className="text-gray-700 text-base leading-relaxed">
-                                  The U.S. Department of Energy unveiled a $1.2 billion initiative
-                                  to accelerate the development of solid-state batteries,
-                                  bolstering domestic EV manufacturing and reducing reliance
-                                  on foreign supply chains. Wildfires in Northern California
-                                  prompted the largest coordinated drone mapping effort in state
-                                  history, enabling firefighters to contain over 70% of active
-                                  blazes within days. The national job market showed resilience,
-                                  with unemployment holding at 3.8% despite slowing wage growth.
-                                  The Smithsonian Institution launched a groundbreaking AI
-                                  exhibition attracting over 50,000 visitors in its first week.
+                                  {brief.exalt_summary}
                                 </p>
                               </div>
                             </div>
                           </td>
                         </tr>
-                      </>
+                      </Fragment>
                     );
                   })}
                 </tbody>
