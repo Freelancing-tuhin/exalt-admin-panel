@@ -85,7 +85,7 @@ export const Article = ({ id }: { id: number }) => {
           </p>
         </motion.section>
 
-        <motion.section
+        {/* <motion.section
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
@@ -114,7 +114,7 @@ export const Article = ({ id }: { id: number }) => {
               </blockquote>
             </div>
           </div>
-        </motion.section>
+        </motion.section> */}
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
