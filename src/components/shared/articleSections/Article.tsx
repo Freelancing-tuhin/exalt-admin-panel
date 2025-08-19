@@ -11,12 +11,6 @@ export const Article = ({ id }: { id: number }) => {
 
   const [article, setArticle] = useState<any>(null);
 
-  for (let i = 0; i < data.length; i++) {
-    if (data[i]._id === _id) {
-      setArticle(data[i]);
-    }
-  }
-
   const [openQuestionIndex, setOpenQuestionIndex] = useState<number | null>(
     null
   );
@@ -31,6 +25,11 @@ export const Article = ({ id }: { id: number }) => {
   };
 
   useEffect(() => {
+    for (let i = 0; i < data.length; i++) {
+      if (data[i]._id === _id) {
+        setArticle(data[i]);
+      }
+    }
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
