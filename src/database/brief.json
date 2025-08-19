@@ -1,4 +1,3 @@
-
 {
   "2025": {
     "january": {
@@ -27,7 +26,11 @@
             "From Jaishankar to the Ambanis, here is the list of prominent Indians invited to Donald Trump's inauguration"
           ],
           "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS60EYucPLVLkh-Qr8tTH1MRDsryGOQAoVjfg&s",
-          "tweet_id": []
+          "tweet_id": [],
+          "graph_img_links":[
+            "https://carnegie-production-assets.s3.amazonaws.com/static/media/images/2024-10-Fig11_Polarization%20Among%20Indian-Americans-1.png"
+
+          ]
         },
         {
           "_id": "26",
@@ -54,7 +57,10 @@
             "\"Mutually Beneficial, Trusted Partnership\": PM Modi's Phone Call With Trump"
           ],
           "image": "https://c.ndtvimg.com/g5kng48g_modi-trump_625x300_04_September_18.jpg?downsize=545:307",
-          "tweet_id": []
+          "tweet_id": [],
+          "graph_img_links":[
+            "https://res.cloudinary.com/dfg1buevv/image/upload/v1755585653/Screenshot_2025-08-19_121019_cmkgl0.png"
+          ]
         },
         {
           "_id": "27",
@@ -81,7 +87,11 @@
             "As Harris, Ramaswamy, Usha Vance rose on national stage, Indian Americans faced harassment"
           ],
           "image": "https://i.ytimg.com/vi/X60FfJv07SE/sddefault.jpg",
-          "tweet_id": []
+          "tweet_id": [],
+          "graph_img_links":[
+            "https://www.justice.gov/d9/styles/banner/public/2024-09/pie-chart-2023.png?itok=rGwLvVZZ",
+            "https://www.justice.gov/d9/styles/banner/public/2024-09/bar-chart-2022-2023.jpg?itok=7BjRWDSL"
+          ]
         },
         {
           "_id": "28",
@@ -184,7 +194,10 @@
             "Indo-US Pharma Alliance: Time to Step Up"
           ],
           "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYpJ7LqYHpwq9o1da6HvGj95wV9-z036cTyw&s",
-          "tweet_id": []
+          "tweet_id": [],
+          "graph_img_links":[
+            "https://res.cloudinary.com/dfg1buevv/image/upload/v1755585931/Screenshot_2025-08-19_121505_tiayv7.png"
+          ]
         },
         {
           "_id": "32",
@@ -289,7 +302,11 @@
           },
           "further_reading": [],
           "image": "https://fintechbiznews.com/cdn/images/BlogPost/Original/133840411637194294.jpg",
-          "tweet_id": []
+          "tweet_id": [],
+          "graph_img_links":[
+            "https://lh7-rt.googleusercontent.com/docsz/AD_4nXdT8bLtS2L5T8I45as4ta4qczcvJzHFzr7eSCd_abFiJkeBpkmFkXH7bpnO3m3yMzV7f2ygVQ3JiKl5mBi4ItLTOjipy8MchUWYzhLCFyA-ngQmX2pa0rLK47cSF-W-LvOuYD-C_Q?key=JxbrJGHWMHosrnQd_r2YNM0S",
+            "https://res.cloudinary.com/dfg1buevv/image/upload/v1755588276/sggrg_r4kjex.png"
+          ]
         },
         {
           "_id": "36",
@@ -311,7 +328,10 @@
           },
           "further_reading": [],
           "image": "https://www.hindustantimes.com/ht-img/img/2023/06/21/1600x900/Elon_Musk_meets_PM_Modi_in_New_York_1687316670443_1687316670729.jpeg",
-          "tweet_id": []
+          "tweet_id": [1887867644814020902,1887900880143343633],
+          "graph_img_links":[
+            "https://www.precedenceresearch.com/insightimg/satellite-internet-market-statistics.webp"
+          ]
         },
         {
           "_id": "37",
@@ -360,7 +380,12 @@
           },
           "further_reading": [],
           "image": "https://i.ytimg.com/vi/54IWxdMMpa8/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAPF2u4Rt4X9ZcdoBmiAoibEX8Tvg",
-          "tweet_id": []
+          "tweet_id": [],
+          "graph_img_links":[
+            "https://akm-img-a-in.tosshub.com/indiatoday/inline-images/Illegal%20immigration-01.jpg?VersionId=DO2oZGIUx8RwFGsiMZZT5LckMeTJNRPh&size=750:*",
+            "https://images.moneycontrol.com/static-mcnews/2023/02/number-of-indian-immigrants-in-the-us-1.jpg",
+            "https://scontent.fccu27-1.fna.fbcdn.net/v/t1.6435-9/86982406_2807626662664071_6917526579509723136_n.jpg?stp=dst-jpg_p526x296_tt6&_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_ohc=Tyh1ce2mF4wQ7kNvwFF1eLV&_nc_oc=AdlQ-oeW0I4tnGCaiK7dLKPl5L2PzAAQZBHfwWu7PXWf5u858FKb-o9l9fKGbCYVXT4I8pxGzjSCBF0O9M95U6Wn&_nc_zt=23&_nc_ht=scontent.fccu27-1.fna&_nc_gid=JTcshDYslykwE8DIMx-GSA&oh=00_AfXzA5MVtOQhFglbDymUtwOP9ZQm3W0jo_g0If-lwVCmpA&oe=68CBA20D"
+          ]
         },
         {
           "_id": "39",
@@ -424,7 +449,12 @@
           },
           "further_reading": [],
           "image": "https://etimg.etb2bimg.com/photo/118132140.cms",
-          "tweet_id": []
+          "tweet_id": [],
+          "graph_img_links":[
+            "https://www.middleeasteye.net/sites/default/files/india%20israel%201a.png",
+            "https://ichef.bbci.co.uk/news/1024/cpsprodpb/B93A/production/_133081474_arms_exports_to_israel_chart_v2_640-2x-nc.png.webp",
+            "https://res.cloudinary.com/dfg1buevv/image/upload/v1755589026/Screenshot_2025-08-19_130643_wppgyd.png"
+            ]
         }
       ]
     },
@@ -564,7 +594,11 @@
           "section": "WHAT’S HAPPENING IN THE US",
           "further_reading": [],
           "image": "https://example.com/sevis_visa_status.jpg",
-          "tweet_id": []
+          "tweet_id": [],
+          "graph_img_links":[
+            "https://res.cloudinary.com/dfg1buevv/image/upload/v1755589201/Screenshot_2025-08-19_130941_ts2eky.png",
+            "https://opendoorsdata.org/wp-content/uploads/2024/11/OD24_Infographics_International-Students_Leading-Places-of-Origin.png" 
+            ]
         },
         {
           "_id": "48",
@@ -581,7 +615,10 @@
           "section": "WHAT’S HAPPENING IN THE US",
           "further_reading": [],
           "image": "https://example.com/fremont_hate_crime.jpg",
-          "tweet_id": []
+          "tweet_id": [],
+          "graph_img_links":[
+            "https://res.cloudinary.com/dfg1buevv/image/upload/v1755589610/Screenshot_2025-08-19_131610_x29gdy.png"
+            ]
         },
         {
           "_id": "49",
@@ -638,7 +675,82 @@
           "further_reading": [],
           "image": "https://example.com/joseph_edlow_uscis.jpg",
           "tweet_id": []
-        }
+        },
+          {
+    "_id": "6",
+    "title": "US becomes India’s 4th-largest supplier of crude oil in April 2025",
+    "image": "https://static.toiimg.com/thumb/msid-121204611,width-400,resizemode-4/Crude-oil.jpg",
+    "tag": "Economy",
+    "posts": "2,700 posts",
+    "month": "APRIL 2025",
+    "tweet_id": [
+      "1956633446203163049",
+      "1952263279583142175",
+      "1951558029704413554",
+      "1951973644579819850"
+    ],
+    "section": "WHAT’S HAPPENING IN INDIA",
+    "context": "The US emerged as the fourth-largest crude oil exporter to India in April 2025, nearly doubling its shipments compared to the same period last year. India's imports of US crude grew to 0.33 million barrels per day. This diversification marks a notable shift from India’s traditionally Middle East-dominated oil supply chain. India's energy demand is projected to rise, and it imports over 85 percent of its crude oil. This comes amid geopolitical shifts, where Russia became India's primary crude oil supplier after Western sanctions in 2022. The increase in US crude exports to India helps fill a gap as India's imports of Russian crude saw a slight decrease.",
+    "exalt_take": "India's pivot towards US crude and LNG is part of a broader strategy to enhance its energy security by reducing its historical dependence on a volatile Middle East and, more recently, a single dominant supplier in Russia. By strengthening their energy and economic ties, India and the US are working to create a more robust counterweight to China's growing influence in the Indo-Pacific region. The growing energy partnership is a tangible sign of the deepening strategic alignment between the two countries, even as they navigate complex issues like Russia and trade imbalances. For Democrats, support expansion of energy ties beyond crude oil to include LNG infrastructure, green hydrogen pilots, and carbon capture partnerships with Indian public-sector oil companies. For Republicans, champion the India oil trade as a counter to China-Russia energy blocs, leverage growing exports to India to position the US as the democratic world’s energy anchor. Use energy ties to secure critical mineral access, condition support for Indian oil and gas capacity-building on reciprocal access to rare earths and clean energy supply chains.",
+    "questions_from_community": [
+      "Are increased US oil exports to India a step towards long-term energy cooperation, beyond just transactional trade?",
+      "How do you see India’s growing role in US energy security and global oil market diversification, especially amid tensions with OPEC and Russia?",
+      "What safeguards will you advocate for to keep both countries aligned on climate goals and just transitions?"
+    ],
+    "graph_img_links":[
+      "https://www.voronoiapp.com/_next/image?url=https%3A%2F%2Fcdn.voronoiapp.com%2Fpublic%2Fimages%2Fafef83c0-47f5-4829-baff-6f6b3cb5f487.webp&w=1200&q=85",
+      "https://www.eia.gov/todayinenergy/images/2024.03.18/chart3.svg",
+      "https://d18x2uyjeekruj.cloudfront.net/wp-content/uploads/2024/03/arm.jpg"
+    ]
+  },
+    {
+    "_id": "5",
+    "title": "US Vice President JD Vance visits India with family",
+    "image": "https://images.news18.com/ibnlive/uploads/2025/04/Modi-and-Vance-family-2025-04-c2a29f5c1a13f2854a7b87cde4d0ef37.jpg",
+    "tag": "Foreign Policy",
+    "posts": "3,500 posts",
+    "month": "APRIL 2025",
+    "tweet_id": [
+      "1915790538076258480",
+      "1914345153269055505",
+      "1914180041493430747",
+      "1908598205643972760",
+      "1914708743771861151"
+    ],
+    "section": "WHAT’S HAPPENING IN INDIA",
+    "context": "US Vice President JD Vance conducted his first official visit to India, along with his Indian-origin wife Usha Vance and their children. Vance met Prime Minister Narendra Modi, emphasizing energy and defense cooperation, including potential F-35 jet purchases and increased LNG imports. The brutal Pahalgam terrorist attack occurred during his visit, which Vance swiftly condemned. The visit highlighted deepening India-US ties, with bilateral trade hitting $118 billion in 2023-24. Usha Vance’s Indian identity and Hindu faith were a focal point, underscoring the growing political clout of Indian Americans and serving as a unique bridge between the GOP and the Indian diaspora.",
+    "exalt_take": "Vice President JD Vance’s India visit served as both a diplomatic signal and a soft power showcase. His family’s presence, especially highlighted by that of Usha Vance, amplified the emotional and cultural stakes of the trip, resonating with Indian audiences abroad and at home. What made the visit especially resonant was the presence of Usha Vance, a practicing Hindu and Indian-origin Second Lady, whose ancestral roots and cultural fluency struck a chord with audiences in both countries. Prayer ceremonies in her home village ahead of the 2024 election and her high favorability among Indian Americans reflect the emotional power of diasporic connections in modern diplomacy. The GOP’s increasing visibility among Indian-American voters, though still trailing Democrats, is no accident. Figures like Usha Vance are reshaping political appeal within this influential, fast-growing bloc. For both parties, the message is clear - cultural credibility and meaningful outreach are becoming as important as policy alignment. For Republicans, elevate culturally resonant figures. Usha Vance’s visibility, grounded in her Hindu faith, Indian heritage, and personal authenticity, helped humanize the administration’s foreign policy and connected with diaspora voters. Continue investing in public diplomacy that highlights such relatable leadership. Follow symbolism with substance. Moves like temple visits and family tours signal goodwill, but must be paired with deliverables on immigration policy, skilled worker visas, or India-focused trade to maintain credibility with Indian-American voters. For Democrats, don’t assume diaspora loyalty. While Indian Americans still lean heavily Democratic, GOP figures like Usha Vance are closing the gap, especially among younger, religiously observant, or socially conservative voters. Ensure India-U.S. ties remain a campaign talking point, not an afterthought.",
+    "questions_from_community": [
+      "Do you believe that Usha Vance’s Indian heritage helps the Republican Party connect more authentically with Indian-American voters?",
+      "With the Pahalgam attack coinciding with Vice President Vance’s visit, do you think the US should take a firmer public stance on terrorism in South Asia?"
+    ],
+    "graph_img_links":[
+      "https://carnegie-production-assets.s3.amazonaws.com/static/media/images/2024-10-Fig11_Polarization%20Among%20Indian-Americans-1.png"
+    ]
+  },
+    {
+    "_id": "7",
+    "title": "India signs contract to purchase 26 Rafale fighter jets for navy from France",
+    "image": "https://media.istockphoto.com/id/954338538/photo/a-french-air-force-dassault-rafale-during-the-frisian-flag-exercise.jpg?s=612x612&w=0&k=20&c=LMO9K32dtsxvBL3rDdXsXixgNylHMiScbDRk_VjwnMY=",
+    "tag": "Defense",
+    "posts": "2,900 posts",
+    "month": "APRIL 2025",
+    "tweet_id": [
+      "1916790045702316311",
+      "1915739528066719821",
+      "1955386306772734092",
+      "1916787781403017398"
+    ],
+    "section": "WHAT’S HAPPENING IN INDIA",
+    "context": "India finalized an intergovernmental agreement with France for the procurement of 26 Rafale-M (Marine) fighter jets for the Indian Navy, valued at approximately $7.5 billion. This marks the second major Rafale purchase by India, following a 2016 agreement. The jets will be deployed on India’s two aircraft carriers to strengthen naval air power and address a critical capability gap, enhancing force projection in the Indian Ocean Region amid growing Chinese maritime assertiveness. India's arms imports show a drastic shift from Russia to France (now its second-largest arms supplier) and the US. The US has also increased its global arms export share significantly.",
+    "exalt_take": "India’s Rafale-M purchase reflects a broader rebalancing of global defense ties. As India reduces its reliance on Russian platforms and expands partnerships with Western allies like France and the US, US public office holders must act to keep US defense firms competitive and strategically embedded in India’s procurement ecosystem. The stakes are especially high in the Indo-Pacific, where China’s naval assertiveness demands tighter maritime between democracies. For Democrats, support deeper defense industrial collaboration with India, encourage India’s multi-alignment by viewing French-Indian defense ties not as competition, but as a complementary pillar in a broader rules-based Indo-Pacific security framework. For Republicans, recognize India’s shift towards Western allies from Russian arms and frame India as a frontline ally in great-power competition, while advocating for long-term defense cooperation.",
+    "questions_from_community": [
+      "Do you see India’s growing partnerships with France and the US as complementary to regional stability in the Indo-Pacific?",
+      "How will you ensure that the US remains a reliable defense partner to India amid rising maritime tensions in the Indian Ocean Region?",
+      "What steps would you take to streamline US defense export approvals to trusted partners like India?"
+    ],
+    "graph_img_links":["https://d18x2uyjeekruj.cloudfront.net/wp-content/uploads/2024/03/arm.jpg"]
+  }
       ]
     }
 ,

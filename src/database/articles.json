@@ -101,7 +101,8 @@
       "1915790538076258480",
       "1914345153269055505",
       "1914180041493430747",
-      "1908598205643972760"
+      "1908598205643972760",
+      "1914708743771861151"
     ],
     "section": "WHAT’S HAPPENING IN INDIA",
     "context": "US Vice President JD Vance conducted his first official visit to India, along with his Indian-origin wife Usha Vance and their children. Vance met Prime Minister Narendra Modi, emphasizing energy and defense cooperation, including potential F-35 jet purchases and increased LNG imports. The brutal Pahalgam terrorist attack occurred during his visit, which Vance swiftly condemned. The visit highlighted deepening India-US ties, with bilateral trade hitting $118 billion in 2023-24. Usha Vance’s Indian identity and Hindu faith were a focal point, underscoring the growing political clout of Indian Americans and serving as a unique bridge between the GOP and the Indian diaspora.",
@@ -109,6 +110,9 @@
     "questions_from_community": [
       "Do you believe that Usha Vance’s Indian heritage helps the Republican Party connect more authentically with Indian-American voters?",
       "With the Pahalgam attack coinciding with Vice President Vance’s visit, do you think the US should take a firmer public stance on terrorism in South Asia?"
+    ],
+    "graph_img_links":[
+      "https://carnegie-production-assets.s3.amazonaws.com/static/media/images/2024-10-Fig11_Polarization%20Among%20Indian-Americans-1.png"
     ]
   },
   {
@@ -131,6 +135,11 @@
       "Are increased US oil exports to India a step towards long-term energy cooperation, beyond just transactional trade?",
       "How do you see India’s growing role in US energy security and global oil market diversification, especially amid tensions with OPEC and Russia?",
       "What safeguards will you advocate for to keep both countries aligned on climate goals and just transitions?"
+    ],
+    "graph_img_links":[
+      "https://www.voronoiapp.com/_next/image?url=https%3A%2F%2Fcdn.voronoiapp.com%2Fpublic%2Fimages%2Fafef83c0-47f5-4829-baff-6f6b3cb5f487.webp&w=1200&q=85",
+      "https://www.eia.gov/todayinenergy/images/2024.03.18/chart3.svg",
+      "https://d18x2uyjeekruj.cloudfront.net/wp-content/uploads/2024/03/arm.jpg"
     ]
   },
   {
@@ -153,7 +162,8 @@
       "Do you see India’s growing partnerships with France and the US as complementary to regional stability in the Indo-Pacific?",
       "How will you ensure that the US remains a reliable defense partner to India amid rising maritime tensions in the Indian Ocean Region?",
       "What steps would you take to streamline US defense export approvals to trusted partners like India?"
-    ]
+    ],
+    "graph_img_links":["https://d18x2uyjeekruj.cloudfront.net/wp-content/uploads/2024/03/arm.jpg"]
   },
   {
     "_id": "8",
