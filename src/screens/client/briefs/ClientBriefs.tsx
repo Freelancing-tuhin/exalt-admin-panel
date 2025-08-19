@@ -104,7 +104,7 @@ export const ClientBriefs = () => {
   return (
     <Layout>
       <Navbar />
-      <div className="p-10 min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 space-y-10">
+      <div className="p-6 min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 space-y-10">
         <GradientHeader title="Brief Dashboard" />
 
         <div className="bg-gradient-to-br from-gray-100 to-gray-200 p-6 rounded-xl shadow-xl">

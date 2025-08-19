@@ -108,7 +108,7 @@
       "Do you believe that Usha Vance’s Indian heritage helps the Republican Party connect more authentically with Indian-American voters?",
       "With the Pahalgam attack coinciding with Vice President Vance’s visit, do you think the US should take a firmer public stance on terrorism in South Asia?"
     ],
-    "graph_img_links":[
+    "graph_img_links": [
       "https://carnegie-production-assets.s3.amazonaws.com/static/media/images/2024-10-Fig11_Polarization%20Among%20Indian-Americans-1.png"
     ]
   },
@@ -133,7 +133,7 @@
       "How do you see India’s growing role in US energy security and global oil market diversification, especially amid tensions with OPEC and Russia?",
       "What safeguards will you advocate for to keep both countries aligned on climate goals and just transitions?"
     ],
-    "graph_img_links":[
+    "graph_img_links": [
       "https://www.voronoiapp.com/_next/image?url=https%3A%2F%2Fcdn.voronoiapp.com%2Fpublic%2Fimages%2Fafef83c0-47f5-4829-baff-6f6b3cb5f487.webp&w=1200&q=85",
       "https://www.eia.gov/todayinenergy/images/2024.03.18/chart3.svg",
       "https://d18x2uyjeekruj.cloudfront.net/wp-content/uploads/2024/03/arm.jpg"
@@ -160,7 +160,9 @@
       "How will you ensure that the US remains a reliable defense partner to India amid rising maritime tensions in the Indian Ocean Region?",
       "What steps would you take to streamline US defense export approvals to trusted partners like India?"
     ],
-    "graph_img_links":["https://d18x2uyjeekruj.cloudfront.net/wp-content/uploads/2024/03/arm.jpg"]
+    "graph_img_links": [
+      "https://d18x2uyjeekruj.cloudfront.net/wp-content/uploads/2024/03/arm.jpg"
+    ]
   },
   {
     "_id": "8",
@@ -461,19 +463,19 @@
       "Given the current rhetoric and policies, how can Indian Americans be assured they won’t be collateral damage in broader crackdowns on immigration or DEI programs?",
       "Do prominent Indian Americans in Trump's cabinet signal genuine influence for the community within the Republican Party and the administration's policy decisions?"
     ],
-    "graph_img_links":[
-            "https://carnegie-production-assets.s3.amazonaws.com/static/media/images/2024-10-Fig11_Polarization%20Among%20Indian-Americans-1.png"
+    "graph_img_links": [
+      "https://carnegie-production-assets.s3.amazonaws.com/static/media/images/2024-10-Fig11_Polarization%20Among%20Indian-Americans-1.png"
     ],
     "posts": {
-            "twitter_democratic": "“Token representation isn’t enough. Real trust comes from policies that support family well-being, generational success, and fair immigration pathways. #CommunityEngagement #USPolitics”",
-            "twitter_republican": "“Trump 2.0 features Indian American leaders like Usha Vance, Kash Patel & Vivek Ramaswamy — proof that Republicans are expanding representation. #IndianAmerican #Leadership”",
-            "instagram_facebook_democratic": "Indian Americans’ presence at Trump’s inauguration and in the new Cabinet is a powerful reminder of the community’s growing influence in U.S. politics. But representation must go beyond appearances. Sustained, culturally fluent engagement is how trust is built — not just pre-election outreach. #Representation #IndianAmerican #CommunityEngagement #ImmigrationReform",
-            "instagram_facebook_republican": "Trump 2.0 includes Indian American leaders like Usha Vance, Kash Patel, and Vivek Ramaswamy — breaking the myth that the GOP lacks diversity. This moment reflects the rising role of Indian Americans across U.S. politics. Winning trust will require consistency, not token gestures. #IndianAmerican #Leadership #CommunityEngagement #USPolitics"
-          },
-          "further_reading": [
-            "The India-U.S. Story: Biden’s Legacy and Trump 2.0",
-            "From Jaishankar to the Ambanis, here is the list of prominent Indians invited to Donald Trump's inauguration"
-          ]
+      "twitter_democratic": "“Token representation isn’t enough. Real trust comes from policies that support family well-being, generational success, and fair immigration pathways. #CommunityEngagement #USPolitics”",
+      "twitter_republican": "“Trump 2.0 features Indian American leaders like Usha Vance, Kash Patel & Vivek Ramaswamy — proof that Republicans are expanding representation. #IndianAmerican #Leadership”",
+      "instagram_facebook_democratic": "Indian Americans’ presence at Trump’s inauguration and in the new Cabinet is a powerful reminder of the community’s growing influence in U.S. politics. But representation must go beyond appearances. Sustained, culturally fluent engagement is how trust is built — not just pre-election outreach. #Representation #IndianAmerican #CommunityEngagement #ImmigrationReform",
+      "instagram_facebook_republican": "Trump 2.0 includes Indian American leaders like Usha Vance, Kash Patel, and Vivek Ramaswamy — breaking the myth that the GOP lacks diversity. This moment reflects the rising role of Indian Americans across U.S. politics. Winning trust will require consistency, not token gestures. #IndianAmerican #Leadership #CommunityEngagement #USPolitics"
+    },
+    "further_reading": [
+      "The India-U.S. Story: Biden’s Legacy and Trump 2.0",
+      "From Jaishankar to the Ambanis, here is the list of prominent Indians invited to Donald Trump's inauguration"
+    ]
   },
   {
     "_id": "26",
@@ -493,18 +495,18 @@
       "Can symbolic gestures like high-profile rallies and early phone calls translate into tangible outcomes on trade, visas, or strategic tech transfers?"
     ],
     "posts": {
-            "twitter_democratic": "“Bipartisan momentum has made U.S.–India ties stronger than ever. We need to safeguard that progress, not let it swing with personalities. #USIndia #StrategicPartnership”",
-            "twitter_republican": "“Trump’s renewed outreach to Modi shows India’s importance as a U.S. ally. From Howdy Modi to Namaste Trump, the partnership has been strong — and will only grow. #USIndia #IndoPacific”",
-            "instagram_facebook_democratic": "The phone call between Donald Trump and Prime Minister Modi underscores India’s growing importance in U.S. strategy — but the true foundation of the partnership is bipartisan progress. Over the last four years, milestones like iCET (the Initiative on Critical and Emerging Technologies), defense tech transfers, and growing Indian American representation have cemented U.S.–India ties. This is about sustaining trust, not letting it swing with political cycles. #USIndia #IndoPacific #StrategicPartnership #iCET",
-            "instagram_facebook_republican": "Trump’s renewed dialogue with Prime Minister Modi sends a strong signal: India remains a cornerstone U.S. ally. The Modi–Trump partnership has delivered memorable milestones — from Howdy Modi in Houston to Namaste Trump — symbols of trust and mutual respect. For many in the Indian diaspora, continuity in this partnership resonates deeply. #USIndia #IndoPacific #StrategicAllies #TrumpModi"
-          },
-          "further_reading": [
-            "Modi-Trump starts well with White House talks in February",
-            "\"Mutually Beneficial, Trusted Partnership\": PM Modi's Phone Call With Trump"
-          ],
-          "graph_img_links":[
-            "https://res.cloudinary.com/dfg1buevv/image/upload/v1755585653/Screenshot_2025-08-19_121019_cmkgl0.png"
-          ]
+      "twitter_democratic": "“Bipartisan momentum has made U.S.–India ties stronger than ever. We need to safeguard that progress, not let it swing with personalities. #USIndia #StrategicPartnership”",
+      "twitter_republican": "“Trump’s renewed outreach to Modi shows India’s importance as a U.S. ally. From Howdy Modi to Namaste Trump, the partnership has been strong — and will only grow. #USIndia #IndoPacific”",
+      "instagram_facebook_democratic": "The phone call between Donald Trump and Prime Minister Modi underscores India’s growing importance in U.S. strategy — but the true foundation of the partnership is bipartisan progress. Over the last four years, milestones like iCET (the Initiative on Critical and Emerging Technologies), defense tech transfers, and growing Indian American representation have cemented U.S.–India ties. This is about sustaining trust, not letting it swing with political cycles. #USIndia #IndoPacific #StrategicPartnership #iCET",
+      "instagram_facebook_republican": "Trump’s renewed dialogue with Prime Minister Modi sends a strong signal: India remains a cornerstone U.S. ally. The Modi–Trump partnership has delivered memorable milestones — from Howdy Modi in Houston to Namaste Trump — symbols of trust and mutual respect. For many in the Indian diaspora, continuity in this partnership resonates deeply. #USIndia #IndoPacific #StrategicAllies #TrumpModi"
+    },
+    "further_reading": [
+      "Modi-Trump starts well with White House talks in February",
+      "\"Mutually Beneficial, Trusted Partnership\": PM Modi's Phone Call With Trump"
+    ],
+    "graph_img_links": [
+      "https://res.cloudinary.com/dfg1buevv/image/upload/v1755585653/Screenshot_2025-08-19_121019_cmkgl0.png"
+    ]
   },
   {
     "_id": "27",
@@ -523,20 +525,20 @@
       "What kind of community or campus-level interventions are needed to ensure safety of international students?"
     ],
     "posts": {
-            "twitter_democratic": "“Ravi Teja’s tragic death reminds us: immigrant students deserve safety, dignity, & equity. Gun reform and stronger hate crime accountability is long overdue. #StopAAPIHate #GunReformNow”",
-            "twitter_republican": "“Protecting Indian-origin Americans means protecting allies & talent. Stronger enforcement against extremist networks is critical. #PublicSafety #USIndia”",
-            "instagram_facebook_democratic": "The fatal shooting of Ravi Teja is not just an isolated act of violence — it reflects systemic threats faced by Indian and South Asian students across the U.S. Safety is not optional — it’s a right. #GunReform #StopAAPIHate #StudentSafety",
-            "instagram_facebook_republican": "The murder of Ravi Teja, an Indian student, underscores the need for stronger safety measures for our international communities. Protecting Indian Americans = protecting U.S. allies & ensuring America remains the destination for global talent. #LawAndOrder #CampusSafety #USIndia"
-          },
-          "further_reading": [
-            "Telangana student shot dead in US",
-            "83% Of Indian Americans Say We Need Stricter Gun Laws",
-            "As Harris, Ramaswamy, Usha Vance rose on national stage, Indian Americans faced harassment"
-          ],
-                    "graph_img_links":[
-            "https://www.justice.gov/d9/styles/banner/public/2024-09/pie-chart-2023.png?itok=rGwLvVZZ",
-            "https://www.justice.gov/d9/styles/banner/public/2024-09/bar-chart-2022-2023.jpg?itok=7BjRWDSL"
-          ]
+      "twitter_democratic": "“Ravi Teja’s tragic death reminds us: immigrant students deserve safety, dignity, & equity. Gun reform and stronger hate crime accountability is long overdue. #StopAAPIHate #GunReformNow”",
+      "twitter_republican": "“Protecting Indian-origin Americans means protecting allies & talent. Stronger enforcement against extremist networks is critical. #PublicSafety #USIndia”",
+      "instagram_facebook_democratic": "The fatal shooting of Ravi Teja is not just an isolated act of violence — it reflects systemic threats faced by Indian and South Asian students across the U.S. Safety is not optional — it’s a right. #GunReform #StopAAPIHate #StudentSafety",
+      "instagram_facebook_republican": "The murder of Ravi Teja, an Indian student, underscores the need for stronger safety measures for our international communities. Protecting Indian Americans = protecting U.S. allies & ensuring America remains the destination for global talent. #LawAndOrder #CampusSafety #USIndia"
+    },
+    "further_reading": [
+      "Telangana student shot dead in US",
+      "83% Of Indian Americans Say We Need Stricter Gun Laws",
+      "As Harris, Ramaswamy, Usha Vance rose on national stage, Indian Americans faced harassment"
+    ],
+    "graph_img_links": [
+      "https://www.justice.gov/d9/styles/banner/public/2024-09/pie-chart-2023.png?itok=rGwLvVZZ",
+      "https://www.justice.gov/d9/styles/banner/public/2024-09/bar-chart-2022-2023.jpg?itok=7BjRWDSL"
+    ]
   },
   {
     "_id": "28",
@@ -554,15 +556,15 @@
       "Why should Indian families invest in US education when immigration pathways are getting narrower each year?"
     ],
     "posts": {
-            "twitter_democratic": "“The H-1B program isn’t just a policy—it’s the livelihood of thousands of Indian professionals & families. We must reform equitably: fair wages, faster green cards, & OPT flexibility. #ImmigrantJustice #H1B”",
-            "twitter_republican": "“Indian H-1B talent has helped build 1 in 4 U.S. billion-dollar startups. Visa reforms should reward merit & innovation—not just high salaries. #TechLeadership #H1B” OR “America wins when we attract the best. H-1B modernization must curb abuse without sidelining the very talent that drives our economy. #MeritBasedImmigration #USIndia”",
-            "instagram_facebook_democratic": "For Indian American families, the H-1B program is more than a visa—it’s a generational bridge to opportunity. This is about dignity, fairness, and inclusion. #ImmigrantJustice #H1BReform",
-            "instagram_facebook_republican": "Indian H-1B professionals have played a crucial role in driving U.S. innovation—helping launch 1 in 4 billion-dollar startups. This is about competitiveness and opportunity. #TechLeadership #MeritBasedImmigration #H1B"
-          },
-          "further_reading": [
-            "What are H-1B visas and how might the Trump administration change them?",
-            "Explainer: Trump 2.0: What's the conservative row over H-1B visas?"
-          ]
+      "twitter_democratic": "“The H-1B program isn’t just a policy—it’s the livelihood of thousands of Indian professionals & families. We must reform equitably: fair wages, faster green cards, & OPT flexibility. #ImmigrantJustice #H1B”",
+      "twitter_republican": "“Indian H-1B talent has helped build 1 in 4 U.S. billion-dollar startups. Visa reforms should reward merit & innovation—not just high salaries. #TechLeadership #H1B” OR “America wins when we attract the best. H-1B modernization must curb abuse without sidelining the very talent that drives our economy. #MeritBasedImmigration #USIndia”",
+      "instagram_facebook_democratic": "For Indian American families, the H-1B program is more than a visa—it’s a generational bridge to opportunity. This is about dignity, fairness, and inclusion. #ImmigrantJustice #H1BReform",
+      "instagram_facebook_republican": "Indian H-1B professionals have played a crucial role in driving U.S. innovation—helping launch 1 in 4 billion-dollar startups. This is about competitiveness and opportunity. #TechLeadership #MeritBasedImmigration #H1B"
+    },
+    "further_reading": [
+      "What are H-1B visas and how might the Trump administration change them?",
+      "Explainer: Trump 2.0: What's the conservative row over H-1B visas?"
+    ]
   },
   {
     "_id": "29",
@@ -580,16 +582,16 @@
       "Do you see Indian-American political participation as reshaping the party's political approach to outreach and coalition building?"
     ],
     "posts": {
-            "twitter_democratic": "“From H-1B reform to US-India ties, Democrats must stand visibly with Indian American leaders and communities. #DiversityInPolitics”",
-            "twitter_republican": "“Indian Americans value merit, entrepreneurship, and family. Republicans can connect on school choice, immigration reform & religious freedom. #SharedValues”",
-            "instagram_facebook_democratic": "Indian Americans are not just voting—they’re shaping legislation. Leaders like Balvir Singh prove that representation strengthens democracy at every level. Representation isn’t symbolic—it’s substantive. #RepresentationMatters #IndianAmericanVoices",
-            "instagram_facebook_republican": "Indian Americans are now key players in U.S. politics. Singh’s victory is proof of a politically energized diaspora. This is about building real coalitions, not overlooking one of America’s most influential immigrant groups. #SharedValues #GOPOutreach"
-          },
-          "further_reading": [
-            "Notable Indian-Americans who secured major victories in the 2024 US Elections",
-            "‘Could we have imagined this moment would come?’: Kamala Harris and the rise of Indian American politicians",
-            "'In the US, the Indian diaspora has a political influence that far exceeds its demographic weight'"
-          ]
+      "twitter_democratic": "“From H-1B reform to US-India ties, Democrats must stand visibly with Indian American leaders and communities. #DiversityInPolitics”",
+      "twitter_republican": "“Indian Americans value merit, entrepreneurship, and family. Republicans can connect on school choice, immigration reform & religious freedom. #SharedValues”",
+      "instagram_facebook_democratic": "Indian Americans are not just voting—they’re shaping legislation. Leaders like Balvir Singh prove that representation strengthens democracy at every level. Representation isn’t symbolic—it’s substantive. #RepresentationMatters #IndianAmericanVoices",
+      "instagram_facebook_republican": "Indian Americans are now key players in U.S. politics. Singh’s victory is proof of a politically energized diaspora. This is about building real coalitions, not overlooking one of America’s most influential immigrant groups. #SharedValues #GOPOutreach"
+    },
+    "further_reading": [
+      "Notable Indian-Americans who secured major victories in the 2024 US Elections",
+      "‘Could we have imagined this moment would come?’: Kamala Harris and the rise of Indian American politicians",
+      "'In the US, the Indian diaspora has a political influence that far exceeds its demographic weight'"
+    ]
   },
   {
     "_id": "30",
@@ -608,15 +610,15 @@
       "Do you believe aggressive immigration enforcement deters global talent from choosing the US for higher education?"
     ],
     "posts": {
-            "twitter_democratic": "ICE raids don’t just target violators—they discourage international students who bring billions to U.S. universities. Students are contributors, not expendable. #ProtectStudents #IndianAmericanVoices",
-            "twitter_republican": "“Indian students contribute billions & many become U.S. STEM leaders. We must separate border enforcement from student engagement. #SmartPolicy #USIndia”",
-            "instagram_facebook_democratic": "ICE raids may target a few—but they reverberate across entire student communities. Indian students, the largest international student group in the U.S., are left anxious about their futures. This is about dignity, fairness, and the future of American higher education. #ProtectStudents #IndianAmericanVoices",
-            "instagram_facebook_republican": "America’s universities thrive because of international talent. Indian students alone contribute billions to tuition, local economies, and the STEM pipeline. Protecting lawful, high-skilled talent is in America’s national interest. #SmartPolicy #USIndia"
-          },
-          "further_reading": [
-            "How the U.S. Betrayed International Students",
-            "Undocumented Students Are Living in Fear on College Campuses. The Effects of Campus Raids"
-          ]
+      "twitter_democratic": "ICE raids don’t just target violators—they discourage international students who bring billions to U.S. universities. Students are contributors, not expendable. #ProtectStudents #IndianAmericanVoices",
+      "twitter_republican": "“Indian students contribute billions & many become U.S. STEM leaders. We must separate border enforcement from student engagement. #SmartPolicy #USIndia”",
+      "instagram_facebook_democratic": "ICE raids may target a few—but they reverberate across entire student communities. Indian students, the largest international student group in the U.S., are left anxious about their futures. This is about dignity, fairness, and the future of American higher education. #ProtectStudents #IndianAmericanVoices",
+      "instagram_facebook_republican": "America’s universities thrive because of international talent. Indian students alone contribute billions to tuition, local economies, and the STEM pipeline. Protecting lawful, high-skilled talent is in America’s national interest. #SmartPolicy #USIndia"
+    },
+    "further_reading": [
+      "How the U.S. Betrayed International Students",
+      "Undocumented Students Are Living in Fear on College Campuses. The Effects of Campus Raids"
+    ]
   },
   {
     "_id": "31",
@@ -635,18 +637,18 @@
       "What is your stance on strengthening FDA cooperation with Indian pharma manufacturers to streamline approvals while ensuring quality?"
     ],
     "posts": {
-            "twitter_democratic": "“$300M surge in Indian pharma is more than capital—it’s trust. Expand FDA collaboration & global trials to lower drug costs & boost healthcare access. #USIndia #IndianAmericanVoices”",
-            "twitter_republican": "“$300M funding in Indian pharma shows strength. U.S. must back India as a market-driven pharma partner & counter to Chinese dependence. #SmartPolicy #USIndia”",
-            "instagram_facebook_democratic": "India’s pharmaceutical sector just secured $300M in funding—a 191% surge. For Americans, this isn’t just an economic story, it’s about healthcare access. This is how we lower costs while keeping patients first. #AffordableHealthcare #USIndia",
-            "instagram_facebook_republican": "India’s $300M pharma funding surge is a clear signal—America has a reliable partner to reduce dependence on Chinese supply chains. Smart, market-driven partnerships = stronger America. #PharmaResilience #USIndia"
-          },
-          "further_reading": [
-            "Funding in healthcare, lifesciences hikes to $ 300 m",
-            "Indo-US Pharma Alliance: Time to Step Up"
-          ],
-          "graph_img_links":[
-            "https://res.cloudinary.com/dfg1buevv/image/upload/v1755585931/Screenshot_2025-08-19_121505_tiayv7.png"
-          ]
+      "twitter_democratic": "“$300M surge in Indian pharma is more than capital—it’s trust. Expand FDA collaboration & global trials to lower drug costs & boost healthcare access. #USIndia #IndianAmericanVoices”",
+      "twitter_republican": "“$300M funding in Indian pharma shows strength. U.S. must back India as a market-driven pharma partner & counter to Chinese dependence. #SmartPolicy #USIndia”",
+      "instagram_facebook_democratic": "India’s pharmaceutical sector just secured $300M in funding—a 191% surge. For Americans, this isn’t just an economic story, it’s about healthcare access. This is how we lower costs while keeping patients first. #AffordableHealthcare #USIndia",
+      "instagram_facebook_republican": "India’s $300M pharma funding surge is a clear signal—America has a reliable partner to reduce dependence on Chinese supply chains. Smart, market-driven partnerships = stronger America. #PharmaResilience #USIndia"
+    },
+    "further_reading": [
+      "Funding in healthcare, lifesciences hikes to $ 300 m",
+      "Indo-US Pharma Alliance: Time to Step Up"
+    ],
+    "graph_img_links": [
+      "https://res.cloudinary.com/dfg1buevv/image/upload/v1755585931/Screenshot_2025-08-19_121505_tiayv7.png"
+    ]
   },
   {
     "_id": "32",
@@ -664,16 +666,16 @@
       "Should the US take a more vocal and consistent stance in support of Indian interests, particularly on cross-border terrorism and the Kashmir issue, given India’s central role in maintaining regional stability?"
     ],
     "posts": {
-            "twitter_democratic": "“India-China flights resume after 5 yrs—a reminder that diplomacy & deterrence must go hand in hand. U.S. should back India in Quad & IPEF to ensure Indo-Pacific stability. #USIndia”",
-            "twitter_republican": "“India’s outreach to China shows why strong U.S.-India defense ties are vital. India remains the long-term partner to counter Chinese military assertiveness. #IndoPacific #USIndia”",
-            "instagram_facebook_democratic": "After nearly 5 years, India and China have resumed direct flights and re-opened channels of engagement. For the U.S., this moment underscores why support for diplomacy-first Indo-Pacific frameworks like the Quad and IPEF is critical. #DiplomacyFirst #IndoPacificStability",
-            "instagram_facebook_republican": "India’s re-engagement with China is pragmatic, but it reinforces a truth: U.S.-India defense ties are vital. China’s military assertiveness won’t fade, and India is the long-term partner capable of counterbalancing it. #StrategicAllies #USIndia"
-          },
-          "further_reading": [
-            "India and China agree to resume air travel, facilitate exchange of journalists",
-            "As Trump returns, Sino-Indian relations are changing",
-            "India views China as its primary adversary, Pakistan more an ancillary security problem: US defence intelligence report"
-          ]
+      "twitter_democratic": "“India-China flights resume after 5 yrs—a reminder that diplomacy & deterrence must go hand in hand. U.S. should back India in Quad & IPEF to ensure Indo-Pacific stability. #USIndia”",
+      "twitter_republican": "“India’s outreach to China shows why strong U.S.-India defense ties are vital. India remains the long-term partner to counter Chinese military assertiveness. #IndoPacific #USIndia”",
+      "instagram_facebook_democratic": "After nearly 5 years, India and China have resumed direct flights and re-opened channels of engagement. For the U.S., this moment underscores why support for diplomacy-first Indo-Pacific frameworks like the Quad and IPEF is critical. #DiplomacyFirst #IndoPacificStability",
+      "instagram_facebook_republican": "India’s re-engagement with China is pragmatic, but it reinforces a truth: U.S.-India defense ties are vital. China’s military assertiveness won’t fade, and India is the long-term partner capable of counterbalancing it. #StrategicAllies #USIndia"
+    },
+    "further_reading": [
+      "India and China agree to resume air travel, facilitate exchange of journalists",
+      "As Trump returns, Sino-Indian relations are changing",
+      "India views China as its primary adversary, Pakistan more an ancillary security problem: US defence intelligence report"
+    ]
   },
   {
     "_id": "33",
@@ -690,16 +692,16 @@
       "Should the US invest more diplomatically and financially in India’s tech ecosystem as a counterweight to Chinese digital influence?"
     ],
     "posts": {
-            "twitter_democratic": "“Congrats to India on its 76th #RepublicDay — a proud moment for the world’s largest democracy. Let’s expand U.S.-India cooperation in inclusive innovation, fintech & climate tech. #USIndia”",
-            "twitter_republican": "“India’s 76th #RepublicDay marks its rise as a trusted ally in Indo-Pacific security. U.S.-India defense cooperation is vital to counter Chinese aggression. #StrategicAllies”",
-            "instagram_facebook_democratic": "Today, India celebrates its 76th Republic Day — honoring its democracy while showcasing its growing global influence. For Democrats, this moment is more than ceremonial. India’s digital revolution in fintech, startups, and public infrastructure is shaping the global innovation economy. By working together, the U.S. and India can offer a democratic alternative to authoritarian models of growth and help secure a more equitable global order. #RepublicDay #USIndia #InclusiveInnovation",
-            "instagram_facebook_republican": "India’s 76th Republic Day is a celebration not only of democracy but of India’s strategic rise as a security partner. Republic Day is a reminder that our security and prosperity are stronger with India at our side. #RepublicDay #StrategicAllies #USIndiaDefense"
-          },
-          "further_reading": [
-            "India's Republic Day marked by fighter jet formations, daredevil stunts",
-            "US-India Ties: The Defining Partnership of the 21st Century",
-            "India-US reaffirm commitment to secure digital connectivity, focus on AI collaboration"
-          ]
+      "twitter_democratic": "“Congrats to India on its 76th #RepublicDay — a proud moment for the world’s largest democracy. Let’s expand U.S.-India cooperation in inclusive innovation, fintech & climate tech. #USIndia”",
+      "twitter_republican": "“India’s 76th #RepublicDay marks its rise as a trusted ally in Indo-Pacific security. U.S.-India defense cooperation is vital to counter Chinese aggression. #StrategicAllies”",
+      "instagram_facebook_democratic": "Today, India celebrates its 76th Republic Day — honoring its democracy while showcasing its growing global influence. For Democrats, this moment is more than ceremonial. India’s digital revolution in fintech, startups, and public infrastructure is shaping the global innovation economy. By working together, the U.S. and India can offer a democratic alternative to authoritarian models of growth and help secure a more equitable global order. #RepublicDay #USIndia #InclusiveInnovation",
+      "instagram_facebook_republican": "India’s 76th Republic Day is a celebration not only of democracy but of India’s strategic rise as a security partner. Republic Day is a reminder that our security and prosperity are stronger with India at our side. #RepublicDay #StrategicAllies #USIndiaDefense"
+    },
+    "further_reading": [
+      "India's Republic Day marked by fighter jet formations, daredevil stunts",
+      "US-India Ties: The Defining Partnership of the 21st Century",
+      "India-US reaffirm commitment to secure digital connectivity, focus on AI collaboration"
+    ]
   },
   {
     "_id": "34",
@@ -719,15 +721,15 @@
       "Are delays in emergency visa processing an inevitable consequence of consular backlogs, or a solvable diplomatic blind spot?"
     ],
     "posts": {
-            "twitter_democratic": "“The tragic case of Nilam Shinde highlights failures in emergency support for international students. We must expand humanitarian visa channels & establish stronger protocols. #StudentSafety”",
-            "twitter_republican": "“Nilam Shinde’s death shows why universities must be accountable for emergency preparedness. International students deserve real protection, not red tape. #Accountability”",
-            "instagram_facebook_democratic": "The tragic hit-and-run case of Nilam Shinde is not only a personal loss, but also a systemic failure. It exposes bureaucratic bottlenecks that delay critical help and deepen trauma for Indian students abroad. International students bring knowledge, innovation, and billions to our economy. They deserve safety and dignity — not uncertainty in their moments of greatest need. #NilamShinde #USIndia #StudentSafety",
-            "instagram_facebook_republican": "The case of Nilam Shinde shines a spotlight on the failures of emergency protocols for international students. Compassion must be backed by accountability. Nilam’s story is a reminder that protecting students means protecting America’s allies. #NilamShinde #USIndia #Accountability"
-          },
-          "further_reading": [
-            "Indian student battles for life in US after hit-and-run accident, family seeks urgent visa",
-            "Indian students died in foreign countries- Indian government response In Parliament"
-          ]
+      "twitter_democratic": "“The tragic case of Nilam Shinde highlights failures in emergency support for international students. We must expand humanitarian visa channels & establish stronger protocols. #StudentSafety”",
+      "twitter_republican": "“Nilam Shinde’s death shows why universities must be accountable for emergency preparedness. International students deserve real protection, not red tape. #Accountability”",
+      "instagram_facebook_democratic": "The tragic hit-and-run case of Nilam Shinde is not only a personal loss, but also a systemic failure. It exposes bureaucratic bottlenecks that delay critical help and deepen trauma for Indian students abroad. International students bring knowledge, innovation, and billions to our economy. They deserve safety and dignity — not uncertainty in their moments of greatest need. #NilamShinde #USIndia #StudentSafety",
+      "instagram_facebook_republican": "The case of Nilam Shinde shines a spotlight on the failures of emergency protocols for international students. Compassion must be backed by accountability. Nilam’s story is a reminder that protecting students means protecting America’s allies. #NilamShinde #USIndia #Accountability"
+    },
+    "further_reading": [
+      "Indian student battles for life in US after hit-and-run accident, family seeks urgent visa",
+      "Indian students died in foreign countries- Indian government response In Parliament"
+    ]
   },
   {
     "_id": "35",
@@ -745,15 +747,15 @@
       "How do you see India’s growing global stature aligning with long-term US strategic interests?"
     ],
     "posts": {
-            "twitter_democratic": "“COMPACT shows India is central to U.S. foreign & economic interests. Recognize the role of Indian talent in U.S. innovation and the soft power of our partnership. #USIndia #COMPACT”",
-            "twitter_republican": "“India’s economic weight is undeniable — COMPACT is proof the U.S.-India partnership is vital for American jobs, security, and innovation.”",
-            "instagram_facebook_democratic": "With the launch of the U.S.-India COMPACT, the partnership between the world’s two largest democracies is stronger than ever. From semiconductor supply chains to student mobility, COMPACT reinforces that India is central to U.S. interests in the 21st century. The Indian-American diaspora sees Modi’s leadership as a source of pride — and acknowledging that sentiment builds trust. #USIndia #COMPACT #Innovation #GlobalPartnership",
-            "instagram_facebook_republican": "The new U.S.-India COMPACT is more than an agreement — it’s a strategic realignment. Indian-Americans are proud of India’s global rise. Recognizing that pride is key to building meaningful diaspora outreach while strengthening U.S. security and prosperity. #COMPACT #USIndia #Trade #Security"
-          },
-          "graph_img_links":[
-            "https://lh7-rt.googleusercontent.com/docsz/AD_4nXdT8bLtS2L5T8I45as4ta4qczcvJzHFzr7eSCd_abFiJkeBpkmFkXH7bpnO3m3yMzV7f2ygVQ3JiKl5mBi4ItLTOjipy8MchUWYzhLCFyA-ngQmX2pa0rLK47cSF-W-LvOuYD-C_Q?key=JxbrJGHWMHosrnQd_r2YNM0S",
-            "https://res.cloudinary.com/dfg1buevv/image/upload/v1755588276/sggrg_r4kjex.png"
-          ]
+      "twitter_democratic": "“COMPACT shows India is central to U.S. foreign & economic interests. Recognize the role of Indian talent in U.S. innovation and the soft power of our partnership. #USIndia #COMPACT”",
+      "twitter_republican": "“India’s economic weight is undeniable — COMPACT is proof the U.S.-India partnership is vital for American jobs, security, and innovation.”",
+      "instagram_facebook_democratic": "With the launch of the U.S.-India COMPACT, the partnership between the world’s two largest democracies is stronger than ever. From semiconductor supply chains to student mobility, COMPACT reinforces that India is central to U.S. interests in the 21st century. The Indian-American diaspora sees Modi’s leadership as a source of pride — and acknowledging that sentiment builds trust. #USIndia #COMPACT #Innovation #GlobalPartnership",
+      "instagram_facebook_republican": "The new U.S.-India COMPACT is more than an agreement — it’s a strategic realignment. Indian-Americans are proud of India’s global rise. Recognizing that pride is key to building meaningful diaspora outreach while strengthening U.S. security and prosperity. #COMPACT #USIndia #Trade #Security"
+    },
+    "graph_img_links": [
+      "https://lh7-rt.googleusercontent.com/docsz/AD_4nXdT8bLtS2L5T8I45as4ta4qczcvJzHFzr7eSCd_abFiJkeBpkmFkXH7bpnO3m3yMzV7f2ygVQ3JiKl5mBi4ItLTOjipy8MchUWYzhLCFyA-ngQmX2pa0rLK47cSF-W-LvOuYD-C_Q?key=JxbrJGHWMHosrnQd_r2YNM0S",
+      "https://res.cloudinary.com/dfg1buevv/image/upload/v1755588276/sggrg_r4kjex.png"
+    ]
   },
   {
     "_id": "36",
@@ -771,14 +773,14 @@
       "Is a strong Musk-Modi relationship an indicator of growing US-India ties?"
     ],
     "posts": {
-            "twitter_democratic": "“Modi–Musk signals India’s tech diplomacy in action. Partnerships like Starlink can advance digital inclusion and serve as a model for development across the Global South.”",
-            "twitter_republican": "“India’s low-barrier reforms on EVs & satellites = major opportunity for U.S. companies. Modi–Musk shows how the private sector drives growth. #Trade #Tech” OR “India is open for business. Time to strengthen U.S.-India agreements on tech, trade, and infrastructure. #USIndia #MuskModi”",
-            "instagram_facebook_democratic": "The Modi–Musk meeting signals India’s ambition to transform infrastructure and expand digital inclusion with policies like lowering EV import duties, allowing 100% FDI in satellite services, and easing spectrum allocation. India is laying the foundation for partnerships that can connect underserved communities and accelerate innovation in the Global South. #USIndia #ModiMusk #DigitalInclusion #TechForAll",
-            "instagram_facebook_republican": "The Modi–Musk meeting is more than a handshake — it’s a market signal. India is creating an open-access, private-sector-friendly environment by slashing EV import duties, opening 100% FDI in satellite services and fast-tracking spectrum allocation. #MuskModi #USIndia #TradeOpportunities #TechPartnership"
-          },
-          "graph_img_links":[
-            "https://www.precedenceresearch.com/insightimg/satellite-internet-market-statistics.webp"
-          ]
+      "twitter_democratic": "“Modi–Musk signals India’s tech diplomacy in action. Partnerships like Starlink can advance digital inclusion and serve as a model for development across the Global South.”",
+      "twitter_republican": "“India’s low-barrier reforms on EVs & satellites = major opportunity for U.S. companies. Modi–Musk shows how the private sector drives growth. #Trade #Tech” OR “India is open for business. Time to strengthen U.S.-India agreements on tech, trade, and infrastructure. #USIndia #MuskModi”",
+      "instagram_facebook_democratic": "The Modi–Musk meeting signals India’s ambition to transform infrastructure and expand digital inclusion with policies like lowering EV import duties, allowing 100% FDI in satellite services, and easing spectrum allocation. India is laying the foundation for partnerships that can connect underserved communities and accelerate innovation in the Global South. #USIndia #ModiMusk #DigitalInclusion #TechForAll",
+      "instagram_facebook_republican": "The Modi–Musk meeting is more than a handshake — it’s a market signal. India is creating an open-access, private-sector-friendly environment by slashing EV import duties, opening 100% FDI in satellite services and fast-tracking spectrum allocation. #MuskModi #USIndia #TradeOpportunities #TechPartnership"
+    },
+    "graph_img_links": [
+      "https://www.precedenceresearch.com/insightimg/satellite-internet-market-statistics.webp"
+    ]
   },
   {
     "_id": "37",
@@ -799,10 +801,10 @@
       "Does the government value the community beyond tokenistic representation?"
     ],
     "posts": {
-            "twitter_democratic": "“The DOGE rehiring controversy isn’t just about one figure — it’s about the message of race & accountability. Indian Americans deserve better. #StopTheHate”",
-            "twitter_republican": "“Defending voices tied to hate speech alienates Indian Americans & weakens Indian-origin Republicans. Outreach must start with respect.”",
-            "instagram_facebook_democratic": "The DOGE controversy isn’t just about one person — it’s about what message political leaders send to communities facing racial bias. Since 2024, hate against South Asians has spiked both online and in public spaces. This is a chance to turn goodwill into long-term political trust. #IndianAmericanVoices #StopTheHate #USPolitics",
-            "instagram_facebook_republican": "Right now, only 29% of Indian Americans lean Republican. The DOGE rehiring controversy shows why. If the GOP wants to grow its standing with this community, it must show a consistent, public commitment to racial respect — not just economic alignment. #GOPOutreach #IndianAmericanCommunity"
+      "twitter_democratic": "“The DOGE rehiring controversy isn’t just about one figure — it’s about the message of race & accountability. Indian Americans deserve better. #StopTheHate”",
+      "twitter_republican": "“Defending voices tied to hate speech alienates Indian Americans & weakens Indian-origin Republicans. Outreach must start with respect.”",
+      "instagram_facebook_democratic": "The DOGE controversy isn’t just about one person — it’s about what message political leaders send to communities facing racial bias. Since 2024, hate against South Asians has spiked both online and in public spaces. This is a chance to turn goodwill into long-term political trust. #IndianAmericanVoices #StopTheHate #USPolitics",
+      "instagram_facebook_republican": "Right now, only 29% of Indian Americans lean Republican. The DOGE rehiring controversy shows why. If the GOP wants to grow its standing with this community, it must show a consistent, public commitment to racial respect — not just economic alignment. #GOPOutreach #IndianAmericanCommunity"
     }
   },
   {
@@ -824,16 +826,16 @@
       "How can India and the US work together to both uphold human rights and discourage dangerous, unauthorized migration routes?"
     ],
     "posts": {
-            "twitter_democratic": "“Deportation must never mean dignity denied. Forcing Sikh detainees to remove turbans violates religious freedom and human rights. Oversight is urgent.” OR “Indian Americans — especially Sikh Americans — deserve reassurance: their faith and dignity will always be protected in the U.S. #CivilRights”",
-            "twitter_republican": "“The use of military aircraft for deportations is standard protocol, not political signaling.”",
-            "instagram_facebook_democratic": "The deportation of over 100 Indian nationals, including Sikh detainees allegedly forced to remove their turbans, has sparked deep concerns about religious freedom and civil liberties. No one should have to choose between immigration enforcement and basic human dignity. #ReligiousFreedom #SikhVoices #ImmigrantRights",
-            "instagram_facebook_republican": "The deportation of over 100 Indians — including Sikh detainees — has raised important questions. Protecting national security must never be confused with undermining religious freedom. #SecureBorders #ReligiousRespect #USIndia"
-          },
-          "graph_img_links":[
-            "https://akm-img-a-in.tosshub.com/indiatoday/inline-images/Illegal%20immigration-01.jpg?VersionId=DO2oZGIUx8RwFGsiMZZT5LckMeTJNRPh&size=750:*",
-            "https://images.moneycontrol.com/static-mcnews/2023/02/number-of-indian-immigrants-in-the-us-1.jpg",
-            "https://scontent.fccu27-1.fna.fbcdn.net/v/t1.6435-9/86982406_2807626662664071_6917526579509723136_n.jpg?stp=dst-jpg_p526x296_tt6&_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_ohc=Tyh1ce2mF4wQ7kNvwFF1eLV&_nc_oc=AdlQ-oeW0I4tnGCaiK7dLKPl5L2PzAAQZBHfwWu7PXWf5u858FKb-o9l9fKGbCYVXT4I8pxGzjSCBF0O9M95U6Wn&_nc_zt=23&_nc_ht=scontent.fccu27-1.fna&_nc_gid=JTcshDYslykwE8DIMx-GSA&oh=00_AfXzA5MVtOQhFglbDymUtwOP9ZQm3W0jo_g0If-lwVCmpA&oe=68CBA20D"
-          ]
+      "twitter_democratic": "“Deportation must never mean dignity denied. Forcing Sikh detainees to remove turbans violates religious freedom and human rights. Oversight is urgent.” OR “Indian Americans — especially Sikh Americans — deserve reassurance: their faith and dignity will always be protected in the U.S. #CivilRights”",
+      "twitter_republican": "“The use of military aircraft for deportations is standard protocol, not political signaling.”",
+      "instagram_facebook_democratic": "The deportation of over 100 Indian nationals, including Sikh detainees allegedly forced to remove their turbans, has sparked deep concerns about religious freedom and civil liberties. No one should have to choose between immigration enforcement and basic human dignity. #ReligiousFreedom #SikhVoices #ImmigrantRights",
+      "instagram_facebook_republican": "The deportation of over 100 Indians — including Sikh detainees — has raised important questions. Protecting national security must never be confused with undermining religious freedom. #SecureBorders #ReligiousRespect #USIndia"
+    },
+    "graph_img_links": [
+      "https://akm-img-a-in.tosshub.com/indiatoday/inline-images/Illegal%20immigration-01.jpg?VersionId=DO2oZGIUx8RwFGsiMZZT5LckMeTJNRPh&size=750:*",
+      "https://images.moneycontrol.com/static-mcnews/2023/02/number-of-indian-immigrants-in-the-us-1.jpg",
+      "https://scontent.fccu27-1.fna.fbcdn.net/v/t1.6435-9/86982406_2807626662664071_6917526579509723136_n.jpg?stp=dst-jpg_p526x296_tt6&_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_ohc=Tyh1ce2mF4wQ7kNvwFF1eLV&_nc_oc=AdlQ-oeW0I4tnGCaiK7dLKPl5L2PzAAQZBHfwWu7PXWf5u858FKb-o9l9fKGbCYVXT4I8pxGzjSCBF0O9M95U6Wn&_nc_zt=23&_nc_ht=scontent.fccu27-1.fna&_nc_gid=JTcshDYslykwE8DIMx-GSA&oh=00_AfXzA5MVtOQhFglbDymUtwOP9ZQm3W0jo_g0If-lwVCmpA&oe=68CBA20D"
+    ]
   },
   {
     "_id": "39",
@@ -851,12 +853,11 @@
       "Should the US press for faster removal of Agriculture Infrastructure Development Cess (AIDC) in negotiations?"
     ],
     "posts": {
-            "twitter_democratic": "“India’s 2025-26 Budget expands FDI + moves toward tariff parity — a clear signal of trust. Let’s deepen US-India collaboration on digital trade & green goods.”",
-            "twitter_republican": "“India’s tariff cuts? A direct result of tough diplomacy between Trump & Modi. Pressure delivers.”",
-            "instagram_facebook_democratic": "India’s Union Budget 2025-26 signals liberalization + trust in global markets. With expanded FDI in insurance and moves toward tariff parity, the reforms mark an opportunity for US-India economic partnership to grow stronger. Global trade can be a force for equity — and this Budget is proof that India wants to partner with the US to make it happen. #USIndia #TradePartnership #GreenEconomy",
-            "instagram_facebook_republican": "India’s 2025-26 Budget delivers tariff cuts + FDI expansion — proof that US diplomacy works. A strong India is a strong partner. But we must keep the balance fair. #Trade #Reciprocity #USIndia"
-          }
-          
+      "twitter_democratic": "“India’s 2025-26 Budget expands FDI + moves toward tariff parity — a clear signal of trust. Let’s deepen US-India collaboration on digital trade & green goods.”",
+      "twitter_republican": "“India’s tariff cuts? A direct result of tough diplomacy between Trump & Modi. Pressure delivers.”",
+      "instagram_facebook_democratic": "India’s Union Budget 2025-26 signals liberalization + trust in global markets. With expanded FDI in insurance and moves toward tariff parity, the reforms mark an opportunity for US-India economic partnership to grow stronger. Global trade can be a force for equity — and this Budget is proof that India wants to partner with the US to make it happen. #USIndia #TradePartnership #GreenEconomy",
+      "instagram_facebook_republican": "India’s 2025-26 Budget delivers tariff cuts + FDI expansion — proof that US diplomacy works. A strong India is a strong partner. But we must keep the balance fair. #Trade #Reciprocity #USIndia"
+    }
   },
   {
     "_id": "40",
@@ -875,11 +876,11 @@
       "Do you agree with President Trump’s rhetoric that India is a “trade abuser”?"
     ],
     "posts": {
-            "twitter_democratic": "“India’s decision to slash tariffs on bourbon whisky may sound symbolic, but it’s a crucial gesture in ongoing US-India trade talks. = Celebrating bourbon today means pushing for climate goods & fair trade rules tomorrow. #USIndia #TradePartnership #Diplomacy",
-            "twitter_republican": "Tariffs on bourbon whisky are down — proof that tough US-India negotiations are working. Small win. Bigger fight ahead. #TradeDeal #USIndia #Reciprocity",
-            "instagram_facebook_democratic": "India’s decision to slash tariffs on bourbon whisky may sound symbolic, but it’s a crucial gesture in ongoing US-India trade talks. This isn’t just about gas — it’s about building climate-aligned industrial partnerships for the future. #CleanEnergyDiplomacy #USIndia #EnergyTransition #ClimateAction #SouthAsianVoices #NetZeroPartnership",
-            "instagram_facebook_republican": "India’s LNG tax deliberations mark a win for American energy producers and US jobs. Strong energy ties mean stronger US leadership abroad and economic strength at home. #AmericanEnergy #USIndia #Jobs #IndoPacific #EnergySecurity #FairTrade #SouthAsianVoices"
-          }
+      "twitter_democratic": "“India’s decision to slash tariffs on bourbon whisky may sound symbolic, but it’s a crucial gesture in ongoing US-India trade talks. = Celebrating bourbon today means pushing for climate goods & fair trade rules tomorrow. #USIndia #TradePartnership #Diplomacy",
+      "twitter_republican": "Tariffs on bourbon whisky are down — proof that tough US-India negotiations are working. Small win. Bigger fight ahead. #TradeDeal #USIndia #Reciprocity",
+      "instagram_facebook_democratic": "India’s decision to slash tariffs on bourbon whisky may sound symbolic, but it’s a crucial gesture in ongoing US-India trade talks. This isn’t just about gas — it’s about building climate-aligned industrial partnerships for the future. #CleanEnergyDiplomacy #USIndia #EnergyTransition #ClimateAction #SouthAsianVoices #NetZeroPartnership",
+      "instagram_facebook_republican": "India’s LNG tax deliberations mark a win for American energy producers and US jobs. Strong energy ties mean stronger US leadership abroad and economic strength at home. #AmericanEnergy #USIndia #Jobs #IndoPacific #EnergySecurity #FairTrade #SouthAsianVoices"
+    }
   },
   {
     "_id": "41",
@@ -897,16 +898,16 @@
       "Do you believe trilateral cooperation among India, Israel, and the US can serve as a credible counterweight to Chinese or Iranian influence?"
     ],
     "posts": {
-            "twitter_democratic": "“India-Israel economic ties are deepening. The US should welcome this — while insisting growth comes with human rights transparency & regional stability”",
-            "twitter_republican": "“India + Israel = two trusted allies. Strengthening their ties strengthens the case for trilateral US-India-Israel cooperation against adversarial influence”",
-            "instagram_facebook_democratic": "India and Israel are deepening business ties — and the US should welcome this development. Indian Americans support tech & innovation collaborations, but clarity and transparency are essential. #IndiaIsrael #USIndia #HumanRights #Innovation",
-            "instagram_facebook_republican": "India and Israel is a powerful partnership. The India-Israel-US trilateral is more than business. For Republicans, this is a moment to double down on calls for enhanced trilateral cooperation. #IndiaIsrael #StrategicAllies #USLeadership"
-          },
-          "graph_img_links":[
-            "https://www.middleeasteye.net/sites/default/files/india%20israel%201a.png",
-            "https://ichef.bbci.co.uk/news/1024/cpsprodpb/B93A/production/_133081474_arms_exports_to_israel_chart_v2_640-2x-nc.png.webp",
-            "https://res.cloudinary.com/dfg1buevv/image/upload/v1755589026/Screenshot_2025-08-19_130643_wppgyd.png"
-            ]
+      "twitter_democratic": "“India-Israel economic ties are deepening. The US should welcome this — while insisting growth comes with human rights transparency & regional stability”",
+      "twitter_republican": "“India + Israel = two trusted allies. Strengthening their ties strengthens the case for trilateral US-India-Israel cooperation against adversarial influence”",
+      "instagram_facebook_democratic": "India and Israel are deepening business ties — and the US should welcome this development. Indian Americans support tech & innovation collaborations, but clarity and transparency are essential. #IndiaIsrael #USIndia #HumanRights #Innovation",
+      "instagram_facebook_republican": "India and Israel is a powerful partnership. The India-Israel-US trilateral is more than business. For Republicans, this is a moment to double down on calls for enhanced trilateral cooperation. #IndiaIsrael #StrategicAllies #USLeadership"
+    },
+    "graph_img_links": [
+      "https://www.middleeasteye.net/sites/default/files/india%20israel%201a.png",
+      "https://ichef.bbci.co.uk/news/1024/cpsprodpb/B93A/production/_133081474_arms_exports_to_israel_chart_v2_640-2x-nc.png.webp",
+      "https://res.cloudinary.com/dfg1buevv/image/upload/v1755589026/Screenshot_2025-08-19_130643_wppgyd.png"
+    ]
   },
   {
     "_id": "42",
@@ -926,14 +927,14 @@
       "What steps can local and federal law enforcement take to address diaspora-linked extremism, including anti-India rhetoric tied to the Khalistan movement?"
     ],
     "posts": {
-            "twitter_democratic": "“The vandalism of the BAPS temple in Chino Hills is not just an isolated act. It’s part of a broader trend targeting Hindu places of worship across the US.” OR “Democrats must push for expanded DOJ tracking of hate crimes, protections for South Asian faith institutions, and a Congressional Task Force on South Asian Civil Rights.”",
-            "twitter_republican": "“Republicans should back stronger FBI-local coordination and enhanced security funding for temples, aligning with law and order priorities.”",
-            "instagram_facebook_democratic": "The recent vandalism of the BAPS Shri Swaminarayan Mandir in Chino Hills is part of a disturbing pattern of attacks against Hindu temples. With over 100 BAPS temples serving as cultural and community anchors nationwide, these incidents strike at the heart of diaspora identity and safety. Safety, dignity, and religious freedom for all communities must remain a top priority. #SouthAsianVoices #StopHate #ReligiousFreedom #CivilRights #IndianAmerican #HinduAmerican #CommunitySafety",
-            "instagram_facebook_republican": "The vandalism of the Chino Hills BAPS temple is not just a local issue — it is a matter of religious freedom and security. A strong America protects its houses of worship and defends every community’s right to faith and safety. #ReligiousFreedom #LawAndOrder #CommunitySafety #SouthAsianAmericans #HinduAmerican #FaithFreedom #StopHate"
-          },
-          "graph_img_links": [
-            "https://res.cloudinary.com/diecfwnp9/image/upload/v1755589591/Screenshot_2025-08-19_131221_kauybb.png"
-          ]
+      "twitter_democratic": "“The vandalism of the BAPS temple in Chino Hills is not just an isolated act. It’s part of a broader trend targeting Hindu places of worship across the US.” OR “Democrats must push for expanded DOJ tracking of hate crimes, protections for South Asian faith institutions, and a Congressional Task Force on South Asian Civil Rights.”",
+      "twitter_republican": "“Republicans should back stronger FBI-local coordination and enhanced security funding for temples, aligning with law and order priorities.”",
+      "instagram_facebook_democratic": "The recent vandalism of the BAPS Shri Swaminarayan Mandir in Chino Hills is part of a disturbing pattern of attacks against Hindu temples. With over 100 BAPS temples serving as cultural and community anchors nationwide, these incidents strike at the heart of diaspora identity and safety. Safety, dignity, and religious freedom for all communities must remain a top priority. #SouthAsianVoices #StopHate #ReligiousFreedom #CivilRights #IndianAmerican #HinduAmerican #CommunitySafety",
+      "instagram_facebook_republican": "The vandalism of the Chino Hills BAPS temple is not just a local issue — it is a matter of religious freedom and security. A strong America protects its houses of worship and defends every community’s right to faith and safety. #ReligiousFreedom #LawAndOrder #CommunitySafety #SouthAsianAmericans #HinduAmerican #FaithFreedom #StopHate"
+    },
+    "graph_img_links": [
+      "https://res.cloudinary.com/diecfwnp9/image/upload/v1755589591/Screenshot_2025-08-19_131221_kauybb.png"
+    ]
   },
   {
     "_id": "43",
@@ -953,15 +954,15 @@
       "What measures can be undertaken to ensure more hate crimes are reported?"
     ],
     "posts": {
-            "twitter_democratic": "“The brutal attack on Leelamma Lal underscores a disturbing rise in hate crimes against Indian-American healthcare workers. Democrats must push for stronger federal enforcement of hate crime statutes, workplace safety reforms, and solidarity with frontline immigrant workers.”",
-            "twitter_republican": "“Violence against Indian-American healthcare workers is unacceptable. Republicans should lead in strengthening penalties for hate crimes, standing with elderly and frontline workers, and affirming that such acts contradict America’s values of law and order.”",
-            "instagram_facebook_democratic": "The brutal attack on Leelamma Lal in Florida is not an isolated act — it reflects a disturbing rise in hate crimes targeting Indian-American healthcare workers. Indian-American frontline workers deserve safety, dignity, and justice. #SouthAsianVoices #StopHate #HealthcareHeroes #CivilRights #IndianAmerican #JusticeForLeelamma #CommunitySafety",
-            "instagram_facebook_republican": "The attack on Indian-origin nurse Leelamma Lal highlights an urgent challenge: protecting elderly and frontline workers from hate-driven violence. A strong America is one where violence and hate are never tolerated. #LawAndOrder #Justice #StopHate #ReligiousFreedom #CommunitySafety #IndianAmerican #HealthcareWorkers"
-          },
-          "graph_img_links": [
-            "https://res.cloudinary.com/diecfwnp9/image/upload/v1755589715/Screenshot_2025-08-19_131822_ppufvv.png",
-            "https://res.cloudinary.com/diecfwnp9/image/upload/v1755589777/Screenshot_2025-08-19_131929_vec4jh.png"
-          ]
+      "twitter_democratic": "“The brutal attack on Leelamma Lal underscores a disturbing rise in hate crimes against Indian-American healthcare workers. Democrats must push for stronger federal enforcement of hate crime statutes, workplace safety reforms, and solidarity with frontline immigrant workers.”",
+      "twitter_republican": "“Violence against Indian-American healthcare workers is unacceptable. Republicans should lead in strengthening penalties for hate crimes, standing with elderly and frontline workers, and affirming that such acts contradict America’s values of law and order.”",
+      "instagram_facebook_democratic": "The brutal attack on Leelamma Lal in Florida is not an isolated act — it reflects a disturbing rise in hate crimes targeting Indian-American healthcare workers. Indian-American frontline workers deserve safety, dignity, and justice. #SouthAsianVoices #StopHate #HealthcareHeroes #CivilRights #IndianAmerican #JusticeForLeelamma #CommunitySafety",
+      "instagram_facebook_republican": "The attack on Indian-origin nurse Leelamma Lal highlights an urgent challenge: protecting elderly and frontline workers from hate-driven violence. A strong America is one where violence and hate are never tolerated. #LawAndOrder #Justice #StopHate #ReligiousFreedom #CommunitySafety #IndianAmerican #HealthcareWorkers"
+    },
+    "graph_img_links": [
+      "https://res.cloudinary.com/diecfwnp9/image/upload/v1755589715/Screenshot_2025-08-19_131822_ppufvv.png",
+      "https://res.cloudinary.com/diecfwnp9/image/upload/v1755589777/Screenshot_2025-08-19_131929_vec4jh.png"
+    ]
   },
   {
     "_id": "44",
@@ -980,20 +981,20 @@
       "Is deepening defense ties with India the best way to counterbalance China in the Indo-Pacific?"
     ],
     "posts": {
-            "twitter_democratic": "“India’s modernization presents an opportunity for a shared US-India defense industrial roadmap. Democrats should advocate for tech transfers, compliance clauses, and collaboration under INDUS-X to strengthen trust while advancing cybersecurity, AI, and aircraft maintenance.”",
-            "twitter_republican": "“F-35 sales to India should be tied to results. Republicans can frame defense deals as proof that strong US pressure works — push for legally binding purchase commitments and link them to tariff relief for US exporters.”",
-            "instagram_facebook_democratic": "India’s consideration of the F-35 jets is about more than equipment — it’s about charting a shared defense future. India’s “Make in India” goals can align with US innovation — if both sides commit to long-term, tech-driven defense cooperation. #USIndia #DefenseTech #MakeInIndia #INDUSX #SecurityPartnership #SouthAsianVoices #InnovationDiplomacy",
-            "instagram_facebook_republican": "The F-35 conversation with India is a chance to secure results for America. A stronger India means a stronger Indo-Pacific — and a win for US industries and workers. #AmericaFirst #USIndia #DefenseDeals #FairTrade #MakeInIndia #SecurityPartnership #IndoPacific"
-          },
-          "graph_img_links": [
-            "https://res.cloudinary.com/diecfwnp9/image/upload/v1755589878/Screenshot_2025-08-19_132107_vbhbyp.png"
-          ]
+      "twitter_democratic": "“India’s modernization presents an opportunity for a shared US-India defense industrial roadmap. Democrats should advocate for tech transfers, compliance clauses, and collaboration under INDUS-X to strengthen trust while advancing cybersecurity, AI, and aircraft maintenance.”",
+      "twitter_republican": "“F-35 sales to India should be tied to results. Republicans can frame defense deals as proof that strong US pressure works — push for legally binding purchase commitments and link them to tariff relief for US exporters.”",
+      "instagram_facebook_democratic": "India’s consideration of the F-35 jets is about more than equipment — it’s about charting a shared defense future. India’s “Make in India” goals can align with US innovation — if both sides commit to long-term, tech-driven defense cooperation. #USIndia #DefenseTech #MakeInIndia #INDUSX #SecurityPartnership #SouthAsianVoices #InnovationDiplomacy",
+      "instagram_facebook_republican": "The F-35 conversation with India is a chance to secure results for America. A stronger India means a stronger Indo-Pacific — and a win for US industries and workers. #AmericaFirst #USIndia #DefenseDeals #FairTrade #MakeInIndia #SecurityPartnership #IndoPacific"
+    },
+    "graph_img_links": [
+      "https://res.cloudinary.com/diecfwnp9/image/upload/v1755589878/Screenshot_2025-08-19_132107_vbhbyp.png"
+    ]
   },
   {
     "_id": "45",
     "title": "India deliberates US LNG import tax removal",
     "image": "https://example.com/india_lng_imports.jpg",
-    "tag": "Energy, Trade, LNG", 
+    "tag": "Energy, Trade, LNG",
     "month": "MARCH 2025",
     "tweet_id": [],
     "section": "INDIAN ISSUES",
@@ -1004,15 +1005,14 @@
       "Do you believe that LNG trade will become a stepping stone for deeper Indo-US climate collaboration?"
     ],
     "posts": {
-            "twitter_democratic": "“US-India LNG cooperation is more than trade — it’s about clean energy diplomacy. Democrats should tie this moment to Biden’s climate-aligned industrial strategy, advocating for investment in net-zero energy infrastructure on both ends.”",
-            "twitter_republican": "“India’s removal of LNG import taxes would be a win for American energy producers. Republicans can frame this as job creation for the Gulf Coast & a way to counter Russian/Chinese energy influence in Asia.”",
-            "instagram_facebook_democratic": "The potential removal of India’s LNG import tax opens a new chapter for US-India clean energy cooperation. This isn’t just about gas — it’s about building climate-aligned industrial partnerships for the future. #CleanEnergyDiplomacy #USIndia #EnergyTransition #ClimateAction #SouthAsianVoices #NetZeroPartnership",
-            "instagram_facebook_republican": "India’s LNG tax deliberations mark a win for American energy producers and US jobs. Strong energy ties mean stronger US leadership abroad and economic strength at home. #AmericanEnergy #USIndia #Jobs #IndoPacific #EnergySecurity #FairTrade #SouthAsianVoices"
-          },
-        "graph_img_links": [
-            "https://res.cloudinary.com/diecfwnp9/image/upload/v1755589935/Screenshot_2025-08-19_132204_cixc5r.png"
-          ]
-  
+      "twitter_democratic": "“US-India LNG cooperation is more than trade — it’s about clean energy diplomacy. Democrats should tie this moment to Biden’s climate-aligned industrial strategy, advocating for investment in net-zero energy infrastructure on both ends.”",
+      "twitter_republican": "“India’s removal of LNG import taxes would be a win for American energy producers. Republicans can frame this as job creation for the Gulf Coast & a way to counter Russian/Chinese energy influence in Asia.”",
+      "instagram_facebook_democratic": "The potential removal of India’s LNG import tax opens a new chapter for US-India clean energy cooperation. This isn’t just about gas — it’s about building climate-aligned industrial partnerships for the future. #CleanEnergyDiplomacy #USIndia #EnergyTransition #ClimateAction #SouthAsianVoices #NetZeroPartnership",
+      "instagram_facebook_republican": "India’s LNG tax deliberations mark a win for American energy producers and US jobs. Strong energy ties mean stronger US leadership abroad and economic strength at home. #AmericanEnergy #USIndia #Jobs #IndoPacific #EnergySecurity #FairTrade #SouthAsianVoices"
+    },
+    "graph_img_links": [
+      "https://res.cloudinary.com/diecfwnp9/image/upload/v1755589935/Screenshot_2025-08-19_132204_cixc5r.png"
+    ]
   },
   {
     "_id": "46",
@@ -1030,10 +1030,10 @@
       "Do you believe that cricket in the US would be a major cultural victory for the Indian diaspora? Do you agree that it will deepen people-to-people ties between the two countries?"
     ],
     "posts": {
-            "twitter_democratic": "“India’s Champions Trophy win is more than cricket—it’s a cultural flashpoint for Indian Americans. Democrats should back community-centered cricket development, from youth leagues to school sports infrastructure in NJ, CA & TX.”",
-            "twitter_republican": "“Cricket’s rise in the US reflects enterprise & diaspora-backed investment. Republicans should highlight MLC growth as pro-business success, support tax incentives for stadiums & showcase Indian Americans as stakeholders in US sports.”",
-            "instagram_facebook_democratic": "India’s Champions Trophy win has energized Indian American communities across the US—from Bay Area watch parties to Edison, NJ youth leagues. Cricket is not just nostalgia—it’s a path toward inclusive representation in American sports. #USIndia #ChampionsTrophy #CommunitySports #SouthAsianVoices #InclusiveInnovation #CricketInUSA #SportsDiplomacy",
-            "instagram_facebook_republican": "India’s Champions Trophy victory isn’t just about cricket—it’s about enterprise, investment & opportunity. Cricket is now a strategic bridge between diaspora pride & American economic growth. #MLC #USIndia #CricketUSA #SportsEconomy #ProBusinessPolicy #SouthAsianVoices #IndoPacificCommunity"
+      "twitter_democratic": "“India’s Champions Trophy win is more than cricket—it’s a cultural flashpoint for Indian Americans. Democrats should back community-centered cricket development, from youth leagues to school sports infrastructure in NJ, CA & TX.”",
+      "twitter_republican": "“Cricket’s rise in the US reflects enterprise & diaspora-backed investment. Republicans should highlight MLC growth as pro-business success, support tax incentives for stadiums & showcase Indian Americans as stakeholders in US sports.”",
+      "instagram_facebook_democratic": "India’s Champions Trophy win has energized Indian American communities across the US—from Bay Area watch parties to Edison, NJ youth leagues. Cricket is not just nostalgia—it’s a path toward inclusive representation in American sports. #USIndia #ChampionsTrophy #CommunitySports #SouthAsianVoices #InclusiveInnovation #CricketInUSA #SportsDiplomacy",
+      "instagram_facebook_republican": "India’s Champions Trophy victory isn’t just about cricket—it’s about enterprise, investment & opportunity. Cricket is now a strategic bridge between diaspora pride & American economic growth. #MLC #USIndia #CricketUSA #SportsEconomy #ProBusinessPolicy #SouthAsianVoices #IndoPacificCommunity"
     }
   },
   {
@@ -1041,7 +1041,7 @@
     "title": "ICE announces reinstatement of F‑1 visa status after SEVIS termination sparks outrage",
     "image": "https://example.com/sevis_visa_status.jpg",
     "tag": "Immigration",
-  
+
     "month": "APRIL 2025",
     "tweet_id": [],
     "section": "WHAT’S HAPPENING IN THE US",
@@ -1054,10 +1054,10 @@
       "What will you do to ensure accountability when government institutions violate the rights of students and immigrants?",
       "How do you plan to protect vulnerable student populations when enforcement overreach threatens their futures?"
     ],
-    "graph_img_links":[
-            "https://res.cloudinary.com/dfg1buevv/image/upload/v1755589201/Screenshot_2025-08-19_130941_ts2eky.png",
-            "https://opendoorsdata.org/wp-content/uploads/2024/11/OD24_Infographics_International-Students_Leading-Places-of-Origin.png" 
-            ]
+    "graph_img_links": [
+      "https://res.cloudinary.com/dfg1buevv/image/upload/v1755589201/Screenshot_2025-08-19_130941_ts2eky.png",
+      "https://opendoorsdata.org/wp-content/uploads/2024/11/OD24_Infographics_International-Students_Leading-Places-of-Origin.png"
+    ]
   },
   {
     "_id": "48",
@@ -1075,16 +1075,16 @@
       "How will you support local law enforcement and community organizations working to protect vulnerable groups from racially motivated violence?",
       "What steps will you take to improve hate crime reporting and ensure these incidents are not ignored or undercounted?"
     ],
-    "graph_img_links":[
-            "https://res.cloudinary.com/dfg1buevv/image/upload/v1755589610/Screenshot_2025-08-19_131610_x29gdy.png"
-            ]
+    "graph_img_links": [
+      "https://res.cloudinary.com/dfg1buevv/image/upload/v1755589610/Screenshot_2025-08-19_131610_x29gdy.png"
+    ]
   },
   {
     "_id": "49",
     "title": "Islamist militants kill at least 26 Hindu tourists in Pahalgam region of Indian Kashmir",
     "image": "https://example.com/pahalgam_attack.jpg",
     "tag": "Geopolitics, Terrorism, India-Pakistan Relations",
-  
+
     "month": "APRIL 2025",
     "tweet_id": [],
     "section": "INDIAN ISSUES",
@@ -1102,7 +1102,7 @@
     "title": "US Vice President JD Vance visits India with family",
     "image": "https://example.com/jd_vance_india_visit.jpg",
     "tag": "Diplomacy, Politics, Trade, Defense",
-  
+
     "month": "APRIL 2025",
     "tweet_id": [],
     "section": "WHAT’S HAPPENING IN THE US",
@@ -1170,7 +1170,7 @@
     "title": "Indian-Origin tech student Akash Banerjee shot dead in Georgia",
     "image": "https://example.com/akash_banerjee_student.jpg",
     "tag": "Gun Violence, Hate Crimes, Student Safety",
-  
+
     "month": "MAY 2025",
     "tweet_id": [],
     "section": "WHAT’S HAPPENING IN THE US",
@@ -1193,7 +1193,7 @@
     "title": "US suspends scheduling of new student visas amid social media vetting",
     "image": "https://example.com/social_media_vetting.jpg",
     "tag": "Immigration, Student Visas, Social Media Vetting",
-  
+
     "month": "MAY 2025",
     "tweet_id": [],
     "section": "WHAT’S HAPPENING IN THE US",
@@ -1210,7 +1210,7 @@
     "title": "USCIS Director Nominee Joseph Edlow calls for end to employment authorizations beyond academic programs",
     "image": "https://example.com/joseph_edlow_uscis.jpg",
     "tag": "Immigration, OPT, STEM, Tech Workers",
-  
+
     "month": "MAY 2025",
     "tweet_id": [],
     "section": "WHAT’S HAPPENING IN THE US",

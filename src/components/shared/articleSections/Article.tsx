@@ -27,13 +27,12 @@ interface ArticleData {
 }
 
 export const Article = ({ id }: { id: number }) => {
-  let _id=useParams<{ id: string }>().id;
+  const _id: any = useParams<{ id: string }>().id;
 
-  
-  let article: ArticleData|null=null
+  let article: ArticleData | null = null;
 
-  for(let i=0;i<data.length;i++){
-    if(data[i]._id===_id)article=data[i]
+  for (let i = 0; i < data.length; i++) {
+    if (data[i]._id === _id) article = data[i];
   }
 
   const [openQuestionIndex, setOpenQuestionIndex] = useState<number | null>(
@@ -41,12 +40,9 @@ export const Article = ({ id }: { id: number }) => {
   );
 
   const [, setScrollY] = useState(0);
-  console.log("PPPPPPPPPPPPPPPPPPP",article?.posts)
-  console.log("AAAAAAAAAAAAAAAAAAAAAAAA",article)
-  console.log("iiiiiiiiiiiiiiiiidddddddddddddddd",_id)
 
   const heading_gradient: string = "bg-gradient-to-br bg-blue-300 to-red-300";
-  const icons:boolean=false
+  const icons: boolean = false;
 
   const toggleQuestion = (index: number) => {
     setOpenQuestionIndex(openQuestionIndex === index ? null : index);
@@ -78,25 +74,26 @@ export const Article = ({ id }: { id: number }) => {
           viewport={{ once: true, amount: 0.4 }}
           className="group relative bg-white p-8 rounded-xl shadow-sm border border-gray-100"
         >
-
           <div className="flex items-center gap-3 mb-6">
-            {icons && <div
-              className={`w-10 h-10 rounded-xl ${heading_gradient} flex items-center justify-center shadow-lg`}
-            >
-              <svg
-                className="w-5 h-5 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+            {icons && (
+              <div
+                className={`w-10 h-10 rounded-xl ${heading_gradient} flex items-center justify-center shadow-lg`}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                />
-              </svg>
-            </div>}
+                <svg
+                  className="w-5 h-5 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  />
+                </svg>
+              </div>
+            )}
             <h2 className="text-xl font-heading font-semibold text-gray-900 border-b-4 border-blue-800 inline-block pb-2">
               Context
             </h2>
@@ -201,23 +198,25 @@ export const Article = ({ id }: { id: number }) => {
           <div className="absolute -right-4 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 to-blue-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
           <div className="flex items-center gap-3 mb-6">
-            {icons && <div
-              className={`w-10 h-10 rounded-xl ${heading_gradient} flex items-center justify-center shadow-lg`}
-            >
-              <svg
-                className="w-5 h-5 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+            {icons && (
+              <div
+                className={`w-10 h-10 rounded-xl ${heading_gradient} flex items-center justify-center shadow-lg`}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M13 10V3L4 14h7v7l9-11h-7z"
-                />
-              </svg>
-            </div>}
+                <svg
+                  className="w-5 h-5 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M13 10V3L4 14h7v7l9-11h-7z"
+                  />
+                </svg>
+              </div>
+            )}
             <h2 className="text-xl font-heading font-semibold text-gray-900 mb-0 border-b-4 border-blue-800 inline-block pb-2">
               Exalt’s Take
             </h2>
@@ -263,7 +262,7 @@ export const Article = ({ id }: { id: number }) => {
           </p>
         </motion.section> */}
 
-        <motion.section
+        {/* <motion.section
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -271,23 +270,25 @@ export const Article = ({ id }: { id: number }) => {
           className="p-8 rounded-3xl bg-white shadow-sm border border-gray-100"
         >
           <div className="flex items-center gap-4 mb-8">
-           {icons && <div
-              className={`w-12 h-12 rounded-2xl ${heading_gradient} flex items-center justify-center shadow-lg`}
-            >
-              <svg
-                className="w-6 h-6 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+            {icons && (
+              <div
+                className={`w-12 h-12 rounded-2xl ${heading_gradient} flex items-center justify-center shadow-lg`}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                />
-              </svg>
-            </div>}
+                <svg
+                  className="w-6 h-6 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  />
+                </svg>
+              </div>
+            )}
             <div>
               <h2 className="text-xl font-heading font-semibold text-gray-900 border-b-4 border-blue-800 inline-block pb-2">
                 Global Remittance Data
@@ -314,79 +315,78 @@ export const Article = ({ id }: { id: number }) => {
             {" "}
             Source: World Bank KNOMAD, remittance inflows (current US$)
           </p>
-        </motion.section>
+        </motion.section> */}
 
-
-{article.posts && Object.keys(article.posts).length > 0 && (
-  <motion.section
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6 }}
-    viewport={{ once: true, amount: 0.4 }}
-    className="p-8 rounded-3xl bg-white shadow-sm border border-gray-100"
-  >
-    <div className="flex items-center gap-4 mb-8">
-      {icons && (
-        <div
-          className={`w-12 h-12 rounded-2xl ${heading_gradient} flex items-center justify-center shadow-lg`}
-        >
-          <svg
-            className="w-6 h-6 text-white"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+        {article.posts && Object.keys(article.posts).length > 0 && (
+          <motion.section
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true, amount: 0.4 }}
+            className="p-8 rounded-3xl bg-white shadow-sm border border-gray-100"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H2V6a2 2 0 012-2h12a2 2 0 012 2v6M10 12h.01M12 8h.01M16 12h.01M17 16l-2-2-4 4-2-2-4 4"
-            />
-          </svg>
-        </div>
-      )}
-      <div>
-        <h2 className="text-xl font-heading font-semibold text-gray-900 border-b-4 border-blue-800 inline-block pb-2">
-          Social Media Posts
-        </h2>
-        <p className="text-gray-600 text-lg mt-2 font-medium">
-          Suggested content for different platforms and audiences.
-        </p>
-      </div>
-    </div>
+            <div className="flex items-center gap-4 mb-8">
+              {icons && (
+                <div
+                  className={`w-12 h-12 rounded-2xl ${heading_gradient} flex items-center justify-center shadow-lg`}
+                >
+                  <svg
+                    className="w-6 h-6 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H2V6a2 2 0 012-2h12a2 2 0 012 2v6M10 12h.01M12 8h.01M16 12h.01M17 16l-2-2-4 4-2-2-4 4"
+                    />
+                  </svg>
+                </div>
+              )}
+              <div>
+                <h2 className="text-xl font-heading font-semibold text-gray-900 border-b-4 border-blue-800 inline-block pb-2">
+                  Social Media Posts
+                </h2>
+                <p className="text-gray-600 text-lg mt-2 font-medium">
+                  Suggested content for different platforms and audiences.
+                </p>
+              </div>
+            </div>
 
-    {/* Horizontal scrollable cards */}
-    <div className="flex overflow-x-auto space-x-6 pb-4 custom-scrollbar">
-      {Object.entries(article.posts).map(([key, value], idx) => (
-        <motion.div
-          key={key}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: idx * 0.1 }}
-          viewport={{ once: true, amount: 0.4 }}
-          className="flex-none w-80 bg-white border border-gray-200 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 p-6 flex flex-col justify-between"
-        >
-          {/* Top: Heading + Text */}
-          <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-3 capitalize">
-              {key.replace(/_/g, ' ')}
-            </h3>
-            <p className="text-base text-gray-700 leading-relaxed font-normal">
-              {value}
-            </p>
-          </div>
+            {/* Horizontal scrollable cards */}
+            <div className="flex overflow-x-auto space-x-6 pb-4 custom-scrollbar">
+              {Object.entries(article.posts).map(([key, value], idx) => (
+                <motion.div
+                  key={key}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  viewport={{ once: true, amount: 0.4 }}
+                  className="flex-none w-80 bg-white border border-gray-200 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 p-6 flex flex-col justify-between"
+                >
+                  {/* Top: Heading + Text */}
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-3 capitalize">
+                      {key.replace(/_/g, " ")}
+                    </h3>
+                    <p className="text-base text-gray-700 leading-relaxed font-normal">
+                      {value}
+                    </p>
+                  </div>
 
-          <div className="w-full flex justify-end mt-3">
-  <button
-    onClick={() => navigator.clipboard.writeText(value)}
-    className="flex items-center gap-1 px-3 py-1.5 text-xs rounded-md border border-gray-300 bg-gray-50 hover:bg-gray-100 text-gray-600 transition"
-  >
-    <FiCopy className="text-sm" /> Copy
-  </button>
-</div>
+                  <div className="w-full flex justify-end mt-3">
+                    <button
+                      onClick={() => navigator.clipboard.writeText(value)}
+                      className="flex items-center gap-1 px-3 py-1.5 text-xs rounded-md border border-gray-300 bg-gray-50 hover:bg-gray-100 text-gray-600 transition"
+                    >
+                      <FiCopy className="text-sm" /> Copy
+                    </button>
+                  </div>
 
-          {/* Bottom: Copy Button */}
-          {/* <div className="mt-6 flex justify-end">
+                  {/* Bottom: Copy Button */}
+                  {/* <div className="mt-6 flex justify-end">
             <button
               onClick={() => navigator.clipboard.writeText(value)}
               className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-blue-600 text-white text-sm font-medium shadow hover:bg-blue-700 transition"
@@ -408,11 +408,11 @@ export const Article = ({ id }: { id: number }) => {
               Copy
             </button>
           </div> */}
-        </motion.div>
-      ))}
-    </div>
-  </motion.section>
-)}
+                </motion.div>
+              ))}
+            </div>
+          </motion.section>
+        )}
 
         <motion.section
           initial={{ opacity: 0, y: 20 }}
@@ -422,23 +422,25 @@ export const Article = ({ id }: { id: number }) => {
           className="p-8 rounded-3xl bg-white shadow-sm border border-gray-100"
         >
           <div className="flex items-center gap-4 mb-10">
-           {icons && <div
-              className={`w-12 h-12 rounded-2xl ${heading_gradient} flex items-center justify-center shadow-lg`}
-            >
-              <svg
-                className="w-6 h-6 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+            {icons && (
+              <div
+                className={`w-12 h-12 rounded-2xl ${heading_gradient} flex items-center justify-center shadow-lg`}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-            </div>}
+                <svg
+                  className="w-6 h-6 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </div>
+            )}
             <div>
               <h2 className="text-xl font-heading font-semibold text-gray-900 border-b-4 border-blue-800 inline-block pb-2">
                 Questions from the Community

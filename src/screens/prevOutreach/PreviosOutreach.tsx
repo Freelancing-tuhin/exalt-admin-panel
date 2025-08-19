@@ -18,7 +18,7 @@ export const PreviosOutreach = () => {
   return (
     <Layout>
       <Navbar />
-      <div className="px-6 py-4 space-y-6">
+      <div className="p-6 space-y-6">
         {/* Header with gradient background */}
         <GradientHeader title="Communication Tracker" />
         {/* <BasicHeader /> */}

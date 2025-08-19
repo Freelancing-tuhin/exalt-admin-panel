@@ -80,7 +80,7 @@ export const GradientHeader = ({ title }: any) => {
           <div className="space-y-4">
             <h1 className="text-4xl lg:text-5xl xl:text-6xl font-light tracking-tight text-white leading-none">
               {/* Previous */}
-              <span className="block font-normal bg-gradient-to-r from-purple-300 via-slate-100 to-purple-200 bg-clip-text text-transparent">
+              <span className="block font-normal bg-gradient-to-r from-purple-300 via-slate-100 to-purple-200 bg-clip-text ">
                 {title}
               </span>
             </h1>

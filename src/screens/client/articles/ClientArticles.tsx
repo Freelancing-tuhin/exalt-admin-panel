@@ -20,7 +20,6 @@ export const ClientArticles = () => {
   const [currentSection, setCurrentSection] = useState("Article");
 
   console.log(id);
-  console.log(data?.[0]);
   const foundArticle = data.find((e) => e._id === id);
   useEffect(() => {
     setHeading("News");

@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect } from "react";
+import database from "../../../database/articles.json";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ChevronRight,
   Target,
   MessageSquare,
   Twitter,
-  Linkedin,
   FileText,
   Send,
   BookOpen,
@@ -45,14 +45,7 @@ const generateSidebarSections = (articleData: any) => {
           endpoint: "https://api.twitter.com/2",
           description: `Share insights about ${articleData.tag} on Twitter`,
         },
-        {
-          name: "LinkedIn API",
-          icon: Linkedin,
-          action: "Professional Post",
-          platform: "social",
-          endpoint: "https://api.linkedin.com/v2",
-          description: `Professional discussion on ${articleData.tag}`,
-        },
+
         {
           name: "Email Templates",
           icon: FileText,
@@ -86,6 +79,7 @@ const generateSidebarSections = (articleData: any) => {
 };
 
 // Generate related articles based on tag and context
+// Generate related articles based on tag and context
 const generateRelatedArticles = (articleData: any) => {
   const baseArticles = [
     {
@@ -110,12 +104,20 @@ const generateRelatedArticles = (articleData: any) => {
     },
   ];
 
-  // Add specific articles based on article context
-  if (articleData.exalt_take) {
-    baseArticles.unshift({
-      name: "EXALT Analysis",
-      description: articleData.exalt_take.substring(0, 120) + "...",
-      url: "#",
+  // If further_reading exists, map them to real articles from database
+  if (
+    Array.isArray(articleData.further_reading) &&
+    articleData.further_reading.length > 0
+  ) {
+    return articleData.further_reading.map((title: string) => {
+      const foundArticle = database.find(
+        (e: any) => e.title.toLowerCase() === title.toLowerCase()
+      );
+
+      return {
+        name: title,
+        url: foundArticle ? `/articles/${foundArticle._id}` : "#",
+      };
     });
   }
 
@@ -126,9 +128,7 @@ export const ArticleActionsPanel = ({ data }: any) => {
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const [hoveredTool, setHoveredTool] = useState<string | null>(null);
   const [executingTool, setExecutingTool] = useState<string | null>(null);
-  const [connectionStatus, setConnectionStatus] = useState<
-    Record<string, string>
-  >({});
+  const [connectionStatus] = useState<Record<string, string>>({});
   const [notifications, setNotifications] = useState<any[]>([]);
 
   // console.log("======>page data", data);
@@ -137,20 +137,20 @@ export const ArticleActionsPanel = ({ data }: any) => {
   const sidebarSections = generateSidebarSections(data);
 
   useEffect(() => {
-    const checkConnections = async () => {
-      const statuses: any = {};
-      for (const section of sidebarSections) {
-        for (const tool of section.tools) {
-          statuses[tool.name] =
-            Math.random() > 0.3 ? "connected" : "disconnected";
-        }
-      }
-      setConnectionStatus(statuses);
-    };
-
-    if (sidebarSections.length > 0) {
-      checkConnections();
-    }
+    // const checkConnections = async () => {
+    //   const statuses: any = {};
+    //   for (const section of sidebarSections) {
+    //     for (const tool of section.tools) {
+    //       statuses[tool.name] =
+    //         Math.random() > 0.3 ? "connected" : "disconnected";
+    //     }
+    //   }
+    //   setConnectionStatus(statuses);
+    // };
+    // if (sidebarSections.length > 0) {
+    //   checkConnections();
+    // }
+    console.log("=====>", data);
   }, [sidebarSections]);
 
   const sidebarVariants = {
@@ -210,10 +210,7 @@ export const ArticleActionsPanel = ({ data }: any) => {
             success: true,
             message: `Tweet about ${articleTag} scheduled for optimal engagement`,
           },
-          "LinkedIn API": {
-            success: true,
-            message: `Professional post about "${articleTitle}" shared to network`,
-          },
+
           "Email Templates": {
             success: true,
             message: `${articleTag} email template generated successfully`,
@@ -406,22 +403,24 @@ export const ArticleActionsPanel = ({ data }: any) => {
                           ) : section.id === "further-readings" ? (
                             <div className="space-y-2">
                               {section.tools.map((article: any) => (
-                                <motion.div
+                                <a
+                                  href={article.url}
                                   key={article.name}
-                                  initial={{ opacity: 0, x: -10 }}
-                                  animate={{ opacity: 1, x: 0 }}
+                                  // initial={{ opacity: 0, x: -10 }}
+                                  // animate={{ opacity: 1, x: 0 }}
                                   className="p-3 rounded-lg border border-gray-200 hover:border-green-300 bg-green-50 transition-all flex justify-between items-center"
                                 >
-                                  <div>
+                                  <div className="flex-1">
                                     <h4 className="font-medium text-sm text-gray-800">
                                       {article.name}
+                                      {article.url}
                                     </h4>
                                     <p className="text-xs text-gray-600 mt-1">
                                       {article.description}
                                     </p>
                                   </div>
-                                  <ExternalLink className="w-4 h-4 text-gray-400 hover:text-green-600" />
-                                </motion.div>
+                                  {/* <ExternalLink className="w-4 h-4 text-gray-400 hover:text-green-600" /> */}
+                                </a>
                               ))}
                             </div>
                           ) : (
