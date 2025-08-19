@@ -11,7 +11,7 @@ import { HiOutlineEye } from "react-icons/hi";
 interface HeaderProps {
   title: any;
   author: string;
-  date: string;
+  date: any;
   category: string;
   readTime: string;
   viewCount?: number;
