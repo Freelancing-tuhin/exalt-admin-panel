@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import data from "../../../database/articles.json";
+import { useParams } from "react-router-dom";
+import { FiCopy } from "react-icons/fi";
 
 interface ArticleData {
   _id: string;
@@ -12,17 +14,36 @@ interface ArticleData {
     { question: string; answer: string } | string
   >;
   tag?: string;
-  posts?: string;
+  // Updated the 'posts' field to reflect the JSON structure
+  posts?: {
+    twitter_democratic: string;
+    twitter_republican: string;
+    instagram_facebook_democratic: string;
+    instagram_facebook_republican: string;
+    [key: string]: string; // Allows for additional string-keyed properties
+  };
   section?: string;
   graph_img_links?: string[];
 }
 
 export const Article = ({ id }: { id: number }) => {
-  const article: ArticleData | undefined = (data as ArticleData[])?.[id - 1];
+  let _id=useParams<{ id: string }>().id;
+
+  
+  let article: ArticleData|null=null
+
+  for(let i=0;i<data.length;i++){
+    if(data[i]._id===_id)article=data[i]
+  }
+
   const [openQuestionIndex, setOpenQuestionIndex] = useState<number | null>(
     null
   );
+
   const [, setScrollY] = useState(0);
+  console.log("PPPPPPPPPPPPPPPPPPP",article?.posts)
+  console.log("AAAAAAAAAAAAAAAAAAAAAAAA",article)
+  console.log("iiiiiiiiiiiiiiiiidddddddddddddddd",_id)
 
   const heading_gradient: string = "bg-gradient-to-br bg-blue-300 to-red-300";
   const icons:boolean=false
@@ -154,11 +175,11 @@ export const Article = ({ id }: { id: number }) => {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="flex justify-center gap-6 overflow-x-auto custom-scrollbar">
               {article.graph_img_links.map((imgSrc, idx) => (
                 <div
                   key={idx}
-                  className="flex justify-center items-center w-full rounded-2xl overflow-hidden border border-gray-200 shadow-md"
+                  className="flex justify-center items-center margin-auto w-full rounded-2xl overflow-hidden border border-gray-200 shadow-md"
                 >
                   <img
                     src={imgSrc}
@@ -252,10 +273,10 @@ export const Article = ({ id }: { id: number }) => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true, amount: 0.4 }}
-          className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100"
+          className="p-8 rounded-3xl bg-white shadow-sm border border-gray-100"
         >
           <div className="flex items-center gap-4 mb-8">
-            {icons &&<div
+           {icons && <div
               className={`w-12 h-12 rounded-2xl ${heading_gradient} flex items-center justify-center shadow-lg`}
             >
               <svg
@@ -289,7 +310,7 @@ export const Article = ({ id }: { id: number }) => {
               <img
                 src="https://pub.mdpi-res.com/socsci/socsci-13-00239/article_deploy/html/images/socsci-13-00239-g001.png?1714126803"
                 alt="Remittance Chart"
-                className="w-full h-auto" 
+                className="w-full h-auto"
               />
             </div>
           </div>
@@ -299,6 +320,104 @@ export const Article = ({ id }: { id: number }) => {
             Source: World Bank KNOMAD, remittance inflows (current US$)
           </p>
         </motion.section>
+
+
+{article.posts && Object.keys(article.posts).length > 0 && (
+  <motion.section
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6 }}
+    viewport={{ once: true, amount: 0.4 }}
+    className="p-8 rounded-3xl bg-white shadow-sm border border-gray-100"
+  >
+    <div className="flex items-center gap-4 mb-8">
+      {icons && (
+        <div
+          className={`w-12 h-12 rounded-2xl ${heading_gradient} flex items-center justify-center shadow-lg`}
+        >
+          <svg
+            className="w-6 h-6 text-white"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H2V6a2 2 0 012-2h12a2 2 0 012 2v6M10 12h.01M12 8h.01M16 12h.01M17 16l-2-2-4 4-2-2-4 4"
+            />
+          </svg>
+        </div>
+      )}
+      <div>
+        <h2 className="text-xl font-heading font-semibold text-gray-900 border-b-4 border-blue-800 inline-block pb-2">
+          Social Media Posts
+        </h2>
+        <p className="text-gray-600 text-lg mt-2 font-medium">
+          Suggested content for different platforms and audiences.
+        </p>
+      </div>
+    </div>
+
+    {/* Horizontal scrollable cards */}
+    <div className="flex overflow-x-auto space-x-6 pb-4 custom-scrollbar">
+      {Object.entries(article.posts).map(([key, value], idx) => (
+        <motion.div
+          key={key}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: idx * 0.1 }}
+          viewport={{ once: true, amount: 0.4 }}
+          className="flex-none w-80 bg-white border border-gray-200 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 p-6 flex flex-col justify-between"
+        >
+          {/* Top: Heading + Text */}
+          <div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-3 capitalize">
+              {key.replace(/_/g, ' ')}
+            </h3>
+            <p className="text-base text-gray-700 leading-relaxed font-normal">
+              {value}
+            </p>
+          </div>
+
+          <div className="w-full flex justify-end mt-3">
+  <button
+    onClick={() => navigator.clipboard.writeText(value)}
+    className="flex items-center gap-1 px-3 py-1.5 text-xs rounded-md border border-gray-300 bg-gray-50 hover:bg-gray-100 text-gray-600 transition"
+  >
+    <FiCopy className="text-sm" /> Copy
+  </button>
+</div>
+
+          {/* Bottom: Copy Button */}
+          {/* <div className="mt-6 flex justify-end">
+            <button
+              onClick={() => navigator.clipboard.writeText(value)}
+              className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-blue-600 text-white text-sm font-medium shadow hover:bg-blue-700 transition"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M8 16h8M8 12h8m-6 8h6a2 2 0 002-2V6a2 2 0 00-2-2h-6a2 2 0 00-2 2m0 0H6a2 2 0 00-2 2v10a2 2 0 002 2h2v-2"
+                />
+              </svg>
+              Copy
+            </button>
+          </div> */}
+        </motion.div>
+      ))}
+    </div>
+  </motion.section>
+)}
 
         <motion.section
           initial={{ opacity: 0, y: 20 }}

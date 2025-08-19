@@ -131,7 +131,7 @@ export const ArticleActionsPanel = ({ data }: any) => {
   >({});
   const [notifications, setNotifications] = useState<any[]>([]);
 
-  console.log("======>page data", data);
+  // console.log("======>page data", data);
 
   // Generate dynamic sections based on article data
   const sidebarSections = generateSidebarSections(data);
