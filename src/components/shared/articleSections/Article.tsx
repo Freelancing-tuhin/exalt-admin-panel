@@ -6,33 +6,15 @@ import data from "../../../database/articles.json";
 import { useParams } from "react-router-dom";
 import { FiCopy } from "react-icons/fi";
 
-interface ArticleData {
-  _id: string;
-  context: string;
-  exalt_take: string;
-  questions_from_community?: Array<
-    { question: string; answer: string } | string
-  >;
-  tag?: string;
-  // Updated the 'posts' field to reflect the JSON structure
-  posts?: {
-    twitter_democratic: string;
-    twitter_republican: string;
-    instagram_facebook_democratic: string;
-    instagram_facebook_republican: string;
-    [key: string]: string; // Allows for additional string-keyed properties
-  };
-  section?: string;
-  graph_img_links?: string[];
-}
-
 export const Article = ({ id }: { id: number }) => {
   const _id: any = useParams<{ id: string }>().id;
 
-  let article: ArticleData | null = null;
+  const [article, setArticle] = useState<any>(null);
 
   for (let i = 0; i < data.length; i++) {
-    if (data[i]._id === _id) article = data[i];
+    if (data[i]._id === _id) {
+      setArticle(data[i]);
+    }
   }
 
   const [openQuestionIndex, setOpenQuestionIndex] = useState<number | null>(
@@ -173,7 +155,7 @@ export const Article = ({ id }: { id: number }) => {
             </div>
 
             <div className="flex justify-center gap-6 overflow-x-auto custom-scrollbar">
-              {article.graph_img_links.map((imgSrc, idx) => (
+              {article.graph_img_links.map((imgSrc: any, idx: any) => (
                 <div
                   key={idx}
                   className="flex justify-center items-center margin-auto w-full rounded-2xl overflow-hidden border border-gray-200 shadow-md"
@@ -372,12 +354,14 @@ export const Article = ({ id }: { id: number }) => {
                       {key.replace(/_/g, " ")}
                     </h3>
                     <p className="text-base text-gray-700 leading-relaxed font-normal">
+                      {/* @ts-expect-error */}
                       {value}
                     </p>
                   </div>
 
                   <div className="w-full flex justify-end mt-3">
                     <button
+                      //@ts-expect-error
                       onClick={() => navigator.clipboard.writeText(value)}
                       className="flex items-center gap-1 px-3 py-1.5 text-xs rounded-md border border-gray-300 bg-gray-50 hover:bg-gray-100 text-gray-600 transition"
                     >
@@ -453,7 +437,7 @@ export const Article = ({ id }: { id: number }) => {
 
           <div className="space-y-6">
             {article.questions_from_community?.length ? (
-              article.questions_from_community.map((q, index) => {
+              article.questions_from_community.map((q: any, index: any) => {
                 const isQuestionObject =
                   typeof q === "object" && q !== null && "question" in q;
                 const questionText = isQuestionObject
