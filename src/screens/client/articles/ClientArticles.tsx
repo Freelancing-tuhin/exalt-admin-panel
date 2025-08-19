@@ -21,7 +21,7 @@ export const ClientArticles = () => {
 
   console.log(id);
   console.log(data?.[0]);
-
+  const foundArticle = data.find((e) => e._id === id);
   useEffect(() => {
     setHeading("News");
   }, [setHeading]);
@@ -32,7 +32,7 @@ export const ClientArticles = () => {
       <div className="flex flex-col md:flex-row">
         <div className="px-6 md:w-5/7 h-[90vh] overflow-y-auto   text-sm text-gray-800 space-y-6">
           <Header
-            title={data?.[id - 1]?.title}
+            title={foundArticle?.title}
             author="Exalt"
             date="Sun April 7, 2023"
             readTime="5 min"
@@ -53,7 +53,7 @@ export const ClientArticles = () => {
           {currentSection == "Data" && <Data id={id} />}
           {currentSection == "Donor Outreach" && <DonorOutreach />}
         </div>
-        <ArticleActionsPanel data={data?.[id - 1]} />
+        <ArticleActionsPanel data={foundArticle} />
       </div>
     </Layout>
   );
