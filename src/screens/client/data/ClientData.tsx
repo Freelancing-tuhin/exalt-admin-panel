@@ -151,6 +151,16 @@ export const ClientData = () => {
   // const articlesToShow2 = showAll ? articlesData : articlesData.slice(3, 6);
   const viralDiscussions = showAll ? articlesData : articlesData.slice(10, 20);
 
+  const [activeTab] = useState("WHAT’S HAPPENING IN THE US");
+
+  const filteredArticles = articlesData.filter(
+    (article) => article.section === activeTab
+  );
+
+  const articlesToShow = showAll
+    ? filteredArticles
+    : filteredArticles.slice(0, 20);
+
   useEffect(() => {
     setHeading("Data");
   }, [setHeading]);
@@ -183,9 +193,8 @@ export const ClientData = () => {
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1">
               <DetailedListView
-                heading={"What's happening in US"}
                 donor={true}
-                articlesToShow={articlesToShow1}
+                articlesToShow={articlesToShow}
                 showAll={showAll}
                 setShowAll={setShowAll}
                 showDonor={true}

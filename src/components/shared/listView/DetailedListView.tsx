@@ -6,25 +6,49 @@ import { IconTabs } from "../sectionTabs/SectionTabs";
 import { RxListBullet } from "react-icons/rx";
 import { useState } from "react";
 import { FiExternalLink, FiTrendingDown, FiTrendingUp } from "react-icons/fi";
+import { useMemo } from "react";
 
 export const DetailedListView = ({
+  // Keeping backward compatibility: if parent still passes pre-filtered articles we fall back.
   articlesToShow,
   showAll,
   setShowAll,
 }: any) => {
-  const [activeTab, setActiveTab] = useState("What's Happening in the US");
+  const [activeTab, setActiveTab] = useState("WHAT’S HAPPENING IN THE US");
+
+  // Filter directly from the master articles list based on selected tab (section field)
+  const filteredFromSource = useMemo(
+    () =>
+      articlesData.filter(
+        (a: any) =>
+          a.section &&
+          typeof a.section === "string" &&
+          a.section.trim() === activeTab.trim()
+      ),
+    [activeTab]
+  );
+
+  // Decide which dataset to actually render: prefer our filtered dataset; if empty AND parent provided articlesToShow, fallback.
+  const baseList: any[] = filteredFromSource.length
+    ? filteredFromSource
+    : Array.isArray(articlesToShow)
+    ? articlesToShow
+    : [];
+
+  const visibleArticles = showAll ? baseList : baseList.slice(0, 10);
+
   return (
     <div className=" ">
       <IconTabs
         tabs={[
-          { label: "What's Happening in the US", icon: RxListBullet },
-          { label: "What's Happening in India", icon: RxListBullet },
+          { label: "WHAT’S HAPPENING IN THE US", icon: RxListBullet },
+          { label: "WHAT’S HAPPENING IN INDIA", icon: RxListBullet },
         ]}
         current={activeTab}
         onChange={(label: string) => setActiveTab(label)}
       />
       <div className="space-y-2 mx-auto bg-gray-100 rounded-xl p-4">
-        {articlesToShow.map((article: any, idx: any) => (
+        {visibleArticles.map((article: any, idx: any) => (
           <Link
             to={`/client/data/articles/${article?._id}`}
             key={idx}
@@ -135,12 +159,17 @@ export const DetailedListView = ({
           </Link>
         ))}
 
-        {articlesData.length > 3 && (
+        {baseList.length > 10 && (
           <p
             className="text-xs sm:text-sm font-semibold pl-2 text-blue-600 mt-2 cursor-pointer hover:text-blue-800 transition-colors"
             onClick={() => setShowAll(!showAll)}
           >
             {showAll ? "show less..." : "see more..."}
+          </p>
+        )}
+        {baseList.length === 0 && (
+          <p className="text-xs text-gray-500 italic">
+            No articles available for this tab.
           </p>
         )}
       </div>
