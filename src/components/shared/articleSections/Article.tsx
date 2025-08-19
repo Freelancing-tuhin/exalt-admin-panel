@@ -14,7 +14,7 @@ interface ArticleData {
   tag?: string;
   posts?: string;
   section?: string;
-  graph_img?: string[];
+  graph_img_links?: string[];
 }
 
 export const Article = ({ id }: { id: number }) => {
@@ -116,7 +116,7 @@ export const Article = ({ id }: { id: number }) => {
             </div>
           </div>
         </motion.section> */}
-        {article.graph_img && article.graph_img.length > 0 && (
+        {article.graph_img_links && article.graph_img_links.length > 0 && (
           <motion.section
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -146,7 +146,7 @@ export const Article = ({ id }: { id: number }) => {
               )}
               <div>
                 <h2 className="text-xl font-heading font-semibold text-gray-900 border-b-4 border-blue-800 inline-block pb-2">
-                  Graphical Representation
+                  Reference images
                 </h2>
                 <p className="text-gray-600 text-lg mt-2 font-medium">
                   Visual data and insights related to the article.
@@ -155,7 +155,7 @@ export const Article = ({ id }: { id: number }) => {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {article.graph_img.map((imgSrc, idx) => (
+              {article.graph_img_links.map((imgSrc, idx) => (
                 <div
                   key={idx}
                   className="flex justify-center items-center w-full rounded-2xl overflow-hidden border border-gray-200 shadow-md"
