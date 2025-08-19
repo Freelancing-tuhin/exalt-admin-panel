@@ -22,35 +22,35 @@ const EVENT_TYPES = {
     text: "text-blue-600", 
     label: "Meeting", 
     icon: <FaBriefcase size={18} />, 
-    chipIcon: <FaBriefcase size={14} /> // Increased chip icon size
+    chipIcon: <FaBriefcase size={14} /> 
   },
   campaign: { 
     color: "bg-teal-600", 
     text: "text-teal-600", 
     label: "Campaign", 
     icon: <FaBullhorn size={18} />, 
-    chipIcon: <FaBullhorn size={14} /> // Increased chip icon size
+    chipIcon: <FaBullhorn size={14} /> 
   },
   conference: { 
     color: "bg-indigo-600", 
     text: "text-indigo-600", 
     label: "Conference", 
     icon: <FaUsers size={18} />, 
-    chipIcon: <FaUsers size={14} /> // Increased chip icon size
+    chipIcon: <FaUsers size={14} /> 
   },
   workshop: { 
     color: "bg-purple-600", 
     text: "text-purple-600", 
     label: "Workshop", 
     icon: <FaChalkboardTeacher size={18} />, 
-    chipIcon: <FaChalkboardTeacher size={14} /> // Increased chip icon size
+    chipIcon: <FaChalkboardTeacher size={14} /> 
   },
   deadline: { 
     color: "bg-red-600", 
     text: "text-red-600", 
     label: "Deadline", 
     icon: <FaCalendarCheck size={18} />, 
-    chipIcon: <FaCalendarCheck size={14} /> // Increased chip icon size
+    chipIcon: <FaCalendarCheck size={14} /> 
   },
 };
 
@@ -63,16 +63,16 @@ const EVENT_LIGHT_BG: { [key in keyof typeof EVENT_TYPES]: string } = {
 };
 
 const initialCalendarEvents: CalendarEvent[] = [
-  { date: new Date(2023, 6, 15), type: "meeting", title: "Team Standup", desc: "Daily sync meeting with the project team." },
-  { date: new Date(2023, 7, 17), type: "campaign", title: "Product Launch Campaign", desc: "Kick-off meeting for marketing campaign." },
-  { date: new Date(2023, 7, 19), type: "conference", title: "Tech Conference", desc: "Annual technology conference with keynote speakers." },
-  { date: new Date(2023, 7, 20), type: "workshop", title: "UI/UX Workshop", desc: "Design workshop for improving user experience." },
-  { date: new Date(2023, 7, 21), type: "deadline", title: "Client Proposal Submission", desc: "Final deadline to submit project proposal." },
-  { date: new Date(2023, 7, 21), type: "meeting", title: "Client Call", desc: "Discuss proposal with client." },
+  { date: new Date(2025, 6, 15), type: "meeting", title: "Team Standup", desc: "Daily sync meeting with the project team." },
+  { date: new Date(2025, 7, 17), type: "campaign", title: "Product Launch Campaign", desc: "Kick-off meeting for marketing campaign." },
+  { date: new Date(2025, 7, 19), type: "conference", title: "Tech Conference", desc: "Annual technology conference with keynote speakers." },
+  { date: new Date(2025, 7, 20), type: "workshop", title: "UI/UX Workshop", desc: "Design workshop for improving user experience." },
+  { date: new Date(2025, 7, 21), type: "deadline", title: "Client Proposal Submission", desc: "Final deadline to submit project proposal." },
+  { date: new Date(2025, 7, 21), type: "meeting", title: "Client Call", desc: "Discuss proposal with client." },
 ];
 
 const CalendarGrid: React.FC = () => {
-  const [currentMonth, setCurrentMonth] = useState(new Date(2023, 7, 1));
+  const [currentMonth, setCurrentMonth] = useState(new Date(2025, 7, 19));
   const [allCalendarEvents, setAllCalendarEvents] = useState<CalendarEvent[]>(initialCalendarEvents);
   const [selectedDayEvents, setSelectedDayEvents] = useState<CalendarEvent[] | null>(null);
   const [selectedDayDate, setSelectedDayDate] = useState<Date | null>(null);

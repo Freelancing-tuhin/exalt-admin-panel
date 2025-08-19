@@ -18,8 +18,8 @@ const Data = ({ id }: { id: number }) => {
         title="Top Emotions"
         items={["Shocked", "Surprised", "Annoyed"]}
       />
-      <TweeterPost title="Top Shocked Posts" />
-      <ReasonInput />
+      {/* <TweeterPost title="Top Shocked Posts" /> */}
+      {/* <ReasonInput /> */}
       <ItemLister
         title="Related Topics"
         items={[
@@ -28,7 +28,7 @@ const Data = ({ id }: { id: number }) => {
           "Trade • 2 potential donors",
         ]}
       />
-      <TweeterPost title="Top Trade Posts" />
+      {/* <TweeterPost title="Top Trade Posts" /> */}
       <SentimentChart />
     </div>
   );

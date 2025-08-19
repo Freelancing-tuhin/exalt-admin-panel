@@ -27,24 +27,19 @@ export const ClientBriefs = () => {
 
   const yearToDisplay = 2025;
 
-  // --- Start of MODIFIED LOGIC for data collection ---
   const combinedMonthData: any = {};
 
-  // Get months nested under the year key (e.g., "2025": { "january": {...}, ... })
   const yearSpecificData = data[String(yearToDisplay)];
   if (yearSpecificData) {
     Object.assign(combinedMonthData, yearSpecificData);
   }
 
-  // Check for month-year keys directly at the top level (e.g., "June 2025": {...})
   Object.entries(data).forEach(([key, value]) => {
-    // We expect keys like "June 2025" for the current year
     if (key.endsWith(` ${yearToDisplay}`)) {
-      const monthKey = key.split(" ")[0].toLowerCase(); // Converts "June 2025" to "june"
+      const monthKey = key.split(" ")[0].toLowerCase(); 
       combinedMonthData[monthKey] = value;
     }
   });
-  // --- End of MODIFIED LOGIC for data collection ---
 
   const monthOrder = [
     "january",
@@ -61,37 +56,29 @@ export const ClientBriefs = () => {
     "december",
   ];
 
-  const briefsData = Object.entries(combinedMonthData) // Use the combined data
+  const briefsData = Object.entries(combinedMonthData) 
     .map(([monthKey, monthData]: [string, any]) => {
       const monthName = monthKey.charAt(0).toUpperCase() + monthKey.slice(1);
 
       const articlesCount = monthData.details ? monthData.details.length : 0;
-      // Placeholder for viralDiscussions, as it's not in the JSON structure
       const viralDiscussionsCount =
         articlesCount > 0 ? articlesCount + Math.floor(articlesCount / 2) : 0;
 
       return {
         id: monthKey,
-        // For 'June 2025', the raw key is 'June 2025', but we want 'June' as monthName.
-        // The data structure for "June 2025" has its own 'summary' and 'details' directly under it.
-        // We'll normalize month to be just 'June' for display purposes.
         month: `${monthName.replace(` ${yearToDisplay}`, "")} ${yearToDisplay}`,
         rawMonth: monthKey,
         articles: articlesCount,
         viralDiscussions: viralDiscussionsCount,
-        // Use 'summary' for top-level month data like 'June 2025', otherwise 'exalt_summary'
         exalt_summary: monthData.exalt_summary || monthData.summary,
       };
     })
     .sort((a, b) => {
-      // Prioritize "june" to be at the very top
-      if (a.rawMonth === "june") return -1; // 'a' (june) comes before 'b'
-      if (b.rawMonth === "june") return 1; // 'b' (june) comes before 'a'
-
-      // For all other months, sort in reverse chronological order based on monthOrder
-      // This will put 'april' before 'march', 'march' before 'february', etc.
-      return monthOrder.indexOf(b.rawMonth) - monthOrder.indexOf(a.rawMonth);
+      const aIndex = monthOrder.indexOf(a.rawMonth.toLowerCase());
+      const bIndex = monthOrder.indexOf(b.rawMonth.toLowerCase());
+      return bIndex - aIndex;
     });
+
 
   useEffect(() => {
     setHeading("Brief");
