@@ -16,11 +16,11 @@ interface MarkerItem {
 }
 
 const markerData: MarkerItem[] = [
-  { lat: 40.0583, lng: -74.4057, label: "Trenton", color: "#4F46E5" },
-  { lat: 40.2206, lng: -74.7597, label: "Princeton", color: "#6366f1" },
-  { lat: 40.7357, lng: -74.1724, label: "Newark", color: "#F59E0B" },
-  { lat: 40.9168, lng: -74.1718, label: "Paterson", color: "#10B981" },
-  { lat: 39.9526, lng: -75.1652, label: "Camden", color: "#f97316" },
+  { lat: 40.0583, lng: -74.4057, label: "Tamil", color: "#4F46E5" },
+  { lat: 40.2206, lng: -74.7597, label: "Telugu", color: "#6366f1" },
+  { lat: 40.7357, lng: -74.1724, label: "Marathi", color: "#F59E0B" },
+  { lat: 40.9168, lng: -74.1718, label: "Kannada", color: "#10B981" },
+  { lat: 39.9526, lng: -75.1652, label: "Gujarati", color: "#f97316" },
 ];
 
 const containerStyle: React.CSSProperties = { width: "100%", height: "100%" };
@@ -58,11 +58,11 @@ export const ConstituentMap: React.FC<ConstituentMapProps> = ({
       .map((m) => ({ name: m.label.split(" ")[0], color: m.color }));
 
     const staticGroups: { name: string; color: string }[] = [
-      { name: "Trenton", color: "#4F46E5" },
-      { name: "Princeton", color: "#6366f1" },
-      { name: "Newark", color: "#F59E0B" },
-      { name: "Paterson", color: "#10B981" },
-      { name: "Camden", color: "#f97316" },
+      { name: "Tamil", color: "#4F46E5" },
+      { name: "Telugu", color: "#6366f1" },
+      { name: "Marathi", color: "#F59E0B" },
+      { name: "Kannada", color: "#10B981" },
+      { name: "Gujarati", color: "#f97316" },
     ];
 
     const existing = new Set(dynamicGroups.map((g) => g.name.toLowerCase()));
@@ -119,11 +119,31 @@ export const ConstituentMap: React.FC<ConstituentMapProps> = ({
               onClick={() => setActiveMarker(marker.label)}
               icon={{
                 url: `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(
-                  `<svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="9" cy="9" r="7" fill="${marker.color}" stroke="#fff" stroke-width="2"/>
-                  </svg>`
+                  `<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                                <style>
+                                  /* Define the pulsating animation */
+                                  @keyframes pulsate {
+                                    0% {
+                                      transform: scale(0.1);
+                                      opacity: 0.7;
+                                    }
+                                    100% {
+                                      transform: scale(1.5); /* Increased scale for bigger pulse */
+                                      opacity: 0;
+                                    }
+                                  }
+                                  /* Apply the animation to a circle */
+                                  .radar-pulse {
+                                    animation: pulsate 2s infinite ease-out; /* 2s duration, infinite, smooth */
+                                    transform-origin: center center; /* Ensure scaling from center */
+                                  }
+                                </style>
+                                <circle cx="30" cy="30" r="12" fill="${marker.color}" stroke="#fff" stroke-width="2"/>
+                                <circle cx="30" cy="30" r="18" fill="none" stroke="${marker.color}" stroke-width="2" class="radar-pulse" />
+                                <circle cx="30" cy="30" r="18" fill="none" stroke="${marker.color}" stroke-width="2" class="radar-pulse" style="animation-delay: 1s;"/>
+                            </svg>`
                 )}`,
-                scaledSize: isLoaded ? new google.maps.Size(18, 18) : undefined,
+                scaledSize: isLoaded ? new google.maps.Size(60, 60) : undefined,
               }}
             >
               {activeMarker === marker.label && (
