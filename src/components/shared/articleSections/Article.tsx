@@ -228,7 +228,7 @@ export const Article = ({ id }: { id: number }) => {
           </p>
         </motion.section>
 
-        <motion.section
+        {/* <motion.section
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -259,14 +259,9 @@ export const Article = ({ id }: { id: number }) => {
           </div>
           <p className="text-lg leading-relaxed text-gray-800 font-normal">
             {" "}
-            Use Kamala Harris's speech, particularly targeted towards female
-            Indian-American donors. As the diaspora becomes more politically
-            active every year, it's important to connect emotionally with
-            stories like these. Consider including this speech link in follow-up
-            messages. Also, referencing past Indian-American political wins
-            could be a good motivator for further engagement and support.
+            {article.su}
           </p>
-        </motion.section>
+        </motion.section> */}
 
         <motion.section
           initial={{ opacity: 0, y: 20 }}
