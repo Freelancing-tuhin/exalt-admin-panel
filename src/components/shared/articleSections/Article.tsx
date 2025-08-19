@@ -263,7 +263,7 @@ export const Article = ({ id }: { id: number }) => {
           </p>
         </motion.section> */}
 
-        <motion.section
+        {/* <motion.section
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -314,7 +314,7 @@ export const Article = ({ id }: { id: number }) => {
             {" "}
             Source: World Bank KNOMAD, remittance inflows (current US$)
           </p>
-        </motion.section>
+        </motion.section> */}
 
 
 {article.posts && Object.keys(article.posts).length > 0 && (
