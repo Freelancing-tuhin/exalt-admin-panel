@@ -42,10 +42,10 @@ const event: any = {
 
 export const BriefView = () => {
   const [searchParams] = useSearchParams(); // Use useSearchParams to get query parameters
-  const year = searchParams.get('year'); // Get 'year' from query string
-  const month = searchParams.get('month'); // Get 'month' from query string
-  const navigate = useNavigate(); 
-  
+  const year = searchParams.get("year"); // Get 'year' from query string
+  const month = searchParams.get("month"); // Get 'month' from query string
+  const navigate = useNavigate();
+
   const [activeTab, setActiveTab] = useState<"discussions" | "articles">(
     "articles"
   );
@@ -62,20 +62,26 @@ export const BriefView = () => {
         setBriefData(briefForMonth);
       } else {
         // If data is not found, log a warning and potentially redirect
-        console.warn(`No brief data found for ${month}, ${year}. Redirecting...`);
+        console.warn(
+          `No brief data found for ${month}, ${year}. Redirecting...`
+        );
         // Example: navigate back to the briefs list or a 404 page
-        // navigate('/client/briefs'); 
+        // navigate('/client/briefs');
       }
     } else {
-        // If year or month parameters are missing, redirect or show error
-        console.warn("Missing year or month query parameters. Redirecting...");
-        navigate('/client/briefs'); // Redirect back to the brief list
+      // If year or month parameters are missing, redirect or show error
+      console.warn("Missing year or month query parameters. Redirecting...");
+      navigate("/client/briefs"); // Redirect back to the brief list
     }
   }, [year, month, navigate]); // Re-run effect if year or month changes
 
   // Format month name for display in header and table
-  const formattedMonth = month ? month.charAt(0).toUpperCase() + month.slice(1) : "";
-  const headerTitle = briefData ? `Coverage: ${formattedMonth} ${year}` : "Loading Brief...";
+  const formattedMonth = month
+    ? month.charAt(0).toUpperCase() + month.slice(1)
+    : "";
+  const headerTitle = briefData
+    ? `Coverage: ${formattedMonth} ${year}`
+    : "Loading Brief...";
 
   if (!briefData) {
     // Show a loading state or a message while data is being fetched
@@ -92,7 +98,6 @@ export const BriefView = () => {
   // Articles data comes from briefData.details
   const articles = briefData.details || []; // Ensure it's an array, even if empty
 
-
   return (
     <Layout>
       <Navbar back={true} />
@@ -102,7 +107,7 @@ export const BriefView = () => {
           <Header
             title={headerTitle}
             author="Exalt data" // Static: not available in brief.json for a month
-            date="Sun April 7, 2023" // Static: not available in brief.json for a month
+            date={briefData?.month} // Static: not available in brief.json for a month
             readTime="5 min" // Static: not available in brief.json for a month
             category="New Jersey Congressional District 1" // Static: not available in brief.json for a month
           />
@@ -128,7 +133,8 @@ export const BriefView = () => {
                     : "text-gray-600 hover:text-indigo-500"
                 }`}
               >
-                Discussions ({event.source_link.length}) {/* Still using event data */}
+                Discussions ({event.source_link.length}){" "}
+                {/* Still using event data */}
               </button>
             </div>
 
@@ -181,53 +187,57 @@ export const BriefView = () => {
                     </div>
 
                     {/* Rows */}
-                    {articles.map((article: any) => ( // Use 'article' for iteration
-                      <div
-                        key={article._id}
-                        className="grid grid-cols-[85px_3fr_1fr_1fr] bg-white gap-5 hover:bg-gray-50 transition-all duration-200 border-b border-gray-200 last:border-0 py-4 px-4 items-center"
-                      >
-                        {/* Image */}
-                        <div className="flex items-center justify-start">
-                          <img
-                            src={
-                              article?.image &&
-                              article.image.trim().length !== 0
-                                ? article.image
-                                : "https://images.moneycontrol.com/static-mcnews/2022/11/Immersive-exhibits-like-Van-Gogh-360%C2%B0-introduce-art-and-artists-in-a-fun-and-exciting-way.jpg?impolicy=website&width=1600&height=900"
-                            }
-                            // src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYPIxrzQl0b6--bQVgstINh7XQeJlqGBVehA&s"}
-                            alt={article?.title || "No image available"}
-                            className="h-12 w-12 object-cover rounded-lg border border-gray-200"
-                          />
-                        </div>
-
-                        {/* Title */}
-                        <Link
-                          // Route to the article details page using the article's _id
-                          // Make sure your router has a route like /client/data/articles/:id
-                          to={`/client/data/articles/${article._id}`} 
-                          className="text-blue-600 hover:text-blue-800 hover:underline font-medium transition-colors duration-200"
+                    {articles.map(
+                      (
+                        article: any // Use 'article' for iteration
+                      ) => (
+                        <div
+                          key={article._id}
+                          className="grid grid-cols-[85px_3fr_1fr_1fr] bg-white gap-5 hover:bg-gray-50 transition-all duration-200 border-b border-gray-200 last:border-0 py-4 px-4 items-center"
                         >
-                          {article.title}
-                        </Link>
+                          {/* Image */}
+                          <div className="flex items-center justify-start">
+                            <img
+                              src={
+                                article?.image &&
+                                article.image.trim().length !== 0
+                                  ? article.image
+                                  : "https://images.moneycontrol.com/static-mcnews/2022/11/Immersive-exhibits-like-Van-Gogh-360%C2%B0-introduce-art-and-artists-in-a-fun-and-exciting-way.jpg?impolicy=website&width=1600&height=900"
+                              }
+                              // src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYPIxrzQl0b6--bQVgstINh7XQeJlqGBVehA&s"}
+                              alt={article?.title || "No image available"}
+                              className="h-12 w-12 object-cover rounded-lg border border-gray-200"
+                            />
+                          </div>
 
-                        {/* Date - Using the month from the URL as individual articles don't have dates in 'details' array */}
-                        <span className="text-gray-600 text-sm">
-                          {formattedMonth} {year}
-                        </span>
-
-                        {/* Action Button */}
-                        <div className="flex justify-center">
+                          {/* Title */}
                           <Link
                             // Route to the article details page using the article's _id
+                            // Make sure your router has a route like /client/data/articles/:id
                             to={`/client/data/articles/${article._id}`}
-                            className="flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-full hover:bg-indigo-700 shadow-sm transition-all duration-200 text-sm"
+                            className="text-blue-600 hover:text-blue-800 hover:underline font-medium transition-colors duration-200"
                           >
-                            Read <AiOutlineArrowRight className="w-4 h-4" />
+                            {article.title}
                           </Link>
+
+                          {/* Date - Using the month from the URL as individual articles don't have dates in 'details' array */}
+                          <span className="text-gray-600 text-sm">
+                            {formattedMonth} {year}
+                          </span>
+
+                          {/* Action Button */}
+                          <div className="flex justify-center">
+                            <Link
+                              // Route to the article details page using the article's _id
+                              to={`/client/data/articles/${article._id}`}
+                              className="flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-full hover:bg-indigo-700 shadow-sm transition-all duration-200 text-sm"
+                            >
+                              Read <AiOutlineArrowRight className="w-4 h-4" />
+                            </Link>
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      )
+                    )}
                   </div>
                 </div>
               )}

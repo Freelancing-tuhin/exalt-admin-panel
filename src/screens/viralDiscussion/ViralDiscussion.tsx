@@ -37,7 +37,7 @@ export const ViralDiscussion = () => {
           <Header
             title={data?.[title - 1]?.title}
             author="By Exalt Data"
-            date="Sun April 7, 2023"
+            date={data?.[title - 1]?.month}
             readTime="5 min"
             category={""}
           />

@@ -33,7 +33,7 @@ export const ClientArticles = () => {
           <Header
             title={foundArticle?.title}
             author="Exalt"
-            date="Sun April 7, 2023"
+            date={foundArticle?.month}
             readTime="5 min"
             category={""}
           />
