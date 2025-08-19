@@ -206,31 +206,31 @@ export const ClientEvents = () => {
     setHeading("Event");
   }, [setHeading]);
 
-  const getCategoryColors = (category: string) => {
-    switch (category) {
-      case "Wedding":
-        return "bg-green-500 text-white";
-      case "Grand Opening":
-        return "bg-amber-500 text-white";
-      case "Town Hall":
-        return "bg-blue-600 text-white";
-      case "Festival":
-        return "bg-red-500 text-white";
-      default:
-        return "bg-violet-200 text-white";
-    }
-  };
+  // const getCategoryColors = (category: string) => {
+  //   switch (category) {
+  //     case "Wedding":
+  //       return "bg-green-500 text-white";
+  //     case "Grand Opening":
+  //       return "bg-amber-500 text-white";
+  //     case "Town Hall":
+  //       return "bg-blue-600 text-white";
+  //     case "Festival":
+  //       return "bg-red-500 text-white";
+  //     default:
+  //       return "bg-violet-200 text-white";
+  //   }
+  // };
 
-  const getPriorityColors = (priority: string) => {
-    switch (priority) {
-      case "Medium":
-        return "bg-blue-600 text-white";
-      case "Low":
-        return "bg-green-500 text-white";
-      default:
-        return "bg-red-500 text-white";
-    }
-  };
+  // const getPriorityColors = (priority: string) => {
+  //   switch (priority) {
+  //     case "Medium":
+  //       return "bg-blue-600 text-white";
+  //     case "Low":
+  //       return "bg-green-500 text-white";
+  //     default:
+  //       return "bg-red-500 text-white";
+  //   }
+  // };
 
   return (
     <Layout>
@@ -262,89 +262,88 @@ export const ClientEvents = () => {
         ))}
 
         {/* Other Events */}
-<div>
-  {/* Section Title */}
-  <h2 className="text-xl text-gray-700 font-semibold mb-4 tracking-wide">
-    Other Upcoming Events
-  </h2>
+        <div>
+          {/* Section Title */}
+          <h2 className="text-xl text-gray-700 font-semibold mb-4 tracking-wide">
+            Other Upcoming Events
+          </h2>
 
-  {/* Card Container */}
-  <div className="bg-white p-5 rounded-2xl shadow-sm border border-gray-200">
-    {/* Table Header */}
-    <div className="grid grid-cols-[70fr_15fr_15fr_15fr] gap-x-4 items-center text-sm font-semibold text-gray-600 border-b border-gray-200 pb-3 mb-3">
-      <div className="flex">
-        <span className="font-bold text-lg w-32">
-          Event <span className="text-gray-400">Date</span>
-        </span>
-      </div>
-      <span className="text-end font-bold text-lg w-32">Category</span>
-      <span className="text-end font-bold text-lg w-32">Priority</span>
-      <span className="text-end font-bold text-lg w-32">Culture</span>
-    </div>
-
-    {/* Event Rows */}
-    <div className="space-y-2">
-      {otherEvents.map((event, index) => {
-        // Decide gradient for priority
-        let priorityClass = "";
-        if (event.priority.toLowerCase() === "high") {
-          priorityClass =
-            "bg-gradient-to-r from-red-50 to-red-100 text-red-700 border-red-200";
-        } else if (event.priority.toLowerCase() === "medium") {
-          priorityClass =
-            "bg-gradient-to-r from-amber-50 to-amber-100 text-amber-700 border-amber-200";
-        } else if (event.priority.toLowerCase() === "low") {
-          priorityClass =
-            "bg-gradient-to-r from-green-50 to-green-100 text-green-700 border-green-200";
-        } else {
-          priorityClass =
-            "bg-gradient-to-r from-gray-50 to-gray-100 text-gray-700 border-gray-200";
-        }
-
-        return (
-          <div
-            key={event.id}
-            className={`grid grid-cols-[70fr_15fr_15fr_15fr] gap-x-4 items-center text-sm text-gray-800 rounded-xl p-3 transition-all duration-200 ${
-              index % 2 === 0 ? "bg-gray-50" : "bg-white"
-            } hover:bg-gray-100 hover:shadow-sm`}
-          >
-            {/* Event Info */}
-            <div className="flex items-center flex-wrap gap-x-3 gap-y-1">
-              <span className="font-medium">{event.title}</span>
-              <span className="text-gray-400 text-xs">• {event.date}</span>
+          {/* Card Container */}
+          <div className="bg-white p-5 rounded-2xl shadow-sm border border-gray-200">
+            {/* Table Header */}
+            <div className="grid grid-cols-[70fr_15fr_15fr_15fr] gap-x-4 items-center text-sm font-semibold text-gray-600 border-b border-gray-200 pb-3 mb-3">
+              <div className="flex">
+                <span className="font-bold text-lg w-32">
+                  Event <span className="text-gray-400">Date</span>
+                </span>
+              </div>
+              <span className="text-end font-bold text-lg w-32">Category</span>
+              <span className="text-end font-bold text-lg w-32">Priority</span>
+              <span className="text-end font-bold text-lg w-32">Culture</span>
             </div>
 
-            {/* Category */}
-            <span
-              className={`justify-self-center w-28 h-8 flex items-center justify-center text-xs rounded-md font-medium border
+            {/* Event Rows */}
+            <div className="space-y-2">
+              {otherEvents.map((event, index) => {
+                // Decide gradient for priority
+                let priorityClass = "";
+                if (event.priority.toLowerCase() === "high") {
+                  priorityClass =
+                    "bg-gradient-to-r from-red-50 to-red-100 text-red-700 border-red-200";
+                } else if (event.priority.toLowerCase() === "medium") {
+                  priorityClass =
+                    "bg-gradient-to-r from-amber-50 to-amber-100 text-amber-700 border-amber-200";
+                } else if (event.priority.toLowerCase() === "low") {
+                  priorityClass =
+                    "bg-gradient-to-r from-green-50 to-green-100 text-green-700 border-green-200";
+                } else {
+                  priorityClass =
+                    "bg-gradient-to-r from-gray-50 to-gray-100 text-gray-700 border-gray-200";
+                }
+
+                return (
+                  <div
+                    key={event.id}
+                    className={`grid grid-cols-[70fr_15fr_15fr_15fr] gap-x-4 items-center text-sm text-gray-800 rounded-xl p-3 transition-all duration-200 ${
+                      index % 2 === 0 ? "bg-gray-50" : "bg-white"
+                    } hover:bg-gray-100 hover:shadow-sm`}
+                  >
+                    {/* Event Info */}
+                    <div className="flex items-center flex-wrap gap-x-3 gap-y-1">
+                      <span className="font-medium">{event.title}</span>
+                      <span className="text-gray-400 text-xs">
+                        • {event.date}
+                      </span>
+                    </div>
+
+                    {/* Category */}
+                    <span
+                      className={`justify-self-center w-28 h-8 flex items-center justify-center text-xs rounded-md font-medium border
               bg-gradient-to-r from-blue-50 to-blue-100 text-blue-700 border-blue-200`}
-            >
-              {event.category}
-            </span>
+                    >
+                      {event.category}
+                    </span>
 
-            {/* Priority */}
-            <span
-              className={`justify-self-center w-28 h-8 flex items-center justify-center text-xs rounded-md font-medium border ${priorityClass}`}
-            >
-              {event.priority}
-            </span>
+                    {/* Priority */}
+                    <span
+                      className={`justify-self-center w-28 h-8 flex items-center justify-center text-xs rounded-md font-medium border ${priorityClass}`}
+                    >
+                      {event.priority}
+                    </span>
 
-            {/* Culture */}
-            <span
-              className={`justify-self-center w-28 h-8 flex items-center justify-center text-xs rounded-md font-medium border
+                    {/* Culture */}
+                    <span
+                      className={`justify-self-center w-28 h-8 flex items-center justify-center text-xs rounded-md font-medium border
               bg-gradient-to-r from-purple-50 to-purple-100 text-purple-700 border-purple-200`}
-            >
-              {event.topic}
-            </span>
+                    >
+                      {event.topic}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
           </div>
-        );
-      })}
-    </div>
-  </div>
-</div>
-
-
-
+        </div>
       </div>
     </Layout>
   );

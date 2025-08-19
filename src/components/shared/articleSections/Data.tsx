@@ -4,7 +4,7 @@ import { DataChart } from "../dataCharts/DataChart";
 import { TweeterPost } from "../tweeterPost/TweeterPost";
 import { SentimentChart } from "../../main/sentimentChart/SentimentChart";
 import { ItemLister } from "../itemLister/ItemLister";
-import { ReasonInput } from "../reasonINput/ReasonInput";
+// import { ReasonInput } from "../reasonINput/ReasonInput";
 import data from "../../../database/articles.json";
 
 const Data = ({ id }: { id: number }) => {
