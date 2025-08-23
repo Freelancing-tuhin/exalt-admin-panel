@@ -59,7 +59,7 @@ export const DetailedListView = ({
               <div className="flex items-center gap-3 sm:gap-4 min-w-0 flex-1">
                 <div className="relative w-44 h-28 rounded-xl overflow-hidden">
                   <img
-                    src={article?.image}
+                    src={article?.image || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-OduY3RjQ3Q_bpI0ex6tFVOGuuaTZoyt-cg&s"}
                     alt=""
                     className="w-full h-full object-cover"
                   />
@@ -133,7 +133,7 @@ export const DetailedListView = ({
                       <span className="ml-1 font-bold text-gray-900 text-lg">
                         {donorCount}
                       </span>
-                      <span>Donors</span>
+                      <span>constituents engaged</span>
                     </div>
                   </div>
                 </div>

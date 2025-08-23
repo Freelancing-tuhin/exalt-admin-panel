@@ -32,12 +32,12 @@ export const EventsList = ({
               {/* Left Side: Date and Article Info */}
               <div className="flex items-center gap-3 sm:gap-4 min-w-0 flex-1">
                 <div className="text-center flex-shrink-0">
-                  <div className="text-xs font-semibold text-gray-500">
-                    {article.month.split(" ")[0]}
-                  </div>
-                  <div className="text-lg sm:text-xl font-bold text-indigo-700">
-                    {article.month.split(" ")[1]}
-                  </div>
+<div className="text-xs font-semibold text-gray-500">
+  {article.month?.split(" ")[0] ?? ""}
+</div>
+<div className="text-lg sm:text-xl font-bold text-indigo-700">
+  {article.month?.split(" ")[1] ?? ""}
+</div>
                 </div>
 
                 {/* Divider */}
@@ -65,7 +65,7 @@ export const EventsList = ({
                     {donorsCount} potential donors
                   </button>
                   <button className="w-50 h-6 flex items-center justify-center text-xs font-medium text-green-500 rounded-md shadow-sm transition-transform hover:scale-105 bg-gray-100   whitespace-nowrap">
-                    {engagementCount} constituent engagement
+                    {engagementCount} constituents engaged
                   </button>
                 </div>
               )}

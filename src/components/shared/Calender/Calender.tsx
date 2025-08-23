@@ -1,12 +1,12 @@
 import React, { useState, useMemo } from "react";
-import { 
-  FaBriefcase, 
-  FaBullhorn, 
-  FaUsers, 
-  FaChalkboardTeacher, 
-  FaCalendarCheck, 
-  FaTimes, 
-  FaPlusCircle 
+import {
+  FaBriefcase,
+  FaBullhorn,
+  FaUsers,
+  FaChalkboardTeacher,
+  FaCalendarCheck,
+  FaTimes,
+  FaPlusCircle
 } from "react-icons/fa";
 
 interface CalendarEvent {
@@ -17,40 +17,40 @@ interface CalendarEvent {
 }
 
 const EVENT_TYPES = {
-  meeting: { 
-    color: "bg-blue-600", 
-    text: "text-blue-600", 
-    label: "Meeting", 
-    icon: <FaBriefcase size={18} />, 
-    chipIcon: <FaBriefcase size={14} /> 
+  meeting: {
+    color: "bg-blue-600",
+    text: "text-blue-600",
+    label: "Meeting",
+    icon: <FaBriefcase size={18} />,
+    chipIcon: <FaBriefcase size={14} />
   },
-  campaign: { 
-    color: "bg-teal-600", 
-    text: "text-teal-600", 
-    label: "Campaign", 
-    icon: <FaBullhorn size={18} />, 
-    chipIcon: <FaBullhorn size={14} /> 
+  campaign: {
+    color: "bg-teal-600",
+    text: "text-teal-600",
+    label: "Campaign",
+    icon: <FaBullhorn size={18} />,
+    chipIcon: <FaBullhorn size={14} />
   },
-  conference: { 
-    color: "bg-indigo-600", 
-    text: "text-indigo-600", 
-    label: "Conference", 
-    icon: <FaUsers size={18} />, 
-    chipIcon: <FaUsers size={14} /> 
+  conference: {
+    color: "bg-indigo-600",
+    text: "text-indigo-600",
+    label: "Conference",
+    icon: <FaUsers size={18} />,
+    chipIcon: <FaUsers size={14} />
   },
-  workshop: { 
-    color: "bg-purple-600", 
-    text: "text-purple-600", 
-    label: "Workshop", 
-    icon: <FaChalkboardTeacher size={18} />, 
-    chipIcon: <FaChalkboardTeacher size={14} /> 
+  workshop: {
+    color: "bg-purple-600",
+    text: "text-purple-600",
+    label: "Workshop",
+    icon: <FaChalkboardTeacher size={18} />,
+    chipIcon: <FaChalkboardTeacher size={14} />
   },
-  deadline: { 
-    color: "bg-red-600", 
-    text: "text-red-600", 
-    label: "Deadline", 
-    icon: <FaCalendarCheck size={18} />, 
-    chipIcon: <FaCalendarCheck size={14} /> 
+  deadline: {
+    color: "bg-red-600",
+    text: "text-red-600",
+    label: "Deadline",
+    icon: <FaCalendarCheck size={18} />,
+    chipIcon: <FaCalendarCheck size={14} />
   },
 };
 
@@ -91,7 +91,7 @@ const CalendarGrid: React.FC = () => {
 
   const { days, eventsByDate } = useMemo(() => {
     // getDay() returns 0 for Sunday, 1 for Monday, etc. We want Monday to be 0 for our grid.
-    const getFirstDayOfWeekIndex = (date: Date) => (new Date(date.getFullYear(), date.getMonth(), 1).getDay() + 6) % 7; 
+    const getFirstDayOfWeekIndex = (date: Date) => (new Date(date.getFullYear(), date.getMonth(), 1).getDay() + 6) % 7;
 
     const allDays: { date: Date; isCurrentMonth: boolean }[] = [];
     const firstDayIndexInGrid = getFirstDayOfWeekIndex(currentMonth); // 0-6 index for 1st day of month
@@ -100,10 +100,10 @@ const CalendarGrid: React.FC = () => {
     startDate.setDate(startDate.getDate() - firstDayIndexInGrid); // Set to the start day of the first week displayed
 
     // Generate exactly 5 weeks (35 days) for the grid
-    for (let i = 0; i < 35; i++) { 
-        const date = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate() + i);
-        const isCurrentMonth = date.getMonth() === currentMonth.getMonth() && date.getFullYear() === currentMonth.getFullYear();
-        allDays.push({ date, isCurrentMonth });
+    for (let i = 0; i < 35; i++) {
+      const date = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate() + i);
+      const isCurrentMonth = date.getMonth() === currentMonth.getMonth() && date.getFullYear() === currentMonth.getFullYear();
+      allDays.push({ date, isCurrentMonth });
     }
 
     const eventsGroupedByDate: { [key: string]: CalendarEvent[] } = {};
@@ -302,10 +302,10 @@ const CalendarGrid: React.FC = () => {
           const dayEvents = eventsByDate[dateKey] || [];
           const isToday = isSameDay(day.date, today);
 
-          const dayBgColor = dayEvents.length > 0 
-            ? EVENT_LIGHT_BG[dayEvents[0].type] 
-            : day.isCurrentMonth 
-              ? "bg-white" 
+          const dayBgColor = dayEvents.length > 0
+            ? EVENT_LIGHT_BG[dayEvents[0].type]
+            : day.isCurrentMonth
+              ? "bg-white"
               : "bg-gray-100";
 
           return (
@@ -323,25 +323,22 @@ const CalendarGrid: React.FC = () => {
                 {day.date.getDate()}
               </span>
 
-              {dayEvents.length > 0 && (
-                <div className="flex flex-wrap justify-center gap-1 mt-1 w-full px-1">
-                  {dayEvents.slice(0, 2).map((event, eventIndex) => (
-                    <div
-                      key={eventIndex}
-                      className={`flex items-center gap-1 px-1 py-1 rounded-full ${EVENT_TYPES[event.type].color} text-white text-xs font-medium`} // Larger tag styling
-                      title={event.title}
-                    >
-                      {EVENT_TYPES[event.type].chipIcon}
-                      <span>{EVENT_TYPES[event.type].label}</span>
-                    </div>
-                  ))}
-                  {dayEvents.length > 2 && (
-                    <div className="px-2 py-1 rounded-full bg-gray-300 text-gray-800 text-xs font-medium"> {/* Larger tag styling */}
-                      +{dayEvents.length - 2}
-                    </div>
-                  )}
+              {dayEvents.slice(0, 2).map((event, eventIndex) => (
+                <div
+                  key={eventIndex}
+                  className={`flex my-1 items-center gap-1 px-1 py-0.5 rounded-3xl ${EVENT_TYPES[event.type].color} text-white text-[10px] font-medium`}
+                  title={event.title}
+                >
+                  {EVENT_TYPES[event.type].chipIcon}
+                  <span className="hidden sm:inline">{EVENT_TYPES[event.type].label}</span>
+                </div>
+              ))}
+              {dayEvents.length > 2 && (
+                <div className="px-1.5 py-0.5 rounded bg-gray-300 text-gray-800 text-[10px] font-medium">
+                  +{dayEvents.length - 2}
                 </div>
               )}
+
             </div>
           );
         })}

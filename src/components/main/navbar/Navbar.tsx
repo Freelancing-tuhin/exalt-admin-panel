@@ -5,7 +5,7 @@ import { useHeading } from "../../../contexts/headingContext";
 import { useContext } from "react";
 import { IoArrowBack } from "react-icons/io5";
 
-const Navbar = ({ back }: any) => {
+const Navbar = ({ back , heading_input  }: any) => {
   const { user } = useContext(AuthContext);
   const { heading } = useHeading();
 
@@ -21,7 +21,7 @@ const Navbar = ({ back }: any) => {
             <IoArrowBack className="inline-block mr-2" />
           </span>
         )}
-        <span className="font-bold">{heading}</span> {!back && <>Dashboard</>}
+        <span className="font-bold">{!heading_input ? heading : heading_input}</span> {!back && <>{!heading_input? "Dashboard" :"" }</>}
       </h1>
 
       {user?.roll === "ADMIN" && (

@@ -19,6 +19,9 @@ import ConstituentProfile from "./screens/client/constituentProfile/constituentP
 import { Holidays } from "./screens/holidays/Holidays";
 import { PreviosOutreach } from "./screens/prevOutreach/PreviosOutreach";
 import DonorEngagement from "./screens/client/donor-engagement/donorEngagement";
+import WriterEvents from "./screens/writer/events/WriterEvents";
+import WriterHoliday from "./screens/writer/holidays/WriterHoliday";
+import WriterArticles from "./screens/writer/articles/WriterArticles";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -169,6 +172,35 @@ function App() {
           </ProtectedRoute>
         }
       />
+
+        {/* Writer-only routes */}
+
+
+      <Route
+        path="/writer/events"
+        element={
+          <ProtectedRoute user={user} allowedRoles={["WRITER"]}>
+            <WriterEvents />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/writer/holidays"
+        element={
+          <ProtectedRoute user={user} allowedRoles={["WRITER"]}>
+            <WriterHoliday />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/writer/articles"
+        element={
+          <ProtectedRoute user={user} allowedRoles={["WRITER"]}>
+            <WriterArticles />
+          </ProtectedRoute>
+        }
+      />
+
     </Routes>
   );
 }

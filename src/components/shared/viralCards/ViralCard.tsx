@@ -78,7 +78,7 @@ export const ViralCard = ({ item, i }: any) => {
         </h3>
 
         {/* Description */}
-        <p className="text-md text-gray-200 line-clamp-2">{item.posts}</p>
+        <p className="text-md text-gray-200 line-clamp-2">{JSON.stringify(item?.posts)}</p>
       </div>
     </Link>
   );

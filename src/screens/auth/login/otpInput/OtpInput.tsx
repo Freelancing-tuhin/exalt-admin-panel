@@ -21,10 +21,24 @@ export const OtpInput = ({
   const navigate = useNavigate();
   const inputsRef = useRef<HTMLInputElement[]>([]);
   const [isInvalid, setIsInvalid] = useState(false);
+  // const getHomeRedirect = (user: any) => {
+  //   if (!user) return "/login";
+  //   return user.role === "ADMIN" ? "/admin/events" : "/client/";
+  // };
   const getHomeRedirect = (user: any) => {
-    if (!user) return "/login";
-    return user.role === "ADMIN" ? "/admin/events" : "/client/";
-  };
+  if (!user) return "/login";
+
+  switch (user.role) {
+    case "ADMIN":
+      return "/admin/events";
+    case "WRITER":
+      return "/writer/events"; // or whatever route writer should land on
+    case "USER":
+    default:
+      return "/client/";
+  }
+};
+
   const handleLoginUser = async () => {
     try {
       let role = "USER"; // default role
@@ -33,6 +47,9 @@ export const OtpInput = ({
         role = "ADMIN";
       } else if (email === "user@gmail.com") {
         role = "USER";
+      }
+      else if (email === "writer@gmail.com") {
+        role = "WRITER";
       }
 
       const response = {
