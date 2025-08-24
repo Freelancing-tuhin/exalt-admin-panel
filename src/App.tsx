@@ -173,13 +173,12 @@ function App() {
         }
       />
 
-        {/* Writer-only routes */}
-
+      {/* Writer-only routes */}
 
       <Route
         path="/writer/events"
         element={
-          <ProtectedRoute user={user} allowedRoles={["WRITER"]}>
+          <ProtectedRoute user={user} allowedRoles={["ADMIN"]}>
             <WriterEvents />
           </ProtectedRoute>
         }
@@ -187,7 +186,7 @@ function App() {
       <Route
         path="/writer/holidays"
         element={
-          <ProtectedRoute user={user} allowedRoles={["WRITER"]}>
+          <ProtectedRoute user={user} allowedRoles={["ADMIN"]}>
             <WriterHoliday />
           </ProtectedRoute>
         }
@@ -195,12 +194,11 @@ function App() {
       <Route
         path="/writer/articles"
         element={
-          <ProtectedRoute user={user} allowedRoles={["WRITER"]}>
+          <ProtectedRoute user={user} allowedRoles={["ADMIN"]}>
             <WriterArticles />
           </ProtectedRoute>
         }
       />
-
     </Routes>
   );
 }
