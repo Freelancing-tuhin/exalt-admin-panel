@@ -19,16 +19,21 @@ import ConstituentProfile from "./screens/client/constituentProfile/constituentP
 import { Holidays } from "./screens/holidays/Holidays";
 import { PreviosOutreach } from "./screens/prevOutreach/PreviosOutreach";
 import DonorEngagement from "./screens/client/donor-engagement/donorEngagement";
-import WriterEvents from "./screens/writer/events/WriterEvents";
+// import WriterEvents from "./screens/writer/events/WriterEvents";
 import WriterHoliday from "./screens/writer/holidays/WriterHoliday";
 import WriterArticles from "./screens/writer/articles/WriterArticles";
+import { WriterEvent } from "./screens/writer/events/WriterEvent";
 
 function App() {
   const { user } = useContext(AuthContext);
 
   const getHomeRedirect = () => {
     if (!user) return "/login";
-    return user.role === "ADMIN" ? "/admin/events" : "/client/";
+    return user.role === "ADMIN"
+      ? "/admin/events"
+      : user.role === "WRITER"
+      ? "/writer/events"
+      : "/client/";
   };
 
   return (
@@ -178,15 +183,15 @@ function App() {
       <Route
         path="/writer/events"
         element={
-          <ProtectedRoute user={user} allowedRoles={["ADMIN"]}>
-            <WriterEvents />
+          <ProtectedRoute user={user} allowedRoles={["WRITER"]}>
+            <WriterEvent />
           </ProtectedRoute>
         }
       />
       <Route
         path="/writer/holidays"
         element={
-          <ProtectedRoute user={user} allowedRoles={["ADMIN"]}>
+          <ProtectedRoute user={user} allowedRoles={["WRITER"]}>
             <WriterHoliday />
           </ProtectedRoute>
         }
@@ -194,7 +199,7 @@ function App() {
       <Route
         path="/writer/articles"
         element={
-          <ProtectedRoute user={user} allowedRoles={["ADMIN"]}>
+          <ProtectedRoute user={user} allowedRoles={["WRITER"]}>
             <WriterArticles />
           </ProtectedRoute>
         }

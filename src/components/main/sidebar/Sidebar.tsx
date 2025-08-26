@@ -130,7 +130,7 @@ export const Sidebar = () => {
                 isActive={location.pathname === "/admin/final-briefs"}
               />
             </>
-          ) : (
+          ) : user?.role === "USER" ? (
             <>
               <ModernSidebarItem
                 icon={<FiBarChart2 size={20} />}
@@ -173,6 +173,30 @@ export const Sidebar = () => {
                 isCollapsed={isCollapsed}
                 route={"/client/PreviousOutreach"}
                 isActive={location.pathname === "/client/PreviousOutreach"}
+              />
+            </>
+          ) : (
+            <>
+              <ModernSidebarItem
+                icon={<FiCopy size={20} />}
+                label="Events"
+                isCollapsed={isCollapsed}
+                route={"/writer/events"}
+                isActive={location.pathname === "/writer/events"}
+              />
+              <ModernSidebarItem
+                icon={<FaRegHeart size={20} />}
+                label="Holidays"
+                isCollapsed={isCollapsed}
+                route={"/writer/holidays"}
+                isActive={location.pathname === "/writer/holidays"}
+              />
+              <ModernSidebarItem
+                icon={<MdGroups size={20} />}
+                label="Articles"
+                isCollapsed={isCollapsed}
+                route={"/writer/articles"}
+                isActive={location.pathname === "/writer/articles"}
               />
             </>
           )}
