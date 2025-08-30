@@ -34,6 +34,9 @@ const WriterArticles: React.FC = () => {
   const [activeTab, setActiveTab] = React.useState<
     "writing" | "tags" | "site links"
   >("writing");
+  const [writingMode, setWritingMode] = React.useState<"text" | "visual">(
+    "text"
+  );
 
   const handleSave = () => {
     const content =
@@ -85,11 +88,39 @@ const WriterArticles: React.FC = () => {
           />
 
           {activeTab === "writing" ? (
-            <WritingTab
-              editorRef={editorRef}
-              content={editorContent}
-              setContent={setEditorContent}
-            />
+            <div>
+              {/* segmented switch between text writer and visual editor */}
+              <div className="inline-flex items-center bg-gray-200 rounded-lg p-1 mb-4">
+                <button
+                  onClick={() => setWritingMode("text")}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium ${
+                    writingMode === "text" ? "bg-white shadow" : "text-gray-600"
+                  }`}
+                >
+                  Text Writer
+                </button>
+                <button
+                  onClick={() => setWritingMode("visual")}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium ${
+                    writingMode === "visual"
+                      ? "bg-white shadow"
+                      : "text-gray-600"
+                  }`}
+                >
+                  Visual Editor
+                </button>
+              </div>
+
+              {writingMode === "text" ? (
+                <WritingTab
+                  editorRef={editorRef}
+                  content={editorContent}
+                  setContent={setEditorContent}
+                />
+              ) : (
+                <div />
+              )}
+            </div>
           ) : activeTab === "tags" ? (
             <UtilsTab
               tagIds={tagIds}

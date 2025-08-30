@@ -1,7 +1,7 @@
 import React from "react";
 import { Pencil } from "lucide-react";
 import { IconTabs } from "../../../components/shared/sectionTabs/SectionTabs";
-import { PiArticleNyTimesFill } from "react-icons/pi";
+
 type IconComp = React.ComponentType<React.SVGProps<SVGSVGElement>>;
 
 type Props = {
@@ -11,7 +11,7 @@ type Props = {
   setActiveTab: (s: string) => void;
   /** optional icon to render next to the title input */
   inputIcon?: IconComp;
-  /** optional icons for tabs in order: [writing, utils, site links] */
+  /** optional icons for tabs in order: [writing, tags, site links] */
   tabIcons?: IconComp[];
 };
 
@@ -20,8 +20,10 @@ const TitleTabs: React.FC<Props> = ({
   setTitle,
   activeTab,
   setActiveTab,
+  inputIcon,
   tabIcons,
 }) => {
+  const InputIconToRender = inputIcon ?? Pencil;
   const defaultTabs = ["writing", "tags", "site links"];
 
   const tabs = defaultTabs.map((label, idx) => ({
@@ -32,7 +34,7 @@ const TitleTabs: React.FC<Props> = ({
   return (
     <div className="w-full mb-8">
       <div className="flex items-center gap-2 rounded-2xl border border-gray-300 bg-white shadow-sm px-4 py-3 focus-within:ring-2 focus-within:ring-blue-400">
-        <PiArticleNyTimesFill className="w-8 h-8 text-gray-500" />
+        <InputIconToRender className="w-5 h-5 text-gray-500" />
         <input
           type="text"
           placeholder="Article Title"
