@@ -1,29 +1,40 @@
-import { useState, useRef } from "react"; 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  useCallback,
+  useImperativeHandle,
+} from "react";
 interface ContentItem {
   id: number;
   type: "point" | "paragraph" | "image" | "graph";
-  text?: string; 
+  text?: string;
   url?: string;
-  caption?: string; 
-  graphTitle?: string; 
-  graphDataJson?: string; 
+  caption?: string;
+  graphTitle?: string;
+  graphDataJson?: string;
 }
 
 interface Subsection {
   id: number;
-  title: string; 
+  title: string;
   content: ContentItem[];
 }
 
 interface Section {
   id: number;
-  heading: string; 
+  heading: string;
   subsections: Subsection[];
 }
 
-export default function StructuredInput(): JSX.Element {
+const StructuredInput = React.forwardRef(function StructuredInput(
+  { content: _content, setContent }: any,
+  ref: React.Ref<any>
+): React.ReactElement {
   const [sections, setSections] = useState<Section[]>([]);
   const fileInputRefs = useRef<{ [key: string]: HTMLInputElement | null }>({});
+  const [exportedHtml, setExportedHtml] = useState<string>("");
 
   const addSection = (): void => {
     setSections([
@@ -74,7 +85,9 @@ export default function StructuredInput(): JSX.Element {
         section.id === sectionId
           ? {
               ...section,
-              subsections: section.subsections.filter((sub) => sub.id !== subId),
+              subsections: section.subsections.filter(
+                (sub) => sub.id !== subId
+              ),
             }
           : section
       );
@@ -113,7 +126,7 @@ export default function StructuredInput(): JSX.Element {
       newItem.caption = "";
     } else if (type === "graph") {
       newItem.graphTitle = "";
-      newItem.graphDataJson = ""; 
+      newItem.graphDataJson = "";
     }
 
     const updated = sections.map((section) =>
@@ -145,7 +158,9 @@ export default function StructuredInput(): JSX.Element {
                 sub.id === subId
                   ? {
                       ...sub,
-                      content: sub.content.filter((item) => item.id !== contentId),
+                      content: sub.content.filter(
+                        (item) => item.id !== contentId
+                      ),
                     }
                   : sub
               ),
@@ -206,58 +221,105 @@ export default function StructuredInput(): JSX.Element {
     }
   };
 
-  // Add this function inside your component, after all state & handlers
-const getStructuredOutput = (): Record<string, any> => {
-  const output: Record<string, any> = {};
+  // (Removed unused helper getStructuredOutput)
 
-  sections.forEach((section) => {
-    const sectionKey = section.heading || `Section_${section.id}`;
-    output[sectionKey] = {};
+  // escape html to avoid breaking the output
+  const escapeHtml = (unsafe: string) =>
+    unsafe
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
 
-    section.subsections.forEach((sub) => {
-      const subKey = sub.title || `Subsection_${sub.id}`;
+  const generateHtml = useCallback((): string => {
+    let html = "";
 
-      // Separate content types
-      const points: string[] = [];
-      const paragraphs: string[] = [];
-      const images: { url: string; caption?: string }[] = [];
-      const graphs: { title: string; dataJson: string }[] = [];
-
-      sub.content.forEach((item) => {
-        switch (item.type) {
-          case "point":
-            if (item.text) points.push(item.text);
-            break;
-          case "paragraph":
-            if (item.text) paragraphs.push(item.text);
-            break;
-          case "image":
-            if (item.url) images.push({ url: item.url, caption: item.caption });
-            break;
-          case "graph":
-            if (item.graphTitle || item.graphDataJson)
-              graphs.push({ title: item.graphTitle || "", dataJson: item.graphDataJson || "" });
-            break;
-        }
-      });
-
-      // Assign values in simplified structure
-      if (paragraphs.length === 1 && points.length === 0 && images.length === 0 && graphs.length === 0) {
-        output[sectionKey][subKey] = paragraphs[0]; // single paragraph as string
-      } else {
-        output[sectionKey][subKey] = {
-          ...(points.length ? { points } : {}),
-          ...(paragraphs.length ? { paragraphs } : {}),
-          ...(images.length ? { images } : {}),
-          ...(graphs.length ? { graphs } : {}),
-        };
+    sections.forEach((section, sIdx) => {
+      const secNum = sIdx + 1;
+      if (section.heading) {
+        html += `<h2 id="${secNum}">${secNum}. ${escapeHtml(
+          section.heading
+        )}</h2>\n`;
       }
+
+      section.subsections.forEach((sub, subIdx) => {
+        const subNum = `${secNum}.${subIdx + 1}`;
+        if (sub.title) {
+          html += `<h3 id="${subNum}">${subNum} ${escapeHtml(
+            sub.title
+          )}</h3>\n`;
+        }
+
+        // iterate content in order, grouping points into lists
+        let pendingPoints: string[] = [];
+
+        const flushPoints = () => {
+          if (pendingPoints.length) {
+            html += "<ul>\n";
+            pendingPoints.forEach((pt) => {
+              html += `<li>${escapeHtml(pt)}</li>\n`;
+            });
+            html += "</ul>\n";
+            pendingPoints = [];
+          }
+        };
+
+        sub.content.forEach((item) => {
+          if (item.type === "point") {
+            if (item.text) pendingPoints.push(item.text);
+          } else if (item.type === "paragraph") {
+            flushPoints();
+            if (item.text) html += `<p>${escapeHtml(item.text)}</p>\n`;
+          } else if (item.type === "image") {
+            flushPoints();
+            if (item.url) {
+              const alt = escapeHtml(item.caption || "");
+              html += `<p><img src="${escapeHtml(
+                item.url
+              )}" alt="${alt}" /></p>\n`;
+            }
+          } else if (item.type === "graph") {
+            flushPoints();
+            const title = escapeHtml(item.graphTitle || "");
+            const data = escapeHtml(item.graphDataJson || "");
+            html += `<div class="graph">`;
+            if (title) html += `<h4>${title}</h4>`;
+            if (data) html += `<pre>${data}</pre>`;
+            html += `</div>\n`;
+          }
+        });
+
+        // flush any remaining points
+        flushPoints();
+      });
     });
-  });
 
-  return output;
-};
+    return html;
+  }, [sections]);
 
+  // expose imperative API to parent so it can request current HTML
+  useImperativeHandle(ref, () => ({
+    getHtml: () => generateHtml(),
+  }));
+
+  // keep parent content in sync in realtime
+  useEffect(() => {
+    const html = generateHtml();
+    setExportedHtml(html);
+    try {
+      if (typeof setContent === "function") setContent(html);
+    } catch {
+      // ignore if parent did not pass setContent
+    }
+  }, [generateHtml, setContent]);
+
+  // if parent passed initial content HTML, reflect it in exportedHtml
+  useEffect(() => {
+    if (typeof _content === "string" && _content !== exportedHtml) {
+      setExportedHtml(_content);
+    }
+  }, [_content, exportedHtml]);
 
   return (
     <div className="bg-white border border-gray-200 rounded-xl shadow-lg p-6">
@@ -278,7 +340,9 @@ const getStructuredOutput = (): Record<string, any> => {
               type="text"
               value={section.heading}
               onChange={(e) => updateSectionHeading(section.id, e.target.value)}
-              placeholder={`Section ${secIndex + 1} Heading (e.g., Introduction, History)`}
+              placeholder={`Section ${
+                secIndex + 1
+              } Heading (e.g., Introduction, History)`}
               className="flex-grow min-w-0 border border-gray-300 rounded-md px-3 py-2 bg-white text-gray-800 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
             />
             <button
@@ -305,7 +369,9 @@ const getStructuredOutput = (): Record<string, any> => {
                   onChange={(e) =>
                     updateSubsectionTitle(section.id, sub.id, e.target.value)
                   }
-                  placeholder={`Subsection ${subIndex + 1} Title (e.g., Key Features, Benefits)`}
+                  placeholder={`Subsection ${
+                    subIndex + 1
+                  } Title (e.g., Key Features, Benefits)`}
                   className="flex-grow min-w-0 border border-gray-300 rounded-md px-3 py-2 bg-white text-gray-800 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
                 />
                 <button
@@ -373,11 +439,11 @@ const getStructuredOutput = (): Record<string, any> => {
                         <input
                           type="file"
                           accept="image/*"
-                          ref={(el) =>
-                            (fileInputRefs.current[
+                          ref={(el) => {
+                            fileInputRefs.current[
                               `${section.id}-${sub.id}-${item.id}`
-                            ] = el)
-                          }
+                            ] = el;
+                          }}
                           style={{ display: "none" }}
                           onChange={(e) =>
                             handleImageUpload(
@@ -488,8 +554,8 @@ const getStructuredOutput = (): Record<string, any> => {
                       ></textarea>
                       {item.graphDataJson && (
                         <p className="text-xs text-gray-500 italic mt-1">
-                          (Data preview/rendering would be handled by a dedicated
-                          graph component)
+                          (Data preview/rendering would be handled by a
+                          dedicated graph component)
                         </p>
                       )}
                     </div>
@@ -519,7 +585,9 @@ const getStructuredOutput = (): Record<string, any> => {
                   + Add Point
                 </button>
                 <button
-                  onClick={() => addContentItem(section.id, sub.id, "paragraph")}
+                  onClick={() =>
+                    addContentItem(section.id, sub.id, "paragraph")
+                  }
                   className="px-4 py-2 text-sm bg-green-50 hover:bg-green-100 text-green-700 rounded-md border border-green-200 flex items-center gap-1 transition-colors duration-200"
                   type="button"
                 >
@@ -562,4 +630,6 @@ const getStructuredOutput = (): Record<string, any> => {
       </button>
     </div>
   );
-}
+});
+
+export default StructuredInput;

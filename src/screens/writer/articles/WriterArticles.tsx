@@ -13,9 +13,11 @@ import { Pencil } from "lucide-react";
 import { FaLink, FaSave } from "react-icons/fa";
 import { GrTag } from "react-icons/gr";
 import { useHeading } from "../../../contexts/headingContext";
+import StructuredInput from "../../../components/shared/structureInput/StructureInput";
 
 const WriterArticles: React.FC = () => {
   const editorRef = useRef<any>(null);
+  const structRef = useRef<any>(null);
   const [tagIds, setTagIds] = React.useState<string[]>([]);
   // writerId removed in favor of writerName
   const [tweetIds, setTweetIds] = React.useState<string[]>([]);
@@ -38,14 +40,62 @@ const WriterArticles: React.FC = () => {
     "text"
   );
 
+  const handleSetActiveTab = (s: string) => {
+    // if we're leaving the writing tab, capture the current content
+    if (activeTab === "writing" && s !== "writing") {
+      if (writingMode === "text") {
+        if (editorRef.current && editorRef.current.getContent) {
+          try {
+            const current = editorRef.current.getContent();
+            setEditorContent(current);
+          } catch {
+            // ignore
+          }
+        }
+      } else if (writingMode === "visual") {
+        if (structRef.current && structRef.current.getHtml) {
+          try {
+            const current = structRef.current.getHtml();
+            setEditorContent(current);
+          } catch {
+            // ignore
+          }
+        }
+      }
+    }
+
+    setActiveTab(s as any);
+  };
+
   const handleSave = () => {
-    const content =
-      editorRef.current && editorRef.current.getContent
-        ? editorRef.current.getContent()
-        : editorContent;
+    let content = "";
+
+    // prefer structured editor content if available
+    if (structRef.current && structRef.current.getHtml) {
+      try {
+        content = structRef.current.getHtml();
+      } catch {
+        content = "";
+      }
+    }
+
+    // fallback to TinyMCE if structured content empty
+    if (!content && editorRef.current && editorRef.current.getContent) {
+      try {
+        content = editorRef.current.getContent();
+      } catch {
+        content = editorContent || "";
+      }
+    }
+
+    // final fallback
+    if (!content) content = editorContent || "";
+
+    // persist for later (so other flows can read it)
+    if (content) setEditorContent(content);
     const payload: any = {
       title,
-      data: { content },
+      data: content,
       tweet_ids: tweetIds,
       sentiment_graph_data: sentimentData ? JSON.parse(sentimentData) : null,
       donors: donors.map((d) => ({ name: d })),
@@ -56,7 +106,6 @@ const WriterArticles: React.FC = () => {
     };
     // frontend-only: log entire payload
     console.log("ARTICLE_PAYLOAD", payload);
-    alert("Payload logged to console");
   };
   const [title, setTitle] = React.useState("");
   const { setHeading } = useHeading();
@@ -64,6 +113,20 @@ const WriterArticles: React.FC = () => {
   useEffect(() => {
     setHeading("Write Article");
   }, [setHeading]);
+
+  // ensure we persist editor content when switching away from the writing tab
+  useEffect(() => {
+    if (activeTab !== "writing") {
+      if (editorRef.current && editorRef.current.getContent) {
+        try {
+          const current = editorRef.current.getContent();
+          if (current) setEditorContent(current);
+        } catch {
+          // ignore
+        }
+      }
+    }
+  }, [activeTab]);
 
   return (
     <Layout>
@@ -82,7 +145,7 @@ const WriterArticles: React.FC = () => {
             title={title}
             setTitle={setTitle}
             activeTab={activeTab}
-            setActiveTab={(s: string) => setActiveTab(s as any)}
+            setActiveTab={handleSetActiveTab}
             inputIcon={Pencil}
             tabIcons={[Pencil, GrTag, FaLink]}
           />
@@ -118,7 +181,11 @@ const WriterArticles: React.FC = () => {
                   setContent={setEditorContent}
                 />
               ) : (
-                <div />
+                <StructuredInput
+                  content={editorContent}
+                  setContent={setEditorContent}
+                  ref={structRef}
+                />
               )}
             </div>
           ) : activeTab === "tags" ? (
