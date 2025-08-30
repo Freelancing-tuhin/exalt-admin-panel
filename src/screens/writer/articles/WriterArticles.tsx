@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import Navbar from "../../../components/main/navbar/Navbar";
 import { Layout } from "../../layout/Layout";
 import BannerUploadPage from "../../../components/shared/bannerUpload/BannerUpload";
@@ -12,6 +12,7 @@ import { MdCloudUpload } from "react-icons/md";
 import { Pencil } from "lucide-react";
 import { FaLink, FaSave } from "react-icons/fa";
 import { GrTag } from "react-icons/gr";
+import { useHeading } from "../../../contexts/headingContext";
 
 const WriterArticles: React.FC = () => {
   const editorRef = useRef<any>(null);
@@ -55,10 +56,15 @@ const WriterArticles: React.FC = () => {
     alert("Payload logged to console");
   };
   const [title, setTitle] = React.useState("");
+  const { setHeading } = useHeading();
+
+  useEffect(() => {
+    setHeading("Write Article");
+  }, [setHeading]);
 
   return (
     <Layout>
-      <Navbar />
+      <Navbar back={true} />
       <div
         style={{
           maxWidth: "100%",
