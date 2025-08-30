@@ -13,11 +13,14 @@ import { IconTabs } from "../../../components/shared/sectionTabs/SectionTabs.tsx
 import { FiUsers } from "react-icons/fi";
 import { MdOutlineDashboard } from "react-icons/md";
 import { Header } from "../../../components/shared/header/Header.tsx";
+import { getArticleById } from "../../../utils/apis/article.ts";
 
 export const ClientArticles = () => {
   const { id } = useParams<{ id: any }>();
   const { setHeading } = useHeading();
   const [currentSection, setCurrentSection] = useState("Article");
+  const [article, setArticle] = useState<any>(null);
+  const [loading, setLoading] = useState(false);
 
   console.log(id);
   const foundArticle = data.find((e) => e._id === id);
@@ -25,15 +28,32 @@ export const ClientArticles = () => {
     setHeading("News");
   }, [setHeading]);
 
+    useEffect(() => {
+      const loadEvent = async () => {
+        try {
+          if (!id) return;
+          const result = await getArticleById(id);
+          setArticle(result || null);
+        } catch (err) {
+          console.error("Error fetching event:", err);
+          setArticle(null);
+        } finally {
+          setLoading(false);
+        }
+      };
+  
+      loadEvent();
+    }, [id]);
+
   return (
     <Layout>
       <Navbar back={true} />
       <div className="flex flex-col md:flex-row">
         <div className="px-6 md:w-5/7 h-[90vh] overflow-y-auto   text-sm text-gray-800 space-y-6">
           <Header
-            title={foundArticle?.title}
+            title={article?.title}
             author="Exalt"
-            date={foundArticle?.month}
+            date={article?.data?.month}
             readTime="5 min"
             category={""}
           />
@@ -48,7 +68,7 @@ export const ClientArticles = () => {
             onChange={setCurrentSection}
           />
 
-          {currentSection == "Article" && <Article id={id} />}
+          {currentSection == "Article" && <Article article={article} />}
           {currentSection == "Data" && <Data id={id} />}
           {currentSection == "Donor Outreach" && <DonorOutreach />}
         </div>

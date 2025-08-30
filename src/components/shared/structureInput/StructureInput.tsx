@@ -206,6 +206,59 @@ export default function StructuredInput(): JSX.Element {
     }
   };
 
+  // Add this function inside your component, after all state & handlers
+const getStructuredOutput = (): Record<string, any> => {
+  const output: Record<string, any> = {};
+
+  sections.forEach((section) => {
+    const sectionKey = section.heading || `Section_${section.id}`;
+    output[sectionKey] = {};
+
+    section.subsections.forEach((sub) => {
+      const subKey = sub.title || `Subsection_${sub.id}`;
+
+      // Separate content types
+      const points: string[] = [];
+      const paragraphs: string[] = [];
+      const images: { url: string; caption?: string }[] = [];
+      const graphs: { title: string; dataJson: string }[] = [];
+
+      sub.content.forEach((item) => {
+        switch (item.type) {
+          case "point":
+            if (item.text) points.push(item.text);
+            break;
+          case "paragraph":
+            if (item.text) paragraphs.push(item.text);
+            break;
+          case "image":
+            if (item.url) images.push({ url: item.url, caption: item.caption });
+            break;
+          case "graph":
+            if (item.graphTitle || item.graphDataJson)
+              graphs.push({ title: item.graphTitle || "", dataJson: item.graphDataJson || "" });
+            break;
+        }
+      });
+
+      // Assign values in simplified structure
+      if (paragraphs.length === 1 && points.length === 0 && images.length === 0 && graphs.length === 0) {
+        output[sectionKey][subKey] = paragraphs[0]; // single paragraph as string
+      } else {
+        output[sectionKey][subKey] = {
+          ...(points.length ? { points } : {}),
+          ...(paragraphs.length ? { paragraphs } : {}),
+          ...(images.length ? { images } : {}),
+          ...(graphs.length ? { graphs } : {}),
+        };
+      }
+    });
+  });
+
+  return output;
+};
+
+
   return (
     <div className="bg-white border border-gray-200 rounded-xl shadow-lg p-6">
       {sections.length === 0 && (

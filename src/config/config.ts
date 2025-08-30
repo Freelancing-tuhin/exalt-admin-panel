@@ -1,6 +1,6 @@
 export const url =
-  // "http://localhost:8989";
-  "https://exalt.tuhinthakur.me";
+  "http://localhost:8989";
+  // "https://exalt.tuhinthakur.me";
 
 export const port = "8989";
 export const version = "v1";
