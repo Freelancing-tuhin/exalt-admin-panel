@@ -1,18 +1,58 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useRef } from "react";
-import { Editor } from "@tinymce/tinymce-react";
 import Navbar from "../../../components/main/navbar/Navbar";
 import { Layout } from "../../layout/Layout";
-import { Pencil } from "lucide-react";
 import BannerUploadPage from "../../../components/shared/bannerUpload/BannerUpload";
+import TitleTabs from "../../../components/writer/articles/TitleTabs";
+import WritingTab from "../../../components/writer/articles/WritingTab";
+import UtilsTab from "../../../components/writer/articles/UtilsTab";
+import SiteLinksTab from "../../../components/writer/articles/SiteLinksTab";
+import FurtherReadingModal from "../../../components/writer/articles/FurtherReadingModal";
+import { MdCloudUpload } from "react-icons/md";
+import { Pencil } from "lucide-react";
+import { FaLink, FaSave } from "react-icons/fa";
+import { GrTag } from "react-icons/gr";
 
 const WriterArticles: React.FC = () => {
   const editorRef = useRef<any>(null);
+  const [tagIds, setTagIds] = React.useState<string[]>([]);
+  // writerId removed in favor of writerName
+  const [tweetIds, setTweetIds] = React.useState<string[]>([]);
+  const [donors, setDonors] = React.useState<string[]>([]);
+  const [sentimentData, setSentimentData] = React.useState<string>("");
+  const [writerName, setWriterName] = React.useState<string>("");
+  const [countryTags, setCountryTags] = React.useState<{
+    usa?: boolean;
+    india?: boolean;
+  }>({});
+  const [furtherReadings, setFurtherReadings] = React.useState<
+    Array<{ title: string; url: string }>
+  >([]);
+  const [isFurtherModalOpen, setIsFurtherModalOpen] = React.useState(false);
+  const [editorContent, setEditorContent] = React.useState<string>("");
+  const [activeTab, setActiveTab] = React.useState<
+    "writing" | "tags" | "site links"
+  >("writing");
 
   const handleSave = () => {
-    const content = editorRef.current ? editorRef.current.getContent() : "";
-    // alert("Article content: " + content);
-    console.log("======>content", content);
+    const content =
+      editorRef.current && editorRef.current.getContent
+        ? editorRef.current.getContent()
+        : editorContent;
+    const payload: any = {
+      title,
+      data: { content },
+      tweet_ids: tweetIds,
+      sentiment_graph_data: sentimentData ? JSON.parse(sentimentData) : null,
+      donors: donors.map((d) => ({ name: d })),
+      writer_name: writerName,
+      tagIds,
+      further_readings: furtherReadings,
+      country_tags: countryTags,
+    };
+    // frontend-only: log entire payload
+    console.log("ARTICLE_PAYLOAD", payload);
+    alert("Payload logged to console");
   };
   const [title, setTitle] = React.useState("");
 
@@ -29,101 +69,75 @@ const WriterArticles: React.FC = () => {
         }}
       >
         <div style={{ flex: 2 }}>
-          <div className="w-full mb-4">
-            <div className="flex items-center gap-2 rounded-2xl border border-gray-300 bg-white shadow-sm px-4 py-3 focus-within:ring-2 focus-within:ring-blue-400">
-              <Pencil className="w-5 h-5 text-gray-500" />
-              <input
-                type="text"
-                placeholder="Article Title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                className="w-full bg-transparent text-xl outline-none placeholder-gray-400"
-              />
-            </div>
-          </div>
+          <TitleTabs
+            title={title}
+            setTitle={setTitle}
+            activeTab={activeTab}
+            setActiveTab={(s: string) => setActiveTab(s as any)}
+            inputIcon={Pencil}
+            tabIcons={[Pencil, GrTag, FaLink]}
+          />
 
-          <div
-            style={{
-              border: "1px solid #ccc",
-              borderRadius: 8,
-              marginBottom: 24,
-            }}
-          >
-            <Editor
-              apiKey="4kkl05u0f7xhbihpa28fgunyt9rtk94hu2njchi8ptim3wtc"
-              onInit={(evt, editor) => (editorRef.current = editor)}
-              initialValue=""
-              init={{
-                height: 600,
-                menubar: false,
-                plugins: [
-                  "advlist autolink lists link image charmap print preview anchor",
-                  "searchreplace visualblocks code fullscreen",
-                  "insertdatetime media table paste code help wordcount",
-                ],
-                toolbar: [
-                  "undo redo | formatselect | fontselect | fontsizeselect",
-                  "bold italic underline strikethrough | forecolor backcolor | link image media | blockquote code | customimage",
-                  "alignleft aligncenter alignright alignjustify | outdent indent",
-                  "bullist numlist | table | hr | subscript superscript | charmap emoticons",
-                  "removeformat | preview fullscreen",
-                ].join(" | "),
-                setup: function (editor: any) {
-                  editor.ui.registry.addButton("customimage", {
-                    text: "Insert Image",
-                    icon: "image",
-                    onAction: function () {
-                      editor.windowManager.open({
-                        title: "Insert Image",
-                        body: {
-                          type: "panel",
-                          items: [
-                            {
-                              type: "input",
-                              name: "imageUrl",
-                              label: "Image URL",
-                            },
-                          ],
-                        },
-                        buttons: [
-                          {
-                            type: "cancel",
-                            text: "Cancel",
-                          },
-                          {
-                            type: "submit",
-                            text: "Insert",
-                            primary: true,
-                          },
-                        ],
-                        onSubmit: function (api: any) {
-                          const data = api.getData();
-                          if (data.imageUrl) {
-                            editor.insertContent(
-                              `<img src="${data.imageUrl}" alt="Image" />`
-                            );
-                          }
-                          api.close();
-                        },
-                      });
-                    },
-                  });
-                },
-                content_style:
-                  "body { font-family:Helvetica,Arial,sans-serif; font-size:16px }",
-              }}
+          {activeTab === "writing" ? (
+            <WritingTab
+              editorRef={editorRef}
+              content={editorContent}
+              setContent={setEditorContent}
             />
-          </div>
-          <button
-            onClick={handleSave}
-            style={{ padding: "8px 16px", fontSize: 16 }}
-          >
-            Save Article
-          </button>
+          ) : activeTab === "tags" ? (
+            <UtilsTab
+              tagIds={tagIds}
+              setTagIds={setTagIds}
+              writerName={writerName}
+              setWriterName={setWriterName}
+              donors={donors}
+              setDonors={setDonors}
+              sentimentData={sentimentData}
+              setSentimentData={setSentimentData}
+              countryTags={countryTags}
+              setCountryTags={setCountryTags}
+            />
+          ) : (
+            <SiteLinksTab
+              tweetIds={tweetIds}
+              setTweetIds={setTweetIds}
+              furtherReadings={furtherReadings}
+              setFurtherReadings={setFurtherReadings}
+              openModal={() => setIsFurtherModalOpen(true)}
+            />
+          )}
         </div>
-        {/* IMAGE BANNER */}
-        <BannerUploadPage />
+        {/* IMAGE BANNER + Save button */}
+        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+          <div className="flex items-center justify-between px-1 gap-2 mt-2 mb-5 ">
+            <button
+              onClick={handleSave}
+              className="px-4 py-3 bg-gray-200 text-gray-800 font-semibold rounded-lg w-1/2 flex items-center gap-2 justify-center"
+            >
+              <FaSave className="text-gray-800 text-lg" />
+              Save Draft
+            </button>
+            <button
+              onClick={handleSave}
+              className="px-4 py-3 bg-green-600 text-white font-semibold rounded-lg w-1/2 flex items-center gap-2 justify-center"
+            >
+              <MdCloudUpload className="text-gray-50 text-lg" />
+              Publish
+            </button>
+          </div>
+          <BannerUploadPage />
+        </div>
       </div>
+
+      {/* Further reading modal (frontend-only) */}
+      <FurtherReadingModal
+        isOpen={isFurtherModalOpen}
+        onClose={() => setIsFurtherModalOpen(false)}
+        onAdd={(item) => {
+          setFurtherReadings((s) => [...s, item]);
+          setIsFurtherModalOpen(false);
+        }}
+      />
     </Layout>
   );
 };
